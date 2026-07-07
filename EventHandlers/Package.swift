@@ -11,16 +11,16 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "PrebidMobileAdMobAdapters",
-            targets: ["PrebidMobileAdMobAdapters"]
+            name: "SellwildPrebidAdMobAdapters",
+            targets: ["SellwildPrebidAdMobAdapters"]
         ),
         .library(
-            name: "PrebidMobileGAMEventHandlers",
-            targets: ["PrebidMobileGAMEventHandlers"]
+            name: "SellwildPrebidGAMEventHandlers",
+            targets: ["SellwildPrebidGAMEventHandlers"]
         ),
         .library(
-            name: "PrebidMobileMAXAdapters",
-            targets: ["PrebidMobileMAXAdapters"]
+            name: "SellwildPrebidMAXAdapters",
+            targets: ["SellwildPrebidMAXAdapters"]
         ),
     ],
     dependencies: [
@@ -30,30 +30,30 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "PrebidMobileAdMobAdapters",
+            name: "SellwildPrebidAdMobAdapters",
             dependencies: [
                 .product(name: "PrebidMobile", package: "prebid-mobile-ios-sdk"),
                 .product(name: "GoogleMobileAds", package: "swift-package-manager-google-mobile-ads"),
             ],
-            path: "PrebidMobileAdMobAdapters",
+            path: "SellwildPrebidAdMobAdapters",
             sources: ["Sources"]
         ),
         .target(
-            name: "PrebidMobileGAMEventHandlers",
+            name: "SellwildPrebidGAMEventHandlers",
             dependencies: [
                 .product(name: "PrebidMobile", package: "prebid-mobile-ios-sdk"),
                 .product(name: "GoogleMobileAds", package: "swift-package-manager-google-mobile-ads"),
             ],
-            path: "PrebidMobileGAMEventHandlers",
+            path: "SellwildPrebidGAMEventHandlers",
             sources: ["Sources"]
         ),
         .target(
-            name: "PrebidMobileMAXAdapters",
+            name: "SellwildPrebidMAXAdapters",
             dependencies: [
                 .product(name: "PrebidMobile", package: "prebid-mobile-ios-sdk"),
                 .product(name: "AppLovinSDK", package: "AppLovin-MAX-Swift-Package"),
             ],
-            path: "PrebidMobileMAXAdapters",
+            path: "SellwildPrebidMAXAdapters",
             sources: ["Sources"]
         ),
     ]

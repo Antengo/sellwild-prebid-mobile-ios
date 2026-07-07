@@ -16,8 +16,8 @@
 #import "BannerBaseViewController.h"
 
 @import GoogleMobileAds;
-@import PrebidMobile;
-@import PrebidMobileGAMEventHandlers;
+@import SellwildPrebid;
+@import SellwildPrebidGAMEventHandlers;
 
 NS_ASSUME_NONNULL_BEGIN
 

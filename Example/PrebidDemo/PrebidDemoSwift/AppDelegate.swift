@@ -18,10 +18,10 @@ import UIKit
 import GoogleMobileAds
 import AppLovinSDK
 
-import PrebidMobile
-import PrebidMobileGAMEventHandlers
-import PrebidMobileAdMobAdapters
-import PrebidMobileMAXAdapters
+import SellwildPrebid
+import SellwildPrebidGAMEventHandlers
+import SellwildPrebidAdMobAdapters
+import SellwildPrebidMAXAdapters
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Set account id and custom Prebid server URL
-        Prebid.shared.prebidServerAccountId = "0689a263-318d-448b-a3d4-b02e8a709d9d"
+        SellwildPrebid.shared.prebidServerAccountId = "0689a263-318d-448b-a3d4-b02e8a709d9d"
         
         // Initialize Prebid SDK
         try! Prebid.initializeSDK(

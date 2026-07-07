@@ -10,9 +10,9 @@ import UIKit
 import GoogleMobileAds
 import MoPubSDK
 
-import PrebidMobileRendering
-import PrebidMobileMoPubAdapters
-import PrebidMobileGAMEventHandlers
+import SellwildPrebidRendering
+import SellwildPrebidMoPubAdapters
+import SellwildPrebidGAMEventHandlers
 
 class ViewController: UIViewController {
     

@@ -14,7 +14,7 @@
  */
 
 import UIKit
-import PrebidMobile
+import SellwildPrebid
 
 fileprivate let storedImpVideoInterstitialLandscape = "prebid-demo-video-interstitial-landscape-with-end-card"
 

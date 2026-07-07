@@ -14,7 +14,7 @@
  */
 
 import UIKit
-import PrebidMobile
+import SellwildPrebid
 
 fileprivate let storedImpVideoInterstitialVertical = "prebid-demo-video-interstitial-vertical"
 

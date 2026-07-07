@@ -14,9 +14,9 @@
   */
 
 import UIKit
-import PrebidMobile
+import SellwildPrebid
 import AppLovinSDK
-import PrebidMobileMAXAdapters
+import SellwildPrebidMAXAdapters
 
 class PrebidMAXNativeController: NSObject, AdaptedController {
     

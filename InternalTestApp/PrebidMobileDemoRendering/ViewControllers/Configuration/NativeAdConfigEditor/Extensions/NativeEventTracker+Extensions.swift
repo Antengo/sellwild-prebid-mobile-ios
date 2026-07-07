@@ -14,7 +14,7 @@
  */
 
 import Foundation
-import PrebidMobile
+import SellwildPrebid
 
 extension Array where Self.Element == NativeEventTracker {
     static var defaultNativeEventTrackers: [NativeEventTracker] {

@@ -14,8 +14,8 @@
   */
 
 import UIKit
-import PrebidMobile
-import PrebidMobileAdMobAdapters
+import SellwildPrebid
+import SellwildPrebidAdMobAdapters
 import GoogleMobileAds
 
 class PrebidAdMobNativeViewController:

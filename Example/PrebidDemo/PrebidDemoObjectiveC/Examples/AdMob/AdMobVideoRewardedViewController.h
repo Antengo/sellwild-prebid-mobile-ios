@@ -16,8 +16,8 @@
 #import "InterstitialBaseViewController.h"
 
 @import GoogleMobileAds;
-@import PrebidMobile;
-@import PrebidMobileAdMobAdapters;
+@import SellwildPrebid;
+@import SellwildPrebidAdMobAdapters;
 
 NS_ASSUME_NONNULL_BEGIN
 

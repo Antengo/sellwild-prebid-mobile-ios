@@ -15,7 +15,7 @@
 
 import UIKit
 import WebKit
-import PrebidMobile
+import SellwildPrebid
 import SafariServices
 
 class SampleAdView: UIView, PrebidMobileDisplayViewProtocol {

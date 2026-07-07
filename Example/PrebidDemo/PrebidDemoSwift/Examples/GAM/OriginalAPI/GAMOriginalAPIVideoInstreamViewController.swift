@@ -14,7 +14,7 @@
  */
 
 import UIKit
-import PrebidMobile
+import SellwildPrebid
 import GoogleInteractiveMediaAds
 
 fileprivate let videoContentURL = "https://storage.googleapis.com/gvabox/media/samples/stock.mp4"

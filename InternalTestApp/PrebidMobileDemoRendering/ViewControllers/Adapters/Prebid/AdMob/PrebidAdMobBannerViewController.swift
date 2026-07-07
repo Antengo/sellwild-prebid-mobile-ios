@@ -15,8 +15,8 @@
 
 import UIKit
 import GoogleMobileAds
-import PrebidMobile
-import PrebidMobileAdMobAdapters
+import SellwildPrebid
+import SellwildPrebidAdMobAdapters
 import Alamofire
 
 enum GADAdSizeType {
@@ -122,12 +122,12 @@ class PrebidAdMobBannerViewController:
         }
         
         if let storedAuctionResponse = storedAuctionResponse {
-            Prebid.shared.storedAuctionResponse = storedAuctionResponse
+            SellwildPrebid.shared.storedAuctionResponse = storedAuctionResponse
         }
         
         adUnit?.fetchDemand { [weak self] result in
             if self?.storedAuctionResponse != nil {
-                Prebid.shared.storedAuctionResponse = nil
+                SellwildPrebid.shared.storedAuctionResponse = nil
             }
 
             guard let self = self,

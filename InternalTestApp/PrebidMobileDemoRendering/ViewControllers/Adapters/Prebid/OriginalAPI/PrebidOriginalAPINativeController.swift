@@ -14,7 +14,7 @@
   */
 
 import UIKit
-import PrebidMobile
+import SellwildPrebid
 import GoogleMobileAds
 
 class PrebidOriginalAPINativeController:
@@ -54,7 +54,7 @@ class PrebidOriginalAPINativeController:
     }
     
     deinit {
-        Prebid.shared.shouldAssignNativeAssetID = false
+        SellwildPrebid.shared.shouldAssignNativeAssetID = false
     }
     
     func setupNativeAdView(_ nativeAdViewBox: NativeAdViewBoxProtocol) {

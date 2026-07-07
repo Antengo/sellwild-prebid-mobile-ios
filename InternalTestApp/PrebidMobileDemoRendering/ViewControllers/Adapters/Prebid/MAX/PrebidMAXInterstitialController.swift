@@ -15,8 +15,8 @@
 
 import UIKit
 import AppLovinSDK
-import PrebidMobile
-import PrebidMobileMAXAdapters
+import SellwildPrebid
+import SellwildPrebidMAXAdapters
 
 class PrebidMAXInterstitialController: NSObject, AdaptedController, PrebidConfigurableController {
     
@@ -118,12 +118,12 @@ class PrebidMAXInterstitialController: NSObject, AdaptedController, PrebidConfig
         }
         
         if let storedAuctionResponse = storedAuctionResponse {
-            Prebid.shared.storedAuctionResponse = storedAuctionResponse
+            SellwildPrebid.shared.storedAuctionResponse = storedAuctionResponse
         }
         
         adUnit?.fetchDemand { [weak self] result in
             if self?.storedAuctionResponse != nil {
-                Prebid.shared.storedAuctionResponse = nil
+                SellwildPrebid.shared.storedAuctionResponse = nil
             }
 
             guard let self = self else { return }

@@ -14,7 +14,7 @@
  */
 
 import UIKit
-import PrebidMobile
+import SellwildPrebid
 
 class PrebidFeedTableViewController: UITableViewController, ConfigurableViewController, BannerViewDelegate {
     

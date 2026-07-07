@@ -14,7 +14,7 @@
   */
 
 import UIKit
-import PrebidMobile
+import SellwildPrebid
 import GoogleMobileAds
 
 fileprivate let bannerConfigId = "prebid-ita-banner-300-250"

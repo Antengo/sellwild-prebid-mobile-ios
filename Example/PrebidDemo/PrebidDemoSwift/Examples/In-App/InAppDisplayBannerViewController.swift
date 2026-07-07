@@ -14,7 +14,7 @@
  */
 
 import UIKit
-import PrebidMobile
+import SellwildPrebid
 
 fileprivate let storedImpDisplayBanner = "prebid-demo-banner-320-50"
 

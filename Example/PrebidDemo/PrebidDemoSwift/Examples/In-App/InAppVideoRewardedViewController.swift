@@ -14,7 +14,7 @@
  */
 
 import UIKit
-import PrebidMobile
+import SellwildPrebid
 
 fileprivate let storedImpVideoRewarded = "prebid-demo-video-rewarded-endcard-time"
 

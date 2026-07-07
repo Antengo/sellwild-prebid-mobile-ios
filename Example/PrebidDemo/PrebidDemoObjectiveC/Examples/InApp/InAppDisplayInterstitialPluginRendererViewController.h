@@ -15,7 +15,7 @@
 
 #import "InterstitialBaseViewController.h"
 
-@import PrebidMobile;
+@import SellwildPrebid;
 
 NS_ASSUME_NONNULL_BEGIN
 

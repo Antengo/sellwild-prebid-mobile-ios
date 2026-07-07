@@ -15,7 +15,7 @@
 
 import UIKit
 import WebKit
-import PrebidMobile
+import SellwildPrebid
 
 class SampleInterstitialController: NSObject, PrebidMobileInterstitialControllerProtocol {
     

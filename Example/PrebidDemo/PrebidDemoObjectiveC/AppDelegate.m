@@ -34,7 +34,7 @@
         }
     }];
     
-    Prebid.shared.prebidServerAccountId = @"0689a263-318d-448b-a3d4-b02e8a709d9d";
+    SellwildPrebid.shared.prebidServerAccountId = @"0689a263-318d-448b-a3d4-b02e8a709d9d";
 
     // Set sourceapp
     Targeting.shared.sourceapp = @"PrebidDemoObjectiveC";

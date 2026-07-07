@@ -15,7 +15,7 @@
 
 import UIKit
 import GoogleMobileAds
-import PrebidMobile
+import SellwildPrebid
 
 class PrebidInterstitialController:
     NSObject,
@@ -72,7 +72,7 @@ class PrebidInterstitialController:
     func loadAd() {
         configIdLabel.isHidden = false
         configIdLabel.text = "Config ID: \(prebidConfigId)"
-        Prebid.shared.storedAuctionResponse = storedAuctionResponse
+        SellwildPrebid.shared.storedAuctionResponse = storedAuctionResponse
 
         interstitialController = InterstitialRenderingAdUnit(
             configID: prebidConfigId,
@@ -115,7 +115,7 @@ class PrebidInterstitialController:
         interstitialController?.loadAd()
 
         if storedAuctionResponse != nil {
-            Prebid.shared.storedAuctionResponse = nil
+            SellwildPrebid.shared.storedAuctionResponse = nil
         }
     }
     

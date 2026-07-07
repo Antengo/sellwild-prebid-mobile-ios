@@ -14,7 +14,7 @@
  */
 
 import UIKit
-import PrebidMobile
+import SellwildPrebid
 import GoogleMobileAds
 
 fileprivate let storedImpsInterstitial = ["prebid-demo-display-interstitial-320-480", "prebid-demo-video-interstitial-320-480-original-api"]

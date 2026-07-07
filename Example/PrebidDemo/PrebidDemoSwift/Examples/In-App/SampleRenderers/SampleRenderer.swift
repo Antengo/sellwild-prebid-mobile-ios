@@ -14,7 +14,7 @@
  */
 
 import UIKit
-import PrebidMobile
+import SellwildPrebid
 
 /// A custom implementation of the renderer.
 public class SampleRenderer: NSObject, PrebidMobilePluginRenderer {

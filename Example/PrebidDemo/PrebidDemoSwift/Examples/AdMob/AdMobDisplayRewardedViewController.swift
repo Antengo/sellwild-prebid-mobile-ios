@@ -14,9 +14,9 @@
  */
 
 import UIKit
-import PrebidMobile
+import SellwildPrebid
 import GoogleMobileAds
-import PrebidMobileAdMobAdapters
+import SellwildPrebidAdMobAdapters
 
 fileprivate let storedImpDisplayRewarded = "prebid-demo-banner-rewarded-time"
 fileprivate let adMobAdUnitRewardedId = "ca-app-pub-5922967660082475/5628505938"

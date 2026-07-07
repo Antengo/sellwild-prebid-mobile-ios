@@ -14,7 +14,7 @@
   */
 
 import UIKit
-import PrebidMobile
+import SellwildPrebid
 
 class PrebidNativeAdFeedController: NSObject, PrebidConfigurableController {
     

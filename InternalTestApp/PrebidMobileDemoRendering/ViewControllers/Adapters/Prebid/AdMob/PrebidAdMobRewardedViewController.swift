@@ -15,8 +15,8 @@
 
 import UIKit
 import GoogleMobileAds
-import PrebidMobile
-import PrebidMobileAdMobAdapters
+import SellwildPrebid
+import SellwildPrebidAdMobAdapters
 
 class PrebidAdMobRewardedViewController:
         NSObject,
@@ -75,12 +75,12 @@ class PrebidAdMobRewardedViewController:
         adUnit = MediationRewardedAdUnit(configId: prebidConfigId, mediationDelegate: mediationDelegate!)
         
         if let storedAuctionResponse = storedAuctionResponse {
-            Prebid.shared.storedAuctionResponse = storedAuctionResponse
+            SellwildPrebid.shared.storedAuctionResponse = storedAuctionResponse
         }
         
         adUnit?.fetchDemand { [weak self] result in
             if self?.storedAuctionResponse != nil {
-                Prebid.shared.storedAuctionResponse = nil
+                SellwildPrebid.shared.storedAuctionResponse = nil
             }
 
             guard let self = self else { return }

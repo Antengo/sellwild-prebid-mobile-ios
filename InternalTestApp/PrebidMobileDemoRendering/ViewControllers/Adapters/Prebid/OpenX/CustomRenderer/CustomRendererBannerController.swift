@@ -14,7 +14,7 @@
  */
 
 import UIKit
-import PrebidMobile
+import SellwildPrebid
 
 class CustomRendererBannerController:
     NSObject,
@@ -144,7 +144,7 @@ class CustomRendererBannerController:
                 $0.type == "prebidmobilesdk"
             }).first?.sdkConfiguration
             
-            if pbsSDKConfig?.cftBanner?.doubleValue != Prebid.shared.creativeFactoryTimeout || pbsSDKConfig?.cftPreRender?.doubleValue != Prebid.shared.creativeFactoryTimeoutPreRenderContent {
+            if pbsSDKConfig?.cftBanner?.doubleValue != SellwildPrebid.shared.creativeFactoryTimeout || pbsSDKConfig?.cftPreRender?.doubleValue != SellwildPrebid.shared.creativeFactoryTimeoutPreRenderContent {
                 resetEvents()
                 adViewDidFailToLoadAdButton.isEnabled = true
             }

@@ -14,7 +14,7 @@
  */
 
 import UIKit
-import PrebidMobile
+import SellwildPrebid
 
 public class SampleRenderer: NSObject, PrebidMobilePluginRenderer {
     

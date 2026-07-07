@@ -15,7 +15,7 @@
 
 import UIKit
 import CoreLocation
-import PrebidMobile
+import SellwildPrebid
 
 class TestCasesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, CLLocationManagerDelegate {
     
@@ -109,7 +109,7 @@ class TestCasesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         //Set up the default account id here
         //as it can be changed in any test cases
-        Prebid.shared.prebidServerAccountId = "0689a263-318d-448b-a3d4-b02e8a709d9d"
+        SellwildPrebid.shared.prebidServerAccountId = "0689a263-318d-448b-a3d4-b02e8a709d9d"
         
         example.configurationClosure?(vc)
         
@@ -128,7 +128,7 @@ class TestCasesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        Prebid.shared.locationUpdatesEnabled = (status == .authorizedAlways) || (status == .authorizedWhenInUse)
+        SellwildPrebid.shared.locationUpdatesEnabled = (status == .authorizedAlways) || (status == .authorizedWhenInUse)
     }
     
     // MARK: - Private Methods

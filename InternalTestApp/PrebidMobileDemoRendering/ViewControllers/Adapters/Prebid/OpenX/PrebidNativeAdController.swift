@@ -14,7 +14,7 @@
   */
 
 import UIKit
-import PrebidMobile
+import SellwildPrebid
 
 class PrebidNativeAdController: NSObject, AdaptedController {
     
@@ -45,7 +45,7 @@ class PrebidNativeAdController: NSObject, AdaptedController {
     }
     
     deinit {
-        Prebid.shared.shouldAssignNativeAssetID = false
+        SellwildPrebid.shared.shouldAssignNativeAssetID = false
     }
     
     func setupNativeAdView(_ nativeAdViewBox: NativeAdViewBoxProtocol) {

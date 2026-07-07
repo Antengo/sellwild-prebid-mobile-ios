@@ -15,7 +15,7 @@
 
 import UIKit
 import RxSwift
-import PrebidMobile
+import SellwildPrebid
 
 final class AppConfiguration: NSObject {
    
@@ -30,8 +30,8 @@ final class AppConfiguration: NSObject {
         set { IABConsentHelper.isGDPREnabled = newValue }
     }
     var isCachingEnabled: Bool {
-        get { Prebid.shared.useCacheForReportingWithRenderingAPI }
-        set { Prebid.shared.useCacheForReportingWithRenderingAPI = newValue }
+        get { SellwildPrebid.shared.useCacheForReportingWithRenderingAPI }
+        set { SellwildPrebid.shared.useCacheForReportingWithRenderingAPI = newValue }
     }
     var adPosition: AdPosition?
     var videoPlacementType: Signals.Placement?

@@ -5,26 +5,26 @@ import PackageDescription
 
 let package = Package(
     
-    name: "PrebidMobile",
+    name: "SellwildPrebidSDK",
     platforms: [
         .iOS(.v13),
     ],
     products: [
         .library(
-            name: "PrebidMobile",
-            targets: ["PrebidMobile", "__PrebidMobileInternal"]
+            name: "SellwildPrebidSDK",
+            targets: ["SellwildPrebidSDK", "__SellwildPrebidInternal"]
         ),
         .library(
-            name: "PrebidMobileAdMobAdapters",
-            targets: ["PrebidMobileAdMobAdapters"]
+            name: "SellwildPrebidAdMobAdapters",
+            targets: ["SellwildPrebidAdMobAdapters"]
         ),
         .library(
-            name: "PrebidMobileGAMEventHandlers",
-            targets: ["PrebidMobileGAMEventHandlers"]
+            name: "SellwildPrebidGAMEventHandlers",
+            targets: ["SellwildPrebidGAMEventHandlers"]
         ),
         .library(
-            name: "PrebidMobileMAXAdapters",
-            targets: ["PrebidMobileMAXAdapters"]
+            name: "SellwildPrebidMAXAdapters",
+            targets: ["SellwildPrebidMAXAdapters"]
         ),
     ],
     dependencies: [
@@ -33,17 +33,17 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "PrebidMobile",
-            path: "PrebidMobile",
+            name: "SellwildPrebidSDK",
+            path: "SellwildPrebid",
             sources: ["Swift"]
         ),
         .target(
-            name: "__PrebidMobileInternal",
+            name: "__SellwildPrebidInternal",
             dependencies: [
-                "PrebidMobile",
-                "PrebidMobileOMSDK",
+                "SellwildPrebidSDK",
+                "SellwildPrebidOMSDK",
             ],
-            path: "PrebidMobile",
+            path: "SellwildPrebid",
             sources: ["Objc"],
             cSettings: [
                 .headerSearchPath("./Objc/PrivateHeaders"),
@@ -51,34 +51,34 @@ let package = Package(
             ]
         ),
         .binaryTarget(
-            name: "PrebidMobileOMSDK",
+            name: "SellwildPrebidOMSDK",
             path: "Frameworks/OMSDK_Prebidorg.xcframework"
         ),
         .target(
-            name: "PrebidMobileAdMobAdapters",
+            name: "SellwildPrebidAdMobAdapters",
             dependencies: [
-                "PrebidMobile",
+                "SellwildPrebidSDK",
                 .product(name: "GoogleMobileAds", package: "swift-package-manager-google-mobile-ads"),
             ],
-            path: "EventHandlers/PrebidMobileAdMobAdapters",
+            path: "EventHandlers/SellwildPrebidAdMobAdapters",
             sources: ["Sources"]
         ),
         .target(
-            name: "PrebidMobileGAMEventHandlers",
+            name: "SellwildPrebidGAMEventHandlers",
             dependencies: [
-                "PrebidMobile",
+                "SellwildPrebidSDK",
                 .product(name: "GoogleMobileAds", package: "swift-package-manager-google-mobile-ads"),
             ],
-            path: "EventHandlers/PrebidMobileGAMEventHandlers",
+            path: "EventHandlers/SellwildPrebidGAMEventHandlers",
             sources: ["Sources"]
         ),
         .target(
-            name: "PrebidMobileMAXAdapters",
+            name: "SellwildPrebidMAXAdapters",
             dependencies: [
-                "PrebidMobile",
+                "SellwildPrebidSDK",
                 .product(name: "AppLovinSDK", package: "AppLovin-MAX-Swift-Package"),
             ],
-            path: "EventHandlers/PrebidMobileMAXAdapters",
+            path: "EventHandlers/SellwildPrebidMAXAdapters",
             sources: ["Sources"]
         ),
     ]

@@ -14,9 +14,9 @@
  */
 
 import UIKit
-import PrebidMobile
+import SellwildPrebid
 import GoogleMobileAds
-import PrebidMobileAdMobAdapters
+import SellwildPrebidAdMobAdapters
 
 fileprivate let nativeStoredImpression = "prebid-demo-banner-native-styles"
 fileprivate let admobRenderingNativeAdUnitId = "ca-app-pub-5922967660082475/8634069303"

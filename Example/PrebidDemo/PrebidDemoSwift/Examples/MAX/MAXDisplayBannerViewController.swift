@@ -14,8 +14,8 @@
  */
 
 import UIKit
-import PrebidMobile
-import PrebidMobileMAXAdapters
+import SellwildPrebid
+import SellwildPrebidMAXAdapters
 import AppLovinSDK
 
 fileprivate let storedImpDisplayBanner = "prebid-demo-banner-320-50"

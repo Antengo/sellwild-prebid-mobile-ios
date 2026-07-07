@@ -14,7 +14,7 @@
  */
 
 import GoogleMobileAds
-import PrebidMobile
+import SellwildPrebid
 
 class UnifiedNativeAdView: GoogleMobileAds.NativeAdView {
     

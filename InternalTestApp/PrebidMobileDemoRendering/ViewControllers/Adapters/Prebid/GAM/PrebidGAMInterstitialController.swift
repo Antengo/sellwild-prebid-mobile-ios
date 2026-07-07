@@ -15,8 +15,8 @@
 
 import UIKit
 import GoogleMobileAds
-import PrebidMobile
-import PrebidMobileGAMEventHandlers
+import SellwildPrebid
+import SellwildPrebidGAMEventHandlers
 
 class PrebidGAMInterstitialController: NSObject, AdaptedController, PrebidConfigurableController, InterstitialAdUnitDelegate {
     
@@ -65,7 +65,7 @@ class PrebidGAMInterstitialController: NSObject, AdaptedController, PrebidConfig
         configIdLabel.text = "Config ID: \(prebidConfigId)"
         
         let eventHandler = GAMInterstitialEventHandler(adUnitID: gamAdUnitId)
-        Prebid.shared.storedAuctionResponse = storedAuctionResponse
+        SellwildPrebid.shared.storedAuctionResponse = storedAuctionResponse
         
         interstitialController = InterstitialRenderingAdUnit(configID: prebidConfigId,
                                                              minSizePercentage: CGSize(width: 30, height: 30),
@@ -104,7 +104,7 @@ class PrebidGAMInterstitialController: NSObject, AdaptedController, PrebidConfig
         interstitialController?.loadAd()
 
         if storedAuctionResponse != nil {
-            Prebid.shared.storedAuctionResponse = nil
+            SellwildPrebid.shared.storedAuctionResponse = nil
         }
     }
     

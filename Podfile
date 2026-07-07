@@ -1,8 +1,8 @@
 platform :ios, '13.0'
 
-workspace 'PrebidMobile'
+workspace 'SellwildPrebid'
 
-project 'PrebidMobile.xcodeproj'
+project 'SellwildPrebid.xcodeproj'
 project 'EventHandlers/EventHandlers.xcodeproj'
 project 'Example/PrebidDemo/PrebidDemo.xcodeproj'
 
@@ -39,33 +39,33 @@ def internalTestApp_pods
   gma_pods
 end
 
-target 'PrebidMobileGAMEventHandlers' do
+target 'SellwildPrebidGAMEventHandlers' do
   event_handlers_project
   gma_pods
 end
 
-target 'PrebidMobileGAMEventHandlersTests' do
+target 'SellwildPrebidGAMEventHandlersTests' do
   event_handlers_project
   gma_pods
 end
 
-target 'PrebidMobileAdMobAdapters' do
+target 'SellwildPrebidAdMobAdapters' do
   event_handlers_project
   gma_pods
   
 end
 
-target 'PrebidMobileAdMobAdaptersTests' do
+target 'SellwildPrebidAdMobAdaptersTests' do
   event_handlers_project
   gma_pods
 end
 
-target 'PrebidMobileMAXAdapters' do
+target 'SellwildPrebidMAXAdapters' do
   event_handlers_project
   applovin_pods
 end
 
-target 'PrebidMobileMAXAdaptersTests' do
+target 'SellwildPrebidMAXAdaptersTests' do
   event_handlers_project
   applovin_pods
 end

@@ -18,10 +18,10 @@ import CoreLocation
 import GoogleMobileAds
 import AppLovinSDK
 
-import PrebidMobile
-import PrebidMobileAdMobAdapters
-import PrebidMobileGAMEventHandlers
-import PrebidMobileMAXAdapters
+import SellwildPrebid
+import SellwildPrebidAdMobAdapters
+import SellwildPrebidGAMEventHandlers
+import SellwildPrebidMAXAdapters
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             consentHelper.parseAndApply(consentSettingsString: params[0])
         }
         
-        Prebid.shared.shouldDisableStatusCheck = true
+        SellwildPrebid.shared.shouldDisableStatusCheck = true
                 
         //Set up SDK.
         let swiftVersionString = string(for: MobileAds.shared.versionNumber)
@@ -140,16 +140,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ALSdk.shared().initialize(with: config)
         
         // Prebid Rendering Configs
-        Prebid.shared.logLevel = .info
-        Prebid.shared.debugLogFileEnabled = true
+        SellwildPrebid.shared.logLevel = .info
+        SellwildPrebid.shared.debugLogFileEnabled = true
         
         // Ads may include Open Measurement scripts that sometime require additional time for loading.
-        Prebid.shared.creativeFactoryTimeout = 20;
+        SellwildPrebid.shared.creativeFactoryTimeout = 20;
         
-        Prebid.shared.locationUpdatesEnabled = false
+        SellwildPrebid.shared.locationUpdatesEnabled = false
         
         // Original Prebid Configs
-        Prebid.shared.shareGeoLocation = true
+        SellwildPrebid.shared.shareGeoLocation = true
         
 		return true
 	}

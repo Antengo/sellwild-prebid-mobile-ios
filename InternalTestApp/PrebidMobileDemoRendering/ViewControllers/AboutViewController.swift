@@ -20,16 +20,16 @@ import Eureka
 
 import GoogleMobileAds
 
-import PrebidMobile
-import PrebidMobileGAMEventHandlers
-import PrebidMobileAdMobAdapters
+import SellwildPrebid
+import SellwildPrebidGAMEventHandlers
+import SellwildPrebidAdMobAdapters
 
 class AboutViewController : FormViewController {
     
     private let info = [
         ("Components", [
-            "Prebid Mobile Rendering SDK": Prebid.shared.version,
-            "OMSDK_Prebidorg": Prebid.shared.omsdkVersion
+            "Prebid Mobile Rendering SDK": SellwildPrebid.shared.version,
+            "OMSDK_Prebidorg": SellwildPrebid.shared.omsdkVersion
         ]),
         ("Ad Server SDKs", [
             "GoogleMobileAds SDK": "\(MobileAds.shared.versionNumber)",

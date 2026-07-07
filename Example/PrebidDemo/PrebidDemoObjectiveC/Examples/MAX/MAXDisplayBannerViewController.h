@@ -16,8 +16,8 @@
 #import "BannerBaseViewController.h"
 
 @import AppLovinSDK;
-@import PrebidMobile;
-@import PrebidMobileMAXAdapters;
+@import SellwildPrebid;
+@import SellwildPrebidMAXAdapters;
 
 NS_ASSUME_NONNULL_BEGIN
 
