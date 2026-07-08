@@ -1,6 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name             = 'SellwildPrebid'
+  s.module_name      = 'SellwildPrebidSDK'
   s.version      = "1.4.1"
   s.summary      = "SellwildPrebid is a lightweight framework that integrates directly with Prebid Server."
 
