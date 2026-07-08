@@ -14,7 +14,7 @@
   */
 
 import Foundation
-import SellwildPrebid
+import SellwildPrebidSDK
 import GoogleMobileAds
 
 public class PrebidAdMobMediationBaseAdapter: NSObject, GoogleMobileAds.MediationAdapter {

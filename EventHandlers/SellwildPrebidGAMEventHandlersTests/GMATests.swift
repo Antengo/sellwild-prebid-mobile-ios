@@ -15,7 +15,7 @@
 
 import XCTest
 import GoogleMobileAds
-import SellwildPrebid
+import SellwildPrebidSDK
 @testable import SellwildPrebidGAMEventHandlers
 
 final class GMATests: XCTestCase {

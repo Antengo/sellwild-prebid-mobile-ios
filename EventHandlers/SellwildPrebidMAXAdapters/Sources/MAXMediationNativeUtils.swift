@@ -14,7 +14,7 @@
  */
 
 import UIKit
-import SellwildPrebid
+import SellwildPrebidSDK
 import AppLovinSDK
 
 @objcMembers

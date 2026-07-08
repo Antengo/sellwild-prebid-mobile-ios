@@ -14,7 +14,7 @@
  */
 
 import GoogleMobileAds
-import SellwildPrebid
+import SellwildPrebidSDK
 
 extension GoogleMobileAds.AdReward {
     

@@ -14,7 +14,7 @@
   */
 
 import Foundation
-import SellwildPrebid
+import SellwildPrebidSDK
 import AppLovinSDK
 
 extension PrebidMAXMediationAdapter: MANativeAdAdapter, NativeAdEventDelegate {

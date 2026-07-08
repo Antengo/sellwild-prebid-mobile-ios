@@ -15,7 +15,7 @@
 
 import Foundation
 import GoogleMobileAds
-import SellwildPrebid
+import SellwildPrebidSDK
 
 @objc(PrebidAdMobVideoInterstitialAdapter)
 public class PrebidAdMobVideoInterstitialAdapter:

@@ -15,7 +15,7 @@
 
 import XCTest
 import GoogleMobileAds
-import SellwildPrebid
+import SellwildPrebidSDK
 @testable import SellwildPrebidAdMobAdapters
 
 final class AdMobGMATests: XCTestCase {

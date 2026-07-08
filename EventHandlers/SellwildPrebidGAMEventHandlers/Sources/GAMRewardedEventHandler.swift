@@ -16,7 +16,7 @@
 import Foundation
 import GoogleMobileAds
 
-import SellwildPrebid
+import SellwildPrebidSDK
 
 @objcMembers
 public class GAMRewardedAdEventHandler :

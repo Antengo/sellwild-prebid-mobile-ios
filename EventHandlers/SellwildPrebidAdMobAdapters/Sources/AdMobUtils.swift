@@ -15,7 +15,7 @@
 
 import Foundation
 import GoogleMobileAds
-import SellwildPrebid
+import SellwildPrebidSDK
 
 fileprivate let HBKeywordPrefix = "hb_"
 

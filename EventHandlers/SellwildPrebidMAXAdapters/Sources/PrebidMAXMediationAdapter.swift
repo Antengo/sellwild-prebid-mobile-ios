@@ -14,7 +14,7 @@
  */
 
 import Foundation
-import SellwildPrebid
+import SellwildPrebidSDK
 import AppLovinSDK
 
 public let MAXCustomParametersKey = "custom_parameters"
