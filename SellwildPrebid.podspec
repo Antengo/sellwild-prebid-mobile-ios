@@ -75,7 +75,7 @@ Pod::Spec.new do |s|
     'OTHER_LDFLAGS' => '$(inherited) -lObjC -framework OMSDK_Sellwild',
     'LD_RUNPATH_SEARCH_PATHS' => '$(inherited) @executable_path/Frameworks',
     'OTHER_SWIFT_FLAGS' => '$(inherited) -no-verify-emitted-module-interface',
-    'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_TARGET_SRCROOT}/SellwildPrebid/Objc/PrivateHeaders" "${PODS_TARGET_SRCROOT}/SellwildPrebid/Objc/PrebidMobileRendering"'
+    'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_TARGET_SRCROOT}/SellwildPrebid/Objc/PrivateHeaders" "${PODS_TARGET_SRCROOT}/SellwildPrebid/Objc/PrebidMobileRendering/**"'
   }
 
 end
