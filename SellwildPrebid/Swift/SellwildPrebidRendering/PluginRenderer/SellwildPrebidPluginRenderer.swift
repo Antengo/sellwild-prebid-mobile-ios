@@ -18,7 +18,7 @@ import UIKit
 /// A protocol for the plugin renderer, defining the basic interface that any renderer should implement.
 /// This protocol provides the ability to retrieve plugin details, support rendering formats, and manage event delegates and
 /// methods for creating custom banner view and insterstitial controller.
-@objc
+@objc(SWPBPrebidMobilePluginRenderer)
 public protocol PrebidMobilePluginRenderer: AnyObject {
     
     /// The name of the plugin renderer. This is used to identify the plugin.

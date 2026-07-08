@@ -22,7 +22,7 @@
 
 @interface SWPBMCreativeFactory ()
 
-@property (strong, nonatomic) id<PrebidServerConnectionProtocol> serverConnection;
+@property (strong, nonatomic) id<SWPBPrebidServerConnectionProtocol> serverConnection;
 @property (strong, nonatomic) id<SWPBMTransaction> transaction;
 @property (strong, nonatomic) NSArray<SWPBMCreativeFactoryJob *> *jobs;
 @property (copy, nonatomic) SWPBMCreativeFactoryFinishedCallback finishedCallback;
@@ -33,7 +33,7 @@
     dispatch_queue_t _dispatchQueue;
 }
 
-- (nonnull instancetype)initWithServerConnection:(id<PrebidServerConnectionProtocol>)serverConnection
+- (nonnull instancetype)initWithServerConnection:(id<SWPBPrebidServerConnectionProtocol>)serverConnection
                                      transaction:(id<SWPBMTransaction>)transaction
                                      finishedCallback:( SWPBMCreativeFactoryFinishedCallback)finishedCallback {
     self = [super init];

@@ -19,6 +19,7 @@ import UIKit
 /// This class is responsible for making bid request and providing the winning bid and targeting keywords to mediating SDKs.
 /// This class is a part of Mediation API.
 @objcMembers
+@objc(SWPBMediationBannerAdUnit)
 public class MediationBannerAdUnit : NSObject {
     
     var bidRequester: BidRequester?

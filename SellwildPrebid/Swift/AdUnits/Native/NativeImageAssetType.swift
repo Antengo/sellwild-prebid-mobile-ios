@@ -19,7 +19,7 @@ import Foundation
 ///
 /// Each case corresponds to a different type of image asset that can be used in native ads.
 /// Values are defined according to the role or importance of the image in the ad.
-@objc public enum NativeImageAssetType: Int {
+@objc(SWPBNativeImageAssetType) public enum NativeImageAssetType: Int {
     
     /// Represents an icon image, which is typically a small image used as a visual representation of the product or service.
     case icon = 1

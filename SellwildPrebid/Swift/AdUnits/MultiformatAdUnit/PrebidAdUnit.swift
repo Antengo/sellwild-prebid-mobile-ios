@@ -17,6 +17,7 @@ import UIKit
 
 /// Multiformat ad unit. Built for original API.
 @objcMembers
+@objc(SWPBPrebidAdUnit)
 public class PrebidAdUnit: NSObject {
     
     /// The ad slot identifier for the Prebid ad unit.

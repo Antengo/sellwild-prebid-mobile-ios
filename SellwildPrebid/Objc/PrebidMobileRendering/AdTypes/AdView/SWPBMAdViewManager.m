@@ -26,7 +26,7 @@
 
 @interface SWPBMAdViewManager_Objc: NSObject <SWPBMAdViewManager>
 
-@property (nonatomic, strong) id<PrebidServerConnectionProtocol> serverConnection;
+@property (nonatomic, strong) id<SWPBPrebidServerConnectionProtocol> serverConnection;
 @property (nonatomic, weak, nullable)  id<SWPBMAbstractCreative> currentCreative;
 @property (nonatomic, strong, nullable) id<SWPBMTransaction> externalTransaction;
 @property (nonatomic, nullable, readonly) id<SWPBMTransaction> currentTransaction; // computed
@@ -40,7 +40,7 @@
 @synthesize autoDisplayOnLoad = _autoDisplayOnLoad;
 @synthesize modalManager = _modalManager;
 
-- (instancetype)initWithConnection:(id<PrebidServerConnectionProtocol>)connection
+- (instancetype)initWithConnection:(id<SWPBPrebidServerConnectionProtocol>)connection
               modalManagerDelegate:(nullable id<SWPBMModalManagerDelegate>)modalManagerDelegate
 {
     if (!(self = [super init])) {
@@ -216,7 +216,7 @@
 }
 
 - (void)creativeInterstitialDidClose:(id<SWPBMAbstractCreative>) creative {
-    if (self.adConfiguration.winningBidAdFormat == AdFormat.video) {
+    if (self.adConfiguration.winningBidAdFormat == SWPBAdFormat.video) {
         self.videoInterstitialDidClose = YES;
     }
     
@@ -290,7 +290,7 @@
     }
 }
 
-#pragma mark - Utility Functions
+#pragma mark - Utility SWPBFunctions
 
 - (id<SWPBMTransaction>)currentTransaction {
     return self.externalTransaction;

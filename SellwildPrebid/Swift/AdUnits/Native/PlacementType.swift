@@ -17,6 +17,7 @@ import Foundation
 
 /// Represents different types of placements for native ads.
 @objcMembers
+@objc(SWPBPlacementType)
 public class PlacementType: SingleContainerInt {
     
     /// Placement type indicating the ad appears within feed content.

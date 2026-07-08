@@ -19,6 +19,7 @@ fileprivate let assertionMessageMainThread = "Expected to only be called on the 
 
 /// The view that will display the particular banner ad. Built for rendering type of integration.
 @objcMembers
+@objc(SWPBBannerView)
 public class BannerView:
     UIView,
     BannerEventInteractionDelegate,

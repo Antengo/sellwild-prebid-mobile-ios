@@ -15,7 +15,7 @@
 
 import Foundation
 
-@objc
+@objc(SWPBPrebidEventDelegate)
 public protocol PrebidEventDelegate {
     /// Notifies the delegate when a Prebid bid request has finished.
     ///

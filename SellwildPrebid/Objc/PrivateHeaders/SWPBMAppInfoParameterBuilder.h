@@ -19,7 +19,7 @@
 #import "SWPBMParameterBuilderProtocol.h"
 
 @class SellwildPrebid;
-@class Targeting;
+@class SWPBTargeting;
 
 NS_ASSUME_NONNULL_BEGIN
 @interface SWPBMAppInfoParameterBuilder : NSObject <SWPBMParameterBuilder>
@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithBundle:(id<SWPBMBundleProtocol>)bundle
-                     targeting:(Targeting *)targeting NS_DESIGNATED_INITIALIZER;
+                     targeting:(SWPBTargeting *)targeting NS_DESIGNATED_INITIALIZER;
 
 @end
 NS_ASSUME_NONNULL_END

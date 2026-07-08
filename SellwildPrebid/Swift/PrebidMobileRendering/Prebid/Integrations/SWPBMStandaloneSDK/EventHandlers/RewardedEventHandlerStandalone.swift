@@ -16,6 +16,7 @@
 import Foundation
 import UIKit
 
+@objc(SWPBRewardedEventHandlerStandalone)
 public class RewardedEventHandlerStandalone: NSObject, RewardedEventHandlerProtocol {
     
     public weak var loadingDelegate: InterstitialEventLoadingDelegate?

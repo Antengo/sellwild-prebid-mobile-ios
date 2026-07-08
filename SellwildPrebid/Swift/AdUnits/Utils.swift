@@ -18,6 +18,7 @@ import WebKit
 import CoreLocation
 
 /// A utility class for handling various ad-related operations and conversions.
+@objc(SWPBUtils)
 public class Utils: NSObject {
 
     /// The class is created as a singleton object & used

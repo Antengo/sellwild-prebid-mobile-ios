@@ -15,7 +15,7 @@
 
 import Foundation
 
-@objc public class IMAAdSlotSize: SingleContainerInt {
+@objc(SWPBIMAAdSlotSize) public class IMAAdSlotSize: SingleContainerInt {
     
     @objc
     public static let Size400x300 = IMAAdSlotSize(1)
@@ -40,6 +40,7 @@ class IMAAdSlotSizeDescriptor {
 }
 
 @objcMembers
+@objc(SWPBIMAUtils)
 public final class IMAUtils: NSObject {
     
     @objc public static let shared = IMAUtils()

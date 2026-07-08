@@ -16,7 +16,7 @@
 
 import Foundation
 
-@objc open class ORTBAdConfiguration: NSObject, SWPBMJsonCodable {
+@objc(SWPBORTBAdConfiguration) open class ORTBAdConfiguration: NSObject, SWPBMJsonCodable {
     @objc public var maxVideoDuration: NSNumber?
     @objc public var isMuted: NSNumber?
     @objc public var closeButtonArea: NSNumber?

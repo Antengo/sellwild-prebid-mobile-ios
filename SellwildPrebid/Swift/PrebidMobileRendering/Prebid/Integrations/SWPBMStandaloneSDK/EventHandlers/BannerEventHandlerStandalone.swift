@@ -16,6 +16,7 @@
 import Foundation
 import UIKit
 
+@objc(SWPBBannerEventHandlerStandalone)
 public class BannerEventHandlerStandalone: NSObject, BannerEventHandler {
     
     public weak var loadingDelegate: BannerEventLoadingDelegate?

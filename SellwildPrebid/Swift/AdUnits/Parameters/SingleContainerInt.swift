@@ -15,6 +15,7 @@ limitations under the License.
 
 import Foundation
 
+@objc(SWPBSingleContainerInt)
 public class SingleContainerInt: NSObject, ExpressibleByIntegerLiteral {
 
     public typealias IntegerLiteralType = Int

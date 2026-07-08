@@ -15,7 +15,7 @@ limitations under the License.
 
 import Foundation
 
-@objc public protocol NativeAdDelegate : AnyObject {
+@objc(SWPBNativeAdDelegate) public protocol NativeAdDelegate : AnyObject {
     
     ///  A successful Prebid Native ad is returned
     /// - Parameter:  A successful Prebid Native ad is returned

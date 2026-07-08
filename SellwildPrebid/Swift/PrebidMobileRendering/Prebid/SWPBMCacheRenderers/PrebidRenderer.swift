@@ -17,6 +17,7 @@ import UIKit
 
 public let PREBID_MOBILE_RENDERER_NAME = "PrebidRenderer"
 
+@objc(SWPBPrebidRenderer)
 public class PrebidRenderer: NSObject, PrebidMobilePluginRenderer {
     
     public let name = PREBID_MOBILE_RENDERER_NAME

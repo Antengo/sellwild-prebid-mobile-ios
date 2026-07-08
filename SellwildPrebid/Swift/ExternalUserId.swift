@@ -18,6 +18,7 @@ import UIKit
 /// Defines the User Id Object from an External Thrid Party Source
 /// https://github.com/InteractiveAdvertisingBureau/openrtb/blob/main/extensions/2.x_official_extensions/eids.md
 @objcMembers
+@objc(SWPBExternalUserId)
 public class ExternalUserId: NSObject, JSONConvertible {
     
     // MARK: - Properties
@@ -66,6 +67,7 @@ public class ExternalUserId: NSObject, JSONConvertible {
 
 /// Extended ID UID objects from the given source.
 @objcMembers
+@objc(SWPBUserUniqueID)
 public class UserUniqueID: NSObject, JSONConvertible {
     
     // MARK: - Properties

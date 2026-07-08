@@ -16,6 +16,7 @@
 import Foundation
 
 @objcMembers
+@objc(SWPBPrebidServerResponse)
 public class PrebidServerResponse: NSObject {
     
     public var isOKStatusCode: Bool {

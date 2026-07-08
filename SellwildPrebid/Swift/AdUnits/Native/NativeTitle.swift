@@ -17,6 +17,7 @@ import Foundation
 
 /// Represents the title element in a native ad, including optional text and length.
 @objcMembers
+@objc(SWPBNativeTitle)
 public class NativeTitle: NSObject, JsonDecodable {
     /// The text associated with the text element.
     public var text: String?

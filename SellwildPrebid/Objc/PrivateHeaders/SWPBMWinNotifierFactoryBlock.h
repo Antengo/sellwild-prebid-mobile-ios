@@ -17,6 +17,6 @@
 
 #import "SWPBMWinNotifierBlock.h"
 
-@protocol PrebidServerConnectionProtocol;
+@protocol SWPBPrebidServerConnectionProtocol;
 
-typedef SWPBMWinNotifierBlock _Nonnull (^SWPBMWinNotifierFactoryBlock)(id<PrebidServerConnectionProtocol> _Nonnull connection);
+typedef SWPBMWinNotifierBlock _Nonnull (^SWPBMWinNotifierFactoryBlock)(id<SWPBPrebidServerConnectionProtocol> _Nonnull connection);

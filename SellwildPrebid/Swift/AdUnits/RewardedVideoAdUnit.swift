@@ -16,6 +16,7 @@ limitations under the License.
 import UIKit
 
 /// Represents an rewarded ad unit for original type of integration.
+@objc(SWPBRewardedVideoAdUnit)
 public class RewardedVideoAdUnit: AdUnit, VideoBasedAdUnitProtocol {
     
     /// Property for video parameters.

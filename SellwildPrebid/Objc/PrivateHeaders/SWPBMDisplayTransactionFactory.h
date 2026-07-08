@@ -15,19 +15,19 @@
 
 #import "SWPBMTransactionFactoryCallback.h"
 
-@class AdUnitConfig;
-@class Bid;
+@class SWPBAdUnitConfig;
+@class SWPBBid;
 @class SWPBMAdConfiguration;
 
-@protocol PrebidServerConnectionProtocol;
+@protocol SWPBPrebidServerConnectionProtocol;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SWPBMDisplayTransactionFactory : NSObject
 
-- (instancetype)initWithBid:(Bid *)bid
-            adConfiguration:(AdUnitConfig *)adConfiguration
-                 connection:(id<PrebidServerConnectionProtocol>)connection
+- (instancetype)initWithBid:(SWPBBid *)bid
+            adConfiguration:(SWPBAdUnitConfig *)adConfiguration
+                 connection:(id<SWPBPrebidServerConnectionProtocol>)connection
                    callback:(SWPBMTransactionFactoryCallback)callback;
 
 - (BOOL)loadWithAdMarkup:(NSString *)adMarkup;

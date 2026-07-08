@@ -16,6 +16,7 @@
 import UIKit
 
 /// Represents an instream video ad unit for original type of integration.
+@objc(SWPBInstreamVideoAdUnit)
 public class InstreamVideoAdUnit: AdUnit, VideoBasedAdUnitProtocol {
     
     /// The video parameters for this ad unit.

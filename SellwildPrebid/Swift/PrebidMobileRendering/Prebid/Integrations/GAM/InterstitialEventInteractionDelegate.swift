@@ -15,7 +15,7 @@
 
 import Foundation
 
-@objc public protocol InterstitialEventInteractionDelegate: NSObjectProtocol {
+@objc(SWPBInterstitialEventInteractionDelegate) public protocol InterstitialEventInteractionDelegate: NSObjectProtocol {
     
     /// Call this when the ad server SDK is about to present a modal
     @objc func willPresentAd()

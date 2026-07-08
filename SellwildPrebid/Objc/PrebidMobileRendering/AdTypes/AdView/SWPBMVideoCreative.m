@@ -327,11 +327,11 @@
     } else {
         const double videoDuration = self.creativeModel.displayDurationInSeconds.doubleValue;
         if (videoDuration <= 0) {
-            return PrebidConstants.CLOSE_DELAY_MIN;
+            return SWPBPrebidConstants.CLOSE_DELAY_MIN;
         }
         
-        NSTimeInterval lowerBound = PrebidConstants.CLOSE_DELAY_MIN;
-        NSTimeInterval upperBound = MIN(videoDuration, PrebidConstants.CLOSE_DELAY_MAX);
+        NSTimeInterval lowerBound = SWPBPrebidConstants.CLOSE_DELAY_MIN;
+        NSTimeInterval upperBound = MIN(videoDuration, SWPBPrebidConstants.CLOSE_DELAY_MAX);
         NSTimeInterval ret = [SWPBMFunctions clamp:pubCloseDelay lowerBound:lowerBound upperBound:upperBound];
         
         return ret;

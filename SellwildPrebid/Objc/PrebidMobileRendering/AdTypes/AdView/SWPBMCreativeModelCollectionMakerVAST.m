@@ -28,7 +28,7 @@
 
 @implementation SWPBMCreativeModelCollectionMakerVAST
 
-- (instancetype)initWithServerConnection:(id<PrebidServerConnectionProtocol>)serverConnection
+- (instancetype)initWithServerConnection:(id<SWPBPrebidServerConnectionProtocol>)serverConnection
                             adConfiguration:(SWPBMAdConfiguration *)adConfiguration {
     self = [super init];
     if (self) {
@@ -253,7 +253,7 @@
         return nil;
     }
     
-    NSString * html = [NSString stringWithFormat:PrebidConstants.companionHTMLTemplate, companion.clickThroughURI, companion.resource];
+    NSString * html = [NSString stringWithFormat:SWPBPrebidConstants.companionHTMLTemplate, companion.clickThroughURI, companion.resource];
     
     return html;
 }

@@ -17,6 +17,7 @@ import Foundation
 
 /// Describes an [OpenRTB](https://www.iab.com/wp-content/uploads/2016/03/OpenRTB-API-Specification-Version-2-5-FINAL.pdf) banner object
 @objcMembers
+@objc(SWPBBannerParameters)
 public class BannerParameters: NSObject {
     
     /// List of supported API frameworks for this impression. If an API is not explicitly listed, it is assumed not to be supported.

@@ -24,11 +24,11 @@
 
 @implementation SWPBMWinNotifier_Objc
 
-+ (void)notifyThroughConnection:(id<PrebidServerConnectionProtocol>)connection
-                     winningBid:(Bid *)bid
++ (void)notifyThroughConnection:(id<SWPBPrebidServerConnectionProtocol>)connection
+                     winningBid:(SWPBBid *)bid
                        callback:(SWPBMAdMarkupStringHandler)adMarkupConsumer
 {
-    ORTBMacrosHelper * const macrosHelper = [[ORTBMacrosHelper alloc] initWithBid:bid];
+    SWPBORTBMacrosHelper * const macrosHelper = [[SWPBORTBMacrosHelper alloc] initWithBid:bid];
     
     SWPBMAdMarkupStringHandler (^ const chainNotificationAction)(NSString * _Nullable, SWPBMAdMarkupStringHandler) =
     ^(NSString * _Nullable notificationUrl, SWPBMAdMarkupStringHandler _Nonnull onResult) {
@@ -39,10 +39,10 @@
             if (adMarkup != nil) {
                 // markup already known -- report to chained callbacks and send notification in parallel
                 onResult(adMarkup);
-                [connection download:notificationUrl callback:^(PrebidServerResponse * response) { /* nop */ }];
+                [connection download:notificationUrl callback:^(SWPBPrebidServerResponse * response) { /* nop */ }];
             } else {
                 // markup not yet known -- get a single response
-                [connection download:notificationUrl callback:^(PrebidServerResponse * _Nonnull response) {
+                [connection download:notificationUrl callback:^(SWPBPrebidServerResponse * _Nonnull response) {
                     NSString *adMarkupFromResponse = nil;
                     if (response.error == nil && response.rawData != nil) {
                         NSString * const rawResponseString = [[NSString alloc] initWithData:response.rawData
@@ -69,14 +69,14 @@
     chainedNotifications(bid.adm); // launch chained events
 }
 
-+ (SWPBMWinNotifierBlock)winNotifierBlockWithConnection:(id<PrebidServerConnectionProtocol>)connection {
-    return ^(Bid *bid, SWPBMAdMarkupStringHandler adMarkupConsumer) {
++ (SWPBMWinNotifierBlock)winNotifierBlockWithConnection:(id<SWPBPrebidServerConnectionProtocol>)connection {
+    return ^(SWPBBid *bid, SWPBMAdMarkupStringHandler adMarkupConsumer) {
         [self.class notifyThroughConnection:connection winningBid:bid callback:adMarkupConsumer];
     };
 }
 
 + (SWPBMWinNotifierFactoryBlock)factoryBlock {
-    return ^SWPBMWinNotifierBlock (id<PrebidServerConnectionProtocol> connection) {
+    return ^SWPBMWinNotifierBlock (id<SWPBPrebidServerConnectionProtocol> connection) {
         return [self.class winNotifierBlockWithConnection:connection];
     };
 }

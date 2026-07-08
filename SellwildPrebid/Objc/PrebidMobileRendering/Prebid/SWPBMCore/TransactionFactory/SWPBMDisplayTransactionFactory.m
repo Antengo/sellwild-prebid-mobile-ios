@@ -21,9 +21,9 @@
 
 @interface SWPBMDisplayTransactionFactory() <SWPBMTransactionDelegate>
 
-@property (nonatomic, strong, readonly, nonnull) Bid *bid;
-@property (nonatomic, strong, readonly, nonnull) AdUnitConfig *adConfiguration;
-@property (nonatomic, strong, readonly, nonnull) id<PrebidServerConnectionProtocol> connection;
+@property (nonatomic, strong, readonly, nonnull) SWPBBid *bid;
+@property (nonatomic, strong, readonly, nonnull) SWPBAdUnitConfig *adConfiguration;
+@property (nonatomic, strong, readonly, nonnull) id<SWPBPrebidServerConnectionProtocol> connection;
 
 // NOTE: need to call the completion callback only in the main thread
 // use onFinishedWithTransaction
@@ -40,9 +40,9 @@
 
 // MARK: - Public API
 
-- (instancetype)initWithBid:(Bid *)bid
-            adConfiguration:(AdUnitConfig *)adConfiguration
-                 connection:(id<PrebidServerConnectionProtocol>)connection
+- (instancetype)initWithBid:(SWPBBid *)bid
+            adConfiguration:(SWPBAdUnitConfig *)adConfiguration
+                 connection:(id<SWPBPrebidServerConnectionProtocol>)connection
                    callback:(SWPBMTransactionFactoryCallback)callback
 {
     if (!(self = [super init])) {
@@ -100,9 +100,9 @@
     [self.transaction startCreativeFactory];
 }
 
-- (SWPBMCreativeModel *)htmlCreativeModelFromBid:(Bid *)bid
+- (SWPBMCreativeModel *)htmlCreativeModelFromBid:(SWPBBid *)bid
                                       adMarkup:(NSString *)adMarkup
-                               adConfiguration:(AdUnitConfig *)adConfiguration {
+                               adConfiguration:(SWPBAdUnitConfig *)adConfiguration {
     SWPBMCreativeModel * const model = [[SWPBMCreativeModel alloc] initWithAdConfiguration:adConfiguration.adConfiguration];
     
     model.html = adMarkup;

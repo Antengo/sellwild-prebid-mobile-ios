@@ -16,8 +16,8 @@
 #import "SWPBMBidRequesterFactoryBlock.h"
 
 @class SellwildPrebid;
-@class Targeting;
-@protocol PrebidServerConnectionProtocol;
+@class SWPBTargeting;
+@protocol SWPBPrebidServerConnectionProtocol;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,9 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, class, readonly) SWPBMBidRequesterFactoryBlock requesterFactoryWithSingletons;
 
-+ (SWPBMBidRequesterFactoryBlock)requesterFactoryWithConnection:(id<PrebidServerConnectionProtocol>)connection
++ (SWPBMBidRequesterFactoryBlock)requesterFactoryWithConnection:(id<SWPBPrebidServerConnectionProtocol>)connection
                                              sdkConfiguration:(SellwildPrebid *)sdkConfiguration
-                                                    targeting:(Targeting *)targeting;
+                                                    targeting:(SWPBTargeting *)targeting;
 
 - (instancetype)init NS_UNAVAILABLE;
 

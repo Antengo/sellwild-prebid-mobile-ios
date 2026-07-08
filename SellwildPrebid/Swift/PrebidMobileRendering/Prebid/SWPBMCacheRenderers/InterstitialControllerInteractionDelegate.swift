@@ -16,7 +16,7 @@
 import UIKit
 
 /// A protocol that defines methods for handling user interactions and lifecycle events related to interstitial ads.
-@objc
+@objc(SWPBInterstitialControllerInteractionDelegate)
 public protocol InterstitialControllerInteractionDelegate: NSObjectProtocol {
 
     /// Tracks an impression for the specified interstitial ad controller.

@@ -36,7 +36,7 @@ typedef void(^SWPBMCreativeFactoryJobFinishedCallback)(SWPBMCreativeFactoryJob *
 - (nonnull instancetype)init NS_UNAVAILABLE;
 - (nonnull instancetype)initFromCreativeModel:(nonnull SWPBMCreativeModel *)creativeModel
                                   transaction:(nonnull id<SWPBMTransaction>)transaction
-                                  serverConnection:(nonnull id<PrebidServerConnectionProtocol>)serverConnection
+                                  serverConnection:(nonnull id<SWPBPrebidServerConnectionProtocol>)serverConnection
                               finishedCallback:(nonnull SWPBMCreativeFactoryJobFinishedCallback)finishedCallback
                               NS_DESIGNATED_INITIALIZER;
 

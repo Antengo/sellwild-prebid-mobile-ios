@@ -18,6 +18,7 @@ import AppTrackingTransparency
 
 /// A singleton class that manages the Prebid server URL, including a custom URL.
 @objcMembers
+@objc(SWPBHost)
 public class Host: NSObject {
 
     private var customHostURL: URL? {

@@ -23,7 +23,7 @@
 #import "SWPBMOpenMeasurementWrapper.h"
 #import "SWPBMMRAIDConstants.h"
 
-@class Targeting;
+@class SWPBTargeting;
 @protocol SWPBMAbstractCreative;
 @class SWPBMTouchDownRecognizer;
 @protocol SWPBMViewExposure;
@@ -71,7 +71,7 @@ typedef NS_ENUM(NSInteger, SWPBMWebViewState) {
 - (instancetype)initWithFrame:(CGRect)frame;
 - (instancetype)initWithFrame:(CGRect)frame
                 creativeModel:(nullable SWPBMCreativeModel *)creativeModel
-                    targeting:(Targeting *)targeting NS_DESIGNATED_INITIALIZER;
+                    targeting:(SWPBTargeting *)targeting NS_DESIGNATED_INITIALIZER;
 
 #pragma mark - Public Methods
 

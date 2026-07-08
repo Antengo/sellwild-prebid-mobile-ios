@@ -19,12 +19,12 @@
 
 @implementation SWPBMTrackingURLVisitors
 
-+ (SWPBMTrackingURLVisitorBlock)connectionAsTrackingURLVisitor:(id<PrebidServerConnectionProtocol>)connection {
++ (SWPBMTrackingURLVisitorBlock)connectionAsTrackingURLVisitor:(id<SWPBPrebidServerConnectionProtocol>)connection {
     return ^(NSArray<NSString *> *trackingUrlStrings) {
         for(NSString *trackingUrlString in trackingUrlStrings) {
             // TODO: Use 'fireAndForget' ?
             // TODO: Use non-zero timeout ?
-            [connection get:trackingUrlString timeout:0 callback:^(PrebidServerResponse *response){}];
+            [connection get:trackingUrlString timeout:0 callback:^(SWPBPrebidServerResponse *response){}];
         }
     };
 }

@@ -16,7 +16,7 @@
 import Foundation
 
 /// A protocol that defines methods for receiving loading events related to interstitial ad controllers.
-@objc
+@objc(SWPBInterstitialControllerLoadingDelegate)
 public protocol InterstitialControllerLoadingDelegate: NSObjectProtocol {
 
     /// Notifies the delegate that the interstitial ad has successfully loaded.

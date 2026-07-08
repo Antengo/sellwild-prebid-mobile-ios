@@ -20,7 +20,7 @@
 
 @implementation SWPBMBidResponseTransformer
 
-+ (BidResponse *)transformResponse:(PrebidServerResponse *)response error:(NSError **)error {
++ (SWPBBidResponse *)transformResponse:(SWPBPrebidServerResponse *)response error:(NSError **)error {
     NSString * const responseBody = [[NSString alloc] initWithData:response.rawData encoding:NSUTF8StringEncoding];
     if ([responseBody containsString:@"Invalid request"]) {
         if (error) {
@@ -34,7 +34,7 @@
         }
         return nil;
     }
-    BidResponse * const bidResponse = [[BidResponse alloc] initWithJsonDictionary:response.jsonDict];
+    SWPBBidResponse * const bidResponse = [[SWPBBidResponse alloc] initWithJsonDictionary:response.jsonDict];
     if (!bidResponse) {
         if (error) {
             *error = [SWPBMError responseDeserializationFailed];

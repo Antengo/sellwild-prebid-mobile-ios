@@ -23,6 +23,7 @@ fileprivate let omsdkLibraryURL = "https://cdn.jsdelivr.net/gh/prebid/prebid-mob
 public typealias PrebidJSLibraryContentsCallback = (String?) -> ()
 
 @objcMembers
+@objc(SWPBPrebidJSLibraryManager)
 public class PrebidJSLibraryManager: NSObject {
     
     public static let shared = PrebidJSLibraryManager()

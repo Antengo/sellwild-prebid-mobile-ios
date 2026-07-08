@@ -120,7 +120,7 @@
     if (!self.prebidWebView) {
         self.prebidWebView = [[SWPBMWebView alloc] initWithFrame:rect
                                                  creativeModel:self.creativeModel
-                                                     targeting:Targeting.shared];
+                                                     targeting:SWPBTargeting.shared];
     } else {
         self.prebidWebView.frame = rect;
     }

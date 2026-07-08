@@ -16,6 +16,7 @@
 import UIKit
 
 /// A class representing a banner ad unit for original type of integration.
+@objc(SWPBBannerAdUnit)
 public class BannerAdUnit: AdUnit, BannerBasedAdUnitProtocol, VideoBasedAdUnitProtocol {
     
     /// The banner ad parameters used to configure the ad unit.

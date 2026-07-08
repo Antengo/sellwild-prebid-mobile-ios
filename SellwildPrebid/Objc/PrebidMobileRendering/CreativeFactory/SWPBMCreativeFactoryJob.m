@@ -26,7 +26,7 @@
 
 @property (nonatomic, strong) SWPBMCreativeModel *creativeModel;
 @property (nonatomic, copy) SWPBMCreativeFactoryJobFinishedCallback finishedCallback;
-@property (nonatomic, strong) id<PrebidServerConnectionProtocol> serverConnection;
+@property (nonatomic, strong) id<SWPBPrebidServerConnectionProtocol> serverConnection;
 @property (nonatomic, strong) id<SWPBMTransaction>transaction;
 
 @end
@@ -37,7 +37,7 @@
 
 - (nonnull instancetype)initFromCreativeModel:(nonnull SWPBMCreativeModel *)creativeModel
                                   transaction:(id<SWPBMTransaction>)transaction
-                             serverConnection:(nonnull id<PrebidServerConnectionProtocol>)serverConnection
+                             serverConnection:(nonnull id<SWPBPrebidServerConnectionProtocol>)serverConnection
                               finishedCallback:(SWPBMCreativeFactoryJobFinishedCallback)finishedCallback {
     self = [super init];
     if (self) {
@@ -123,10 +123,10 @@
             return;
         }
         
-        AdFormat *adType = self.creativeModel.adConfiguration.winningBidAdFormat;
-        if (adType == AdFormat.banner || self.creativeModel.isCompanionAd) {
+        SWPBAdFormat *adType = self.creativeModel.adConfiguration.winningBidAdFormat;
+        if (adType == SWPBAdFormat.banner || self.creativeModel.isCompanionAd) {
             [self attemptAUIDCreative];
-        } else if (adType == AdFormat.video) {
+        } else if (adType == SWPBAdFormat.video) {
             [self attemptVASTCreative];
         } else if (adType == nil) {
             SWPBMLogError(@"The winning bid ad format is nil.")
@@ -210,7 +210,7 @@
 
 - (NSTimeInterval)getTimeInterval {
     SWPBMAdConfiguration *adConfig = self.creativeModel.adConfiguration;
-    if (adConfig.winningBidAdFormat == AdFormat.video || adConfig.presentAsInterstitial) {
+    if (adConfig.winningBidAdFormat == SWPBAdFormat.video || adConfig.presentAsInterstitial) {
         return SellwildPrebid.shared.creativeFactoryTimeoutPreRenderContent;
     } else {
         return SellwildPrebid.shared.creativeFactoryTimeout;
@@ -222,7 +222,7 @@
 }
 
 - (SWPBMCreativeFactoryDownloadDataCompletionClosure)createLoader {
-    id<PrebidServerConnectionProtocol> const connection = self.serverConnection;
+    id<SWPBPrebidServerConnectionProtocol> const connection = self.serverConnection;
     SWPBMCreativeFactoryDownloadDataCompletionClosure result = ^(NSURL* _Nonnull  url, SWPBMDownloadDataCompletionClosure _Nonnull completionBlock) {
         SWPBMDownloadDataHelper *downloader = [[SWPBMDownloadDataHelper alloc] initWithServerConnection:connection];
         [downloader downloadDataForURL:url completionClosure:^(NSData * _Nullable data, NSError * _Nullable error) {

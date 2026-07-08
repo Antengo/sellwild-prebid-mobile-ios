@@ -36,7 +36,7 @@ typedef void(^SWPBMVastAdsBuilderWrapperCompletionBlock)(NSError *);
 @interface SWPBMVastAdsBuilder()
 
 @property (nonatomic, strong) dispatch_queue_t dispatchQueue;
-@property (nonatomic, strong) id<PrebidServerConnectionProtocol> serverConnection;
+@property (nonatomic, strong) id<SWPBPrebidServerConnectionProtocol> serverConnection;
 @property (nonatomic, assign) NSInteger requestsPending;
 @property (nonatomic, assign) NSInteger maximumWrapperDepth;     // Per VAST 4.0 spec section 2.3.4.1
 @property (nonatomic, strong, nullable) SWPBMVastResponse *rootResponse;
@@ -49,7 +49,7 @@ typedef void(^SWPBMVastAdsBuilderWrapperCompletionBlock)(NSError *);
 
 #pragma mark - Initialization
 
--(instancetype)initWithConnection:(id<PrebidServerConnectionProtocol>)serverConnection {
+-(instancetype)initWithConnection:(id<SWPBPrebidServerConnectionProtocol>)serverConnection {
     self = [super init];
     if (self) {
         SWPBMAssert(serverConnection);
@@ -194,7 +194,7 @@ typedef void(^SWPBMVastAdsBuilderWrapperCompletionBlock)(NSError *);
         self.requestsPending += 1;
     });
     
-    [self.serverConnection get:vastURL timeout:PrebidConstants.CONNECTION_TIMEOUT_DEFAULT callback:^(PrebidServerResponse * _Nonnull serverResponse) {
+    [self.serverConnection get:vastURL timeout:SWPBPrebidConstants.CONNECTION_TIMEOUT_DEFAULT callback:^(SWPBPrebidServerResponse * _Nonnull serverResponse) {
         if (serverResponse.error) {
             completion(serverResponse.error);
             return;

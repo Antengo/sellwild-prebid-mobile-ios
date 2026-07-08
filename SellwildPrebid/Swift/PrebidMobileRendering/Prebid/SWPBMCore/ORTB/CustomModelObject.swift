@@ -16,6 +16,7 @@
 
 import Foundation
 
+@objc(SWPBCustomModelObjects)
 public class CustomModelObjects: NSObject {
     
     private static var lock: UnsafeMutablePointer<pthread_rwlock_t> = {

@@ -53,7 +53,7 @@
     else {
         NSMutableArray *eligableMediaFiles = [NSMutableArray array];
         for (SWPBMVastMediaFile *mediaFile in self.mediaFiles) {
-            if ([PrebidConstants.SUPPORTED_VIDEO_MIME_TYPES containsObject:mediaFile.type]) {
+            if ([SWPBPrebidConstants.SUPPORTED_VIDEO_MIME_TYPES containsObject:mediaFile.type]) {
                 [eligableMediaFiles addObject:mediaFile];
             }
         }

@@ -16,7 +16,7 @@
 
 import Foundation
 
-@objc @_spi(SWPBMInternal) public
+@objc(SWPBORTBMacrosHelper) @_spi(SWPBMInternal) public
 class ORTBMacrosHelper: NSObject {
     
     let macroValues: [String : String]

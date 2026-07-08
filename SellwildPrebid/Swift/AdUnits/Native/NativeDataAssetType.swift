@@ -19,7 +19,7 @@ import Foundation
 ///
 /// Each case represents a different type of data that can be provided in a native ad response.
 /// Values are defined according to the type of data they represent, such as descriptive text, ratings, or pricing information.
-@objc public enum NativeDataAssetType: Int {
+@objc(SWPBNativeDataAssetType) public enum NativeDataAssetType: Int {
     case undefined  = 0
     /// Sponsored By message where response should contain the brand name of the sponsor.
     case sponsored  = 1

@@ -15,6 +15,7 @@
 
 import Foundation
 
+@objc(SWPBDemandResponseInfo)
 public class DemandResponseInfo: NSObject {
     
     @objc public private(set) var fetchDemandResult: ResultCode

@@ -16,6 +16,7 @@
 import UIKit
 
 /// Represents an interstitial ad unit built for original type of integration.
+@objc(SWPBInterstitialAdUnit)
 public class InterstitialAdUnit: AdUnit, BannerBasedAdUnitProtocol, VideoBasedAdUnitProtocol {
     
     /// The banner parameters for this ad unit.

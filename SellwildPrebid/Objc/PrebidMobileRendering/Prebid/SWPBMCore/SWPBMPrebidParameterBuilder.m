@@ -29,18 +29,18 @@
 
 @interface SWPBMPrebidParameterBuilder ()
 
-@property (nonatomic, strong, nonnull, readonly) AdUnitConfig *adConfiguration;
+@property (nonatomic, strong, nonnull, readonly) SWPBAdUnitConfig *adConfiguration;
 @property (nonatomic, strong, nonnull, readonly) SellwildPrebid *sdkConfiguration;
-@property (nonatomic, strong, nonnull, readonly) Targeting *targeting;
+@property (nonatomic, strong, nonnull, readonly) SWPBTargeting *targeting;
 @property (nonatomic, strong, nonnull, readonly) SWPBMUserAgentService *userAgentService;
 
 @end
 
 @implementation SWPBMPrebidParameterBuilder
 
-- (instancetype)initWithAdConfiguration:(AdUnitConfig *)adConfiguration
+- (instancetype)initWithAdConfiguration:(SWPBAdUnitConfig *)adConfiguration
                        sdkConfiguration:(SellwildPrebid *)sdkConfiguration
-                              targeting:(Targeting *)targeting
+                              targeting:(SWPBTargeting *)targeting
                        userAgentService:(SWPBMUserAgentService *)userAgentService
 {
     if (!(self = [super init])) {
@@ -55,8 +55,8 @@
 
 - (void)buildBidRequest:(nonnull SWPBMORTBBidRequest *)bidRequest {
     
-    NSSet<AdFormat *> *adFormats = self.adConfiguration.adConfiguration.adFormats;
-    BOOL const isHTML = ([adFormats containsObject:AdFormat.banner]);
+    NSSet<SWPBAdFormat *> *adFormats = self.adConfiguration.adConfiguration.adFormats;
+    BOOL const isHTML = ([adFormats containsObject:SWPBAdFormat.banner]);
     BOOL const isInterstitial = self.adConfiguration.adConfiguration.isInterstitialAd;
     
     NSString *requestID = self.sdkConfiguration.prebidServerAccountId;
@@ -76,7 +76,7 @@
     bidRequest.extPrebid.storedBidResponses     = [SellwildPrebid.shared getStoredBidResponses];
 
     if (!self.adConfiguration.adConfiguration.isOriginalAPI) {
-        bidRequest.extPrebid.sdkRenderers = [PrebidMobilePluginRegister.shared getAllPluginsJSONRepresentation];
+        bidRequest.extPrebid.sdkRenderers = [SWPBPrebidMobilePluginRegister.shared getAllPluginsJSONRepresentation];
     }
 
     if (SellwildPrebid.shared.pbsDebug) {
@@ -123,12 +123,12 @@
         extSource.omidpv = [SWPBMFunctions sdkVersion];
     }
     
-    if (Targeting.shared.omidPartnerName) {
-        extSource.omidpn = Targeting.shared.omidPartnerName;
+    if (SWPBTargeting.shared.omidPartnerName) {
+        extSource.omidpn = SWPBTargeting.shared.omidPartnerName;
     }
     
-    if (Targeting.shared.omidPartnerVersion) {
-        extSource.omidpv = Targeting.shared.omidPartnerVersion;
+    if (SWPBTargeting.shared.omidPartnerVersion) {
+        extSource.omidpv = SWPBTargeting.shared.omidPartnerVersion;
     }
 
     bidRequest.source.extOMID = extSource;
@@ -177,11 +177,11 @@
         
         nextImp.extData[@"pbadslot"] = pbAdSlot;
         
-        for (AdFormat* adFormat in adFormats) {
-            if (adFormat == AdFormat.banner) {
+        for (SWPBAdFormat* adFormat in adFormats) {
+            if (adFormat == SWPBAdFormat.banner) {
                 SWPBMORTBBanner * const nextBanner = nextImp.banner;
             
-                BannerParameters *bannerParameters = self.adConfiguration.adConfiguration.bannerParameters;
+                SWPBBannerParameters *bannerParameters = self.adConfiguration.adConfiguration.bannerParameters;
                 NSMutableArray<SWPBMORTBFormat *> *mergedFormats = [NSMutableArray new];
                 
                 if (formats) {
@@ -206,7 +206,7 @@
                 if (self.adConfiguration.adPosition != SWPBMAdPositionUndefined) {
                     nextBanner.pos = @(self.adConfiguration.adPosition);
                 }
-            } else if (adFormat == AdFormat.video) {
+            } else if (adFormat == SWPBAdFormat.video) {
                 SWPBMORTBVideo * const nextVideo = nextImp.video;
                 
                 if (!self.adConfiguration.adConfiguration.isOriginalAPI) {
@@ -217,7 +217,7 @@
                     }
                     nextVideo.pos = @(7);
                     nextVideo.protocols = @[@(2),@(5)];
-                    nextVideo.mimes = PrebidConstants.SUPPORTED_VIDEO_MIME_TYPES;
+                    nextVideo.mimes = SWPBPrebidConstants.SUPPORTED_VIDEO_MIME_TYPES;
                 }
                 
                 nextVideo.delivery = @[@(3)];
@@ -228,7 +228,7 @@
                     nextVideo.h = primarySize.h;
                 }
                 
-                VideoParameters *videoParameters = self.adConfiguration.adConfiguration.videoParameters;
+                SWPBVideoParameters *videoParameters = self.adConfiguration.adConfiguration.videoParameters;
                                 
                 if (videoParameters.api && videoParameters.api.count > 0) {
                     nextVideo.api = videoParameters.rawAPI;
@@ -289,7 +289,7 @@
                 if (self.adConfiguration.adPosition != SWPBMAdPositionUndefined) {
                     nextVideo.pos = @(self.adConfiguration.adPosition);
                 }
-            } else if (adFormat == AdFormat.native) {
+            } else if (adFormat == SWPBAdFormat.native) {
                 SWPBMORTBNative * const nextNative = nextImp.native;
                 nextNative.request = [self.adConfiguration.nativeAdConfiguration.markupRequestObject toJsonStringWithError:nil];
                 NSString * const ver = self.adConfiguration.nativeAdConfiguration.version;

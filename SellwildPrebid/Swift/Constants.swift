@@ -99,6 +99,7 @@ extension UIDevice {
 }
 
 @objcMembers
+@objc(SWPBPrebidConstants)
 public class PrebidConstants: NSObject {
     private override init() { super.init() }
     

@@ -17,6 +17,7 @@ import Foundation
 
 /// Class representing a  link in a native ad.
 @objcMembers
+@objc(SWPBNativeLink)
 public class NativeLink: NSObject, JsonDecodable {
     
     /// Landing URL of the clickable link.

@@ -16,6 +16,7 @@
 import Foundation
 
 @objcMembers
+@objc(SWPBPrebidJSLibrary)
 public class PrebidJSLibrary: NSObject {
     
     public var downloadURLString: String?

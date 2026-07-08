@@ -16,7 +16,7 @@
 
 import Foundation
 
-@objc open class ORTBRewardedCompletionVideoEndcard: NSObject, SWPBMJsonCodable {
+@objc(SWPBORTBRewardedCompletionVideoEndcard) open class ORTBRewardedCompletionVideoEndcard: NSObject, SWPBMJsonCodable {
     /// The period of time that the ad is on the screen and the user earns a reward
     @objc public var time: NSNumber?
 

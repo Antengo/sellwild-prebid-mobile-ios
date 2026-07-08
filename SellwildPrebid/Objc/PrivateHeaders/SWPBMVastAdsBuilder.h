@@ -20,9 +20,9 @@
 @class SellwildPrebid;
 @class SWPBMVastAbstractAd;
 
-@protocol PrebidServerConnectionProtocol;
+@protocol SWPBPrebidServerConnectionProtocol;
 
-//TODO: alter PrebidServerConnection to deliver NSData.
+//TODO: alter SWPBPrebidServerConnection to deliver NSData.
 //Otherwise, done.
 
 typedef void(^SWPBMVastAdsBuilderCompletionBlock)(NSArray<SWPBMVastAbstractAd *> * _Nullable, NSError * _Nullable);
@@ -30,7 +30,7 @@ typedef void(^SWPBMVastAdsBuilderCompletionBlock)(NSArray<SWPBMVastAbstractAd *>
 @interface SWPBMVastAdsBuilder : NSObject
 
 - (nonnull instancetype)init NS_UNAVAILABLE;
-- (nonnull instancetype)initWithConnection:(nonnull id<PrebidServerConnectionProtocol>)serverConnection NS_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithConnection:(nonnull id<SWPBPrebidServerConnectionProtocol>)serverConnection NS_DESIGNATED_INITIALIZER;
 
 - (void)buildAds:(nonnull NSData *)data completion:(nonnull SWPBMVastAdsBuilderCompletionBlock)completionBlock;
 

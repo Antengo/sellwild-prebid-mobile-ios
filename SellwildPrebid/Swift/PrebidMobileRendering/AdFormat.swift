@@ -17,6 +17,7 @@ import Foundation
 
 /// `AdFormat` is a class that represents different types of ad formats using an OptionSet.
 @objcMembers
+@objc(SWPBAdFormat)
 public class AdFormat: NSObject, OptionSet {
     
     /// The underlying type of the raw value.

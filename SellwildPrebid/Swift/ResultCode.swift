@@ -18,7 +18,7 @@ import Foundation
 /// Enum representing the result codes for various operations within the Prebid SDK.
 ///
 /// This enum provides a range of result codes indicating different outcomes or errors that may occur during SDK operations. Each case corresponds to a specific result or error, which helps in diagnosing issues and understanding the status of SDK operations.
-@objc public enum ResultCode : Int {
+@objc(SWPBResultCode) public enum ResultCode : Int {
     
     /// The demand fetch request was successful.
     case prebidDemandFetchSuccess = 0

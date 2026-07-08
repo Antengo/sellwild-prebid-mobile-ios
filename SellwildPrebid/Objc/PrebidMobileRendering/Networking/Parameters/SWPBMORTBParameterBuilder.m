@@ -35,7 +35,7 @@
     NSError *error = nil;
     NSString *jsonString = [SWPBMFunctions toStringJsonDictionary:ortbJsonDictionary error:&error];
     if (jsonString) {
-        ret[PrebidConstants.OPEN_RTB_SCHEME] = jsonString;
+        ret[SWPBPrebidConstants.OPEN_RTB_SCHEME] = jsonString;
     } else {
         SWPBMLogError(@"%@", [error localizedDescription]);
     }

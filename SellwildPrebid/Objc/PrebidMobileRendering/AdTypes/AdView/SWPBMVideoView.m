@@ -405,11 +405,11 @@ static CGSize const MUTE_BUTTON_SIZE = { 24, 24 };
         return;
     }
     
-    UIButton * const muteButton = [self createButtonWithString:PrebidImagesRepository.muteDisabled
+    UIButton * const muteButton = [self createButtonWithString:SWPBPrebidImagesRepository.muteDisabled
                                             accessibilityLabel:@"swpbmMute"
                                                         action:@selector(btnMuteClick:)];
     
-    UIButton * const unmuteButton = [self createButtonWithString:PrebidImagesRepository.muteEnabled
+    UIButton * const unmuteButton = [self createButtonWithString:SWPBPrebidImagesRepository.muteEnabled
                                               accessibilityLabel:@"swpbmUnmute"
                                                           action:@selector(btnUnmuteClick:)];
     
@@ -470,7 +470,7 @@ static CGSize const MUTE_BUTTON_SIZE = { 24, 24 };
     self.skipButtonDecorator.buttonArea = self.creative.creativeModel.adConfiguration.videoControlsConfig.skipButtonArea;
     self.skipButtonDecorator.buttonPosition = self.creative.creativeModel.adConfiguration.videoControlsConfig.skipButtonPosition;
     
-    UIImage *skipButtonImage = PrebidImagesRepository.skipButton.base64DecodedImage;
+    UIImage *skipButtonImage = SWPBPrebidImagesRepository.skipButton.base64DecodedImage;
     
     [self.skipButtonDecorator setImage:skipButtonImage];
     [self.skipButtonDecorator addButtonTo:self displayView:self];

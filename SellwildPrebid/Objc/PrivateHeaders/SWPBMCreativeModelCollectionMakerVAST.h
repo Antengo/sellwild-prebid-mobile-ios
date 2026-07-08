@@ -20,16 +20,16 @@
 @class SWPBMAdConfiguration;
 @class SWPBMAdRequestResponseVAST;
 
-@protocol PrebidServerConnectionProtocol;
+@protocol SWPBPrebidServerConnectionProtocol;
 
 NS_ASSUME_NONNULL_BEGIN
 @interface SWPBMCreativeModelCollectionMakerVAST : NSObject
 
 @property (strong)SWPBMAdConfiguration *adConfiguration;
-@property (strong)id<PrebidServerConnectionProtocol> serverConnection;
+@property (strong)id<SWPBPrebidServerConnectionProtocol> serverConnection;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithServerConnection:(id<PrebidServerConnectionProtocol>)swpbmServer
+- (instancetype)initWithServerConnection:(id<SWPBPrebidServerConnectionProtocol>)swpbmServer
                             adConfiguration:(SWPBMAdConfiguration *)adConfiguration;
 
 - (void)makeModels:(SWPBMAdRequestResponseVAST *)requestResponse

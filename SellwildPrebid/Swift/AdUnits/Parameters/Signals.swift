@@ -21,6 +21,7 @@ import Foundation
 /// API frameworks, playback methods, protocols, start delays, and video
 /// placement types as defined in the OpenRTB specification.
 ///
+@objc(SWPBSignals)
 public class Signals: NSObject {
     
      ///# OpenRTB - API Frameworks #

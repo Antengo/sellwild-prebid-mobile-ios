@@ -19,14 +19,14 @@
 #import "SWPBMDeepLinkPlusHelper.h"
 #import "SWPBMUIApplicationProtocol.h"
 
-@protocol PrebidServerConnectionProtocol;
+@protocol SWPBPrebidServerConnectionProtocol;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SWPBMDeepLinkPlusHelper (Testing)
 
 @property (nonatomic, class, weak) id<SWPBMUIApplicationProtocol> application;
-@property (nonatomic, class, strong) id<PrebidServerConnectionProtocol> connection;
+@property (nonatomic, class, strong) id<SWPBPrebidServerConnectionProtocol> connection;
 
 @end
 

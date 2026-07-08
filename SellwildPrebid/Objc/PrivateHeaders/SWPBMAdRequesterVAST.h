@@ -20,16 +20,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class PrebidServerResponse;
-@protocol PrebidServerConnectionProtocol;
+@class SWPBPrebidServerResponse;
+@protocol SWPBPrebidServerConnectionProtocol;
 
 @interface SWPBMAdRequesterVAST : NSObject
 
 @property (nonatomic, strong) SWPBMAdConfiguration *adConfiguration;
-@property (nonatomic, strong) id<PrebidServerConnectionProtocol> serverConnection;
+@property (nonatomic, strong) id<SWPBPrebidServerConnectionProtocol> serverConnection;
 @property (nonatomic, weak, nullable) SWPBMAdLoadManagerVAST *adLoadManager;
 
-- (instancetype)initWithServerConnection:(id<PrebidServerConnectionProtocol>)serverConnection
+- (instancetype)initWithServerConnection:(id<SWPBPrebidServerConnectionProtocol>)serverConnection
                          adConfiguration:(SWPBMAdConfiguration *)adConfiguration;
 // - (void)load;
 - (void)buildVastAdsArray:(NSData *)rawVASTData;

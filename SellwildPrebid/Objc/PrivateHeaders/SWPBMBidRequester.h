@@ -15,23 +15,23 @@
 
 #import <Foundation/Foundation.h>
 
-@class AdUnitConfig;
-@class BidResponse;
+@class SWPBAdUnitConfig;
+@class SWPBBidResponse;
 @class SellwildPrebid;
-@class Targeting;
-@protocol PrebidServerConnectionProtocol;
+@class SWPBTargeting;
+@protocol SWPBPrebidServerConnectionProtocol;
 @protocol SWPBMBidRequesterProtocol;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SWPBMBidRequester : NSObject <SWPBMBidRequesterProtocol>
 
-- (instancetype)initWithConnection:(id<PrebidServerConnectionProtocol>)connection
+- (instancetype)initWithConnection:(id<SWPBPrebidServerConnectionProtocol>)connection
                   sdkConfiguration:(SellwildPrebid *)sdkConfiguration
-                         targeting:(Targeting *)targeting
-               adUnitConfiguration:(AdUnitConfig *)adUnitConfiguration;
+                         targeting:(SWPBTargeting *)targeting
+               adUnitConfiguration:(SWPBAdUnitConfig *)adUnitConfiguration;
 
-- (void)requestBidsWithCompletion:(void (^)(BidResponse * _Nullable, NSError * _Nullable))completion;
+- (void)requestBidsWithCompletion:(void (^)(SWPBBidResponse * _Nullable, NSError * _Nullable))completion;
 
 @end
 

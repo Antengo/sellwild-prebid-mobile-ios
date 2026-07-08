@@ -15,6 +15,7 @@ import ObjectiveC.runtime
 
 /// Base class for ad units built for original type of integration.
 @objcMembers
+@objc(SWPBAdUnit)
 public class AdUnit: NSObject, DispatcherDelegate {
     
     /// ORTB: imp[].ext.data.pbadslot

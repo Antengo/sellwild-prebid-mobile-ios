@@ -16,7 +16,7 @@
 import Foundation
 
 /// A logger implementation for Prebid SDK that logs messages to the console.
-@objc
+@objc(SWPBSDKConsoleLogger)
 public class SDKConsoleLogger: NSObject, PrebidLogger {
     
     public func error(_ object: Any, filename: String, line: Int, function: String) {

@@ -17,7 +17,7 @@ import Foundation
 
 /// Protocol for interaction with the RewardedAdUnit
 /// All messages will be invoked on the main thread.
-@objc public protocol RewardedAdUnitDelegate: NSObjectProtocol {
+@objc(SWPBRewardedAdUnitDelegate) public protocol RewardedAdUnitDelegate: NSObjectProtocol {
 
     /// Called when an ad is loaded and ready for display
     @objc optional func rewardedAdDidReceiveAd(_ rewardedAd: RewardedAdUnit)

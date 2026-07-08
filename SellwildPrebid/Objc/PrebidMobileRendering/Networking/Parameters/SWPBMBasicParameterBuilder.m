@@ -33,7 +33,7 @@
 
 @property (nonatomic, strong, readwrite) SWPBMAdConfiguration *adConfiguration;
 @property (nonatomic, strong, readwrite) SellwildPrebid *sdkConfiguration;
-@property (nonatomic, strong, readwrite) Targeting *targeting;
+@property (nonatomic, strong, readwrite) SWPBTargeting *targeting;
 @property (nonatomic, copy, readwrite) NSString *sdkVersion;
 
 @end
@@ -65,7 +65,7 @@
 }
 
 + (NSString *)urlKey {
-    return PrebidConstants.APP_STORE_URL_SCHEME;
+    return SWPBPrebidConstants.APP_STORE_URL_SCHEME;
 }
 
 + (NSString*)rewardedVideoKey {
@@ -81,7 +81,7 @@
 - (instancetype)initWithAdConfiguration:(SWPBMAdConfiguration *)adConfiguration
                        sdkConfiguration:(SellwildPrebid *)sdkConfiguration
                              sdkVersion:(NSString *)sdkVersion
-                              targeting:(Targeting *)targeting
+                              targeting:(SWPBTargeting *)targeting
 {
     if (!(self = [super init])) {
         return nil;
@@ -131,15 +131,15 @@
 }
 
 - (void)appendFormatSpecificParametersForRequest:(SWPBMORTBBidRequest *)bidRequest {
-    if ([self.adConfiguration.adFormats containsObject:AdFormat.banner]) {
+    if ([self.adConfiguration.adFormats containsObject:SWPBAdFormat.banner]) {
         [self appendDisplayParametersForRequest:bidRequest];
     }
     
-    if ([self.adConfiguration.adFormats containsObject:AdFormat.video]) {
+    if ([self.adConfiguration.adFormats containsObject:SWPBAdFormat.video]) {
         [self appendVideoParametersForRequest:bidRequest];
     }
     
-    if ([self.adConfiguration.adFormats containsObject:AdFormat.native]) {
+    if ([self.adConfiguration.adFormats containsObject:SWPBAdFormat.native]) {
         [self appendNativeParametersForRequest:bidRequest];
     }
 }

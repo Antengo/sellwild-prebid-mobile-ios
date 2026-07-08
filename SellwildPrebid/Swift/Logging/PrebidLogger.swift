@@ -18,7 +18,7 @@ import Foundation
 /// A protocol defining methods for logging messages at various levels.
 ///
 /// Implement this protocol to handle logging in a customizable way.
-@objc public protocol PrebidLogger {
+@objc(SWPBPrebidLogger) public protocol PrebidLogger {
     
     /// Logs an error message.
     ///

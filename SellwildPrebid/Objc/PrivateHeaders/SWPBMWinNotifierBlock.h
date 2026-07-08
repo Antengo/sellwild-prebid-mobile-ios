@@ -17,6 +17,6 @@
 
 #import "SWPBMAdMarkupStringHandler.h"
 
-@class Bid;
+@class SWPBBid;
 
-typedef void(^SWPBMWinNotifierBlock)(Bid * _Nonnull bid, SWPBMAdMarkupStringHandler _Nonnull adMarkupConsumer);
+typedef void(^SWPBMWinNotifierBlock)(SWPBBid * _Nonnull bid, SWPBMAdMarkupStringHandler _Nonnull adMarkupConsumer);

@@ -16,7 +16,7 @@ limitations under the License.
 import UIKit
 
 /// Class representing an event tracker for native ads.
-@objc public class NativeEventTracker: NSObject {
+@objc(SWPBNativeEventTracker) public class NativeEventTracker: NSObject {
     
     /// The type of event being tracked.
     var event: EventType
@@ -56,6 +56,7 @@ import UIKit
 }
 
 /// Class representing different event types.
+@objc(SWPBEventType)
 public class EventType: SingleContainerInt {
     @objc
     public static let Impression = EventType(1)
@@ -74,6 +75,7 @@ public class EventType: SingleContainerInt {
 }
 
 /// Native event tracking type.
+@objc(SWPBEventTracking)
 public class EventTracking: SingleContainerInt {
     
     /// Represents image-based event tracking.

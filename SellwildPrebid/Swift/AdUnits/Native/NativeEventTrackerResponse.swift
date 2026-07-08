@@ -17,6 +17,7 @@ import Foundation
 
 /// Class representing a response for a native event tracker.
 @objcMembers
+@objc(SWPBNativeEventTrackerResponse)
 public class NativeEventTrackerResponse: NSObject, JsonDecodable {
     
     /// Type of event to track.

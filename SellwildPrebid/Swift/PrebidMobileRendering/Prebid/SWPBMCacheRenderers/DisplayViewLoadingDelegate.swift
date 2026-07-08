@@ -17,7 +17,7 @@ import UIKit
 
 /// A protocol that defines methods for receiving loading events related to ad display views.
 /// This protocol is used to notify the delegate when an ad has successfully loaded or if an error occurs during loading.
-@objc
+@objc(SWPBDisplayViewLoadingDelegate)
 public protocol DisplayViewLoadingDelegate: NSObjectProtocol {
     
     /// Notifies that the ad has successfully loaded in the display view.

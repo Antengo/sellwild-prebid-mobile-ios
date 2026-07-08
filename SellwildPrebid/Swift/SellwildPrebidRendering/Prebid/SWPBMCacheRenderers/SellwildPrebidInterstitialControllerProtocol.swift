@@ -17,7 +17,7 @@ import UIKit
 
 /// A protocol that defines the interface for controlling and interacting with interstitial ads.
 /// This protocol allows loading and displaying interstitial ads, as well as managing interactions with them.
-@objc
+@objc(SWPBPrebidMobileInterstitialControllerProtocol)
 public protocol PrebidMobileInterstitialControllerProtocol: NSObjectProtocol {
     
     /// Loads the ad content for the interstitial.

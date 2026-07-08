@@ -24,14 +24,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SWPBMAdLoadManagerBase : NSObject <SWPBMAdLoadManagerProtocol>
 
 @property (nonatomic, weak, nullable) id<SWPBMAdLoadManagerDelegate> adLoadManagerDelegate;
-@property (nonatomic, strong) id<PrebidServerConnectionProtocol> connection;
+@property (nonatomic, strong) id<SWPBPrebidServerConnectionProtocol> connection;
 @property (nonatomic, strong) SWPBMAdConfiguration *adConfiguration;
-@property (nonatomic, strong) Bid *bid;
+@property (nonatomic, strong) SWPBBid *bid;
 @property (nonatomic, strong) dispatch_queue_t dispatchQueue;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithBid:(Bid *)bid
-                 connection:(id<PrebidServerConnectionProtocol>)connection
+- (instancetype)initWithBid:(SWPBBid *)bid
+                 connection:(id<SWPBPrebidServerConnectionProtocol>)connection
             adConfiguration:(SWPBMAdConfiguration *)adConfiguration NS_DESIGNATED_INITIALIZER;
 
 - (void)makeCreativesWithCreativeModels:(NSArray<SWPBMCreativeModel *> *)creativeModels;

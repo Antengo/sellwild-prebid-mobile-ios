@@ -60,7 +60,7 @@ static NSString * const KeyPathOutputVolume = @"outputVolume";
 // the last frame sent to an ad via onSizeChange
 @property (nonatomic, assign) CGRect mraidLastSentFrame;
 
-@property (nonatomic, strong, nullable) PrebidJSLibraryManager *libraryManager;
+@property (nonatomic, strong, nullable) SWPBPrebidJSLibraryManager *libraryManager;
 
 // Need to avoid warnings
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
@@ -69,7 +69,7 @@ static NSString * const KeyPathOutputVolume = @"outputVolume";
 @property (nonatomic, assign) BOOL isPollingForDocumentReady;
 
 
-@property (nonatomic, strong, readonly, nonnull) Targeting *targeting;
+@property (nonatomic, strong, readonly, nonnull) SWPBTargeting *targeting;
 
 @end
 
@@ -80,22 +80,22 @@ static NSString * const KeyPathOutputVolume = @"outputVolume";
 #pragma mark - Initialization
  
 - (nonnull instancetype)initWithFrame:(CGRect)frame {
-    self = [self initWithFrame:frame creativeModel:nil targeting:Targeting.shared];
+    self = [self initWithFrame:frame creativeModel:nil targeting:SWPBTargeting.shared];
     return self;
 }
  
 - (nonnull instancetype)initWithFrame:(CGRect)frame
                         creativeModel:(SWPBMCreativeModel *)creativeModel
-                            targeting:(Targeting *)targeting
+                            targeting:(SWPBTargeting *)targeting
 {
     if (!(self = [super initWithFrame:frame])) {
         return nil;
     }
-    self.accessibilityIdentifier = PrebidConstants.ACCESSIBILITY_WEB_VIEW_LABEL;
+    self.accessibilityIdentifier = SWPBPrebidConstants.ACCESSIBILITY_WEB_VIEW_LABEL;
     WKUserContentController * const wkUserContentController = [[WKUserContentController alloc] init];
     self.wkUserContentController = wkUserContentController;
     _targeting = targeting;
-    _libraryManager = PrebidJSLibraryManager.shared;
+    _libraryManager = SWPBPrebidJSLibraryManager.shared;
     _lastTapTimestamp = NSDate.distantPast;
     _viewable = NO;
     _isMRAID = NO;
@@ -403,7 +403,7 @@ static SWPBMError *extracted(NSString *errorMessage) {
 
 #ifdef DEBUG
 - (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler {
-    [Functions checkCertificateChallenge:challenge completionHandler:completionHandler];
+    [SWPBFunctions checkCertificateChallenge:challenge completionHandler:completionHandler];
 }
 #endif
 
@@ -699,7 +699,7 @@ static SWPBMError *extracted(NSString *errorMessage) {
     [self evaluateJavaScript:[SWPBMMRAIDJavascriptCommands onAudioVolumeChange:volumePercentage]];
 }
 
-#pragma mark - Functions for updating data in mraid.js
+#pragma mark - SWPBFunctions for updating data in mraid.js
 
 // look up what features are avaliable and set them
 - (void) setSupportedMRAIDFeatures {
@@ -749,7 +749,7 @@ static SWPBMError *extracted(NSString *errorMessage) {
     [self evaluateJavaScript:[SWPBMMRAIDJavascriptCommands updateCurrentAppOrientation:(isPortrait ? @"portrait" : @"landscape") locked:locked]];
 }
 
-#pragma mark - Functions for getting data out of mraid.js
+#pragma mark - SWPBFunctions for getting data out of mraid.js
 
 - (void)MRAID_getExpandProperties:(void(^)(SWPBMMRAIDExpandProperties *))completionHandler {
     
@@ -889,7 +889,7 @@ static SWPBMError *extracted(NSString *errorMessage) {
 }
 
 - (BOOL)wasRecentlyTapped {
-    return fabs([self.lastTapTimestamp timeIntervalSinceNow]) < PrebidConstants.AD_CLICKED_ALLOWED_INTERVAL;
+    return fabs([self.lastTapTimestamp timeIntervalSinceNow]) < SWPBPrebidConstants.AD_CLICKED_ALLOWED_INTERVAL;
 }
 
 #pragma mark - Orientation changing support

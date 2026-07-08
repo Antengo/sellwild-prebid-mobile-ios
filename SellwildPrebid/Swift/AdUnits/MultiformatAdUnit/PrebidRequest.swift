@@ -17,6 +17,7 @@ import Foundation
 
 /// Class that contains properties and methods to configure Prebid request.
 @objcMembers
+@objc(SWPBPrebidRequest)
 public class PrebidRequest: NSObject {
     
     // MARK: - Public properties

@@ -20,6 +20,7 @@ fileprivate let HTTPMethodHEAD = "HEAD"
 fileprivate let HTTPMethodPOST = "POST"
 
 @objcMembers
+@objc(SWPBPrebidServerConnection)
 public class PrebidServerConnection: NSObject, PrebidServerConnectionProtocol, URLSessionDelegate {
     
     // MARK: - Public properties

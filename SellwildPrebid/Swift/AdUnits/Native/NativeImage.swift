@@ -17,6 +17,7 @@ import Foundation
 
 /// Class representing an image asset in a native ad.
 @objcMembers
+@objc(SWPBNativeImage)
 public class NativeImage: NSObject, JsonDecodable {
     
     /// The type of image element being submitted from the Image Asset Types table.

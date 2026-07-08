@@ -16,7 +16,7 @@
 import UIKit
 
 /// This protocol is used to load and display the ad content in a view.
-@objc public protocol PrebidMobileDisplayViewProtocol where Self: UIView {
+@objc(SWPBPrebidMobileDisplayViewProtocol) public protocol PrebidMobileDisplayViewProtocol where Self: UIView {
     
     /// Loads the ad content into the display view.
     /// - Important: This method is expected to call the `loadingDelegate` once the

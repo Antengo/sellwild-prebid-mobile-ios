@@ -44,7 +44,7 @@
     id<SWPBMUIApplicationProtocol> const application = self.application ?: [UIApplication sharedApplication];
     SWPBMExternalURLOpenerBlock const urlOpener = [SWPBMExternalURLOpeners applicationAsExternalUrlOpener:application];
     
-    id<PrebidServerConnectionProtocol> connection = self.connection ?: [PrebidServerConnection shared];
+    id<SWPBPrebidServerConnectionProtocol> connection = self.connection ?: [SWPBPrebidServerConnection shared];
     SWPBMTrackingURLVisitorBlock const trackingUrlVisitor = [SWPBMTrackingURLVisitors connectionAsTrackingURLVisitor:connection];
     
     SWPBMExternalLinkHandler * const externalLinkHandler = [[SWPBMExternalLinkHandler alloc] initWithPrimaryUrlOpener:urlOpener
@@ -62,7 +62,7 @@
 }
 
 + (void)visitTrackingUrlStrings:(NSArray<NSString *> *)trackingUrlStrings {
-    id<PrebidServerConnectionProtocol> connection = self.connection ?: [PrebidServerConnection shared];
+    id<SWPBPrebidServerConnectionProtocol> connection = self.connection ?: [SWPBPrebidServerConnection shared];
     SWPBMTrackingURLVisitorBlock const visitorBlock = [SWPBMTrackingURLVisitors connectionAsTrackingURLVisitor:connection];
     visitorBlock(trackingUrlStrings);
 }

@@ -15,11 +15,11 @@
 
 import Foundation
 
-@objc public protocol PluginEventDelegate: NSObjectProtocol {
+@objc(SWPBPluginEventDelegate) public protocol PluginEventDelegate: NSObjectProtocol {
     @objc func getPluginName() -> String
 }
 
-@objc open class DefaultPluginEventDelegate: NSObject, PluginEventDelegate {
+@objc(SWPBDefaultPluginEventDelegate) open class DefaultPluginEventDelegate: NSObject, PluginEventDelegate {
     open func getPluginName() -> String {
         return "DefaultPluginName"
     }

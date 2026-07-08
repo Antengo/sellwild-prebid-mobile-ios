@@ -19,7 +19,7 @@ import Foundation
 /// Protocol for interaction with the InterstitialAdUnit .
 /// 
 /// All messages will be invoked on the main thread.
-@objc
+@objc(SWPBInterstitialAdUnitDelegate)
 public protocol InterstitialAdUnitDelegate: NSObjectProtocol {
 
     /// Called when an ad is loaded and ready for display

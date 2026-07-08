@@ -18,7 +18,7 @@
 #import "SWPBMBundleProtocol.h"
 #import "SWPBMParameterBuilderProtocol.h"
 
-@class Targeting;
+@class SWPBTargeting;
 @class SWPBMAdConfiguration;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SWPBMSKAdNetworksParameterBuilder : NSObject <SWPBMParameterBuilder>
 
 - (nonnull instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithBundle:(id<SWPBMBundleProtocol>)bundle targeting:(Targeting *)targeting adConfiguration:(SWPBMAdConfiguration *)adConfiguration NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithBundle:(id<SWPBMBundleProtocol>)bundle targeting:(SWPBTargeting *)targeting adConfiguration:(SWPBMAdConfiguration *)adConfiguration NS_DESIGNATED_INITIALIZER;
 
 - (NSArray<NSString *> *)SKAdNetworkIds;
 @end

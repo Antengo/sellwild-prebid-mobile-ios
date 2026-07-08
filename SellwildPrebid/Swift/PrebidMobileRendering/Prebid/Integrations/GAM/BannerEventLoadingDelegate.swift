@@ -19,7 +19,7 @@ import UIKit
 /*!
  The banner custom event delegate. It is used to inform the ad server SDK events back to the SWPBM SDK.
  */
-@objc public protocol BannerEventLoadingDelegate: NSObjectProtocol {
+@objc(SWPBBannerEventLoadingDelegate) public protocol BannerEventLoadingDelegate: NSObjectProtocol {
 
     /*!
      @abstract Call this when the ad server SDK signals about partner bid win

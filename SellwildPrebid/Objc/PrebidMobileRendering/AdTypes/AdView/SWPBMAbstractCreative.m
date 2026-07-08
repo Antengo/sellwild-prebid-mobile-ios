@@ -88,7 +88,7 @@
             }
         }
         
-        PrebidServerEventTracker *internalEventTracker = [[PrebidServerEventTracker alloc] initWithServerEvents:@[]];
+        SWPBPrebidServerEventTracker *internalEventTracker = [[SWPBPrebidServerEventTracker alloc] initWithServerEvents:@[]];
         
         NSString *impURL = self.transaction.bid.events.imp;
         

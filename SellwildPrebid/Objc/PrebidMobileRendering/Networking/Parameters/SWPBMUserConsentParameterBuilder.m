@@ -26,8 +26,8 @@
 
 - (void)buildBidRequest:(nonnull SWPBMORTBBidRequest *)bidRequest {
     // GDPR
-    bidRequest.regs.ext[@"gdpr"] = [Targeting.shared getSubjectToGDPR];
-    bidRequest.user.ext[@"consent"] = Targeting.shared.gdprConsentString;
+    bidRequest.regs.ext[@"gdpr"] = [SWPBTargeting.shared getSubjectToGDPR];
+    bidRequest.user.ext[@"consent"] = SWPBTargeting.shared.gdprConsentString;
     
     // CCPA
     bidRequest.regs.ext[@"us_privacy"] = SWInternalUserConsentDataManager.usPrivacyString;

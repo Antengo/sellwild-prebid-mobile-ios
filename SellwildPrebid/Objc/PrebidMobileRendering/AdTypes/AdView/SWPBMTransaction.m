@@ -23,7 +23,7 @@
 
 @interface SWPBMTransaction_Objc: NSObject <SWPBMTransaction>
 
-@property (nonatomic, strong) id<PrebidServerConnectionProtocol> serverConnection;
+@property (nonatomic, strong) id<SWPBPrebidServerConnectionProtocol> serverConnection;
 @property (nonatomic, strong) SWPBMAdConfiguration *adConfiguration;
 @property (nonatomic, strong) SWPBMCreativeFactory *creativeFactory;
 
@@ -37,7 +37,7 @@
 @synthesize measurementSession = _measurementSession;
 @synthesize measurementWrapper = _measurementWrapper;
 
-- (instancetype)initWithServerConnection:(id<PrebidServerConnectionProtocol>)connection
+- (instancetype)initWithServerConnection:(id<SWPBPrebidServerConnectionProtocol>)connection
                          adConfiguration:(SWPBMAdConfiguration*)adConfiguration
                                   models:(NSArray<SWPBMCreativeModel *> *)creativeModels {
     self = [super init];

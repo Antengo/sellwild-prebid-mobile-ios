@@ -15,7 +15,7 @@
 
 import Foundation
 
-@objc @_spi(SWPBMInternal) public class Functions: NSObject {
+@objc(SWPBFunctions) @_spi(SWPBMInternal) public class Functions: NSObject {
     
     private override init() {
         super.init()

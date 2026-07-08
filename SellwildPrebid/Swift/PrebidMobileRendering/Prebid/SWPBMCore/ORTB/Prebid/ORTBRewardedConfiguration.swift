@@ -16,7 +16,7 @@
 
 import Foundation
 
-@objc open class ORTBRewardedConfiguration: NSObject, SWPBMJsonCodable {
+@objc(SWPBORTBRewardedConfiguration) open class ORTBRewardedConfiguration: NSObject, SWPBMJsonCodable {
     /// Metadata provided by the publisher to describe the reward.
     @objc public var reward: ORTBRewardedReward?
 

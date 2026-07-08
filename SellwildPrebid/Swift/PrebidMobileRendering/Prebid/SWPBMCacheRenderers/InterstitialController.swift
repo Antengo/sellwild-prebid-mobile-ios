@@ -16,6 +16,7 @@
 import UIKit
 
 @objcMembers
+@objc(SWPBInterstitialController)
 public class InterstitialController:
     NSObject,
     PrebidMobileInterstitialControllerProtocol {

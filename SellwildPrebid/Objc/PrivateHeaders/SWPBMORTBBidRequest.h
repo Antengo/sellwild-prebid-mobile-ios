@@ -24,7 +24,7 @@
 @class SWPBMORTBSource;
 @class SWPBMORTBUser;
 
-// This file holds the structure for an ORTB 2.5 Bid Request Object
+// This file holds the structure for an ORTB 2.5 SWPBBid Request Object
 // https://www.iab.com/wp-content/uploads/2016/03/OpenRTB-API-Specification-Version-2-5-FINAL.pdf
 
 NS_ASSUME_NONNULL_BEGIN

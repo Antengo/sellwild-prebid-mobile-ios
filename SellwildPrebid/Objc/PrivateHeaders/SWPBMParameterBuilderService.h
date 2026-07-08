@@ -21,7 +21,7 @@
 @protocol SWPBMBundleProtocol;
 @protocol SWPBMParameterBuilder;
 
-@class Targeting;
+@class SWPBTargeting;
 @class SWPBMAdConfiguration;
 @class SWPBMDeviceAccessManager;
 @class SWPBMLocationManager;
@@ -46,6 +46,6 @@
                                                                         reachability:(nonnull SWPBMReachability *)reachability
                                                                     sdkConfiguration:(nonnull SellwildPrebid *)sdkConfiguration
                                                                           sdkVersion:(nonnull NSString *)sdkVersion
-                                                                           targeting:(nonnull Targeting *)targeting
+                                                                           targeting:(nonnull SWPBTargeting *)targeting
                                                               extraParameterBuilders:(nullable NSArray<id<SWPBMParameterBuilder> > *)extraParameterBuilders;
 @end

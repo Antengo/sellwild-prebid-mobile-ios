@@ -18,9 +18,9 @@
 #import "SWPBMAdLoadManagerDelegate.h"
 
 @class SWPBMAdConfiguration;
-@protocol PrebidServerConnectionProtocol;
+@protocol SWPBPrebidServerConnectionProtocol;
 @protocol SWPBMTransactionDelegate;
-@class Bid;
+@class SWPBBid;
 
 NS_ASSUME_NONNULL_BEGIN
 @protocol SWPBMAdLoadManagerProtocol <NSObject, SWPBMTransactionDelegate>
@@ -28,8 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak, nullable) id<SWPBMAdLoadManagerDelegate> adLoadManagerDelegate;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithBid:(Bid *)bid
-                 connection:(id<PrebidServerConnectionProtocol>)connection
+- (instancetype)initWithBid:(SWPBBid *)bid
+                 connection:(id<SWPBPrebidServerConnectionProtocol>)connection
             adConfiguration:(SWPBMAdConfiguration *)adConfiguration;
 
 @end

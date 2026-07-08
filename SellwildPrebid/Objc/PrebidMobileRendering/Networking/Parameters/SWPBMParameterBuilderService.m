@@ -46,7 +46,7 @@
                                        reachability:SWPBMReachability.shared
                                    sdkConfiguration:SellwildPrebid.shared
                                          sdkVersion:[SWPBMFunctions sdkVersion]
-                                          targeting:Targeting.shared
+                                          targeting:SWPBTargeting.shared
                              extraParameterBuilders:extraParameterBuilders];
 }
 
@@ -60,7 +60,7 @@
                                                                         reachability:(nonnull SWPBMReachability *)reachability
                                                                     sdkConfiguration:(nonnull SellwildPrebid *)sdkConfiguration
                                                                           sdkVersion:(nonnull NSString *)sdkVersion
-                                                                           targeting:(nonnull Targeting *)targeting
+                                                                           targeting:(nonnull SWPBTargeting *)targeting
                                                               extraParameterBuilders:(nullable NSArray<id<SWPBMParameterBuilder> > *)extraParameterBuilders{
   
     SWPBMORTBBidRequest *bidRequest = [SWPBMParameterBuilderService createORTBBidRequestWithTargeting:targeting];
@@ -99,7 +99,7 @@
     return [SWPBMORTBParameterBuilder buildOpenRTBFor:arbitratyORTB];
 }
 
-+ (nonnull SWPBMORTBBidRequest *)createORTBBidRequestWithTargeting:(nonnull Targeting *)targeting {
++ (nonnull SWPBMORTBBidRequest *)createORTBBidRequestWithTargeting:(nonnull SWPBTargeting *)targeting {
     SWPBMORTBBidRequest *bidRequest = [SWPBMORTBBidRequest new];
    
     if (targeting.userExt) {
@@ -141,8 +141,8 @@
         
     NSValue * const coordObj = targeting.coordinate;
     if (coordObj) {
-        // Rounds with the precision defined in Targeting, or returns the original coordinates if precision is nil.
-        const CLLocationCoordinate2D coord2d = [[Utils shared] roundWithCoordinates:coordObj.MKCoordinateValue precision:[[Targeting shared] locationPrecision]];;
+        // Rounds with the precision defined in SWPBTargeting, or returns the original coordinates if precision is nil.
+        const CLLocationCoordinate2D coord2d = [[SWPBUtils shared] roundWithCoordinates:coordObj.MKCoordinateValue precision:[[SWPBTargeting shared] locationPrecision]];;
         
         bidRequest.user.geo.lat = @(coord2d.latitude);
         bidRequest.user.geo.lon = @(coord2d.longitude);

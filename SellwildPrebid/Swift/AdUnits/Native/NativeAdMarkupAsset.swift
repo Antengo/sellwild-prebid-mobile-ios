@@ -17,6 +17,7 @@ import Foundation
 
 /// Represents an asset in the native ad markup, which can be a title, image, data, or link.
 @objcMembers
+@objc(SWPBNativeAdMarkupAsset)
 public class NativeAdMarkupAsset: NSObject, JsonDecodable {
     
     /// Optional if asseturl/dcourl is being used; required if embeded asset is being used

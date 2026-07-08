@@ -19,7 +19,7 @@
 #import "SWSwiftImport.h"
 
 static id<SWPBMUIApplicationProtocol> _application;
-static id<PrebidServerConnectionProtocol> _connection;
+static id<SWPBPrebidServerConnectionProtocol> _connection;
 
 @implementation SWPBMDeepLinkPlusHelper (Testing)
 
@@ -31,11 +31,11 @@ static id<PrebidServerConnectionProtocol> _connection;
     _application = application;
 }
 
-+ (id<PrebidServerConnectionProtocol>)connection {
++ (id<SWPBPrebidServerConnectionProtocol>)connection {
     return _connection;
 }
 
-+ (void)setConnection:(id<PrebidServerConnectionProtocol>)connection {
++ (void)setConnection:(id<SWPBPrebidServerConnectionProtocol>)connection {
     _connection = connection;
 }
 

@@ -17,7 +17,7 @@
 
 #import "SWSwiftImport.h"
 
-@interface SWOMSDKVersionProvider_Objc : NSObject<OMSDKVersionProvider>
+@interface SWOMSDKVersionProvider_Objc : NSObject<SWPBOMSDKVersionProvider>
 
 @end
 

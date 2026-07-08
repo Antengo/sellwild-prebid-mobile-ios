@@ -16,7 +16,7 @@
 
 import Foundation
 
-@objc open class ORTBBidResponseExt: NSObject, SWPBMJsonCodable {
+@objc(SWPBORTBBidResponseExt) open class ORTBBidResponseExt: NSObject, SWPBMJsonCodable {
     
     /// [ (bidder: String) -> (millis: Integer) ]
     @objc public var responsetimemillis: [String : NSNumber]?

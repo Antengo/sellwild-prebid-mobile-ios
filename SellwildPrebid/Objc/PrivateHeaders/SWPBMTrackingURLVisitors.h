@@ -15,13 +15,13 @@
 
 #import "SWPBMTrackingURLVisitorBlock.h"
 
-@protocol PrebidServerConnectionProtocol;
+@protocol SWPBPrebidServerConnectionProtocol;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SWPBMTrackingURLVisitors : NSObject
 
-+ (SWPBMTrackingURLVisitorBlock)connectionAsTrackingURLVisitor:(id<PrebidServerConnectionProtocol>)connection;
++ (SWPBMTrackingURLVisitorBlock)connectionAsTrackingURLVisitor:(id<SWPBPrebidServerConnectionProtocol>)connection;
 
 - (instancetype)init NS_UNAVAILABLE;
 

@@ -31,7 +31,7 @@ static NSString * const SWPBMPlistExt = @"plist";
 @implementation SWPBMFunctions
 
 + (nonnull NSString *)sdkVersion {
-    NSString *version = PrebidConstants.PREBID_VERSION;
+    NSString *version = SWPBPrebidConstants.PREBID_VERSION;
     return version ? version : @"";
 }
 
@@ -59,7 +59,7 @@ static NSString * const SWPBMPlistExt = @"plist";
     NSMutableDictionary<NSString *, NSString *> *result = [[NSMutableDictionary alloc] init];
     NSURLComponents *components = [NSURLComponents componentsWithString:urlString];
     if (components.host) {
-        [result setObject:components.host forKey:PrebidConstants.DOMAIN_KEY];
+        [result setObject:components.host forKey:SWPBPrebidConstants.DOMAIN_KEY];
     }
     for (NSString *key in keys) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name=%@", key];
@@ -128,8 +128,8 @@ static NSString * const SWPBMPlistExt = @"plist";
 
 + (NSTimeInterval)clampAutoRefresh:(NSTimeInterval)val {
     return [SWPBMFunctions clamp:val
-                    lowerBound:PrebidConstants.AUTO_REFRESH_DELAY_MIN
-                    upperBound:PrebidConstants.AUTO_REFRESH_DELAY_MAX];
+                    lowerBound:SWPBPrebidConstants.AUTO_REFRESH_DELAY_MIN
+                    upperBound:SWPBPrebidConstants.AUTO_REFRESH_DELAY_MAX];
 }
 
 + (dispatch_time_t)dispatchTimeAfterTimeInterval:(NSTimeInterval)timeInterval {

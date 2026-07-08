@@ -17,6 +17,7 @@ import Foundation
 
 /// Represents parameters for a native ad request, including assets, event trackers, and configuration settings.
 @objcMembers
+@objc(SWPBNativeParameters)
 public class NativeParameters: NSObject {
     
     /// An array of `NativeAsset` objects representing the assets required for the native ad request.

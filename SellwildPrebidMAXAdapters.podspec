@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SellwildPrebidMAXAdapters"
-  s.version      = "1.4.2"
+  s.version      = "1.4.3"
   s.summary      = "The bridge between SellwildPrebid SDK and Applovin MAX SDK."
 
   s.description  = "MAX Adapters manages rendering of Prebid or MAX ads respectively to the winning bid."
@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
   s.author		= { "Prebid.org, Inc." => "info@prebid.org" }
   s.platform     	= :ios, "13.0"
   s.swift_version 	= '5.0'
-  s.source       	= { :git => "https://github.com/prebid/prebid-mobile-ios.git", :tag => "#{s.version}" }
+  s.source       	= { :git => "https://github.com/Antengo/sellwild-prebid-mobile-ios.git", :tag => "#{s.version}" }
   s.xcconfig 		= { :LIBRARY_SEARCH_PATHS => '$(inherited)',
 			    :OTHER_CFLAGS => '$(inherited)',
 			    :OTHER_LDFLAGS => '$(inherited)',
@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
   s.source_files = 'EventHandlers/SellwildPrebidMAXAdapters/**/*.{h,m,swift}'
   s.static_framework = true
 
-  s.dependency 'SellwildPrebid', '1.4.2'
+  s.dependency 'SellwildPrebid', '1.4.3'
   s.dependency 'AppLovinSDK'
 
   s.pod_target_xcconfig = {

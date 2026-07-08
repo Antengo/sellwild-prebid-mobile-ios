@@ -16,7 +16,7 @@
 #import <Foundation/Foundation.h>
 #import "SWPBMDownloadDataHelper.h"
 
-@protocol PrebidServerConnectionProtocol;
+@protocol SWPBPrebidServerConnectionProtocol;
 @protocol SWPBMTransaction;
 @protocol SWPBMAbstractCreative;
 
@@ -26,7 +26,7 @@ typedef void(^SWPBMCreativeFactoryDownloadDataCompletionClosure)(NSURL* _Nonnull
 @interface SWPBMCreativeFactory : NSObject
 
 - (nonnull instancetype)init NS_UNAVAILABLE;
-- (nonnull instancetype)initWithServerConnection:(nonnull id<PrebidServerConnectionProtocol>)serverConnection
+- (nonnull instancetype)initWithServerConnection:(nonnull id<SWPBPrebidServerConnectionProtocol>)serverConnection
                                      transaction:(nonnull id<SWPBMTransaction>)transaction
                                 finishedCallback:(nonnull SWPBMCreativeFactoryFinishedCallback)finishedCallback
 NS_DESIGNATED_INITIALIZER;

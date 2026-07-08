@@ -16,7 +16,7 @@
 import UIKit
 
 /// A protocol that defines methods for handling user interactions and lifecycle events related to ad display views.
-@objc
+@objc(SWPBDisplayViewInteractionDelegate)
 public protocol DisplayViewInteractionDelegate: NSObjectProtocol {
 
     /// Tracks an impression for the specified display view.

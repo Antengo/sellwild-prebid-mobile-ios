@@ -17,6 +17,7 @@ import Foundation
 
 /// Native context subtype asset.
 @objcMembers
+@objc(SWPBContextSubType)
 public class ContextSubType: SingleContainerInt {
     
     /// Represents a general context type.

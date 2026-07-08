@@ -29,7 +29,7 @@
 @property (nonatomic, class, readonly) NSString *SKAdNetworkIdentifierKey;
 
 @property (nonatomic, strong, readonly) id<SWPBMBundleProtocol> bundle;
-@property (nonatomic, strong, readonly) Targeting *targeting;
+@property (nonatomic, strong, readonly) SWPBTargeting *targeting;
 @property (nonatomic, strong, readwrite) SWPBMAdConfiguration *adConfiguration;
 
 @end
@@ -52,7 +52,7 @@
 #pragma mark - Initialization
 
 - (nonnull instancetype)initWithBundle:(id<SWPBMBundleProtocol>)bundle
-                             targeting:(Targeting *)targeting
+                             targeting:(SWPBTargeting *)targeting
                        adConfiguration:(SWPBMAdConfiguration *)adConfiguration {
     if (!(self = [super init])) {
         return nil;

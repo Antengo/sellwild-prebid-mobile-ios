@@ -19,9 +19,9 @@
 
 @interface SWPBMVastTransactionFactory() <SWPBMAdLoadManagerDelegate>
 
-@property (nonatomic, strong, readonly, nonnull) id<PrebidServerConnectionProtocol> connection;
+@property (nonatomic, strong, readonly, nonnull) id<SWPBPrebidServerConnectionProtocol> connection;
 @property (nonatomic, strong, readonly, nonnull) SWPBMAdConfiguration *adConfiguration;
-@property (nonatomic, strong, readonly, nonnull) Bid *bid;
+@property (nonatomic, strong, readonly, nonnull) SWPBBid *bid;
 
 // NOTE: need to call the completion callback only in the main thread
 // use onFinishedWithTransaction
@@ -37,8 +37,8 @@
 
 // MARK: - Public API
 
-- (instancetype)initWithBid:(Bid *)bid
-                 connection:(id<PrebidServerConnectionProtocol>)connection
+- (instancetype)initWithBid:(SWPBBid *)bid
+                 connection:(id<SWPBPrebidServerConnectionProtocol>)connection
             adConfiguration:(SWPBMAdConfiguration *)adConfiguration
                    callback:(SWPBMTransactionFactoryCallback)callback
 {

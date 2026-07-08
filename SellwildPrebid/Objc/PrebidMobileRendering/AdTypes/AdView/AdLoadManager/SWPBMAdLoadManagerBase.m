@@ -33,8 +33,8 @@
 
 @implementation SWPBMAdLoadManagerBase
 
-- (instancetype)initWithBid:(Bid *)bid
-                 connection:(id<PrebidServerConnectionProtocol>)connection
+- (instancetype)initWithBid:(SWPBBid *)bid
+                 connection:(id<SWPBPrebidServerConnectionProtocol>)connection
             adConfiguration:(SWPBMAdConfiguration *)adConfiguration {
     self = [super init];
     if (self) {

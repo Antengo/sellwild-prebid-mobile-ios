@@ -18,6 +18,7 @@ import Foundation
 typealias RawBidResponse = ORTBBidResponse<ORTBBidResponseExt, [String : Any], ORTBBidExt>
 
 @objcMembers
+@objc(SWPBBidResponse)
 public class BidResponse: NSObject {
     
     public var adUnitId: String?

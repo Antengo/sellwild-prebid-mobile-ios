@@ -16,7 +16,7 @@
 
 import Foundation
 
-@objc open class ORTBBidResponseExtPrebid: NSObject, SWPBMJsonCodable {
+@objc(SWPBORTBBidResponseExtPrebid) open class ORTBBidResponseExtPrebid: NSObject, SWPBMJsonCodable {
     @objc public var passthrough: [ORTBExtPrebidPassthrough]?
 
     private enum KeySet: String {

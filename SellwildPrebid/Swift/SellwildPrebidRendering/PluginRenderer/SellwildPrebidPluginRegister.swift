@@ -17,6 +17,7 @@ import Foundation
 
 /// Global singleton responsible to store plugin renderer instances
 @objcMembers
+@objc(SWPBPrebidMobilePluginRegister)
 public class PrebidMobilePluginRegister: NSObject {
     
     public static let shared = PrebidMobilePluginRegister()

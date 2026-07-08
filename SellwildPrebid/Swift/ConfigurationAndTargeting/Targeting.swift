@@ -27,6 +27,7 @@ import MapKit
 /// partner and supports managing user identity links and custom extensions.
 ///
 @objcMembers
+@objc(SWPBTargeting)
 public class Targeting: NSObject {
     
     /// A shared instance of the `Targeting` class.

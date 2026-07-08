@@ -17,6 +17,7 @@ import Foundation
 
 /// Class representing native data elements in the ad markup.
 @objcMembers
+@objc(SWPBNativeData)
 public class NativeData: NSObject, JsonDecodable {
     
     /// The type of data element being submitted from the Data Asset Types table.

@@ -18,7 +18,7 @@
 #import "SWPBMParameterBuilderProtocol.h"
 
 @class SellwildPrebid;
-@class Targeting;
+@class SWPBTargeting;
 @class SWPBMAdConfiguration;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithAdConfiguration:(SWPBMAdConfiguration *)adConfiguration
                        sdkConfiguration:(SellwildPrebid *)sdkConfiguration
                              sdkVersion:(NSString *)sdkVersion
-                              targeting:(Targeting *)targeting NS_DESIGNATED_INITIALIZER;
+                              targeting:(SWPBTargeting *)targeting NS_DESIGNATED_INITIALIZER;
 
 @end
 NS_ASSUME_NONNULL_END

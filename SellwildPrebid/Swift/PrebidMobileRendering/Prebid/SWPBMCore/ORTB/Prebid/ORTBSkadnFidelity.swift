@@ -16,7 +16,7 @@
 
 import Foundation
 
-@objc open class ORTBSkadnFidelity: NSObject, SWPBMJsonCodable {
+@objc(SWPBORTBSkadnFidelity) open class ORTBSkadnFidelity: NSObject, SWPBMJsonCodable {
     /// The fidelity-type of the attribution to track
     @objc public var fidelity: NSNumber?
 

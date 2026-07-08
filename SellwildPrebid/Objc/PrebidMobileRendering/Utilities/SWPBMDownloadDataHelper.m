@@ -25,7 +25,7 @@
 
 @interface SWPBMDownloadDataHelper()
 
-@property (nonatomic, weak) id<PrebidServerConnectionProtocol> serverConnection;
+@property (nonatomic, weak) id<SWPBPrebidServerConnectionProtocol> serverConnection;
 
 @end
 
@@ -35,7 +35,7 @@
 
 #pragma mark - Initialization
 
-- (nonnull instancetype)initWithServerConnection:(nonnull id<PrebidServerConnectionProtocol>)serverConnection {
+- (nonnull instancetype)initWithServerConnection:(nonnull id<SWPBPrebidServerConnectionProtocol>)serverConnection {
     self = [super init];
     if (self) {
         SWPBMAssert(serverConnection);
@@ -56,7 +56,7 @@
         return;
     }
 
-    [self.serverConnection head:url.absoluteString timeout:PrebidConstants.FIRE_AND_FORGET_TIMEOUT callback:^(PrebidServerResponse * _Nonnull serverResponse) {
+    [self.serverConnection head:url.absoluteString timeout:SWPBPrebidConstants.FIRE_AND_FORGET_TIMEOUT callback:^(SWPBPrebidServerResponse * _Nonnull serverResponse) {
   
         NSString *strContentLength = serverResponse ? serverResponse.responseHeaders[@"Content-Length"] : nil;
         
@@ -87,7 +87,7 @@
         return;
     }
     
-    [self.serverConnection download:url.absoluteString callback:^(PrebidServerResponse * _Nonnull response) {
+    [self.serverConnection download:url.absoluteString callback:^(SWPBPrebidServerResponse * _Nonnull response) {
         if (!response) {
             completionClosure(nil, [SWPBMError errorWithDescription:[NSString stringWithFormat:@"The response is empty for loading data from %@ ", url]]);
             return;

@@ -16,9 +16,9 @@
 #import <Foundation/Foundation.h>
 #import "SWPBMParameterBuilderProtocol.h"
 
-@class AdUnitConfig;
+@class SWPBAdUnitConfig;
 @class SellwildPrebid;
-@class Targeting;
+@class SWPBTargeting;
 @class SWPBMUserAgentService;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -26,9 +26,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SWPBMPrebidParameterBuilder : NSObject <SWPBMParameterBuilder>
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithAdConfiguration:(AdUnitConfig *)adConfiguration
+- (instancetype)initWithAdConfiguration:(SWPBAdUnitConfig *)adConfiguration
                        sdkConfiguration:(SellwildPrebid *)sdkConfiguration
-                              targeting:(Targeting *)targeting
+                              targeting:(SWPBTargeting *)targeting
                        userAgentService:(SWPBMUserAgentService *)userAgentService NS_DESIGNATED_INITIALIZER;
 
 @end

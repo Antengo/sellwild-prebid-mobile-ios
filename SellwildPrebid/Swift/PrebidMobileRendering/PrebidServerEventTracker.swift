@@ -16,6 +16,7 @@
 import UIKit
 
 @objcMembers
+@objc(SWPBPrebidServerEventTracker)
 public class PrebidServerEventTracker: NSObject, EventTrackerProtocol {
     
     public private(set) var serverEvents = [ServerEvent]()

@@ -16,6 +16,7 @@
 import Foundation
 import UIKit
 
+@objc(SWPBInterstitialEventHandlerStandalone)
 public class InterstitialEventHandlerStandalone: NSObject, InterstitialEventHandlerProtocol {
     
     // MARK: Public Methods

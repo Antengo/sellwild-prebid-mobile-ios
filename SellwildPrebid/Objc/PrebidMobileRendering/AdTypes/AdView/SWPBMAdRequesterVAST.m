@@ -38,7 +38,7 @@
 
 #pragma mark - SWPBMAdRequester
 
-- (instancetype) initWithServerConnection: (id<PrebidServerConnectionProtocol>) serverConnection
+- (instancetype) initWithServerConnection: (id<SWPBPrebidServerConnectionProtocol>) serverConnection
                              adConfiguration: (SWPBMAdConfiguration*) adConfiguration  {
     self = [super init];
     if (self) {
@@ -53,7 +53,7 @@
 
 - (void)loadVASTURL:(NSString *)url {
     @weakify(self);
-    [SWPBMVastRequester loadVastURL:url connection:self.serverConnection completion:^(PrebidServerResponse * _Nullable serverResponse, NSError * _Nullable error) {
+    [SWPBMVastRequester loadVastURL:url connection:self.serverConnection completion:^(SWPBPrebidServerResponse * _Nullable serverResponse, NSError * _Nullable error) {
         @strongify(self);
         
         if (!self) {

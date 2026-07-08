@@ -24,7 +24,7 @@ static NSString *vastContentType = @"application/x-www-form-urlencoded";
 
 @implementation SWPBMVastRequester
 
-+ (void)loadVastURL:(NSString *)url connection:(id<PrebidServerConnectionProtocol>)connection completion:(AdRequestCallback)completion {
++ (void)loadVastURL:(NSString *)url connection:(id<SWPBPrebidServerConnectionProtocol>)connection completion:(AdRequestCallback)completion {
     
     SWPBMURLComponents *urlComponents = [[SWPBMURLComponents alloc] initWithUrl:url paramsDict:@{}];
     if (!urlComponents) {
@@ -42,8 +42,8 @@ static NSString *vastContentType = @"application/x-www-form-urlencoded";
 
     [connection post:urlComponents.urlString
          contentType:vastContentType
-                data:data timeout:PrebidConstants.CONNECTION_TIMEOUT_DEFAULT
-            callback:^(PrebidServerResponse * _Nonnull serverResponse) {
+                data:data timeout:SWPBPrebidConstants.CONNECTION_TIMEOUT_DEFAULT
+            callback:^(SWPBPrebidServerResponse * _Nonnull serverResponse) {
         if (serverResponse.error) {
             completion(nil, serverResponse.error);
             return;

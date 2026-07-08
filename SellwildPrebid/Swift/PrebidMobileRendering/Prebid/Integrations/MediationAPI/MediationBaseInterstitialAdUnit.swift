@@ -16,6 +16,7 @@ import Foundation
 
 /// Base class for interstitial ads in Mediation API.
 @objcMembers
+@objc(SWPBMediationBaseInterstitialAdUnit)
 public class MediationBaseInterstitialAdUnit : NSObject {
     
     /// Parameters for configuring banner ads.

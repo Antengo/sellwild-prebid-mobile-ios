@@ -28,7 +28,7 @@
 @interface SWPBMAppInfoParameterBuilder ()
 
 @property (nonatomic, strong, readonly) id<SWPBMBundleProtocol> bundle;
-@property (nonatomic, strong, readonly) Targeting *targeting;
+@property (nonatomic, strong, readonly) SWPBTargeting *targeting;
 
 @end
 
@@ -49,7 +49,7 @@
 
 #pragma mark - Initialization
 
-- (nonnull instancetype)initWithBundle:(id<SWPBMBundleProtocol>)bundle targeting:(Targeting *)targeting {
+- (nonnull instancetype)initWithBundle:(id<SWPBMBundleProtocol>)bundle targeting:(SWPBTargeting *)targeting {
     if (!(self = [super init])) {
         return nil;
     }

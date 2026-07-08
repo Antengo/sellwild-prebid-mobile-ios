@@ -17,6 +17,7 @@ import Foundation
 
 /// Represents the markup for a native ad, including assets, tracking URLs, and other metadata.
 @objcMembers
+@objc(SWPBNativeAdMarkup)
 public class NativeAdMarkup: NSObject, JsonDecodable {
 
     /// Version of the Native Markup version in use.

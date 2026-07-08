@@ -42,7 +42,7 @@ static NSString * const SWPBMOpenMeasurementCustomRefId   = @"";
 
 @property (nonatomic, strong, nonnull) OMIDPrebidorgPartner *partner;
 
-@property (nonatomic, strong, nullable) PrebidJSLibraryManager *libraryManager;
+@property (nonatomic, strong, nullable) SWPBPrebidJSLibraryManager *libraryManager;
 
 @end
 
@@ -66,7 +66,7 @@ static NSString * const SWPBMOpenMeasurementCustomRefId   = @"";
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _libraryManager = PrebidJSLibraryManager.shared;
+        _libraryManager = SWPBPrebidJSLibraryManager.shared;
         [self initializeOMSDK];
     }
     

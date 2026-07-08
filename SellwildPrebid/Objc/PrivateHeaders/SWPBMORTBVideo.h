@@ -88,7 +88,7 @@ NS_ASSUME_NONNULL_BEGIN
 //Indicates if the player will allow the video to be skipped,
 //where 0 = no, 1 = yes.
 //If a bidder sends markup/creative that is itself skippable, the
-//Bid object should include the attr array with an element of
+//SWPBBid object should include the attr array with an element of
 //16 indicating skippable video. Refer to List 5.3
 //Note: Skip is not supported
 

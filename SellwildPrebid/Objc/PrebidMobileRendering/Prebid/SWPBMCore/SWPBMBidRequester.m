@@ -25,21 +25,21 @@
 
 @interface SWPBMBidRequester_Objc: NSObject <SWPBMBidRequester>
 
-@property (nonatomic, strong, nonnull, readonly) id<PrebidServerConnectionProtocol> connection;
+@property (nonatomic, strong, nonnull, readonly) id<SWPBPrebidServerConnectionProtocol> connection;
 @property (nonatomic, strong, nonnull, readonly) SellwildPrebid *sdkConfiguration;
-@property (nonatomic, strong, nonnull, readonly) Targeting *targeting;
-@property (nonatomic, strong, nonnull, readonly) AdUnitConfig *adUnitConfiguration;
+@property (nonatomic, strong, nonnull, readonly) SWPBTargeting *targeting;
+@property (nonatomic, strong, nonnull, readonly) SWPBAdUnitConfig *adUnitConfiguration;
 
-@property (nonatomic, copy, nullable) void (^completion)(BidResponse *, NSError *);
+@property (nonatomic, copy, nullable) void (^completion)(SWPBBidResponse *, NSError *);
 
 @end
 
 @implementation SWPBMBidRequester_Objc
 
-- (instancetype)initWithConnection:(id<PrebidServerConnectionProtocol>)connection
+- (instancetype)initWithConnection:(id<SWPBPrebidServerConnectionProtocol>)connection
                   sdkConfiguration:(SellwildPrebid *)sdkConfiguration
-                         targeting:(Targeting *)targeting
-               adUnitConfiguration:(AdUnitConfig *)adUnitConfiguration {
+                         targeting:(SWPBTargeting *)targeting
+               adUnitConfiguration:(SWPBAdUnitConfig *)adUnitConfiguration {
     if (!(self = [super init])) {
         return nil;
     }
@@ -50,7 +50,7 @@
     return self;
 }
 
-- (void)requestBidsWithCompletion:(void (^)(BidResponse *, NSError *))completion {
+- (void)requestBidsWithCompletion:(void (^)(SWPBBidResponse *, NSError *))completion {
     @weakify(self);
     [SWPBMUserAgentService.shared fetchUserAgentWithCompletion:^(NSString * _Nonnull userAgent) {
         @strongify(self);
@@ -58,7 +58,7 @@
     }];
 }
 
-- (void)makeRequestWithCompletion:(void (^)(BidResponse *, NSError *))completion {
+- (void)makeRequestWithCompletion:(void (^)(SWPBBidResponse *, NSError *))completion {
     NSError * const setupError = [self findErrorInSettings];
     if (setupError) {
         completion(nil, setupError);
@@ -70,12 +70,12 @@
         return;
     }
     
-    self.completion = completion ?: ^(BidResponse *r, NSError *e) {};
+    self.completion = completion ?: ^(SWPBBidResponse *r, NSError *e) {};
     
     NSString * const requestString = [self getRTBRequest];
     
     NSError * hostURLError = nil;
-    NSString * const requestServerURL = [Host.shared getHostURLAndReturnError:&hostURLError];
+    NSString * const requestServerURL = [SWPBHost.shared getHostURLAndReturnError:&hostURLError];
     
     if (hostURLError) {
         completion(nil, hostURLError);
@@ -94,13 +94,13 @@
     [self.connection post:requestServerURL
                      data:rtbRequestData
                   timeout:postTimeout
-                 callback:^(PrebidServerResponse * _Nonnull serverResponse) {
+                 callback:^(SWPBPrebidServerResponse * _Nonnull serverResponse) {
         @strongify(self);
         if (!self) { return; }
 
         // Fix for GitHub Issue #1195: Thread-safe completion handling
         // Protect against duplicate callback invocations (redirects, retries, network bugs)
-        void (^ _Nullable completion)(BidResponse *, NSError *) = nil;
+        void (^ _Nullable completion)(SWPBBidResponse *, NSError *) = nil;
         @synchronized(self) {
             completion = self.completion;
             if (!completion) {
@@ -118,15 +118,15 @@
         }
 
         if (serverResponse.error) {
-            SWPBMLogInfo(@"Bid Request Error: %@", [serverResponse.error localizedDescription]);
+            SWPBMLogInfo(@"SWPBBid Request Error: %@", [serverResponse.error localizedDescription]);
             completion(nil, serverResponse.error);
             return;
         }
 
-        SWPBMLogInfo(@"Bid Response: %@", [[NSString alloc] initWithData:serverResponse.rawData encoding:NSUTF8StringEncoding]);
+        SWPBMLogInfo(@"SWPBBid Response: %@", [[NSString alloc] initWithData:serverResponse.rawData encoding:NSUTF8StringEncoding]);
 
         NSError *trasformationError = nil;
-        BidResponse * const _Nullable bidResponse = [SWPBMBidResponseTransformer transformResponse:serverResponse error:&trasformationError];
+        SWPBBidResponse * const _Nullable bidResponse = [SWPBMBidResponseTransformer transformResponse:serverResponse error:&trasformationError];
         
         if (bidResponse && !trasformationError) {
             if (self.sdkConfiguration.requireServerSideBidCache) {
@@ -152,7 +152,7 @@
                 const NSTimeInterval remoteTimeout = ([responseDate timeIntervalSinceDate:requestDate]
                                                       + bidResponseTimeout
                                                       + 0.2);
-                NSString * const currentServerURL = [Host.shared getHostURLAndReturnError:nil];
+                NSString * const currentServerURL = [SWPBHost.shared getHostURLAndReturnError:nil];
                 if (self.sdkConfiguration.timeoutMillisDynamic == nil && [currentServerURL isEqualToString:requestServerURL]) {
                     const NSInteger rawTimeoutMS_onWrite = self.sdkConfiguration.timeoutMillis;
                     const NSTimeInterval appTimeout = rawTimeoutMS_onWrite / 1000.0;
@@ -162,7 +162,7 @@
                 };
             }
             
-            SWPBMORTBSDKConfiguration *pbsSDKConfig = [bidResponse.ext.extPrebid.passthrough filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(ORTBExtPrebidPassthrough *_Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+            SWPBMORTBSDKConfiguration *pbsSDKConfig = [bidResponse.ext.extPrebid.passthrough filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(SWPBORTBExtPrebidPassthrough *_Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
                 return [evaluatedObject.type isEqual: @"prebidmobilesdk"];
             }]].firstObject.sdkConfiguration;
             

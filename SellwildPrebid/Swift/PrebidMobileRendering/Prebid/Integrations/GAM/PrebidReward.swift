@@ -16,6 +16,7 @@
 import Foundation
 
 @objcMembers
+@objc(SWPBPrebidReward)
 public class PrebidReward: NSObject {
     
     public var type: String?

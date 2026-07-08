@@ -19,6 +19,7 @@ import StoreKit
 import UIKit
 
 @objcMembers
+@objc(SWPBBid)
 public class Bid: NSObject {
     
     public static let KEY_RENDERER_NAME = "rendererName";

@@ -16,7 +16,7 @@
 import Foundation
 import UIKit
 
-@objc @_spi(SWPBMInternal) public
+@objc(SWPBBannerAdLoaderDelegate) @_spi(SWPBMInternal) public
 protocol BannerAdLoaderDelegate: NSObjectProtocol {
     
     var eventHandler: BannerEventHandler? { get }

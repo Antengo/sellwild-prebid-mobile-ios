@@ -17,7 +17,7 @@ import Foundation
 
 public typealias PrebidServerResponseCallback = (PrebidServerResponse) -> Void
 
-@objc public protocol PrebidServerConnectionProtocol {
+@objc(SWPBPrebidServerConnectionProtocol) public protocol PrebidServerConnectionProtocol {
     
     var userAgentService: UserAgentService { get }
     

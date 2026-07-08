@@ -85,7 +85,7 @@
     //     is unrestricted, 1 = tracking must be limited per commercial guidelines.
     NSNumber *lmt = @(!self.deviceAccessManager.advertisingTrackingEnabled);
     
-    NSString *ifa = [Targeting.shared isAllowedAccessDeviceData] ? self.deviceAccessManager.advertisingIdentifier : nil;
+    NSString *ifa = [SWPBTargeting.shared isAllowedAccessDeviceData] ? self.deviceAccessManager.advertisingIdentifier : nil;
     if (ifa.length == 0) {
         ifa = nil;
     }

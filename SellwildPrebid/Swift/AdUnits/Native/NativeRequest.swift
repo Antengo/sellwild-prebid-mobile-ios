@@ -16,6 +16,7 @@ limitations under the License.
 import UIKit
 
 /// A class representing a native request for original type of integration.
+@objc(SWPBNativeRequest)
 public class NativeRequest: AdUnit {
     
     /// The version of the native ad specification being used. Defaults to "1.2" if not set.

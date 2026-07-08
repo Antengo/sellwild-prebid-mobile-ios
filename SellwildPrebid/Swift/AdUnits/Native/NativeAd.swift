@@ -20,6 +20,7 @@ import WebKit
 
 /// Represents a native ad and handles its various properties and functionalities.
 @objcMembers
+@objc(SWPBNativeAd)
 public class NativeAd: NSObject, CacheExpiryDelegate {
     
     // MARK: - Public properties

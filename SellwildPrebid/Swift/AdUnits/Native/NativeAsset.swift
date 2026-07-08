@@ -16,6 +16,7 @@ limitations under the License.
 import UIKit
 
 /// Represents a generic native ad asset which could be a title, image, or data.
+@objc(SWPBNativeAsset)
 public class NativeAsset: NSObject {
     
     /// Unique identifier for the asset.
@@ -56,6 +57,7 @@ public class NativeAsset: NSObject {
 }
 
 /// Represents a title asset in a native ad.
+@objc(SWPBNativeAssetTitle)
 @objcMembers public class NativeAssetTitle: NativeAsset {
     
     /// Maximum length of the title.
@@ -86,6 +88,7 @@ public class NativeAsset: NSObject {
 }
 
 /// Represents an image asset in a native ad.
+@objc(SWPBNativeAssetImage)
 @objcMembers public class NativeAssetImage: NativeAsset {
     
     /// The type of the image asset.
@@ -146,6 +149,7 @@ public class NativeAsset: NSObject {
 }
 
 /// Represents a data asset in a native ad.
+@objc(SWPBNativeAssetData)
 @objcMembers public class NativeAssetData: NativeAsset {
     
     /// The type of the data asset.
@@ -180,6 +184,7 @@ public class NativeAsset: NSObject {
 }
 
 /// Native image asset type.
+@objc(SWPBImageAsset)
 public class ImageAsset: SingleContainerInt {
     
     /// Represents an icon image asset.
@@ -196,7 +201,7 @@ public class ImageAsset: SingleContainerInt {
 }
 
 /// Enum representing different types of native data assets.
-@objc public enum DataAsset: Int {
+@objc(SWPBDataAsset) public enum DataAsset: Int {
     
     case sponsored = 1
     case description = 2

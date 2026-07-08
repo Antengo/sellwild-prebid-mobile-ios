@@ -17,7 +17,7 @@ import Foundation
 import UIKit
 
 /// This protocol is dedicated to manage the work with Mediation SDKs.
-@objc
+@objc(SWPBPrebidMediationDelegate)
 public protocol PrebidMediationDelegate {
     
     /// Puts to ad object's localExtra the ad object (winning bid or native ad) and configId

@@ -15,14 +15,14 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol PrebidServerConnectionProtocol;
+@protocol SWPBPrebidServerConnectionProtocol;
 
 typedef void (^SWPBMDownloadDataCompletionClosure)(NSData* _Nullable, NSError* _Nullable);
 
 @interface SWPBMDownloadDataHelper : NSObject
 
 - (nonnull instancetype)init NS_UNAVAILABLE;
-- (nonnull instancetype)initWithServerConnection:(nonnull id<PrebidServerConnectionProtocol>)serverConnection NS_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithServerConnection:(nonnull id<SWPBPrebidServerConnectionProtocol>)serverConnection NS_DESIGNATED_INITIALIZER;
 
 - (void)downloadDataForURL:(nullable NSURL *)url
          completionClosure:(nonnull SWPBMDownloadDataCompletionClosure)completionClosure;

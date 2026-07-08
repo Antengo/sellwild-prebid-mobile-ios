@@ -20,16 +20,16 @@
 @implementation SWPBMBidRequesterFactory
 
 + (SWPBMBidRequesterFactoryBlock)requesterFactoryWithSingletons {
-    return [self requesterFactoryWithConnection:[PrebidServerConnection shared]
+    return [self requesterFactoryWithConnection:[SWPBPrebidServerConnection shared]
                                sdkConfiguration:[SellwildPrebid shared]
-                                      targeting:[Targeting shared]];
+                                      targeting:[SWPBTargeting shared]];
 }
 
-+ (SWPBMBidRequesterFactoryBlock)requesterFactoryWithConnection:(id<PrebidServerConnectionProtocol>)connection
++ (SWPBMBidRequesterFactoryBlock)requesterFactoryWithConnection:(id<SWPBPrebidServerConnectionProtocol>)connection
                                              sdkConfiguration:(SellwildPrebid *)sdkConfiguration
-                                                    targeting:(Targeting *)targeting
+                                                    targeting:(SWPBTargeting *)targeting
 {
-    return ^id<SWPBMBidRequesterProtocol> (AdUnitConfig * adUnitConfig) {
+    return ^id<SWPBMBidRequesterProtocol> (SWPBAdUnitConfig * adUnitConfig) {
         return [SWPBMFactory createBidRequesterWithConnection:connection
                                            sdkConfiguration:sdkConfiguration
                                                   targeting:targeting

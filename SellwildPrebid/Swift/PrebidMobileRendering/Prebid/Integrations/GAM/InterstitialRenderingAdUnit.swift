@@ -17,6 +17,7 @@ import UIKit
 
 /// Represents an interstitial ad unit. Built for rendering type of integration.
 @objcMembers
+@objc(SWPBInterstitialRenderingAdUnit)
 public class InterstitialRenderingAdUnit: NSObject, BaseInterstitialAdUnitProtocol {
     
     /// A delegate for handling interactions with the ad unit.

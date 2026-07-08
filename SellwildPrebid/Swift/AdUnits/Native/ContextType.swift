@@ -17,6 +17,7 @@ import Foundation
 
 /// Native context type asset.
 @objcMembers
+@objc(SWPBContextType)
 public class ContextType: SingleContainerInt {
     
     /// Represents a content context type.

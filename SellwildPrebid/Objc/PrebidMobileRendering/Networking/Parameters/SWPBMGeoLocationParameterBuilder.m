@@ -59,9 +59,9 @@
     }
     
     if (self.locationManager.coordinatesAreValid) {
-        // Rounds with the precision defined in Targeting, or returns the original coordinates if precision is nil.
-        CLLocationCoordinate2D coordinates = [[Utils shared] roundWithCoordinates:self.locationManager.coordinates precision:[[Targeting shared] locationPrecision]];
-        bidRequest.device.geo.type = @(PrebidConstants.LOCATION_SOURCE_GPS);
+        // Rounds with the precision defined in SWPBTargeting, or returns the original coordinates if precision is nil.
+        CLLocationCoordinate2D coordinates = [[SWPBUtils shared] roundWithCoordinates:self.locationManager.coordinates precision:[[SWPBTargeting shared] locationPrecision]];
+        bidRequest.device.geo.type = @(SWPBPrebidConstants.LOCATION_SOURCE_GPS);
         bidRequest.device.geo.lat = @(coordinates.latitude);
         bidRequest.device.geo.lon = @(coordinates.longitude);
     }

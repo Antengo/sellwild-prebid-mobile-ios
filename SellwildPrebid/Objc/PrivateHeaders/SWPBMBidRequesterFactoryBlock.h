@@ -15,7 +15,7 @@
 
 @import Foundation;
 
-@class AdUnitConfig;
+@class SWPBAdUnitConfig;
 @protocol SWPBMBidRequesterProtocol;
 
-typedef id<SWPBMBidRequesterProtocol> _Nonnull (^SWPBMBidRequesterFactoryBlock)(AdUnitConfig * _Nonnull adUnitConfig);
+typedef id<SWPBMBidRequesterProtocol> _Nonnull (^SWPBMBidRequesterFactoryBlock)(SWPBAdUnitConfig * _Nonnull adUnitConfig);

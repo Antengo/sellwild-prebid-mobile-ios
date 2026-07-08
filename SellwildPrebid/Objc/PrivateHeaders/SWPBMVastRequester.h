@@ -15,17 +15,17 @@
 
 #import <Foundation/Foundation.h>
 
-@class PrebidServerResponse;
+@class SWPBPrebidServerResponse;
 
-@protocol PrebidServerConnectionProtocol;
+@protocol SWPBPrebidServerConnectionProtocol;
 
 // TODO: need a single typedef for the all app
-typedef void(^AdRequestCallback)(PrebidServerResponse * _Nullable serverResponse, NSError * _Nullable);
+typedef void(^AdRequestCallback)(SWPBPrebidServerResponse * _Nullable serverResponse, NSError * _Nullable);
 
 @interface SWPBMVastRequester : NSObject
 
 + (void)loadVastURL:(nonnull NSString *)url
-         connection:(nonnull id<PrebidServerConnectionProtocol>)connection
+         connection:(nonnull id<SWPBPrebidServerConnectionProtocol>)connection
          completion:(nonnull AdRequestCallback)completion;
 
 @end

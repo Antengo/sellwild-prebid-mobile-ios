@@ -16,6 +16,7 @@
 import Foundation
 
 @objcMembers
+@objc(SWPBPrebidImagesRepository)
 public class PrebidImagesRepository: NSObject {
     
     public static let muteDisabled: String = """

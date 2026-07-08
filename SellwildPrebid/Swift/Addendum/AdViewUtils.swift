@@ -18,6 +18,7 @@ import WebKit
 
 /// `AdViewUtils` provides utility methods for working with ad views, including finding creative sizes.
 @objcMembers
+@objc(SWPBAdViewUtils)
 public final class AdViewUtils: NSObject {
     
     static let innerHtmlScript = "document.body.innerHTML"

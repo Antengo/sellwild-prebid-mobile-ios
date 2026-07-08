@@ -18,7 +18,7 @@ import Foundation
 
 //https://github.com/InteractiveAdvertisingBureau/openrtb/blob/master/extensions/community_extensions/skadnetwork.md
 
-@objc open class ORTBBidExtSkadnSKOverlay: NSObject, SWPBMJsonCodable {
+@objc(SWPBORTBBidExtSkadnSKOverlay) open class ORTBBidExtSkadnSKOverlay: NSObject, SWPBMJsonCodable {
     /// Delay before presenting SKOverlay in seconds, required for overlay to be shown
     @objc public var delay: NSNumber?
 
