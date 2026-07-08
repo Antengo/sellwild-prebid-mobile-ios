@@ -91,7 +91,7 @@ NSString * const gamAdUnit = @"/21808260008/prebid-demo-original-native-styles";
     [AdViewUtils findPrebidCreativeSize:bannerView success:^(CGSize size) {
         [self.gamBannerView resize:GADAdSizeFromCGSize(size)];
     } failure:^(NSError * _Nonnull error) {
-        PBMLogError(@"%@", error.localizedDescription)
+        SWPBMLogError(@"%@", error.localizedDescription)
     }];
     
     [self.gamBannerView.constraints filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSLayoutConstraint*  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
@@ -100,7 +100,7 @@ NSString * const gamAdUnit = @"/21808260008/prebid-demo-original-native-styles";
 }
 
 - (void)bannerView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(NSError *)error {
-    PBMLogError(@"%@", error.localizedDescription)
+    SWPBMLogError(@"%@", error.localizedDescription)
 }
 
 @end

@@ -26,7 +26,7 @@ class InterstitialAdsTest: BaseAdsTest {
     }
     
     public func testInAppInterstitialAd() {
-        closeButton = "PBMCloseButton"
+        closeButton = "SWPBMCloseButton"
         testAd(testCase: testCases.inAppDisplayInterstitialCase)
     }
     
@@ -41,12 +41,12 @@ class InterstitialAdsTest: BaseAdsTest {
     }
     
     public func testGamRenderingInterstitialAd() {
-        closeButton = "PBMCloseButton"
+        closeButton = "SWPBMCloseButton"
         testAd(testCase: testCases.gamDisplayInterstitialCase)
     }
     
     public func testAdMobInterstitialAd() {
-        closeButton = "PBMCloseButton"
+        closeButton = "SWPBMCloseButton"
         testAd(testCase: testCases.adMobDisplayInterstitialCase)
     }
     

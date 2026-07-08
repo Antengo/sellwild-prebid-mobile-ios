@@ -16,7 +16,7 @@
 
 import Foundation
 
-@objc(PBMVideoVerificationResource)
+@objc(SWPBMVideoVerificationResource)
 public class VideoVerificationResource: NSObject {
     
     @objc public var url: String?
@@ -28,7 +28,7 @@ public class VideoVerificationResource: NSObject {
     
 }
 
-@objc(PBMVideoVerificationParameters)
+@objc(SWPBMVideoVerificationParameters)
 public class VideoVerificationParameters: NSObject {
     
     @objc public var verificationResources = [VideoVerificationResource]()

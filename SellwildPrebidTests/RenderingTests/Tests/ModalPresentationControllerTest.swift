@@ -14,7 +14,7 @@
   */
 
 import XCTest
-@testable @_spi(PBMInternal) import SellwildPrebid
+@testable @_spi(SWPBMInternal) import SellwildPrebid
 
 class ModalPresentationControllerTest: XCTestCase, UIViewControllerTransitioningDelegate {
     
@@ -29,7 +29,7 @@ class ModalPresentationControllerTest: XCTestCase, UIViewControllerTransitioning
         presentedVC.transitioningDelegate = self;
         
         XCTAssertNil(modalState)
-        modalState = Factory.createModalState(view: PBMWebView(),
+        modalState = Factory.createModalState(view: SWPBMWebView(),
                                               adConfiguration:AdConfiguration(),
                                               displayProperties:InterstitialDisplayProperties())
         XCTAssertNil(modalPresentationController)

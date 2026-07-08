@@ -16,7 +16,7 @@
 
 import Foundation
 
-@objc(PBMVastTrackingEvents)
+@objc(SWPBMVastTrackingEvents)
 public class VastTrackingEvents: NSObject {
     
     @objc public internal(set) var trackingEvents = [String : [String]]()

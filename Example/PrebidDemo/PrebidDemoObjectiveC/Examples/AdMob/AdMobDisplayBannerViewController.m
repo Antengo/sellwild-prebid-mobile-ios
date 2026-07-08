@@ -75,7 +75,7 @@ NSString * const adMobAdUnitDisplayBannerRendering = @"ca-app-pub-59229676600824
 }
 
 - (void)bannerView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(NSError *)error {
-    PBMLogError(@"%@", error.localizedDescription);
+    SWPBMLogError(@"%@", error.localizedDescription);
     
     [self.prebidAdMobMediaitonAdUnit adObjectDidFailToLoadAdWithAdObject:self.gadBanner with:error];
 }

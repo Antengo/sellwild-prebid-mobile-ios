@@ -135,7 +135,7 @@ public class GAMRewardedAdEventHandler :
         }
     }
     
-    // MARK: - PBMGADRewardedAd loading callbacks
+    // MARK: - SWPBMGADRewardedAd loading callbacks
 
     func rewardedAd(didReceive ad: GADRewardedAdWrapper) {
         if requestRewarded === ad {

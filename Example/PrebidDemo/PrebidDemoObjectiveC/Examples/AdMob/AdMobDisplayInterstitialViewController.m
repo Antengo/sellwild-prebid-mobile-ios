@@ -58,7 +58,7 @@ NSString * const adMobAdUnitDisplayInterstitial = @"ca-app-pub-5922967660082475/
             if (!self) { return; }
             
             if (error != nil) {
-                PBMLogError(@"%@", error.localizedDescription);
+                SWPBMLogError(@"%@", error.localizedDescription);
                 return;
             }
             
@@ -75,7 +75,7 @@ NSString * const adMobAdUnitDisplayInterstitial = @"ca-app-pub-5922967660082475/
 // MARK: - GADFullScreenContentDelegate
 
 - (void)ad:(id<GADFullScreenPresentingAd>)ad didFailToPresentFullScreenContentWithError:(NSError *)error {
-    PBMLogError(@"%@", error.localizedDescription);
+    SWPBMLogError(@"%@", error.localizedDescription);
 }
 
 @end

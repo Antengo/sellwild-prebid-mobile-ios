@@ -17,7 +17,7 @@ import UIKit
 
 /// Timer that stops in background and resumes in foreground. Fires callback on timer completion.
 /// Can execute only one task at a time.
-@objc(PBMBackgroundAwareTimer) @objcMembers
+@objc(SWPBMBackgroundAwareTimer) @objcMembers
 public class BackgroundAwareTimer: NSObject {
     
     private(set) var isRunning: Bool

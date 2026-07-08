@@ -15,12 +15,12 @@
 
 import Foundation
 
-@testable @_spi(PBMInternal) import SellwildPrebid
+@testable @_spi(SWPBMInternal) import SellwildPrebid
 
-class MockMeasurementWrapper : PBMOpenMeasurementWrapper {
+class MockMeasurementWrapper : SWPBMOpenMeasurementWrapper {
     
     var injectJSLibClosure: ((String) -> Void)?
-    var initializeSessionClosure: ((PBMOpenMeasurementSession) -> Void)?
+    var initializeSessionClosure: ((SWPBMOpenMeasurementSession) -> Void)?
     
     override init() {
         
@@ -28,17 +28,17 @@ class MockMeasurementWrapper : PBMOpenMeasurementWrapper {
     
     override func injectJSLib(_ html: String) throws -> String {
         injectJSLibClosure?(html)
-        throw PBMError.error(description:"PrebidMobileTests: do nothing")
+        throw SWPBMError.error(description:"PrebidMobileTests: do nothing")
     }
     
-    override func initializeWebViewSession(_ webView: UIView, contentUrl: String?) -> PBMOpenMeasurementSession? {
+    override func initializeWebViewSession(_ webView: UIView, contentUrl: String?) -> SWPBMOpenMeasurementSession? {
         let session = MockMeasurementSession()
         initializeSessionClosure?(session)
         
         return session
     }
     
-    override func initializeNativeVideoSession(_ videoView: UIView, verificationParameters: VideoVerificationParameters?) -> PBMOpenMeasurementSession? {
+    override func initializeNativeVideoSession(_ videoView: UIView, verificationParameters: VideoVerificationParameters?) -> SWPBMOpenMeasurementSession? {
         // TODO: The same for tests?
         let session = MockMeasurementSession()
         initializeSessionClosure?(session)
@@ -49,7 +49,7 @@ class MockMeasurementWrapper : PBMOpenMeasurementWrapper {
     override func initializeNativeDisplaySession(_ view: UIView,
                                                  omidJSUrl omidJS: String,
                                                  vendorKey: String?,
-                                                 parameters verificationParameters: String?) -> PBMOpenMeasurementSession? {
+                                                 parameters verificationParameters: String?) -> SWPBMOpenMeasurementSession? {
         let session = MockMeasurementSession()
         initializeSessionClosure?(session)
         

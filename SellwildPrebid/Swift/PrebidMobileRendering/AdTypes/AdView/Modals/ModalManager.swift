@@ -17,7 +17,7 @@
 import Foundation
 import UIKit
 
-@objc(PBMModalManager) @_spi(PBMInternal) public
+@objc(SWPBMModalManager) @_spi(SWPBMInternal) public
 class ModalManager: NSObject, ModalViewControllerDelegate {
     weak var delegate: ModalManagerDelegate?
     
@@ -307,8 +307,8 @@ class ModalManager: NSObject, ModalViewControllerDelegate {
         }
     }
     
-    //TODO: Consider moving to PBMAbstractCreative
-    // MARK: PBMModalViewControllerDelegate
+    //TODO: Consider moving to SWPBMAbstractCreative
+    // MARK: SWPBMModalViewControllerDelegate
     
     public func modalViewControllerCloseButtonTapped(_ modalViewController: ModalViewController) {
         if let modalState = modalViewController.modalState {

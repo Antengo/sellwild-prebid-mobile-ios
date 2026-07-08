@@ -17,7 +17,7 @@ import Foundation
 import UIKit
 
 /*!
- The banner custom event delegate. It is used to inform the ad server SDK events back to the PBM SDK.
+ The banner custom event delegate. It is used to inform the ad server SDK events back to the SWPBM SDK.
  */
 @objc public protocol BannerEventLoadingDelegate: NSObjectProtocol {
 

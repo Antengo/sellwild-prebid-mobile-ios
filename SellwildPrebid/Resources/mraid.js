@@ -4,7 +4,7 @@ function sendMessageToLogHandler(message) {
     }
 }
 
-var debugPBMMRAID = function(messageBuilder) {};
+var debugSWPBMMRAID = function(messageBuilder) {};
 
 (function() {
     var normalLog = console.log
@@ -15,13 +15,13 @@ var debugPBMMRAID = function(messageBuilder) {};
     const logMRAIDToHandler = false
     
     if (logMRAIDToConsole || logMRAIDToHandler) {
-        debugPBMMRAID = function(messageBuilder) {
+        debugSWPBMMRAID = function(messageBuilder) {
             var message = messageBuilder();
             if (logMRAIDToConsole) {
                 normalLog(message);
             }
             if (logMRAIDToHandler) {
-                sendMessageToLogHandler("PBM mraid.js debugging: " + message);
+                sendMessageToLogHandler("SWPBM mraid.js debugging: " + message);
             }
         }
     }
@@ -37,10 +37,10 @@ var debugPBMMRAID = function(messageBuilder) {};
 
 
 
-debugPBMMRAID(() => "Beginning to add mraid.js...");
+debugSWPBMMRAID(() => "Beginning to add mraid.js...");
 
 (function() {
-	debugPBMMRAID(() => "Adding mraid.js functions...");
+	debugSWPBMMRAID(() => "Adding mraid.js functions...");
 
 	if (!(/iphone|ipad|ipod/i).test(window.navigator.userAgent)) {
 		console.log("Useragent indicates that this is not iOS. Aborting. Useragent is: [" + window.navigator.userAgent + "]");
@@ -141,7 +141,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
     // vars and functions for processing transactions
     var eventsQueue = [];
     var addEventToQueue = function(eventInfo) {
-        debugPBMMRAID(() => "addEvent(" + JSON.stringify(eventInfo) + ")");
+        debugSWPBMMRAID(() => "addEvent(" + JSON.stringify(eventInfo) + ")");
         //store only the newest event with args, except the error event
         if (eventInfo["event"] !== "error") {
             var eventIndex = eventsQueue.findIndex(item => item["event"] === eventInfo["event"]);
@@ -155,7 +155,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
     var transitionLevel = 0;
     var isTransitionToExpand = false;
     var finishTransition = function() {
-        debugPBMMRAID(() => "finishTransition(level = " + JSON.stringify(transitionLevel) + ")");
+        debugSWPBMMRAID(() => "finishTransition(level = " + JSON.stringify(transitionLevel) + ")");
         isTransitionToExpand = false;
         // Note: keep transitionLevel high while clearing eventsQueue
         while ((eventsQueue.length > 0) && (transitionLevel == 1)) {
@@ -186,22 +186,22 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
 		var openURL = "mraid:" + command + '/' + joinedArgs;
  
         if (nativeCallInProcess) {
-            debugPBMMRAID(() => "callContainer: push command [" + openURL + "] to queue ");
+            debugSWPBMMRAID(() => "callContainer: push command [" + openURL + "] to queue ");
             nativeCallQueue.push(openURL);
         } else {
             nativeCallInProcess = true;
-            debugPBMMRAID(() => "callContainer: window.open url = [" + openURL + "]");
+            debugSWPBMMRAID(() => "callContainer: window.open url = [" + openURL + "]");
             document.location.href = openURL;
         }
 	};
  
     mraid.nativeCallComplete = function() {
-        debugPBMMRAID(() => "mraid.nativeCallComplete()");
+        debugSWPBMMRAID(() => "mraid.nativeCallComplete()");
         if (nativeCallQueue.length === 0) {
             nativeCallInProcess = false;
         } else {
             var openURL = nativeCallQueue.shift();
-            debugPBMMRAID(() => "callContainer: (from queue) window.open url = [" + openURL + "]");
+            debugSWPBMMRAID(() => "callContainer: (from queue) window.open url = [" + openURL + "]");
             document.location.href = openURL;
         }
     }
@@ -212,7 +212,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
 
 	/* url - the URL of the web page */
 	mraid.open = function(url) {
-		debugPBMMRAID(() => "mraid.open(" + url + ")");
+		debugSWPBMMRAID(() => "mraid.open(" + url + ")");
 		callContainer('open', url);
 	};
 
@@ -226,7 +226,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
  If the parameters are out of range, then the error event identifies the exception.
  */
 	mraid.resize = function() {
-		debugPBMMRAID(() => "mraid.resize: " + JSON.stringify(mraid.resizeProperties));
+		debugSWPBMMRAID(() => "mraid.resize: " + JSON.stringify(mraid.resizeProperties));
 		if (mraid.resizePropertiesInitialized) {
             transitionLevel++;
 			callContainer('resize');
@@ -248,7 +248,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
 	/* If null, the body of the current ad will be used in the current webview */
 	mraid.expand = function(url) {
         
-		debugPBMMRAID(() => "mraid.expand url=[" + url + "]");
+		debugSWPBMMRAID(() => "mraid.expand url=[" + url + "]");
 		if (url) {
             transitionLevel++;
 			callContainer('expand', url);
@@ -265,7 +265,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
 	/* also fire the stateChange event. For ads in an expanded state, the close() */
 	/* method moves to a default state */
 	mraid.close = function() {
-		debugPBMMRAID(() => "mraid.close");
+		debugSWPBMMRAID(() => "mraid.close");
         transitionLevel++;
 		callContainer('close');
 	};
@@ -284,7 +284,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
 
 		var ret;
 		ret = mraid.placementType;
-		debugPBMMRAID(() => "mraid.getPlacementType: " + ret);
+		debugSWPBMMRAID(() => "mraid.getPlacementType: " + ret);
 		return ret;
 	};
 
@@ -294,14 +294,14 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
 	/* provides field for that purpose. In case state was changed, field will changed */
 	/* appropriately */
 	mraid.getState = function() {
-		debugPBMMRAID(() => "mraid.getState: " + mraid.state);
+		debugSWPBMMRAID(() => "mraid.getState: " + mraid.state);
 		return mraid.state;
 	};
 
 	/* The MRAID specification that this SDK is certified against. For the current */
 	/* version of MRAID, getVersion() will return '3.0' */
 	mraid.getVersion = function() {
-		debugPBMMRAID(() => "mraid.getVersion: 3.0");
+		debugSWPBMMRAID(() => "mraid.getVersion: 3.0");
 		return '3.0';
 	};
 
@@ -317,14 +317,14 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
 	/*	  It may be determined either simple view property or on/off-screen hardware state as */
 	/* additional */
 	mraid.isViewable = function() {
-		debugPBMMRAID(() => "mraid.viewable: " + mraid.viewable);
+		debugSWPBMMRAID(() => "mraid.viewable: " + mraid.viewable);
 		return mraid.viewable;
 	};
 
 	/* The getScreenSize method returns the current actual pixel width and height, based on the current orientation, */
 	/* in density-independent pixels, of the device on which the ad is running. */
 	mraid.getScreenSize = function() {
-		debugPBMMRAID(() => "mraid.getScreenSize: " + JSON.stringify(mraid.screenSize));
+		debugSWPBMMRAID(() => "mraid.getScreenSize: " + JSON.stringify(mraid.screenSize));
 		return mraid.screenSize;
 	};
 
@@ -343,18 +343,18 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
 	/* The getMaxSize method returns the maximum size (in density-independent pixel width and height) an ad can expand */
 	/* or resize to. */
 	mraid.getMaxSize = function() {
-		debugPBMMRAID(() => "mraid.getMaxSize: " + JSON.stringify(mraid.maxSize));
+		debugSWPBMMRAID(() => "mraid.getMaxSize: " + JSON.stringify(mraid.maxSize));
 		return mraid.maxSize;
 	};
 
 	mraid.setMaxSize = function(w,h) {
-		debugPBMMRAID(() => "mraid.setMaxSize: w=" + w + ", h=" + h);
+		debugSWPBMMRAID(() => "mraid.setMaxSize: w=" + w + ", h=" + h);
 		mraid.maxSize.width = w;
 		mraid.maxSize.height = h;
 	};
  
     mraid.setCurrentAppOrientation = function(orientation, locked) {
-        debugPBMMRAID(() => "mraid.setCurrentAppOrientation: " + orientation + " locked:" + locked);
+        debugSWPBMMRAID(() => "mraid.setCurrentAppOrientation: " + orientation + " locked:" + locked);
         mraid.currentAppOrientation.orientation = orientation;
         mraid.currentAppOrientation.locked = locked;
     }
@@ -369,7 +369,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
 
 	/* The supports method allows the ad to interrogate the device for support of specific features. */
 	mraid.supports = function(feature) {
-        debugPBMMRAID(() => "mraid.supports:" + JSON.stringify(mraid.allSupports) + " " + feature + " " + mraid.allSupports[feature]);
+        debugSWPBMMRAID(() => "mraid.supports:" + JSON.stringify(mraid.allSupports) + " " + feature + " " + mraid.allSupports[feature]);
 		return mraid.allSupports[feature];
 	};
 
@@ -439,7 +439,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
 
 	/* The setOrientationProperties method sets the JavaScript orientationProperties object. */
 	mraid.setOrientationProperties = function(properties) {
-		debugPBMMRAID(() => "mraid.setOrientationProperties: " + JSON.stringify(properties));
+		debugSWPBMMRAID(() => "mraid.setOrientationProperties: " + JSON.stringify(properties));
 		if (!properties)
 			return;
 		var aoc = properties.allowOrientationChange;
@@ -462,7 +462,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
 
 	/* The getResizeProperties method returns the whole JavaScript object resizeProperties object. */
 	mraid.getResizeProperties = function() {
-		debugPBMMRAID(() => "mraid.getResizeProperties: " + JSON.stringify(mraid.resizeProperties));
+		debugSWPBMMRAID(() => "mraid.getResizeProperties: " + JSON.stringify(mraid.resizeProperties));
 		return mraid.resizeProperties;
 	};
 
@@ -477,7 +477,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
 	/* The setResizeProperties method sets the whole JavaScript object. */
 	mraid.setResizeProperties = function(properties) {
  
-		debugPBMMRAID(() => "mraid.setResizeProperties: " + JSON.stringify(properties));
+		debugSWPBMMRAID(() => "mraid.setResizeProperties: " + JSON.stringify(properties));
  
 		mraid.resizePropertiesInitialized = false;
  
@@ -577,7 +577,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
     /* When lat and lon properties are not available or not allowed as per user */
     /* permission, then error message of “-1” is communicated for getLocation() method */
     mraid.getLocation = function() {
-        debugPBMMRAID(() => "mraid.getLocation: " + mraid.location);
+        debugSWPBMMRAID(() => "mraid.getLocation: " + mraid.location);
         if (mraid.location.accuracy == -1) {
             mraid.onError("-1", "getLocation")
             return "-1";
@@ -588,7 +588,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
     };
  
     mraid.setLocation = function(lat,lon,accuracy,timestamp) {
-        debugPBMMRAID(() => "mraid.setLocation: lat=" + lat + ", lon=" + lon + ", accuracy=" + accuracy + ", timestamp=" + timestamp);
+        debugSWPBMMRAID(() => "mraid.setLocation: lat=" + lat + ", lon=" + lon + ", accuracy=" + accuracy + ", timestamp=" + timestamp);
         mraid.location.lat = lat;
         mraid.location.lon = lon;
         mraid.location.accuracy = accuracy;
@@ -607,7 +607,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
 	/* useCustomClose - true if ad creative supplies its own designs for the close area, false if SDK */
 	/* default image should be displayed for the close area */
 	mraid.useCustomClose = function(useCustomClose) {
-        debugPBMMRAID(() => "mraid.useCustomClose: DEPRECATED useCustomClose " + useCustomClose);
+        debugSWPBMMRAID(() => "mraid.useCustomClose: DEPRECATED useCustomClose " + useCustomClose);
 		if (useCustomClose == true || useCustomClose == false) {
 			mraid.expandProperties.useCustomClose = useCustomClose;
 		}
@@ -653,7 +653,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
 	};
     
 	mraid.unload = function() {
-		debugPBMMRAID(() => "mraid.unload");
+		debugSWPBMMRAID(() => "mraid.unload");
         callContainer('unload');
 	};
 
@@ -661,7 +661,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
 
 	/* message - description of the type of error, action - name of action that caused error */
 	mraid.onError = function(message, action) {
-        debugPBMMRAID(() => "mraid.onError:" + message + " [action:" + action + "]");
+        debugSWPBMMRAID(() => "mraid.onError:" + message + " [action:" + action + "]");
         if (transitionLevel > 0) {
             addEventToQueue({"event": "error", "args": [message, action]});
             if (action === "expand" || action === "resize" || action == "close") {
@@ -674,20 +674,20 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
 
 	/* This event fires when the SDK is fully loaded, initialized, and ready for any calls from the ad creative */
 	mraid.onReady = function() {
-		debugPBMMRAID(() => "mraid.onReady");
+		debugSWPBMMRAID(() => "mraid.onReady");
 		mraid.onStateChange("default");
 		mraid.fireEvent("ready");
 	};
 
 	mraid.onReadyExpanded = function() {
-		debugPBMMRAID(() => "mraid.onReadyExpanded");
+		debugSWPBMMRAID(() => "mraid.onReadyExpanded");
 		mraid.onStateChange("expanded");
 		mraid.fireEvent("ready");
 	};
 
 	/* The sizeChange event fires when the ad’s size within the app UI changes. */
 	mraid.onSizeChange = function(width, height) {
-		debugPBMMRAID(() => "mraid.onSizeChange(" + width + "," + height + ") ");
+		debugSWPBMMRAID(() => "mraid.onSizeChange(" + width + "," + height + ") ");
         if (transitionLevel > 0) {
             addEventToQueue({"event": "sizeChange", "args": [width, height]});
         } else {
@@ -703,7 +703,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
 	resized - the ad container has changed size via MRAID 2.0’s resize() method
 	hidden - the state an interstitial ad transitions to when closed. Where supported, the state a banner ad transitions to when closed */
 	mraid.onStateChange = function(state) {
-        debugPBMMRAID(() => "mraid.onStateChange(" + state + ")");
+        debugSWPBMMRAID(() => "mraid.onStateChange(" + state + ")");
 		mraid.state = state;
         if (transitionLevel > 0) {
             addEventToQueue({"event": "stateChange", "args": mraid.getState()});
@@ -718,7 +718,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
 	/* true: container is on-screen and viewable by user; false: container is off-screen and not viewable */
     /* DEPRECATED as of MRAID 3.0 */
 	mraid.onViewableChange = function(isViewable) {
-		debugPBMMRAID(() => "mraid.onViewableChange(" + isViewable + ")");
+		debugSWPBMMRAID(() => "mraid.onViewableChange(" + isViewable + ")");
 		mraid.viewable = isViewable;
         if (transitionLevel > 0) {
             addEventToQueue({"event": "viewableChange", "args": mraid.isViewable()});
@@ -730,9 +730,9 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
     /* Evolved version of 'onExposureChange' */
     /* available since MRAID 3.0 */
     mraid.onExposureChange = function(viewExposureString) {
-        debugPBMMRAID(() => "mraid.onExposureChange(" + JSON.stringify(viewExposureString) + ")");
+        debugSWPBMMRAID(() => "mraid.onExposureChange(" + JSON.stringify(viewExposureString) + ")");
         var viewExposure = JSON.parse(viewExposureString);
-        //debugPBMMRAID(() => "mraid.onExposureChange-parsed(" + JSON.stringify(viewExposure) + ")");
+        //debugSWPBMMRAID(() => "mraid.onExposureChange-parsed(" + JSON.stringify(viewExposure) + ")");
         mraid.lastExposure = viewExposure;
         if (transitionLevel > 0) {
             addEventToQueue({"event": "exposureChange"});
@@ -751,7 +751,7 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
                           determined
      */
     mraid.onAudioVolumeChange = function(newVolumePercentage) {
-        debugPBMMRAID(() => "mraid.onAudioVolumeChange(" + newVolumePercentage + ")");
+        debugSWPBMMRAID(() => "mraid.onAudioVolumeChange(" + newVolumePercentage + ")");
         mraid.volumePercentage = newVolumePercentage;
         if (transitionLevel > 0) {
             addEventToQueue({"event": "audioVolumeChange", "args": newVolumePercentage});
@@ -761,4 +761,4 @@ debugPBMMRAID(() => "Beginning to add mraid.js...");
     };
 }());
 
-debugPBMMRAID(() => "Finished adding mraid.js");
+debugSWPBMMRAID(() => "Finished adding mraid.js");

@@ -23,7 +23,7 @@ class MockServerConnection: NSObject, PrebidServerConnectionProtocol {
     typealias PostHandler_NoContentType = (String, Data, TimeInterval, @escaping PrebidServerResponseCallback) -> ()
     typealias DownloadHandler = (String, @escaping PrebidServerResponseCallback) -> ()
     
-    let defaultContentType = "application/json" // Note: Must be equivalent to PBMContentTypeVal
+    let defaultContentType = "application/json" // Note: Must be equivalent to SWPBMContentTypeVal
     
     let userAgentService = UserAgentService.shared
     

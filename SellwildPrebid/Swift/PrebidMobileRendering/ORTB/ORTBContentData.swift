@@ -15,8 +15,8 @@
 
 import Foundation
 
-@objc(PBMORTBContentData)
-public class ORTBContentData: NSObject, PBMJsonCodable {
+@objc(SWPBMORTBContentData)
+public class ORTBContentData: NSObject, SWPBMJsonCodable {
     
     /// Exchange-specific ID for the data provider.
     @objc public var id: String?

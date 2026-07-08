@@ -15,7 +15,7 @@
 
 import Foundation
 
-@objc(PBMRewardedConfig) @objcMembers
+@objc(SWPBMRewardedConfig) @objcMembers
 public class RewardedConfig: NSObject {
     
     // MARK: - Reward

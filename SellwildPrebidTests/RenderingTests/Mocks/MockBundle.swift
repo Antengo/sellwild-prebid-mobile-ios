@@ -18,7 +18,7 @@ import Foundation
 
 @testable import SellwildPrebid
 
-class MockBundle: PBMBundleProtocol {
+class MockBundle: SWPBMBundleProtocol {
     var mockBundleIdentifier: String? = "Mock.Bundle.Identifier"
     var mockBundleName: String? = "MockBundleName"
     var mockBundleDisplayName: String? = "MockBundleDisplayName"
@@ -38,12 +38,12 @@ class MockBundle: PBMBundleProtocol {
         var dict = [String: Any]()
         
         if let mockBundleName = mockBundleName {
-            dict[PBMAppInfoParameterBuilder.bundleNameKey] = mockBundleName
+            dict[SWPBMAppInfoParameterBuilder.bundleNameKey] = mockBundleName
             
         }
         
         if let mockBundleDisplayName = mockBundleDisplayName {
-            dict[PBMAppInfoParameterBuilder.bundleDisplayNameKey] = mockBundleDisplayName
+            dict[SWPBMAppInfoParameterBuilder.bundleDisplayNameKey] = mockBundleDisplayName
         }
         
         return dict

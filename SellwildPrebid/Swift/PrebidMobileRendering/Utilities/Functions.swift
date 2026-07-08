@@ -15,7 +15,7 @@
 
 import Foundation
 
-@objc @_spi(PBMInternal) public class Functions: NSObject {
+@objc @_spi(SWPBMInternal) public class Functions: NSObject {
     
     private override init() {
         super.init()
@@ -23,7 +23,7 @@ import Foundation
     
     static func dictionary(from jsonString: String) throws -> [String: Any] {
         guard let jsonData = jsonString.data(using: .utf8) else {
-            throw PBMError.error(description: "Could not convert jsonString to data: \(jsonString)")
+            throw SWPBMError.error(description: "Could not convert jsonString to data: \(jsonString)")
         }
         return try dictionary(from: jsonData)
     }
@@ -32,7 +32,7 @@ import Foundation
         let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments)
 
         guard let dict = jsonObject as? [String: Any] else {
-            throw PBMError.error(description: "Invalid JSON data: \(jsonData)")
+            throw SWPBMError.error(description: "Invalid JSON data: \(jsonData)")
         }
 
         return dict
@@ -49,7 +49,7 @@ import Foundation
     /// precision for values that aren't exactly representable in IEEE-754.
     static func dictionaryPreservingDecimals(from jsonString: String) throws -> [String: Any] {
         guard let jsonData = jsonString.data(using: .utf8) else {
-            throw PBMError.error(description: "Could not convert jsonString to data: \(jsonString)")
+            throw SWPBMError.error(description: "Could not convert jsonString to data: \(jsonString)")
         }
         return try dictionaryPreservingDecimals(from: jsonData)
     }
@@ -57,19 +57,19 @@ import Foundation
     static func dictionaryPreservingDecimals(from jsonData: Data) throws -> [String: Any] {
         let node = try JSONDecoder().decode(JSONNode.self, from: jsonData)
         guard case let .object(dict) = node else {
-            throw PBMError.error(description: "Invalid JSON data: top-level element is not an object")
+            throw SWPBMError.error(description: "Invalid JSON data: top-level element is not an object")
         }
         return dict.mapValues { $0.unwrappedValue }
     }
 
     static func jsonString(from dictionary: [String: Any]) throws -> String {
         guard JSONSerialization.isValidJSONObject(dictionary) else {
-            throw PBMError.error(description: "Not valid JSON object: \(dictionary)")
+            throw SWPBMError.error(description: "Not valid JSON object: \(dictionary)")
         }
         
         let data = try JSONSerialization.data(withJSONObject: dictionary, options: [.sortedKeys])
         guard let string = String(data: data, encoding: .utf8) else {
-            throw PBMError.error(description: "Could not convert JsonDictionary: \(dictionary)")
+            throw SWPBMError.error(description: "Could not convert JsonDictionary: \(dictionary)")
         }
         
         return string.trimmingCharacters(in: .whitespacesAndNewlines)

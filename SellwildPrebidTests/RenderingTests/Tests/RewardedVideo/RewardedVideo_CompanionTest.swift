@@ -15,7 +15,7 @@
 
 import XCTest
 
-@testable @_spi(PBMInternal) import SellwildPrebid
+@testable @_spi(SWPBMInternal) import SellwildPrebid
 
 class RewardedVideo_CompanionTest: XCTestCase  {
     
@@ -23,7 +23,7 @@ class RewardedVideo_CompanionTest: XCTestCase  {
     
     var vastRequestSuccessfulExpectation:XCTestExpectation!
     
-    var vastServerResponse: PBMAdRequestResponseVAST?
+    var vastServerResponse: SWPBMAdRequestResponseVAST?
     
     var expectationCreativeWasClicked:XCTestExpectation!
     var expectationCreativeClickthroughDidClose:XCTestExpectation!
@@ -32,7 +32,7 @@ class RewardedVideo_CompanionTest: XCTestCase  {
     var expectationDidFetchVideo:XCTestExpectation!
     
     
-    var pbmRewardedVideoCreative:PBMVideoCreative!
+    var swpbmRewardedVideoCreative:SWPBMVideoCreative!
     
     var expectationTrackingEventCreativeView:XCTestExpectation!
     let trackingUrlCreativeView = "http://myTrackingURL/inline/firstCompanionCreativeView"
@@ -58,7 +58,7 @@ class RewardedVideo_CompanionTest: XCTestCase  {
         
         //Create CreativeModel
         
-        let adLoadManager = MockPBMAdLoadManagerVAST(bid: RawWinningBidFabricator.makeWinningBid(price: 0.1, bidder: "bidder", cacheID: "cache-id"), connection:connection, adConfiguration: adConfiguration)
+        let adLoadManager = MockSWPBMAdLoadManagerVAST(bid: RawWinningBidFabricator.makeWinningBid(price: 0.1, bidder: "bidder", cacheID: "cache-id"), connection:connection, adConfiguration: adConfiguration)
         
         adLoadManager.mock_requestCompletedSuccess = { response in
             self.vastServerResponse = response
@@ -69,7 +69,7 @@ class RewardedVideo_CompanionTest: XCTestCase  {
             XCTFail(error.localizedDescription)
         }
         
-        let requester = PBMAdRequesterVAST(serverConnection:connection, adConfiguration: adConfiguration)
+        let requester = SWPBMAdRequesterVAST(serverConnection:connection, adConfiguration: adConfiguration)
         requester.adLoadManager = adLoadManager
         
         if let data = UtilitiesForTesting.loadFileAsDataFromBundle("document_with_one_wrapper_ad.xml") {
@@ -83,7 +83,7 @@ class RewardedVideo_CompanionTest: XCTestCase  {
             return // to avoid crash on force unwrap
         }
         
-        let modelMaker = PBMCreativeModelCollectionMakerVAST(serverConnection:connection, adConfiguration: adConfiguration)
+        let modelMaker = SWPBMCreativeModelCollectionMakerVAST(serverConnection:connection, adConfiguration: adConfiguration)
         
         modelMaker.makeModels(self.vastServerResponse!,
                               successCallback: { models in

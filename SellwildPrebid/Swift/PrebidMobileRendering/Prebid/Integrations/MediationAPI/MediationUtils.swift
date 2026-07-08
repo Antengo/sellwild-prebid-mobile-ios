@@ -15,7 +15,7 @@
 
 import Foundation
 
-@objc(PBMMediationUtils) @objcMembers
+@objc(SWPBMMediationUtils) @objcMembers
 public class MediationUtils: NSObject {
      
     public static func isServerParameterInTargetingInfo(_ serverParameter: String, _ targetingInfo: [String]) -> Bool {

@@ -94,7 +94,7 @@ class PrebidRewardedVideoUITest: RepeatedUITestCase {
             waitForExists(element: done, waitSeconds: waitingTimeout)
             done.tapFrameCenter()
         } else {
-            let closeBtn = app.buttons["PBMCloseButton"]
+            let closeBtn = app.buttons["SWPBMCloseButton"]
             waitForExists(element: closeBtn, waitSeconds: 10)
             closeBtn.tap()
         }

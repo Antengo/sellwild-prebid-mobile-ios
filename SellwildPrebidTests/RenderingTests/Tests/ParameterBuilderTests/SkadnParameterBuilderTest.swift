@@ -20,7 +20,7 @@ fileprivate let skAdNetworkIdsMock = ["cstr6suwn9.skadnetwork", "4fzdc2evr5.skad
 fileprivate let sourceappMock = "MockTestApp"
 fileprivate let sdkVersionMock = "1.0.0"
 
-class MockSKAdNetworksParameterBuilder: PBMSKAdNetworksParameterBuilder {
+class MockSKAdNetworksParameterBuilder: SWPBMSKAdNetworksParameterBuilder {
     
     override func skAdNetworkIds() -> [String] {
         skAdNetworkIdsMock
@@ -33,20 +33,20 @@ class SkadnParameterBuilderTest: XCTestCase {
         let adConfiguration = AdConfiguration()
         let mockTargeting = Targeting()
         
-        let basicBuilder = PBMBasicParameterBuilder(
+        let basicBuilder = SWPBMBasicParameterBuilder(
             adConfiguration: adConfiguration,
             sdkConfiguration: SellwildPrebid.shared,
             sdkVersion: sdkVersionMock,
             targeting: mockTargeting
         )
         
-        let skadnBuilder = PBMSKAdNetworksParameterBuilder(
+        let skadnBuilder = SWPBMSKAdNetworksParameterBuilder(
             bundle: Bundle.main,
             targeting: mockTargeting,
             adConfiguration: adConfiguration
         )
         
-        let bidRequest = PBMORTBBidRequest()
+        let bidRequest = SWPBMORTBBidRequest()
         
         basicBuilder.build(bidRequest)
         skadnBuilder.build(bidRequest)
@@ -65,7 +65,7 @@ class SkadnParameterBuilderTest: XCTestCase {
         mockTargeting.sourceapp = sourceappMock
         adConfiguration.supportSKOverlay = true
         
-        let basicBuilder = PBMBasicParameterBuilder(
+        let basicBuilder = SWPBMBasicParameterBuilder(
             adConfiguration: adConfiguration,
             sdkConfiguration: SellwildPrebid.shared,
             sdkVersion: sdkVersionMock,
@@ -78,7 +78,7 @@ class SkadnParameterBuilderTest: XCTestCase {
             adConfiguration: adConfiguration
         )
         
-        let bidRequest = PBMORTBBidRequest()
+        let bidRequest = SWPBMORTBBidRequest()
         
         basicBuilder.build(bidRequest)
         skadnBuilder.build(bidRequest)

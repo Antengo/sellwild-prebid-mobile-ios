@@ -33,7 +33,7 @@ extension PrebidMAXMediationAdapter:
             return
         }
                 
-        guard let bid = parameters.localExtraParameters[PBMMediationAdUnitBidKey] as? Bid else {
+        guard let bid = parameters.localExtraParameters[SWPBMMediationAdUnitBidKey] as? Bid else {
             let error = MAAdapterError(nsError: MAXAdaptersError.noBidInLocalExtraParameters)
             bannerDelegate?.didFailToLoadAdViewAdWithError(error)
             return
@@ -51,7 +51,7 @@ extension PrebidMAXMediationAdapter:
             return
         }
         
-        guard let configId = parameters.localExtraParameters[PBMMediationConfigIdKey] as? String else {
+        guard let configId = parameters.localExtraParameters[SWPBMMediationConfigIdKey] as? String else {
             let error = MAAdapterError(nsError: MAXAdaptersError.noConfigIdInLocalExtraParameters)
             bannerDelegate?.didFailToLoadAdViewAdWithError(error)
             return

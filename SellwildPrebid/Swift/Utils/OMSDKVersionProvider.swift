@@ -17,7 +17,7 @@
 
 import UIKit
 
-@objc @_spi(PBMInternal)
+@objc @_spi(SWPBMInternal)
 public protocol OMSDKVersionProvider: NSObjectProtocol {
     static var omSDKVersionString: String { get }
 }

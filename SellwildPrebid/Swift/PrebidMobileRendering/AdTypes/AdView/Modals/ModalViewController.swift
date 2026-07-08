@@ -14,7 +14,7 @@
 //
 import UIKit
 
-@objc(PBMModalViewController)
+@objc(SWPBMModalViewController)
 @objcMembers
 public class ModalViewController: UIViewController {
 

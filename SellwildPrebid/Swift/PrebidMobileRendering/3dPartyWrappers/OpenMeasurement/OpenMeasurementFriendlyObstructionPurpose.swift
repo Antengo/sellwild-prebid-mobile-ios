@@ -15,7 +15,7 @@
 
 import Foundation
 
-@objc(PBMOpenMeasurementFriendlyObstructionPurpose)
+@objc(SWPBMOpenMeasurementFriendlyObstructionPurpose)
 public enum OpenMeasurementFriendlyObstructionPurpose: UInt {
     case windowLockerBackground = 0
     case windowLockerActivityIndicator

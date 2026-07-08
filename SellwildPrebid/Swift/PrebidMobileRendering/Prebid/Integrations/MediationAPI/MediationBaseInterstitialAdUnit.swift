@@ -157,16 +157,16 @@ public class MediationBaseInterstitialAdUnit : NSObject {
         
         if let winningBid = bidResponse.winningBid, let targetingInfo = winningBid.targetingInfo {
             var adObjectSetupDictionary: [String: Any] = [
-                PBMMediationConfigIdKey: configId,
-                PBMMediationTargetingInfoKey: targetingInfo,
-                PBMMediationAdUnitBidKey: winningBid
+                SWPBMMediationConfigIdKey: configId,
+                SWPBMMediationTargetingInfoKey: targetingInfo,
+                SWPBMMediationAdUnitBidKey: winningBid
             ]
             
             if bidResponse.winningBid?.adFormat == .video {
                 // Append video specific configurations
                 let videoSetupDictionary: [String: Any] = [
-                    PBMMediationVideoAdConfiguration: self.adUnitConfig.adConfiguration.videoControlsConfig,
-                    PBMMediationVideoParameters: self.adUnitConfig.adConfiguration.videoParameters
+                    SWPBMMediationVideoAdConfiguration: self.adUnitConfig.adConfiguration.videoControlsConfig,
+                    SWPBMMediationVideoParameters: self.adUnitConfig.adConfiguration.videoParameters
                 ]
                 adObjectSetupDictionary.merge(videoSetupDictionary, uniquingKeysWith: { $1 })
             }
@@ -184,7 +184,7 @@ public class MediationBaseInterstitialAdUnit : NSObject {
     }
     
     private func handleBidRequestError(_ error: Error?) {
-        completeWithResult(PBMError.demandResult(from: error))
+        completeWithResult(SWPBMError.demandResult(from: error))
     }
     
     private func completeWithResult(_ demandResult: ResultCode) {

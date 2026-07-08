@@ -15,7 +15,7 @@
 
 import Foundation
 
-@objc(PBMServerEvent) @objcMembers
+@objc(SWPBMServerEvent) @objcMembers
 public class ServerEvent: NSObject {
     
     var url: String

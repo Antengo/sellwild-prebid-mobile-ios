@@ -16,7 +16,7 @@
 
 import Foundation
 
-@objc(PBMWebView_Protocol) @_spi(PBMInternal) public
+@objc(SWPBMWebView_Protocol) @_spi(SWPBMInternal) public
 protocol WebView_Protocol {
     var isMRAID: Bool { get }
 }

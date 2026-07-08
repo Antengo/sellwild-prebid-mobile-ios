@@ -38,7 +38,7 @@ class BannerVideoAds: BaseAdsTest {
         if testCase == testCases.gamOriginalVideoBannerCase {
             XCTAssert(app.buttons["Learn more"].waitForExistence(timeout: 30),assertFailedMessage(testCase: testCase, reason: "Play learn more is not displayed"))
         } else {
-            XCTAssert(app.otherElements["PBMVideoView"].waitForExistence(timeout: 20),assertFailedMessage(testCase: testCase, reason: "Video is not displayed"))
+            XCTAssert(app.otherElements["SWPBMVideoView"].waitForExistence(timeout: 20),assertFailedMessage(testCase: testCase, reason: "Video is not displayed"))
         }
     }
     

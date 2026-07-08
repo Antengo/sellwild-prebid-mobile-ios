@@ -34,7 +34,7 @@ public class AdMobMediationRewardedUtils: NSObject, PrebidMediationDelegate {
         gadRequest.register(extras)
         gadRequest.keywords = AdMobUtils.buildKeywords(
             existingKeywords: gadRequest.keywords,
-            targetingInfo: values[PBMMediationTargetingInfoKey] as? [String: String]
+            targetingInfo: values[SWPBMMediationTargetingInfoKey] as? [String: String]
         )
         
         return true

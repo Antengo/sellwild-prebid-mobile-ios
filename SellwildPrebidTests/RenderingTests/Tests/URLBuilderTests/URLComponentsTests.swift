@@ -28,64 +28,64 @@ class URLComponentsTests:XCTestCase {
         urlComponents = URLComponents(string: "openx.com")!
         urlComponents.queryItems = [URLQueryItem(name: "foo", value: "bar"), URLQueryItem(name: "baz", value: "bin")]
         fullURL = urlComponents.string!
-        XCTAssert(fullURL.PBMnumberOfMatches("\\&") == 1, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("\\?") == 1, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("=") == 2, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("foo=bar") == 1, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("baz=bin") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("\\&") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("\\?") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("=") == 2, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("foo=bar") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("baz=bin") == 1, "fullURL = \(fullURL)")
         
         //Empty baseURL
         urlComponents = URLComponents(string: "")!
         urlComponents.queryItems = [URLQueryItem(name: "foo", value: "bar"), URLQueryItem(name: "baz", value: "bin")]
         fullURL = urlComponents.string!
-        XCTAssert(fullURL.PBMnumberOfMatches("\\&") == 1, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("\\?") == 1, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("=") == 2, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("foo=bar") == 1, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("baz=bin") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("\\&") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("\\?") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("=") == 2, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("foo=bar") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("baz=bin") == 1, "fullURL = \(fullURL)")
         
         //Empty query args and url
         urlComponents = URLComponents(string: "openx.com")!
         fullURL = urlComponents.string!
-        XCTAssert(fullURL.PBMnumberOfMatches("\\&") == 0, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("\\?") == 0, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("=") == 0, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("\\&") == 0, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("\\?") == 0, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("=") == 0, "fullURL = \(fullURL)")
         
         //Empty but has trailing ? in base URL string
         urlComponents = URLComponents(string: "openx.com?")!
         fullURL = urlComponents.string!
-        XCTAssert(fullURL.PBMnumberOfMatches("\\&") == 0, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("\\?") == 1, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("=") == 0, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("\\&") == 0, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("\\?") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("=") == 0, "fullURL = \(fullURL)")
         
         //Empty query args array but Base URL has 1 key-value pair
         urlComponents = URLComponents(string: "openx.com?foo=bar")!
         fullURL = urlComponents.string!
-        XCTAssert(fullURL.PBMnumberOfMatches("\\&") == 0, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("\\?") == 1, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("=") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("\\&") == 0, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("\\?") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("=") == 1, "fullURL = \(fullURL)")
         
         //Key-val pair overrwite from base
         urlComponents = URLComponents(string: "openx.com?foo=bar")!
         urlComponents.queryItems = [URLQueryItem(name: "foo", value: "baz")]
         fullURL = urlComponents.string!
-        XCTAssert(fullURL.PBMnumberOfMatches("\\&") == 0, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("\\?") == 1, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("=") == 1, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("foo=baz") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("\\&") == 0, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("\\?") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("=") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("foo=baz") == 1, "fullURL = \(fullURL)")
         
         //One overrwite from base, one append
         baseURL = "openx.com?foo=bar"
         urlComponents = URLComponents(string: baseURL)!
         urlComponents.queryItems = [URLQueryItem(name: "foo", value: "baz"), URLQueryItem(name: "bing", value: "boom")]
         fullURL = urlComponents.string!
-        XCTAssert(fullURL.PBMnumberOfMatches("\\&") == 1, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("\\?") == 1, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("=") == 2, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("foo=bar") == 0, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("foo=baz") == 1, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("foo") == 1, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("bing=boom") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("\\&") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("\\?") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("=") == 2, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("foo=bar") == 0, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("foo=baz") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("foo") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("bing=boom") == 1, "fullURL = \(fullURL)")
     }
 
     func testURLPercentEncoding() {
@@ -102,16 +102,16 @@ class URLComponentsTests:XCTestCase {
         fullURL = urlComponents.string!
         argumentString = urlComponents.query!
 
-        XCTAssert(fullURL.PBMnumberOfMatches("\\?") == 1, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("\\&") == 1, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("foo=baz") == 1, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("bing=boom%26hidden%3Dparam") == 1, "fullURL = \(fullURL)")
-        XCTAssert(fullURL.PBMnumberOfMatches("hidden=param") == 0, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("\\?") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("\\&") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("foo=baz") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("bing=boom%26hidden%3Dparam") == 1, "fullURL = \(fullURL)")
+        XCTAssert(fullURL.SWPBMnumberOfMatches("hidden=param") == 0, "fullURL = \(fullURL)")
 
-        XCTAssert(argumentString.PBMnumberOfMatches("\\?") == 0, "argumentString = \(argumentString)")
-        XCTAssert(argumentString.PBMnumberOfMatches("\\&") == 2, "argumentString = \(argumentString)")
-        XCTAssert(argumentString.PBMnumberOfMatches("foo=baz") == 1, "fullURL = \(argumentString)")
-        XCTAssert(argumentString.PBMnumberOfMatches("bing=boom\\&hidden=param") == 1, "fullURL = \(argumentString)")
-        XCTAssert(argumentString.PBMnumberOfMatches("hidden=param") == 1, "fullURL = \(argumentString)")
+        XCTAssert(argumentString.SWPBMnumberOfMatches("\\?") == 0, "argumentString = \(argumentString)")
+        XCTAssert(argumentString.SWPBMnumberOfMatches("\\&") == 2, "argumentString = \(argumentString)")
+        XCTAssert(argumentString.SWPBMnumberOfMatches("foo=baz") == 1, "fullURL = \(argumentString)")
+        XCTAssert(argumentString.SWPBMnumberOfMatches("bing=boom\\&hidden=param") == 1, "fullURL = \(argumentString)")
+        XCTAssert(argumentString.SWPBMnumberOfMatches("hidden=param") == 1, "fullURL = \(argumentString)")
     }
 }

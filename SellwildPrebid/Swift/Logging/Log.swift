@@ -18,7 +18,7 @@ import Foundation
 /// This class serves as the central point for all logging operations within the SDK.
 /// It allows for categorized logging based on severity levels (e.g., error, warning, debug) and offers options for both console and file-based logging.
 /// It also provides the ability to set third-party logger.
-@objc(PBMLog) @objcMembers
+@objc(SWPBMLog) @objcMembers
 public class Log: NSObject {
 
     // MARK: - Public properties

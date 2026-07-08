@@ -15,7 +15,7 @@
 
 import Foundation
 
-class MockUIApplication : PBMUIApplicationProtocol {
+class MockUIApplication : SWPBMUIApplicationProtocol {
     
     var statusBarFrame = CGRect(x: 0.0, y: 0.0, width: 1.0, height:2.0)
     var isStatusBarHidden = false

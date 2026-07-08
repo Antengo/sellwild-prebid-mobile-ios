@@ -84,7 +84,7 @@ extension PrebidMAXMediationAdapter: MAInterstitialAdapter,
         }
         
         guard let bid = parameters
-            .localExtraParameters[PBMMediationAdUnitBidKey] as? Bid else {
+            .localExtraParameters[SWPBMMediationAdUnitBidKey] as? Bid else {
             return .failure(MAXAdaptersError.noBidInLocalExtraParameters)
         }
         
@@ -98,14 +98,14 @@ extension PrebidMAXMediationAdapter: MAInterstitialAdapter,
         }
         
         guard let configId = parameters
-            .localExtraParameters[PBMMediationConfigIdKey] as? String else {
+            .localExtraParameters[SWPBMMediationConfigIdKey] as? String else {
             return .failure(MAXAdaptersError.noConfigIdInLocalExtraParameters)
         }
         
         let videoControlsConfig = parameters
-            .localExtraParameters[PBMMediationVideoAdConfiguration] as? VideoControlsConfiguration
+            .localExtraParameters[SWPBMMediationVideoAdConfiguration] as? VideoControlsConfiguration
         let videoParameters = parameters
-            .localExtraParameters[PBMMediationVideoParameters] as? VideoParameters
+            .localExtraParameters[SWPBMMediationVideoParameters] as? VideoParameters
         let renderingConfig = AdUnitConfig(configId: configId)
         renderingConfig.adConfiguration.isInterstitialAd = true
         renderingConfig.adConfiguration.isRewarded = isRewarded

@@ -17,7 +17,7 @@ import Foundation
 
 fileprivate let PathBuilderSecureProtocol = "https"
 
-@objc(PBMPathBuilder) @objcMembers
+@objc(SWPBMPathBuilder) @objcMembers
 public class PathBuilder: NSObject {
     
     public static func buildURL(for host: String, path: String = "", queryItems: [URLQueryItem]? = nil) -> String? {

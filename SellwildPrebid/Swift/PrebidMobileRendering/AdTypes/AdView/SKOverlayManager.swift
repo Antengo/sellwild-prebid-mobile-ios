@@ -16,7 +16,7 @@
 import UIKit
 import StoreKit
 
-@objc(PBMSKOverlayManager) @objcMembers
+@objc(SWPBMSKOverlayManager) @objcMembers
 public class SKOverlayManager: NSObject {
     
     private weak var viewControllerForPresentation: UIViewController?

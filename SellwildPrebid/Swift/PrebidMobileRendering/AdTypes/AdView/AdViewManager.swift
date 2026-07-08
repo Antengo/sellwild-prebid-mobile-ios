@@ -16,7 +16,7 @@
 
 import Foundation
 
-@objc(PBMAdViewManager) @_spi(PBMInternal) public
+@objc(SWPBMAdViewManager) @_spi(SWPBMInternal) public
 protocol AdViewManager: CreativeViewDelegate {
         
     var adConfiguration: AdConfiguration { get set }

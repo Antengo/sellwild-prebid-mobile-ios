@@ -50,13 +50,13 @@ class PrebidServerStatusRequester {
         }
         
         guard let serverEndpoint = serverEndpoint else {
-            completion(.serverStatusWarning, PBMError.error(description: "Prebid SDK failed to get Prebid Server status endpoint."))
+            completion(.serverStatusWarning, SWPBMError.error(description: "Prebid SDK failed to get Prebid Server status endpoint."))
             return
         }
         
         PrebidServerConnection.shared.get(serverEndpoint) { serverResponse in
             guard serverResponse.isOKStatusCode else {
-                completion(.serverStatusWarning, serverResponse.error ?? PBMError.error(description: "Error occured during Prebid Server status check."))
+                completion(.serverStatusWarning, serverResponse.error ?? SWPBMError.error(description: "Error occured during Prebid Server status check."))
                 return
             }
             

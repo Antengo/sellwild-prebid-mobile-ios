@@ -14,7 +14,7 @@ limitations under the License.
 */
 
 #import <XCTest/XCTest.h>
-#import "SwiftImport.h"
+#import "SWSwiftImport.h"
 
 @interface AdUnitSuccessorObjCTests : XCTestCase
 

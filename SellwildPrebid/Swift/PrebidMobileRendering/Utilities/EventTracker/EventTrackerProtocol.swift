@@ -21,9 +21,9 @@ import Foundation
  
      This protocol declares methods that needed for ad tracking in PrebidMobile. For now, we have two implementations:
      - AdModelEventTracker
-     - PBMOpenMeasurementEventTracker
+     - SWPBMOpenMeasurementEventTracker
  */
-@objc(PBMEventTrackerProtocol)
+@objc(SWPBMEventTrackerProtocol)
 public protocol EventTrackerProtocol {
     
     func trackEvent(_ event: TrackingEvent)

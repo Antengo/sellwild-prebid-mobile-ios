@@ -15,11 +15,11 @@
 
 import Foundation
 import XCTest
-@testable @_spi(PBMInternal) import SellwildPrebid
+@testable @_spi(SWPBMInternal) import SellwildPrebid
 
 class CreativeModelCollectionMakerVASTTests: XCTestCase {
     
-    var vastServerResponse: PBMAdRequestResponseVAST?
+    var vastServerResponse: SWPBMAdRequestResponseVAST?
     
     var successfulExpectation: XCTestExpectation?
     
@@ -32,7 +32,7 @@ class CreativeModelCollectionMakerVASTTests: XCTestCase {
         adConfiguration.adFormats = [.video]
         
         let conn = UtilitiesForTesting.createConnectionForMockedTest()
-        let adLoadManager = MockPBMAdLoadManagerVAST(bid: RawWinningBidFabricator.makeWinningBid(price: 0.1, bidder: "bidder", cacheID: "cache-id"), connection:conn, adConfiguration: adConfiguration)
+        let adLoadManager = MockSWPBMAdLoadManagerVAST(bid: RawWinningBidFabricator.makeWinningBid(price: 0.1, bidder: "bidder", cacheID: "cache-id"), connection:conn, adConfiguration: adConfiguration)
         
         successfulExpectation = expectation(description: "Expected VAST Load to be successful")
         
@@ -41,7 +41,7 @@ class CreativeModelCollectionMakerVASTTests: XCTestCase {
             self.successfulExpectation?.fulfill()
         }
         
-        let requester = PBMAdRequesterVAST(serverConnection:conn, adConfiguration: adConfiguration)
+        let requester = SWPBMAdRequesterVAST(serverConnection:conn, adConfiguration: adConfiguration)
         requester.adLoadManager = adLoadManager
         
         if let data = UtilitiesForTesting.loadFileAsDataFromBundle("VAST_with_companion.xml") {
@@ -52,7 +52,7 @@ class CreativeModelCollectionMakerVASTTests: XCTestCase {
         
         XCTAssertNotNil(vastServerResponse)
         
-        let modelMaker = PBMCreativeModelCollectionMakerVAST(serverConnection:conn, adConfiguration: adConfiguration)
+        let modelMaker = SWPBMCreativeModelCollectionMakerVAST(serverConnection:conn, adConfiguration: adConfiguration)
         
         let successCallbackExpectation = expectation(description: "makeModels successCallback called")
         
@@ -78,7 +78,7 @@ class CreativeModelCollectionMakerVASTTests: XCTestCase {
         adConfiguration.adFormats = [.video]
         
         let conn = UtilitiesForTesting.createConnectionForMockedTest()
-        let adLoadManager = MockPBMAdLoadManagerVAST(bid: RawWinningBidFabricator.makeWinningBid(price: 0.1, bidder: "bidder", cacheID: "cache-id"), connection:conn, adConfiguration: adConfiguration)
+        let adLoadManager = MockSWPBMAdLoadManagerVAST(bid: RawWinningBidFabricator.makeWinningBid(price: 0.1, bidder: "bidder", cacheID: "cache-id"), connection:conn, adConfiguration: adConfiguration)
         
         successfulExpectation = expectation(description: "Expected VAST Load to be successful")
         
@@ -87,7 +87,7 @@ class CreativeModelCollectionMakerVASTTests: XCTestCase {
             self.successfulExpectation?.fulfill()
         }
         
-        let requester = PBMAdRequesterVAST(serverConnection:conn, adConfiguration: adConfiguration)
+        let requester = SWPBMAdRequesterVAST(serverConnection:conn, adConfiguration: adConfiguration)
         requester.adLoadManager = adLoadManager
         
         if let data = UtilitiesForTesting.loadFileAsDataFromBundle("VAST_with_empty_companion.xml") {
@@ -98,7 +98,7 @@ class CreativeModelCollectionMakerVASTTests: XCTestCase {
         
         XCTAssertNotNil(vastServerResponse)
         
-        let modelMaker = PBMCreativeModelCollectionMakerVAST(serverConnection:conn, adConfiguration: adConfiguration)
+        let modelMaker = SWPBMCreativeModelCollectionMakerVAST(serverConnection:conn, adConfiguration: adConfiguration)
         
         let successCallbackExpectation = expectation(description: "makeModels successCallback called")
         

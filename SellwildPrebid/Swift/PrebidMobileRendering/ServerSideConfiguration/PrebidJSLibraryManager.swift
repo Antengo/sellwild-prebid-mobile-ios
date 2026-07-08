@@ -15,7 +15,7 @@
 
 import Foundation
 
-fileprivate let PBMJSLibraryFileDirectory = "PBMJSLibraries"
+fileprivate let SWPBMJSLibraryFileDirectory = "SWPBMJSLibraries"
 
 fileprivate let mraidLibraryURL = "https://cdn.jsdelivr.net/gh/prebid/prebid-mobile-ios@master/js/mraid.js"
 fileprivate let omsdkLibraryURL = "https://cdn.jsdelivr.net/gh/prebid/prebid-mobile-ios@master/js/omsdk.js"
@@ -154,7 +154,7 @@ public class PrebidJSLibraryManager: NSObject {
             return
         }
         
-        let directoryURL = cacheDirectory.appendingPathComponent(PBMJSLibraryFileDirectory)
+        let directoryURL = cacheDirectory.appendingPathComponent(SWPBMJSLibraryFileDirectory)
         
         do {
             let directoryContents = try FileManager.default.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil, options: [])
@@ -177,7 +177,7 @@ public class PrebidJSLibraryManager: NSObject {
             return nil
         }
         
-        let directoryURL = cacheDirectory.appendingPathComponent(PBMJSLibraryFileDirectory)
+        let directoryURL = cacheDirectory.appendingPathComponent(SWPBMJSLibraryFileDirectory)
         
         if !FileManager.default.fileExists(atPath: directoryURL.path) {
             do {

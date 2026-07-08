@@ -187,7 +187,7 @@ public class AdUnit: NSObject, DispatcherDelegate {
             
             guard let bidResponse = bidResponse else {
                 if (!self.timeOutSignalSent) {
-                    completion(BidInfo(resultCode: PBMError.demandResult(from: error)))
+                    completion(BidInfo(resultCode: SWPBMError.demandResult(from: error)))
                 }
                 
                 return

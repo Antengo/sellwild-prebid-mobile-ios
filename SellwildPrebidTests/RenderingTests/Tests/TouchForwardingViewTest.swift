@@ -60,7 +60,7 @@ class TouchForwardingViewTest: XCTestCase {
         touchForwardingView.passThroughViews = [contentView]
         XCTAssertNotNil(touchForwardingView.passThroughViews)
         
-        // Point inside PBMTouchForwardingView
+        // Point inside SWPBMTouchForwardingView
         let pointInside = touchForwardingView.point(inside: hitPoint, with: nil)
         XCTAssertTrue(pointInside)
         

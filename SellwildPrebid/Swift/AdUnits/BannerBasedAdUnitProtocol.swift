@@ -12,7 +12,7 @@ limitations under the License.
 
 import Foundation
 
-@objc(PBMBannerBasedAdUnitProtocol)
+@objc(SWPBMBannerBasedAdUnitProtocol)
 public protocol BannerBasedAdUnitProtocol {
     var bannerParameters: BannerParameters { get set }
 }

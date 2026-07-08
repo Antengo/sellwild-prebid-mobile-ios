@@ -16,10 +16,10 @@
 import Foundation
 import XCTest
 
-@testable @_spi(PBMInternal) import SellwildPrebid
+@testable @_spi(SWPBMInternal) import SellwildPrebid
 
 class AdLoadFlowControllerTest: XCTestCase {
-    private typealias CompositeMock = PBMAdLoadFlowControllerTest_CompositeMock
+    private typealias CompositeMock = SWPBMAdLoadFlowControllerTest_CompositeMock
     
     override func setUp() {
         super.setUp()
@@ -71,7 +71,7 @@ class AdLoadFlowControllerTest: XCTestCase {
             })),
             .makeBidRequester(handler: { config, mockRequester in mockRequester }),
             .bidRequester(call: (requesterOffset: 0, { completion in
-                let bidResponse = try! PBMBidResponseTransformer.transform(PBMBidResponseTransformer.someValidResponse)
+                let bidResponse = try! SWPBMBidResponseTransformer.transform(SWPBMBidResponseTransformer.someValidResponse)
                 completion(bidResponse, nil)
             })),
             .flowControllerDelegate(call: .shouldContinue(handler: { loader in
@@ -149,7 +149,7 @@ class AdLoadFlowControllerTest: XCTestCase {
             })),
             .makeBidRequester(handler: { config, mockRequester in mockRequester }),
             .bidRequester(call: (requesterOffset: 0, { completion in
-                let bidResponse = try! PBMBidResponseTransformer.transform(PBMBidResponseTransformer.someValidResponse)
+                let bidResponse = try! SWPBMBidResponseTransformer.transform(SWPBMBidResponseTransformer.someValidResponse)
                 completion(bidResponse, nil)
             })),
             .flowControllerDelegate(call: .shouldContinue(handler: { loader in
@@ -227,10 +227,10 @@ class AdLoadFlowControllerTest: XCTestCase {
             })),
             .makeBidRequester(handler: { config, mockRequester in mockRequester }),
             .bidRequester(call: (requesterOffset: 0, { completion in
-                let rawResponse = PBMBidResponseTransformer.invalidAccountIDResponse(accountID: "some id")
+                let rawResponse = SWPBMBidResponseTransformer.invalidAccountIDResponse(accountID: "some id")
                 var bidResponse: BidResponse?
                 do {
-                    bidResponse = try PBMBidResponseTransformer.transform(rawResponse)
+                    bidResponse = try SWPBMBidResponseTransformer.transform(rawResponse)
                 } catch {
                     completion(nil, error)
                     return
@@ -299,10 +299,10 @@ class AdLoadFlowControllerTest: XCTestCase {
             })),
             .makeBidRequester(handler: { config, mockRequester in mockRequester }),
             .bidRequester(call: (requesterOffset: 0, { completion in
-                let rawResponse = PBMBidResponseTransformer.invalidAccountIDResponse(accountID: "some id")
+                let rawResponse = SWPBMBidResponseTransformer.invalidAccountIDResponse(accountID: "some id")
                 var bidResponse: BidResponse?
                 do {
-                    bidResponse = try PBMBidResponseTransformer.transform(rawResponse)
+                    bidResponse = try SWPBMBidResponseTransformer.transform(rawResponse)
                 } catch {
                     fakeError = error
                     completion(nil, error)
@@ -364,7 +364,7 @@ class AdLoadFlowControllerTest: XCTestCase {
             })),
             .makeBidRequester(handler: { config, mockRequester in mockRequester }),
             .bidRequester(call: (requesterOffset: 0, { completion in
-                let bidResponse = try! PBMBidResponseTransformer.transform(PBMBidResponseTransformer.someValidResponse)
+                let bidResponse = try! SWPBMBidResponseTransformer.transform(SWPBMBidResponseTransformer.someValidResponse)
                 completion(bidResponse, nil)
             })),
             .flowControllerDelegate(call: .shouldContinue(handler: { loader in
@@ -434,7 +434,7 @@ class AdLoadFlowControllerTest: XCTestCase {
             })),
             .makeBidRequester(handler: { config, mockRequester in mockRequester }),
             .bidRequester(call: (requesterOffset: 0, { completion in
-                let bidResponse = try! PBMBidResponseTransformer.transform(PBMBidResponseTransformer.someValidResponse)
+                let bidResponse = try! SWPBMBidResponseTransformer.transform(SWPBMBidResponseTransformer.someValidResponse)
                 completion(bidResponse, nil)
             })),
             .flowControllerDelegate(call: .shouldContinue(handler: { loader in
@@ -509,10 +509,10 @@ class AdLoadFlowControllerTest: XCTestCase {
             })),
             .makeBidRequester(handler: { config, mockRequester in mockRequester }),
             .bidRequester(call: (requesterOffset: 0, { completion in
-                let rawResponse = PBMBidResponseTransformer.invalidAccountIDResponse(accountID: "some id")
+                let rawResponse = SWPBMBidResponseTransformer.invalidAccountIDResponse(accountID: "some id")
                 var bidResponse: BidResponse?
                 do {
-                    bidResponse = try PBMBidResponseTransformer.transform(rawResponse)
+                    bidResponse = try SWPBMBidResponseTransformer.transform(rawResponse)
                 } catch {
                     fakeError = error
                     completion(nil, error)
@@ -610,7 +610,7 @@ class AdLoadFlowControllerTest: XCTestCase {
             })),
             .makeBidRequester(handler: { config, mockRequester in mockRequester }),
             .bidRequester(call: (requesterOffset: 0, { completion in
-                let bidResponse = try! PBMBidResponseTransformer.transform(PBMBidResponseTransformer.someValidResponse)
+                let bidResponse = try! SWPBMBidResponseTransformer.transform(SWPBMBidResponseTransformer.someValidResponse)
                 completion(bidResponse, nil)
             })),
             .flowControllerDelegate(call: .shouldContinue(handler: { loader in
@@ -670,7 +670,7 @@ class AdLoadFlowControllerTest: XCTestCase {
             })),
             .makeBidRequester(handler: { config, mockRequester in mockRequester }),
             .bidRequester(call: (requesterOffset: 0, { completion in
-                let bidResponse = try! PBMBidResponseTransformer.transform(PBMBidResponseTransformer
+                let bidResponse = try! SWPBMBidResponseTransformer.transform(SWPBMBidResponseTransformer
                                                                             .noWinningBidResponse)
                 completion(bidResponse, nil)
             })),
@@ -694,7 +694,7 @@ class AdLoadFlowControllerTest: XCTestCase {
             }),
             .flowControllerDelegate(call: .failedWithError(handler: { (loader, error) in
                 XCTAssertIdentical(loader, flowController)
-                XCTAssertEqual(error as NSError?, PBMError.noWinningBid())
+                XCTAssertEqual(error as NSError?, SWPBMError.noWinningBid())
                 failureReported.fulfill()
             })),
         ])
@@ -734,7 +734,7 @@ class AdLoadFlowControllerTest: XCTestCase {
             .makeBidRequester(handler: { config, mockRequester in mockRequester }),
             .bidRequester(call: (requesterOffset: 0, { completion in
                 flowController.refresh()
-                let bidResponse = try! PBMBidResponseTransformer.transform(PBMBidResponseTransformer.someValidResponse)
+                let bidResponse = try! SWPBMBidResponseTransformer.transform(SWPBMBidResponseTransformer.someValidResponse)
                 completion(bidResponse, nil)
             })),
             .flowControllerDelegate(call: .shouldContinue(handler: { loader in
@@ -808,7 +808,7 @@ class AdLoadFlowControllerTest: XCTestCase {
             .makeBidRequester(handler: { config, mockRequester in mockRequester }),
             .bidRequester(call: (requesterOffset: 0, { completion in
                 flowController.refresh()
-                let bidResponse = try! PBMBidResponseTransformer.transform(PBMBidResponseTransformer.someValidResponse)
+                let bidResponse = try! SWPBMBidResponseTransformer.transform(SWPBMBidResponseTransformer.someValidResponse)
                 completion(bidResponse, nil)
             })),
             .flowControllerDelegate(call: .shouldContinue(handler: { loader in

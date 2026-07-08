@@ -17,8 +17,8 @@
 import Foundation
 import UIKit
 
-@objc(PBMBannerAdLoader)
-@_spi(PBMInternal) public
+@objc(SWPBMBannerAdLoader)
+@_spi(SWPBMInternal) public
 class BannerAdLoader: NSObject, AdLoaderProtocol, DisplayViewLoadingDelegate, BannerEventLoadingDelegate {
 
     
@@ -35,7 +35,7 @@ class BannerAdLoader: NSObject, AdLoaderProtocol, DisplayViewLoadingDelegate, Ba
     }
         
 
-    // MARK: - PBMAdLoaderProtocol
+    // MARK: - SWPBMAdLoaderProtocol
 
     public var primaryAdRequester: PrimaryAdRequesterProtocol? {
         guard let eventHandler = delegate?.eventHandler else {

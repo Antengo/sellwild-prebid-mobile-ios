@@ -172,9 +172,9 @@ public class MediationNativeAdUnit : NSObject {
             var fetchDemandResult = ResultCode.prebidWrongArguments
             
             let adObjectSetupDictionary: [String: Any] = [
-                PBMMediationConfigIdKey: self.configID,
-                PBMMediationTargetingInfoKey: kvResultDict,
-                PBMMediationAdNativeResponseKey: fetchDemandInfo
+                SWPBMMediationConfigIdKey: self.configID,
+                SWPBMMediationTargetingInfoKey: kvResultDict,
+                SWPBMMediationAdNativeResponseKey: fetchDemandInfo
             ]
         
             if self.mediationDelegate.setUpAdObject(with: adObjectSetupDictionary) {

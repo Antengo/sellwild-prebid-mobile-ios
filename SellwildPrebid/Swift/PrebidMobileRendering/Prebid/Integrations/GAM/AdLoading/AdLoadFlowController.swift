@@ -16,12 +16,12 @@
 
 import Foundation
 
-@_spi(PBMInternal) public
+@_spi(SWPBMInternal) public
 typealias AdUnitConfigValidationBlock = (_ adUnitConfig: AdUnitConfig, _ renderWithPrebid: Bool) -> Bool
 
-@objc(PBMAdLoadFlowController)
+@objc(SWPBMAdLoadFlowController)
 @objcMembers
-@_spi(PBMInternal) public class AdLoadFlowController: NSObject, AdLoaderFlowDelegate {
+@_spi(SWPBMInternal) public class AdLoadFlowController: NSObject, AdLoaderFlowDelegate {
 
     // MARK: - Properties
 
@@ -56,7 +56,7 @@ typealias AdUnitConfigValidationBlock = (_ adUnitConfig: AdUnitConfig, _ renderW
         self.delegate = delegate
         self.configValidationBlock = configValidationBlock
 
-        let queueName = "PBMAdLoadFlowController_\(UUID().uuidString)"
+        let queueName = "SWPBMAdLoadFlowController_\(UUID().uuidString)"
         self.dispatchQueue = DispatchQueue(label: queueName)
         super.init()
     }
@@ -67,7 +67,7 @@ typealias AdUnitConfigValidationBlock = (_ adUnitConfig: AdUnitConfig, _ renderW
         flowState == .loadingFailed
     }
 
-    // MARK: - PBMAdLoaderFlowDelegate
+    // MARK: - SWPBMAdLoaderFlowDelegate
 
     public func adLoader(_ adLoader: AdLoaderProtocol, loadedPrimaryAd adObject: AnyObject, adSize: NSValue?) {
         enqueueGatedBlock { [weak self] in
@@ -155,7 +155,7 @@ typealias AdUnitConfigValidationBlock = (_ adUnitConfig: AdUnitConfig, _ renderW
 
     private func tryLaunchingAdRequestFlow() {
         guard configValidationBlock(savedAdUnitConfig, false) else {
-            let error = PBMError.error(message: "AdUnitConfig is not valid.", type: .internalError)
+            let error = SWPBMError.error(message: "AdUnitConfig is not valid.", type: .internalError)
             reportLoadingFailedWithError(error)
             return
         }
@@ -200,14 +200,14 @@ typealias AdUnitConfigValidationBlock = (_ adUnitConfig: AdUnitConfig, _ renderW
         }
 
         guard configValidationBlock(savedAdUnitConfig, true) else {
-            let error = PBMError.error(message: "AdUnitConfig is not valid.",
+            let error = SWPBMError.error(message: "AdUnitConfig is not valid.",
                                        type: .internalError)
             reportLoadingFailedWithError(error)
             return
         }
 
         guard let bid = bidResponse?.winningBid else {
-            reportLoadingFailedWithError(PBMError.noWinningBid())
+            reportLoadingFailedWithError(SWPBMError.noWinningBid())
             return
         }
 

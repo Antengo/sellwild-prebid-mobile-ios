@@ -53,7 +53,7 @@ public class GAMInterstitialEventHandler :
         self.adUnitID = adUnitID
     }
     
-    // MARK: - PBMInterstitialAd
+    // MARK: - SWPBMInterstitialAd
     
     public weak var loadingDelegate: InterstitialEventLoadingDelegate?
     

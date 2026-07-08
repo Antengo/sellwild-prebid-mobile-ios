@@ -17,7 +17,7 @@ import Foundation
 import StoreKit
 
 @available(iOS 14.5, *)
-@objc(PBMSkadnEventTracker) @objcMembers
+@objc(SWPBMSkadnEventTracker) @objcMembers
 public class SkadnEventTracker: NSObject, EventTrackerProtocol {
     
     let imp: SKAdImpression

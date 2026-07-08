@@ -17,10 +17,10 @@ import Foundation
 import UIKit
 import SellwildPrebid
 
-public let MockMediationAdUnitBidKey           = "PBM_BID"
-public let MockMediationConfigIdKey            = "PBM_CONFIG_ID"
-public let MockMediationAdNativeResponseKey    = "PBM_NATIVE_RESPONSE"
-public let MockMediationTargetingInfoKey       = "PBM_TARGETING_INFO"
+public let MockMediationAdUnitBidKey           = "SWPBM_BID"
+public let MockMediationConfigIdKey            = "SWPBM_CONFIG_ID"
+public let MockMediationAdNativeResponseKey    = "SWPBM_NATIVE_RESPONSE"
+public let MockMediationTargetingInfoKey       = "SWPBM_TARGETING_INFO"
 
 fileprivate let keywordsSeparator              = ","
 fileprivate let HBKeywordPrefix                = "hb_"

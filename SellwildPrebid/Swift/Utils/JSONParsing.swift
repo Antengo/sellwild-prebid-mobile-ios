@@ -59,7 +59,7 @@ struct JSONObject<Key: RawRepresentable> where Key.RawValue == String {
         }
     }
     
-    subscript<T: PBMJsonCodable>(_ key: Key) -> T? {
+    subscript<T: SWPBMJsonCodable>(_ key: Key) -> T? {
         get {
             (dict[key.rawValue] as? [String : Any]).flatMap { CustomModelObjects.instantiate(json: $0) }
         }
@@ -82,7 +82,7 @@ struct JSONObject<Key: RawRepresentable> where Key.RawValue == String {
         }
     }
     
-    subscript<T: PBMJsonCodable>(_ key: Key) -> [T]? {
+    subscript<T: SWPBMJsonCodable>(_ key: Key) -> [T]? {
         get {
             (dict[key.rawValue] as? [Any])?.compactMap {
                 ($0 as? [String : Any]).flatMap { CustomModelObjects.instantiate(json: $0) }

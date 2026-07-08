@@ -55,7 +55,7 @@ NSString * const gamAdUnitDisplayInterstitialOriginal = @"/21808260008/prebid-de
             if (!self) { return; }
            
             if (error != nil) {
-                PBMLogError(@"%@", error.localizedDescription);
+                SWPBMLogError(@"%@", error.localizedDescription);
             } else if (interstitialAd != nil) {
                 // 4. Present the interstitial ad
                 interstitialAd.fullScreenContentDelegate = self;
@@ -68,7 +68,7 @@ NSString * const gamAdUnitDisplayInterstitialOriginal = @"/21808260008/prebid-de
 // MARK: - GADFullScreenContentDelegate
 
 - (void)ad:(id<GADFullScreenPresentingAd>)ad didFailToPresentFullScreenContentWithError:(NSError *)error {
-    PBMLogError(@"%@", error.localizedDescription);
+    SWPBMLogError(@"%@", error.localizedDescription);
 }
 
 @end

@@ -39,9 +39,9 @@ class InterstitialVideoAds: BaseAdsTest {
             XCTAssert(app.webViews.element.waitForExistence(timeout: 30),assertFailedMessage(testCase: testCase, reason: "Video is not displayed"))
             XCTAssert(app.buttons["Close Advertisement"].waitForExistence(timeout: 15),assertFailedMessage(testCase: testCase, reason: "Close Button is not displayed"))
         } else {
-            XCTAssert(app.otherElements["PBMVideoView"].waitForExistence(timeout: 20),assertFailedMessage(testCase: testCase, reason: "Video is not displayed"))
+            XCTAssert(app.otherElements["SWPBMVideoView"].waitForExistence(timeout: 20),assertFailedMessage(testCase: testCase, reason: "Video is not displayed"))
             XCTAssert(app.buttons["Learn More"].waitForExistence(timeout: 10),assertFailedMessage(testCase: testCase, reason: "Learn more button is not displayed"))
-            XCTAssert(app.buttons["PBMCloseButton"].waitForExistence(timeout: 15),assertFailedMessage(testCase: testCase, reason: "Video close button is not displayed"))
+            XCTAssert(app.buttons["SWPBMCloseButton"].waitForExistence(timeout: 15),assertFailedMessage(testCase: testCase, reason: "Video close button is not displayed"))
         }
     }
 }

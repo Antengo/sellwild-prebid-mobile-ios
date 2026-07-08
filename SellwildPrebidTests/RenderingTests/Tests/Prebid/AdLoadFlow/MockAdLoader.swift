@@ -16,7 +16,7 @@
 import Foundation
 import XCTest
 
-@testable @_spi(PBMInternal) import SellwildPrebid
+@testable @_spi(SWPBMInternal) import SellwildPrebid
 
 class MockAdLoader: NSObject, AdLoaderProtocol {
     enum ExpectedCall {
@@ -40,7 +40,7 @@ class MockAdLoader: NSObject, AdLoaderProtocol {
         self.line = line
     }
     
-    // MARK: - PBMAdLoaderProtocol
+    // MARK: - SWPBMAdLoaderProtocol
     
     var flowDelegate: AdLoaderFlowDelegate? {
         get {

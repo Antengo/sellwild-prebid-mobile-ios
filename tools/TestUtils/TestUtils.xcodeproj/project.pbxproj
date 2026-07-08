@@ -20,13 +20,13 @@
 		FAC8538326494647009DC0F3 /* responseinvalidSize.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC8536826494646009DC0F3 /* responseinvalidSize.json */; };
 		FAC8538426494647009DC0F3 /* noBidResponseTmaxTooLarge.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC8536926494646009DC0F3 /* noBidResponseTmaxTooLarge.json */; };
 		FAC8538526494647009DC0F3 /* noBidResponseAppNexus.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC8536A26494646009DC0F3 /* noBidResponseAppNexus.json */; };
-		FAC8538626494647009DC0F3 /* requestPBM.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC8536B26494646009DC0F3 /* requestPBM.json */; };
+		FAC8538626494647009DC0F3 /* requestSWPBM.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC8536B26494646009DC0F3 /* requestSWPBM.json */; };
 		FAC8538726494647009DC0F3 /* responseInvalidAccountId.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC8536C26494646009DC0F3 /* responseInvalidAccountId.json */; };
 		FAC8538826494647009DC0F3 /* responseInvalidResponseWithoutCacheId.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC8536D26494646009DC0F3 /* responseInvalidResponseWithoutCacheId.json */; };
 		FAC8538926494647009DC0F3 /* responseValidTwoBidsOnTheSameSeat.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC8536E26494646009DC0F3 /* responseValidTwoBidsOnTheSameSeat.json */; };
 		FAC8538A26494647009DC0F3 /* PrebidServerOneBidFromAppNexusOneBidFromRubicon.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC8536F26494646009DC0F3 /* PrebidServerOneBidFromAppNexusOneBidFromRubicon.json */; };
-		FAC8538B26494647009DC0F3 /* responseAppNexusPBM.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC8537026494646009DC0F3 /* responseAppNexusPBM.json */; };
-		FAC8538C26494647009DC0F3 /* responseRubiconPBM.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC8537126494646009DC0F3 /* responseRubiconPBM.json */; };
+		FAC8538B26494647009DC0F3 /* responseAppNexusSWPBM.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC8537026494646009DC0F3 /* responseAppNexusSWPBM.json */; };
+		FAC8538C26494647009DC0F3 /* responseRubiconSWPBM.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC8537126494646009DC0F3 /* responseRubiconSWPBM.json */; };
 		FAC8538D26494647009DC0F3 /* PrebidServerValidResponseAppNexusNoCacheIdAndRunbiconHasCacheId.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC8537226494646009DC0F3 /* PrebidServerValidResponseAppNexusNoCacheIdAndRunbiconHasCacheId.json */; };
 		FAC8538E26494647009DC0F3 /* responseInvalidConfigId.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC8537326494646009DC0F3 /* responseInvalidConfigId.json */; };
 		FAC8538F26494647009DC0F3 /* NativeAdResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = FAC8537426494646009DC0F3 /* NativeAdResponse.json */; };
@@ -74,13 +74,13 @@
 		FAC8536826494646009DC0F3 /* responseinvalidSize.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseinvalidSize.json; sourceTree = "<group>"; };
 		FAC8536926494646009DC0F3 /* noBidResponseTmaxTooLarge.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = noBidResponseTmaxTooLarge.json; sourceTree = "<group>"; };
 		FAC8536A26494646009DC0F3 /* noBidResponseAppNexus.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = noBidResponseAppNexus.json; sourceTree = "<group>"; };
-		FAC8536B26494646009DC0F3 /* requestPBM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = requestPBM.json; sourceTree = "<group>"; };
+		FAC8536B26494646009DC0F3 /* requestSWPBM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = requestSWPBM.json; sourceTree = "<group>"; };
 		FAC8536C26494646009DC0F3 /* responseInvalidAccountId.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseInvalidAccountId.json; sourceTree = "<group>"; };
 		FAC8536D26494646009DC0F3 /* responseInvalidResponseWithoutCacheId.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseInvalidResponseWithoutCacheId.json; sourceTree = "<group>"; };
 		FAC8536E26494646009DC0F3 /* responseValidTwoBidsOnTheSameSeat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseValidTwoBidsOnTheSameSeat.json; sourceTree = "<group>"; };
 		FAC8536F26494646009DC0F3 /* PrebidServerOneBidFromAppNexusOneBidFromRubicon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PrebidServerOneBidFromAppNexusOneBidFromRubicon.json; sourceTree = "<group>"; };
-		FAC8537026494646009DC0F3 /* responseAppNexusPBM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseAppNexusPBM.json; sourceTree = "<group>"; };
-		FAC8537126494646009DC0F3 /* responseRubiconPBM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseRubiconPBM.json; sourceTree = "<group>"; };
+		FAC8537026494646009DC0F3 /* responseAppNexusSWPBM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseAppNexusSWPBM.json; sourceTree = "<group>"; };
+		FAC8537126494646009DC0F3 /* responseRubiconSWPBM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseRubiconSWPBM.json; sourceTree = "<group>"; };
 		FAC8537226494646009DC0F3 /* PrebidServerValidResponseAppNexusNoCacheIdAndRunbiconHasCacheId.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PrebidServerValidResponseAppNexusNoCacheIdAndRunbiconHasCacheId.json; sourceTree = "<group>"; };
 		FAC8537326494646009DC0F3 /* responseInvalidConfigId.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = responseInvalidConfigId.json; sourceTree = "<group>"; };
 		FAC8537426494646009DC0F3 /* NativeAdResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NativeAdResponse.json; sourceTree = "<group>"; };
@@ -167,13 +167,13 @@
 				FAC8536826494646009DC0F3 /* responseinvalidSize.json */,
 				FAC8536926494646009DC0F3 /* noBidResponseTmaxTooLarge.json */,
 				FAC8536A26494646009DC0F3 /* noBidResponseAppNexus.json */,
-				FAC8536B26494646009DC0F3 /* requestPBM.json */,
+				FAC8536B26494646009DC0F3 /* requestSWPBM.json */,
 				FAC8536C26494646009DC0F3 /* responseInvalidAccountId.json */,
 				FAC8536D26494646009DC0F3 /* responseInvalidResponseWithoutCacheId.json */,
 				FAC8536E26494646009DC0F3 /* responseValidTwoBidsOnTheSameSeat.json */,
 				FAC8536F26494646009DC0F3 /* PrebidServerOneBidFromAppNexusOneBidFromRubicon.json */,
-				FAC8537026494646009DC0F3 /* responseAppNexusPBM.json */,
-				FAC8537126494646009DC0F3 /* responseRubiconPBM.json */,
+				FAC8537026494646009DC0F3 /* responseAppNexusSWPBM.json */,
+				FAC8537126494646009DC0F3 /* responseRubiconSWPBM.json */,
 				FAC8537226494646009DC0F3 /* PrebidServerValidResponseAppNexusNoCacheIdAndRunbiconHasCacheId.json */,
 				FAC8537326494646009DC0F3 /* responseInvalidConfigId.json */,
 				FAC8537426494646009DC0F3 /* NativeAdResponse.json */,
@@ -282,7 +282,7 @@
 				FAC8538D26494647009DC0F3 /* PrebidServerValidResponseAppNexusNoCacheIdAndRunbiconHasCacheId.json in Resources */,
 				FAC8539026494647009DC0F3 /* noBidResponseRubicon.json in Resources */,
 				FAC8538A26494647009DC0F3 /* PrebidServerOneBidFromAppNexusOneBidFromRubicon.json in Resources */,
-				FAC8538B26494647009DC0F3 /* responseAppNexusPBM.json in Resources */,
+				FAC8538B26494647009DC0F3 /* responseAppNexusSWPBM.json in Resources */,
 				FAC8539226494647009DC0F3 /* responseIncorrectFormat.json in Resources */,
 				FAC8538526494647009DC0F3 /* noBidResponseAppNexus.json in Resources */,
 				FAC8538426494647009DC0F3 /* noBidResponseTmaxTooLarge.json in Resources */,
@@ -292,11 +292,11 @@
 				FAC8538726494647009DC0F3 /* responseInvalidAccountId.json in Resources */,
 				FAC8538926494647009DC0F3 /* responseValidTwoBidsOnTheSameSeat.json in Resources */,
 				FAC8539126494647009DC0F3 /* NativeAd.json in Resources */,
-				FAC8538C26494647009DC0F3 /* responseRubiconPBM.json in Resources */,
+				FAC8538C26494647009DC0F3 /* responseRubiconSWPBM.json in Resources */,
 				FAC8538E26494647009DC0F3 /* responseInvalidConfigId.json in Resources */,
 				FAC8538326494647009DC0F3 /* responseinvalidSize.json in Resources */,
 				FAC8538F26494647009DC0F3 /* NativeAdResponse.json in Resources */,
-				FAC8538626494647009DC0F3 /* requestPBM.json in Resources */,
+				FAC8538626494647009DC0F3 /* requestSWPBM.json in Resources */,
 				FAC8539326494647009DC0F3 /* noBidResponseNoTmax.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

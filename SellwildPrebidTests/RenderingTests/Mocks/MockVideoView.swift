@@ -16,7 +16,7 @@
 import Foundation
 @testable import SellwildPrebid
 
-class MockVideoView: PBMVideoView {
+class MockVideoView: SWPBMVideoView {
     
     var mockRequiredVideoDuration: CGFloat = 10
     

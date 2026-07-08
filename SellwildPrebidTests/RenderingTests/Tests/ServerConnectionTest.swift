@@ -63,7 +63,7 @@ class ServerConnectionTest : XCTestCase {
             XCTAssertEqual(urlRequest.url?.absoluteString, "http://foo.com/bo?param_key=abc123")
             XCTAssertEqual(urlRequest.allHTTPHeaderFields!, [
                 PrebidServerConnection.userAgentHeaderKey  : MockUserAgentService.mockUserAgent,
-                PrebidServerConnection.isPBMRequestKey     : "True",
+                PrebidServerConnection.isSWPBMRequestKey     : "True",
                 PrebidServerConnection.internalIDKey       : connection.internalID.uuidString
                 ])
             
@@ -115,7 +115,7 @@ class ServerConnectionTest : XCTestCase {
             let expectedRequestHeaders = [
                 PrebidServerConnection.userAgentHeaderKey  : MockUserAgentService.mockUserAgent,
                 PrebidServerConnection.contentTypeKey      : PrebidServerConnection.contentTypeVal,
-                PrebidServerConnection.isPBMRequestKey     : "True",
+                PrebidServerConnection.isSWPBMRequestKey     : "True",
                 PrebidServerConnection.internalIDKey       : connection.internalID.uuidString
             ]
             
@@ -148,7 +148,7 @@ class ServerConnectionTest : XCTestCase {
                 return
             }
             
-            PBMAssertEq(comparableJsonDict, self.expectedJSONDict)
+            SWPBMAssertEq(comparableJsonDict, self.expectedJSONDict)
             self.responseHandledExpectation.fulfill()
         })
         
@@ -185,7 +185,7 @@ class ServerConnectionTest : XCTestCase {
             let expectedRequestHeaders = [
                 PrebidServerConnection.userAgentHeaderKey  : MockUserAgentService.mockUserAgent,
                 PrebidServerConnection.contentTypeKey      : PrebidServerConnection.contentTypeVal,
-                PrebidServerConnection.isPBMRequestKey     : "True",
+                PrebidServerConnection.isSWPBMRequestKey     : "True",
                 PrebidServerConnection.internalIDKey       : connection.internalID.uuidString
             ]
             
@@ -248,7 +248,7 @@ class ServerConnectionTest : XCTestCase {
             let expectedRequestHeaders = [
                 PrebidServerConnection.userAgentHeaderKey  : MockUserAgentService.mockUserAgent,
                 PrebidServerConnection.contentTypeKey      : PrebidServerConnection.contentTypeVal,
-                PrebidServerConnection.isPBMRequestKey     :  "True",
+                PrebidServerConnection.isSWPBMRequestKey     :  "True",
                 PrebidServerConnection.internalIDKey       : connection.internalID.uuidString,
                 "Content-Length"                     : "\(self.strPostData.count)",
             ]
@@ -279,7 +279,7 @@ class ServerConnectionTest : XCTestCase {
                 return
             }
             
-            PBMAssertEq(comparableJsonDict, self.expectedJSONDict)
+            SWPBMAssertEq(comparableJsonDict, self.expectedJSONDict)
             self.responseHandledExpectation.fulfill()
         })
         
@@ -322,7 +322,7 @@ class ServerConnectionTest : XCTestCase {
             var expectedRequestHeaders = [
                 PrebidServerConnection.userAgentHeaderKey  : MockUserAgentService.mockUserAgent,
                 PrebidServerConnection.contentTypeKey      : PrebidServerConnection.contentTypeVal,
-                PrebidServerConnection.isPBMRequestKey     : "True",
+                PrebidServerConnection.isSWPBMRequestKey     : "True",
                 PrebidServerConnection.internalIDKey       : connection.internalID.uuidString
             ]
             
@@ -357,7 +357,7 @@ class ServerConnectionTest : XCTestCase {
                 return
             }
             
-            PBMAssertEq(comparableJsonDict, self.expectedJSONDict)
+            SWPBMAssertEq(comparableJsonDict, self.expectedJSONDict)
             self.responseHandledExpectation.fulfill()
         })
         
@@ -443,7 +443,7 @@ class ServerConnectionTestJSON : XCTestCase {
                 XCTFail("Invalid JSON should generate an error")
                 return
             }
-            XCTAssertTrue(error.localizedDescription.PBMdoesMatch("JSON Parsing Error:"))
+            XCTAssertTrue(error.localizedDescription.SWPBMdoesMatch("JSON Parsing Error:"))
             XCTAssertNil(serverResponse.jsonDict)
 
             self.callbackCalledExpectation.fulfill()
@@ -632,26 +632,26 @@ class ServerConnectionTest_Redirect: XCTestCase {
         ]
         
         firstRule.mockServerReceivedRequestHandler = { (urlRequest:URLRequest) in
-            PBMAssertEq(urlRequest.url?.absoluteString, firstURL)
-            PBMAssertEq(urlRequest.httpMethod, "GET")
-            PBMAssertEq(urlRequest.httpBody, nil)
+            SWPBMAssertEq(urlRequest.url?.absoluteString, firstURL)
+            SWPBMAssertEq(urlRequest.httpMethod, "GET")
+            SWPBMAssertEq(urlRequest.httpBody, nil)
             
             let expectedRequestHeaders = [
                 PrebidServerConnection.userAgentHeaderKey  : MockUserAgentService.mockUserAgent,
                 PrebidServerConnection.contentTypeKey      : PrebidServerConnection.contentTypeVal,
-                PrebidServerConnection.isPBMRequestKey     : "True",
+                PrebidServerConnection.isSWPBMRequestKey     : "True",
                 PrebidServerConnection.internalIDKey       : connection.internalID.uuidString
             ]
-            PBMAssertEq(expectedRequestHeaders, urlRequest.allHTTPHeaderFields)
+            SWPBMAssertEq(expectedRequestHeaders, urlRequest.allHTTPHeaderFields)
             expectationFirstRuleHandled.fulfill()
         }
         
         let secondRule = MockServerRule(urlNeedle: secondURL, mimeType:  MockServerMimeType.JSON.rawValue, connectionID: connection.internalID, strResponse: strResponse)
         secondRule.mockServerReceivedRequestHandler = { (urlRequest:URLRequest) in
-            PBMAssertEq(urlRequest.url?.absoluteString, secondURL)
-            PBMAssertEq(urlRequest.httpMethod, "GET")
-            PBMAssertEq(urlRequest.httpBody, nil)
-            PBMAssertEq(urlRequest.allHTTPHeaderFields, [
+            SWPBMAssertEq(urlRequest.url?.absoluteString, secondURL)
+            SWPBMAssertEq(urlRequest.httpMethod, "GET")
+            SWPBMAssertEq(urlRequest.httpBody, nil)
+            SWPBMAssertEq(urlRequest.allHTTPHeaderFields, [
                 "foo":"bar",
                 PrebidServerConnection.internalIDKey : connection.internalID.uuidString
                 ])
@@ -664,21 +664,21 @@ class ServerConnectionTest_Redirect: XCTestCase {
         connection.get(firstURL, timeout:3.0, callback:{ (serverResponse: PrebidServerResponse) in
             
             //The result should be that the 302 is handled internally and we get back a 200.
-            PBMAssertEq(serverResponse.statusCode, 200)
+            SWPBMAssertEq(serverResponse.statusCode, 200)
             
             guard let jsonDict = serverResponse.jsonDict as? [String:String] else {
                 XCTFail("Unable to cast serverResponse.jsonDict! Value was \(String(describing: serverResponse.jsonDict))")
                 return
             }
-            PBMAssertEq(jsonDict, expectedJSONDict)
+            SWPBMAssertEq(jsonDict, expectedJSONDict)
             
-            PBMAssertEq(serverResponse.error as NSError?, nil)
+            SWPBMAssertEq(serverResponse.error as NSError?, nil)
             
             let expectedResponseHeaders = [
                 "Content-Type":"application/json",
                 "Content-Length":"\(strResponse.count)"
             ]
-            PBMAssertEq(serverResponse.responseHeaders, expectedResponseHeaders)
+            SWPBMAssertEq(serverResponse.responseHeaders, expectedResponseHeaders)
             
             expectationResponseHandled.fulfill()
         })

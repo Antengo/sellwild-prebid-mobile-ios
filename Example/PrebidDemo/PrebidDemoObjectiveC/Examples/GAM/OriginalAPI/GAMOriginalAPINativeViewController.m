@@ -93,7 +93,7 @@ NSString * const gamNativeAdUnitId = @"/21808260008/apollo_custom_template_nativ
 // MARK: GADAdLoaderDelegate
 
 - (void)adLoader:(GADAdLoader *)adLoader didFailToReceiveAdWithError:(NSError *)error {
-    PBMLogError(@"%@", error.localizedDescription)
+    SWPBMLogError(@"%@", error.localizedDescription)
 }
 
 // MARK: - NativeAdDelegate
@@ -121,11 +121,11 @@ NSString * const gamNativeAdUnitId = @"/21808260008/apollo_custom_template_nativ
 }
 
 - (void)nativeAdNotFound {
-    PBMLogError(@"Native ad not found.");
+    SWPBMLogError(@"Native ad not found.");
 }
 
 - (void)nativeAdNotValid {
-    PBMLogError(@"Native ad not valid.");
+    SWPBMLogError(@"Native ad not valid.");
 }
 
 @end

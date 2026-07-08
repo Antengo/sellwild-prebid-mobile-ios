@@ -40,13 +40,13 @@ class MediationInterstitialAdUnitTest: XCTestCase {
         let adUnitConfig = adUnit.adUnitConfig
         
         XCTAssertTrue(adUnitConfig.adConfiguration.isInterstitialAd)
-        PBMAssertEq(adUnitConfig.adPosition, .fullScreen)
+        SWPBMAssertEq(adUnitConfig.adPosition, .fullScreen)
     }
     
     func testAdObjectSetUpCleanUp() {
         //a good response with a bid
         let connection = MockServerConnection(onPost: [{ (url, data, timeout, callback) in
-            callback(PBMBidResponseTransformer.someValidResponse)
+            callback(SWPBMBidResponseTransformer.someValidResponse)
         }])
         let initialKeywords = "key1,key2"
         
@@ -79,7 +79,7 @@ class MediationInterstitialAdUnitTest: XCTestCase {
         //a bad response with the same ad object without bids
         
         let noBidConnection = MockServerConnection(onPost: [{ (url, data, timeout, callback) in
-            callback(PBMBidResponseTransformer.serverErrorResponse)
+            callback(SWPBMBidResponseTransformer.serverErrorResponse)
         }])
         
         let asyncExpectation2 = expectation(description: "fetchDemand executed")

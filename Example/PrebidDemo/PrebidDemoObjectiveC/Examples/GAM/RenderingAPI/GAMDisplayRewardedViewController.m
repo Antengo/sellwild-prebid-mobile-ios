@@ -55,7 +55,7 @@ NSString * const gamAdUnitDisplayRewardedRendering = @"/21808260008/prebid_oxb_r
 }
 
 - (void)rewardedAd:(RewardedAdUnit *)rewardedAd didFailToReceiveAdWithError:(NSError *)error {
-    PBMLogError(@"%@", error.localizedDescription);
+    SWPBMLogError(@"%@", error.localizedDescription);
 }
 
 - (void)rewardedAdUserDidEarnReward:(RewardedAdUnit *)rewardedAd reward:(PrebidReward *)reward {

@@ -15,7 +15,7 @@ limitations under the License.
 
 #import <XCTest/XCTest.h>
 #import <CoreLocation/CoreLocation.h>
-#import "SwiftImport.h"
+#import "SWSwiftImport.h"
 
 @interface TargetingObjCTests : XCTestCase
 

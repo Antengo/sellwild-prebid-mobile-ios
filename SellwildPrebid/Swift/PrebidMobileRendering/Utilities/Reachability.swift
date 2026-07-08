@@ -16,9 +16,9 @@
 import Foundation
 import SystemConfiguration
 
-public typealias PBMNetworkReachableBlock = (Reachability?) -> Void
+public typealias SWPBMNetworkReachableBlock = (Reachability?) -> Void
 
-@objc(PBMReachability) @objcMembers
+@objc(SWPBMReachability) @objcMembers
 public class Reachability: NSObject {
     
     // MARK: - Public properties
@@ -55,7 +55,7 @@ public class Reachability: NSObject {
     // MARK: - Private properties
     
     private var reachabilityRef: SCNetworkReachability?
-    private var reachableBlock: PBMNetworkReachableBlock?
+    private var reachableBlock: SWPBMNetworkReachableBlock?
     
     private override init() {
         super.init()
@@ -82,7 +82,7 @@ public class Reachability: NSObject {
      * Starts monitoring of the network status.
      * Calls the reachableBlock when network is restored
      */
-    public func onNetworkRestored(_ reachableBlock: @escaping PBMNetworkReachableBlock) {
+    public func onNetworkRestored(_ reachableBlock: @escaping SWPBMNetworkReachableBlock) {
         self.reachableBlock = reachableBlock
         guard let reachabilityRef = self.reachabilityRef else {
             return

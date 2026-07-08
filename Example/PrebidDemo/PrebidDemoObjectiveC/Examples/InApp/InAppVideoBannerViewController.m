@@ -57,7 +57,7 @@ NSString * const storedImpVideoBannerInApp = @"prebid-demo-video-outstream";
 }
 
 - (void)bannerView:(BannerView *)bannerView didFailToReceiveAdWith:(NSError *)error {
-    PBMLogError(@"%@", error.localizedDescription);
+    SWPBMLogError(@"%@", error.localizedDescription);
 }
 
 @end

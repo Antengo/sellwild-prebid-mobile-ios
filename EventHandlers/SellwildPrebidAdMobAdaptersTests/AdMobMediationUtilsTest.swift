@@ -33,9 +33,9 @@ class AdMobMediationUtilsTest: XCTestCase {
         )
         
         let mediationValues: [String: Any] = [
-            PBMMediationConfigIdKey: "testConfigId",
-            PBMMediationTargetingInfoKey: ["test":"test"],
-            PBMMediationAdUnitBidKey: "testExtrasObjectKey"
+            SWPBMMediationConfigIdKey: "testConfigId",
+            SWPBMMediationTargetingInfoKey: ["test":"test"],
+            SWPBMMediationAdUnitBidKey: "testExtrasObjectKey"
         ]
         
         guard mediationDelegate.setUpAdObject(with: mediationValues) else {
@@ -60,9 +60,9 @@ class AdMobMediationUtilsTest: XCTestCase {
         
         let mediationDelegate = AdMobMediationInterstitialUtils(gadRequest: gadRequest)
         let mediationValues: [String: Any] = [
-            PBMMediationConfigIdKey: "testConfigId",
-            PBMMediationTargetingInfoKey: ["test":"test"],
-            PBMMediationAdUnitBidKey: "testExtrasObjectKey"
+            SWPBMMediationConfigIdKey: "testConfigId",
+            SWPBMMediationTargetingInfoKey: ["test":"test"],
+            SWPBMMediationAdUnitBidKey: "testExtrasObjectKey"
         ]
         
         guard mediationDelegate.setUpAdObject(with: mediationValues) else {
@@ -86,9 +86,9 @@ class AdMobMediationUtilsTest: XCTestCase {
         gadRequest.keywords = testInitialKeywords
         let mediationDelegate = AdMobMediationRewardedUtils(gadRequest: gadRequest)
         let mediationValues: [String: Any] = [
-            PBMMediationConfigIdKey: "testConfigId",
-            PBMMediationTargetingInfoKey: ["test":"test"],
-            PBMMediationAdUnitBidKey: "testExtrasObjectKey"
+            SWPBMMediationConfigIdKey: "testConfigId",
+            SWPBMMediationTargetingInfoKey: ["test":"test"],
+            SWPBMMediationAdUnitBidKey: "testExtrasObjectKey"
         ]
         
         guard mediationDelegate.setUpAdObject(with: mediationValues) else {
@@ -112,9 +112,9 @@ class AdMobMediationUtilsTest: XCTestCase {
         gadRequest.keywords = testInitialKeywords
         let mediationDelegate = AdMobMediationNativeUtils(gadRequest: gadRequest)
         let mediationValues: [String: Any] = [
-            PBMMediationConfigIdKey: "testConfigId",
-            PBMMediationTargetingInfoKey: ["test": "test"],
-            PBMMediationAdNativeResponseKey: "testExtrasObjectKey"
+            SWPBMMediationConfigIdKey: "testConfigId",
+            SWPBMMediationTargetingInfoKey: ["test": "test"],
+            SWPBMMediationAdNativeResponseKey: "testExtrasObjectKey"
         ]
         
         guard mediationDelegate.setUpAdObject(with: mediationValues) else {

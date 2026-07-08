@@ -47,7 +47,7 @@ final class PrebidMobileXSDKConfigurationController : FormViewController {
                     row.cell.textField.accessibilityIdentifier = "creativeFactoryTimeoutTextField"
                 }
                 .onChange { row in
-                    self.sdkConfig.creativeFactoryTimeout = row.value.pbm_toTimeInterval()
+                    self.sdkConfig.creativeFactoryTimeout = row.value.swpbm_toTimeInterval()
             }
             <<< TextRow() {row in
                     row.title = "Pre Render Content"
@@ -55,7 +55,7 @@ final class PrebidMobileXSDKConfigurationController : FormViewController {
                     row.cell.textField.accessibilityIdentifier = "creativeFactoryTimeoutPreRenderContentTextField"
                 }
                 .onChange { row in
-                    self.sdkConfig.creativeFactoryTimeoutPreRenderContent = row.value.pbm_toTimeInterval()
+                    self.sdkConfig.creativeFactoryTimeoutPreRenderContent = row.value.swpbm_toTimeInterval()
             }
     }
     

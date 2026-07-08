@@ -37,15 +37,15 @@ class UserAgentServiceTest: XCTestCase {
         userAgentService.fetchUserAgent { [weak self] userAgentString in
             XCTAssert(userAgentService.userAgent == userAgentString)
             
-            XCTAssert(userAgentString.PBMdoesMatch("^Mozilla"))
+            XCTAssert(userAgentString.SWPBMdoesMatch("^Mozilla"))
             
             if UIDevice.current.userInterfaceIdiom == .pad {
-                XCTAssert(userAgentString.PBMdoesMatch("iPad"))
+                XCTAssert(userAgentString.SWPBMdoesMatch("iPad"))
             } else if UIDevice.current.userInterfaceIdiom == .phone {
-                XCTAssert(userAgentString.PBMdoesMatch("iPhone"))
+                XCTAssert(userAgentString.SWPBMdoesMatch("iPhone"))
             }
             
-            XCTAssert(userAgentString.PBMdoesMatch("AppleWebKit"))
+            XCTAssert(userAgentString.SWPBMdoesMatch("AppleWebKit"))
             
             self?.expectationUserAgentExecuted?.fulfill()
         }

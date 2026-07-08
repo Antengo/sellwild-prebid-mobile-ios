@@ -16,13 +16,13 @@
 import Foundation
 import XCTest
 
-@testable @_spi(PBMInternal) import SellwildPrebid
+@testable @_spi(SWPBMInternal) import SellwildPrebid
 
-class VideoEventsTest : XCTestCase, CreativeViewDelegate, PBMVideoViewDelegate {
+class VideoEventsTest : XCTestCase, CreativeViewDelegate, SWPBMVideoViewDelegate {
     
     let viewController = MockViewController()
     let modalManager = ModalManager()
-    var pbmVideoCreative:PBMVideoCreative!
+    var swpbmVideoCreative:SWPBMVideoCreative!
     var expectationVideoDidComplete:XCTestExpectation!
     var expectationCreativeDidComplete:XCTestExpectation!
     var expectationDownloadCompleted:XCTestExpectation!
@@ -59,7 +59,7 @@ class VideoEventsTest : XCTestCase, CreativeViewDelegate, PBMVideoViewDelegate {
         var inlineResponse = UtilitiesForTesting.loadFileAsStringFromBundle("document_with_one_inline_ad.xml")!
         let needle = MockServerMimeType.MP4.rawValue
         let replaceWith = MockServerMimeType.MP4.rawValue
-        inlineResponse = inlineResponse.PBMstringByReplacingRegex(needle, replaceWith:replaceWith)
+        inlineResponse = inlineResponse.SWPBMstringByReplacingRegex(needle, replaceWith:replaceWith)
         
         //Rule for VAST
         let ruleVAST =  MockServerRule(urlNeedle: "foo.com/inline", mimeType:  MockServerMimeType.XML.rawValue, connectionID: connection.internalID, strResponse: inlineResponse)
@@ -78,7 +78,7 @@ class VideoEventsTest : XCTestCase, CreativeViewDelegate, PBMVideoViewDelegate {
         let creativeModel = CreativeModel(adConfiguration:adConfiguration)
         creativeModel.videoFileURL = "http://get_video_file"
         
-        let eventTracker = MockPBMAdModelEventTracker(creativeModel: creativeModel, serverConnection: connection)
+        let eventTracker = MockSWPBMAdModelEventTracker(creativeModel: creativeModel, serverConnection: connection)
         
         let expectationTrackEvent = expectation(description:"expectationTrackEvent")
         var trackEventCalled = false // Need to check general usage. Testing of particular events is performed by another test.
@@ -115,7 +115,7 @@ class VideoEventsTest : XCTestCase, CreativeViewDelegate, PBMVideoViewDelegate {
         
         //Get a Creative
         
-        let creativeFactory = PBMCreativeFactory(serverConnection:connection, transaction: transaction, finishedCallback: { creatives, error in
+        let creativeFactory = SWPBMCreativeFactory(serverConnection:connection, transaction: transaction, finishedCallback: { creatives, error in
             
             if (error != nil) {
                 XCTFail("error: \(error?.localizedDescription ?? "")")
@@ -123,18 +123,18 @@ class VideoEventsTest : XCTestCase, CreativeViewDelegate, PBMVideoViewDelegate {
             
             self.expectationDownloadCompleted.fulfill()
             expectationVideoAdLoaded.fulfill()
-            guard let pbmVideoCreative = creatives?.first as? PBMVideoCreative else {
-                XCTFail("Could not cast creative as PBMVideoCreative")
+            guard let swpbmVideoCreative = creatives?.first as? SWPBMVideoCreative else {
+                XCTFail("Could not cast creative as SWPBMVideoCreative")
                 return
             }
             
-            pbmVideoCreative.creativeViewDelegate = self
-            pbmVideoCreative.videoView.videoViewDelegate = self
-            self.pbmVideoCreative = pbmVideoCreative
+            swpbmVideoCreative.creativeViewDelegate = self
+            swpbmVideoCreative.videoView.videoViewDelegate = self
+            self.swpbmVideoCreative = swpbmVideoCreative
             
             DispatchQueue.main.async {
-                self.pbmVideoCreative.display(rootViewController: self.viewController)
-                self.pbmVideoCreative.videoView.avPlayer.volume = 0.33
+                self.swpbmVideoCreative.display(rootViewController: self.viewController)
+                self.swpbmVideoCreative.videoView.avPlayer.volume = 0.33
             }
         })
         
@@ -169,7 +169,7 @@ class VideoEventsTest : XCTestCase, CreativeViewDelegate, PBMVideoViewDelegate {
     func creativeFullScreenDidFinish(_ creative: AbstractCreative) {}
     func creativeDidSendRewardedEvent(_ creative: AbstractCreative) {}
     
-    // MARK: - PBMVideoViewDelegate
+    // MARK: - SWPBMVideoViewDelegate
     
     func videoViewFailedWithError(_ error: Error) {}
     func videoViewReadyToDisplay() {}

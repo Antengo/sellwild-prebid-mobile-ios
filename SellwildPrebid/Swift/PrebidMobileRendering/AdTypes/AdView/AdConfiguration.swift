@@ -18,7 +18,7 @@ import UIKit
 /**
  Contains all the data needed to load an ad.
  */
-@objc(PBMAdConfiguration) @objcMembers
+@objc(SWPBMAdConfiguration) @objcMembers
 public class AdConfiguration: AutoRefreshCountConfig {
     
     // MARK: - Request

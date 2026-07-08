@@ -18,7 +18,7 @@ import CoreLocation
 
 extension CLLocationManager: LocationManagerProtocol {}
 
-@objc(PBMLocationManager) @objcMembers
+@objc(SWPBMLocationManager) @objcMembers
 public class LocationManager: NSObject {
     
     public static let shared = LocationManager()
@@ -96,7 +96,7 @@ public class LocationManager: NSObject {
         }
     }
     
-    private let queue = DispatchQueue(label: "PBMLocationManager", attributes: .concurrent)
+    private let queue = DispatchQueue(label: "SWPBMLocationManager", attributes: .concurrent)
     
     override init() {
         super.init()

@@ -64,7 +64,7 @@ public class PrebidAdMobRewardedAdapter:
             return .failure(AdMobAdaptersError.emptyCustomEventExtras)
         }
         
-        guard let targetingInfo = eventExtrasDictionary[PBMMediationTargetingInfoKey] as? [String: String] else {
+        guard let targetingInfo = eventExtrasDictionary[SWPBMMediationTargetingInfoKey] as? [String: String] else {
             return .failure(AdMobAdaptersError.noTargetingInfoInEventExtras)
         }
         
@@ -72,16 +72,16 @@ public class PrebidAdMobRewardedAdapter:
             return .failure(AdMobAdaptersError.wrongServerParameter)
         }
         
-        guard let bid = eventExtrasDictionary[PBMMediationAdUnitBidKey] as? Bid else {
+        guard let bid = eventExtrasDictionary[SWPBMMediationAdUnitBidKey] as? Bid else {
             return .failure(AdMobAdaptersError.noBidInEventExtras)
         }
         
-        guard let configId = eventExtrasDictionary[PBMMediationConfigIdKey] as? String else {
+        guard let configId = eventExtrasDictionary[SWPBMMediationConfigIdKey] as? String else {
             return .failure(AdMobAdaptersError.noConfigIDInEventExtras)
         }
         
-        let videoControlsConfig = eventExtrasDictionary[PBMMediationVideoAdConfiguration] as? VideoControlsConfiguration
-        let videoParameters = eventExtrasDictionary[PBMMediationVideoParameters] as? VideoParameters
+        let videoControlsConfig = eventExtrasDictionary[SWPBMMediationVideoAdConfiguration] as? VideoControlsConfiguration
+        let videoParameters = eventExtrasDictionary[SWPBMMediationVideoParameters] as? VideoParameters
         let renderingConfig = AdUnitConfig(configId: configId)
         renderingConfig.adConfiguration.isInterstitialAd = true
         renderingConfig.adConfiguration.isRewarded = true

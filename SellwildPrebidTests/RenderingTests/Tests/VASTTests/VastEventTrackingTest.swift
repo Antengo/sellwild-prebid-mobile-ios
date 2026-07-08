@@ -18,21 +18,21 @@ import Foundation
 import XCTest
 import CoreFoundation
 
-@testable @_spi(PBMInternal) import SellwildPrebid
+@testable @_spi(SWPBMInternal) import SellwildPrebid
 
 class VastEventTrackingTest : XCTestCase, CreativeViewDelegate {
   
     let vc = UIViewController()
     let modalManager = ModalManager()
     
-    var creativeFactory: PBMCreativeFactory?
+    var creativeFactory: SWPBMCreativeFactory?
     
     var vastRequestSuccessfulExpectation: XCTestExpectation?
     
     var expectations = [XCTestExpectation]()
 
-    var vastServerRespose: PBMAdRequestResponseVAST?
-    var videoCreative: PBMVideoCreative!
+    var vastServerRespose: SWPBMAdRequestResponseVAST?
+    var videoCreative: SWPBMVideoCreative!
     
     override func setUp() {
         super.setUp()
@@ -53,7 +53,7 @@ class VastEventTrackingTest : XCTestCase, CreativeViewDelegate {
         Prebid.forcedIsViewable = true
         defer { Prebid.reset() }
 
-        modalManager.modalViewControllerClass = MockPBMModalViewController.self
+        modalManager.modalViewControllerClass = MockSWPBMModalViewController.self
     
         //Make an PrebidServerConnection and redirect its network requests to the Mock Server
         let connection = UtilitiesForTesting.createConnectionForMockedTest()
@@ -76,7 +76,7 @@ class VastEventTrackingTest : XCTestCase, CreativeViewDelegate {
        
         self.vastRequestSuccessfulExpectation = self.expectation(description: "Expected VAST Load to be successful")
         
-        let adLoadManager = MockPBMAdLoadManagerVAST(bid: RawWinningBidFabricator.makeWinningBid(price: 0.1, bidder: "bidder", cacheID: "cache-id"), connection:connection, adConfiguration: adConfiguration)
+        let adLoadManager = MockSWPBMAdLoadManagerVAST(bid: RawWinningBidFabricator.makeWinningBid(price: 0.1, bidder: "bidder", cacheID: "cache-id"), connection:connection, adConfiguration: adConfiguration)
         
         adLoadManager.mock_requestCompletedSuccess = { response in
             self.vastServerRespose = response
@@ -87,7 +87,7 @@ class VastEventTrackingTest : XCTestCase, CreativeViewDelegate {
             XCTFail(error.localizedDescription)
         }
         
-        let requester = PBMAdRequesterVAST(serverConnection:connection, adConfiguration: adConfiguration)
+        let requester = SWPBMAdRequesterVAST(serverConnection:connection, adConfiguration: adConfiguration)
         requester.adLoadManager = adLoadManager
         
         if let data = UtilitiesForTesting.loadFileAsDataFromBundle("document_with_one_wrapper_ad.xml") {
@@ -103,7 +103,7 @@ class VastEventTrackingTest : XCTestCase, CreativeViewDelegate {
         
         let inlineVastRequestSuccessfulExpectation = self.expectation(description: "Expected Inline VAST Load to be successful")
         
-        let modelMaker = PBMCreativeModelCollectionMakerVAST(serverConnection:connection, adConfiguration: adConfiguration)
+        let modelMaker = SWPBMCreativeModelCollectionMakerVAST(serverConnection:connection, adConfiguration: adConfiguration)
         
         modelMaker.makeModels(self.vastServerRespose!, successCallback: { models in
             let totalModels = 2     // For video interstitials with End Card, count is 2. Includes all companions.
@@ -118,14 +118,14 @@ class VastEventTrackingTest : XCTestCase, CreativeViewDelegate {
             let transaction = UtilitiesForTesting.createTransactionWithHTMLCreative()
             transaction.creativeModels = [creativeModel]
             
-            self.creativeFactory = PBMCreativeFactory(serverConnection: connection, transaction: transaction,
+            self.creativeFactory = SWPBMCreativeFactory(serverConnection: connection, transaction: transaction,
                 finishedCallback: { creatives, error in
                     if (error != nil) {
                         XCTFail("error: \(error?.localizedDescription ?? "")")
                     }
                     
-                    guard let creative = creatives?.first as? PBMVideoCreative else {
-                        XCTFail("Could not cast creative as PBMVideoCreative")
+                    guard let creative = creatives?.first as? SWPBMVideoCreative else {
+                        XCTFail("Could not cast creative as SWPBMVideoCreative")
                         return
                     }
                     
@@ -255,7 +255,7 @@ class VastEventTrackingTest : XCTestCase, CreativeViewDelegate {
             //Once we've reached the midpoint, force a tap on the Learn More Button.
             //This should pause the video and summon the clickthrough.
             DispatchQueue.main.async {
-                guard let videoView = self.videoCreative.view as? PBMVideoView else {
+                guard let videoView = self.videoCreative.view as? SWPBMVideoView else {
                     XCTFail("Couldn't get Video View")
                     return
                 }

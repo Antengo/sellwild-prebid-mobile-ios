@@ -15,13 +15,13 @@
 
 #import <OMSDK_Sellwild/OMIDSDK.h>
 
-#import "SwiftImport.h"
+#import "SWSwiftImport.h"
 
-@interface OMSDKVersionProvider_Objc : NSObject<OMSDKVersionProvider>
+@interface SWOMSDKVersionProvider_Objc : NSObject<OMSDKVersionProvider>
 
 @end
 
-@implementation OMSDKVersionProvider_Objc
+@implementation SWOMSDKVersionProvider_Objc
 
 + (nonnull NSString *) omSDKVersionString {
     return [OMIDPrebidorgSDK versionString];

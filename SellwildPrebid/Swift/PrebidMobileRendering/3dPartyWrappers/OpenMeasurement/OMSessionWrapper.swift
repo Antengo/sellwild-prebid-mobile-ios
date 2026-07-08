@@ -16,7 +16,7 @@
 import UIKit
 import WebKit
 
-@objc(PBMOMSessionWrapper)
+@objc(SWPBMOMSessionWrapper)
 public protocol OMSessionWrapper: NSObjectProtocol {
     
     func injectJSLib(_ html: String, error: NSErrorPointer) -> String?

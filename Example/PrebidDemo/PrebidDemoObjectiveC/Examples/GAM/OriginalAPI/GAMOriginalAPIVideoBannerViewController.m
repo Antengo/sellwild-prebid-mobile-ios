@@ -82,12 +82,12 @@ NSString * const gamAdUnitVideoBannerOriginal = @"/21808260008/prebid-demo-origi
     [AdViewUtils findPrebidCreativeSize:bannerView success:^(CGSize size) {
         [self.gamBanner resize:GADAdSizeFromCGSize(size)];
     } failure:^(NSError * _Nonnull error) {
-        PBMLogError(@"%@", error.localizedDescription)
+        SWPBMLogError(@"%@", error.localizedDescription)
     }];
 }
 
 - (void)bannerView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(NSError *)error {
-    PBMLogError(@"%@", error.localizedDescription)
+    SWPBMLogError(@"%@", error.localizedDescription)
 }
 
 @end

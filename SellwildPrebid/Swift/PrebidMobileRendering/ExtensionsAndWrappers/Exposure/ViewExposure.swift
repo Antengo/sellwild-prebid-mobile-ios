@@ -16,8 +16,8 @@
 
 import Foundation
 
-@objc(PBMViewExposure) @_spi(PBMInternal) public
-protocol ViewExposure: NSObjectProtocol, PBMSwiftMigrationHelper {
+@objc(SWPBMViewExposure) @_spi(SWPBMInternal) public
+protocol ViewExposure: NSObjectProtocol, SWPBMSwiftMigrationHelper {
     static func zeroExposure() -> ViewExposure
     
     var exposureFactor: Float { get }

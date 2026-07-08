@@ -213,7 +213,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2e-vv-3Xu">
                                 <rect key="frame" x="27.5" y="50" width="320" height="50"/>
                                 <color key="backgroundColor" red="0.24313725490196078" green="0.72156862745098038" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" identifier="PBMAdView">
+                                <accessibility key="accessibilityConfiguration" identifier="SWPBMAdView">
                                     <accessibilityTraits key="traits" button="YES"/>
                                 </accessibility>
                                 <constraints>
@@ -308,7 +308,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8g-8k-pUG">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="250"/>
                                                 <color key="backgroundColor" red="0.24313725490196078" green="0.72156862745098038" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="PBMAdView">
+                                                <accessibility key="accessibilityConfiguration" identifier="SWPBMAdView">
                                                     <accessibilityTraits key="traits" button="YES"/>
                                                 </accessibility>
                                                 <constraints>

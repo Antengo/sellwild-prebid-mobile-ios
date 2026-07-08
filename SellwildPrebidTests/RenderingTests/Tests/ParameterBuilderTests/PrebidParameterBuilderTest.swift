@@ -46,7 +46,7 @@ class PrebidParameterBuilderTest: XCTestCase {
             return
         }
         
-        PBMAssertEq(imp.instl, 0)
+        SWPBMAssertEq(imp.instl, 0)
         
         guard let banner = imp.banner else {
             XCTFail("No Banner object!")
@@ -77,7 +77,7 @@ class PrebidParameterBuilderTest: XCTestCase {
             return
         }
         
-        PBMAssertEq(imp.instl, 1)
+        SWPBMAssertEq(imp.instl, 1)
         
         guard let banner = imp.banner else {
             XCTFail("No Banner object!")
@@ -100,16 +100,16 @@ class PrebidParameterBuilderTest: XCTestCase {
         }
         
         XCTAssertEqual(banner.format.count, 1)
-        PBMAssertEq(banner.format.first?.w, 320)
-        PBMAssertEq(banner.format.first?.h, 50)
+        SWPBMAssertEq(banner.format.first?.w, 320)
+        SWPBMAssertEq(banner.format.first?.h, 50)
         
         adUnitConfig.additionalSizes = [CGSize(width: 728, height: 90)]
         
         bidRequest = buildBidRequest(with: adUnitConfig)
         
         XCTAssertEqual(bidRequest.imp.first?.banner?.format.count, 2)
-        PBMAssertEq(bidRequest.imp.first?.banner?.format[1].w, 728)
-        PBMAssertEq(bidRequest.imp.first?.banner?.format[1].h, 90)
+        SWPBMAssertEq(bidRequest.imp.first?.banner?.format[1].w, 728)
+        SWPBMAssertEq(bidRequest.imp.first?.banner?.format[1].h, 90)
     }
     
     func testInterstitialDeviceSizeNotSet() {
@@ -154,23 +154,23 @@ class PrebidParameterBuilderTest: XCTestCase {
             return
         }
         
-        PBMAssertEq(video.linearity, 1)
-        PBMAssertEq(video.placement, 5)
-        PBMAssertEq(video.plcmt, 3)
-        PBMAssertEq(video.w, 320)
-        PBMAssertEq(video.h, 50)
-        PBMAssertEq(video.api, [3])
-        PBMAssertEq(video.minduration, 1)
-        PBMAssertEq(video.maxduration, 10)
-        PBMAssertEq(video.minbitrate, 1)
-        PBMAssertEq(video.maxbitrate, 10)
-        PBMAssertEq(video.protocols, [2, 5])
-        PBMAssertEq(video.startdelay, -1)
-        PBMAssertEq(video.mimes, PrebidConstants.SUPPORTED_VIDEO_MIME_TYPES)
-        PBMAssertEq(video.playbackend, 2)
-        PBMAssertEq(video.delivery, [3])
-        PBMAssertEq(video.battr, [15, 16])
-        PBMAssertEq(video.skip, 0)
+        SWPBMAssertEq(video.linearity, 1)
+        SWPBMAssertEq(video.placement, 5)
+        SWPBMAssertEq(video.plcmt, 3)
+        SWPBMAssertEq(video.w, 320)
+        SWPBMAssertEq(video.h, 50)
+        SWPBMAssertEq(video.api, [3])
+        SWPBMAssertEq(video.minduration, 1)
+        SWPBMAssertEq(video.maxduration, 10)
+        SWPBMAssertEq(video.minbitrate, 1)
+        SWPBMAssertEq(video.maxbitrate, 10)
+        SWPBMAssertEq(video.protocols, [2, 5])
+        SWPBMAssertEq(video.startdelay, -1)
+        SWPBMAssertEq(video.mimes, PrebidConstants.SUPPORTED_VIDEO_MIME_TYPES)
+        SWPBMAssertEq(video.playbackend, 2)
+        SWPBMAssertEq(video.delivery, [3])
+        SWPBMAssertEq(video.battr, [15, 16])
+        SWPBMAssertEq(video.skip, 0)
         XCTAssertEqual(video.pos.intValue, AdPosition.header.rawValue)
         XCTAssertEqual(video.pos.intValue, 4)
     }
@@ -216,11 +216,11 @@ class PrebidParameterBuilderTest: XCTestCase {
         let configId = "b6260e2b-bc4c-4d10-bdb5-f7bdd62f5ed4"
         let adUnitConfig = AdUnitConfig(configId: configId, size: CGSize(width: 320, height: 50))
         Targeting.shared.omidPartnerName = "Prebid"
-        Targeting.shared.omidPartnerVersion = PBMFunctions.sdkVersion()
+        Targeting.shared.omidPartnerVersion = SWPBMFunctions.sdkVersion()
         var bidRequest = buildBidRequest(with: adUnitConfig)
 
         XCTAssertEqual(bidRequest.source.extOMID.omidpn, "Prebid")
-        XCTAssertEqual(bidRequest.source.extOMID.omidpv, PBMFunctions.sdkVersion())
+        XCTAssertEqual(bidRequest.source.extOMID.omidpv, SWPBMFunctions.sdkVersion())
 
         targeting.omidPartnerVersion = "test omid version"
         targeting.omidPartnerName = "test omid name"
@@ -467,7 +467,7 @@ class PrebidParameterBuilderTest: XCTestCase {
         let adUnit = BannerAdUnit(configId: "test", size: CGSize(width: 300, height: 250))
         let bidRequest = buildBidRequest(with: adUnit.adUnitConfig)
 
-        PBMAssertEq(bidRequest.imp.count, 1)
+        SWPBMAssertEq(bidRequest.imp.count, 1)
         guard let imp = bidRequest.imp.first else {
             XCTFail("No Imp object!")
             return
@@ -488,7 +488,7 @@ class PrebidParameterBuilderTest: XCTestCase {
         
         let bidRequest = buildBidRequest(with: adUnit.adUnitConfig)
 
-        PBMAssertEq(bidRequest.imp.count, 1)
+        SWPBMAssertEq(bidRequest.imp.count, 1)
         
         guard let imp = bidRequest.imp.first else {
             XCTFail("No Imp object!")
@@ -525,7 +525,7 @@ class PrebidParameterBuilderTest: XCTestCase {
         let adUnit = InterstitialAdUnit(configId: "test")
         let bidRequest = buildBidRequest(with: adUnit.adUnitConfig)
 
-        PBMAssertEq(bidRequest.imp.count, 1)
+        SWPBMAssertEq(bidRequest.imp.count, 1)
         guard let imp = bidRequest.imp.first else {
             XCTFail("No Imp object!")
             return
@@ -613,7 +613,7 @@ class PrebidParameterBuilderTest: XCTestCase {
         let bidRequest = buildBidRequest(with: adUnit.adUnitConfig)
 
         //Check that this is counted as an interstitial
-        PBMAssertEq(bidRequest.imp.count, 1)
+        SWPBMAssertEq(bidRequest.imp.count, 1)
         guard let imp = bidRequest.imp.first else {
             XCTFail("No Imp object!")
             return
@@ -624,11 +624,11 @@ class PrebidParameterBuilderTest: XCTestCase {
             return
         }
 
-        PBMAssertEq(video.mimes, PrebidConstants.SUPPORTED_VIDEO_MIME_TYPES)
-        PBMAssertEq(video.protocols, [2,5])
-        PBMAssertEq(video.delivery!, [3])
-        PBMAssertEq(video.pos, 7)
-        PBMAssertEq(video.playbackend, 2)
+        SWPBMAssertEq(video.mimes, PrebidConstants.SUPPORTED_VIDEO_MIME_TYPES)
+        SWPBMAssertEq(video.protocols, [2,5])
+        SWPBMAssertEq(video.delivery!, [3])
+        SWPBMAssertEq(video.pos, 7)
+        SWPBMAssertEq(video.playbackend, 2)
     }
 
     func testParameterBuilderInterstitialVAST() {
@@ -652,26 +652,26 @@ class PrebidParameterBuilderTest: XCTestCase {
         let bidRequest = buildBidRequest(with: adUnit.adUnitConfig)
 
         //Check that this is counted as an interstitial
-        PBMAssertEq(bidRequest.imp.count, 1)
+        SWPBMAssertEq(bidRequest.imp.count, 1)
         guard let imp = bidRequest.imp.first else {
             XCTFail("No Imp object!")
             return
         }
 
-        PBMAssertEq(imp.instl, 1)
+        SWPBMAssertEq(imp.instl, 1)
 
         guard let video = imp.video else {
             XCTFail("No video object!")
             return
         }
 
-        PBMAssertEq(video.mimes, PrebidConstants.SUPPORTED_VIDEO_MIME_TYPES)
-        PBMAssertEq(video.protocols, [2,5])
-        PBMAssertEq(video.delivery!, [3])
-        PBMAssertEq(video.pos, 7)
-        PBMAssertEq(video.battr, [6, 7])
-        PBMAssertEq(video.skip, 1)
-        PBMAssertEq(video.playbackend, 1)
+        SWPBMAssertEq(video.mimes, PrebidConstants.SUPPORTED_VIDEO_MIME_TYPES)
+        SWPBMAssertEq(video.protocols, [2,5])
+        SWPBMAssertEq(video.delivery!, [3])
+        SWPBMAssertEq(video.pos, 7)
+        SWPBMAssertEq(video.battr, [6, 7])
+        SWPBMAssertEq(video.skip, 1)
+        SWPBMAssertEq(video.playbackend, 1)
     }
 
     func testParameterBuilderOutstream() {
@@ -685,26 +685,26 @@ class PrebidParameterBuilderTest: XCTestCase {
         // Run the Builder
         let bidRequest = buildBidRequest(with: adUnit.adUnitConfig)
 
-        PBMAssertEq(bidRequest.imp.count, 1)
+        SWPBMAssertEq(bidRequest.imp.count, 1)
         guard let imp = bidRequest.imp.first else {
             XCTFail("No Imp object!")
             return
         }
-        PBMAssertEq(imp.instl, 0)
+        SWPBMAssertEq(imp.instl, 0)
 
         guard let video = imp.video else {
             XCTFail("No video object!")
             return
         }
 
-        PBMAssertEq(video.mimes, PrebidConstants.SUPPORTED_VIDEO_MIME_TYPES)
-        PBMAssertEq(video.protocols, [2,5])
+        SWPBMAssertEq(video.mimes, PrebidConstants.SUPPORTED_VIDEO_MIME_TYPES)
+        SWPBMAssertEq(video.protocols, [2,5])
         XCTAssertNil(video.placement)
         XCTAssertNil(video.plcmt)
 
-        PBMAssertEq(video.delivery!, [3])
-        PBMAssertEq(video.pos, 7)
-        PBMAssertEq(video.playbackend, 2)
+        SWPBMAssertEq(video.delivery!, [3])
+        SWPBMAssertEq(video.pos, 7)
+        SWPBMAssertEq(video.playbackend, 2)
     }
 
     func testBannerParameters() {
@@ -796,7 +796,7 @@ class PrebidParameterBuilderTest: XCTestCase {
             return
         }
         
-        PBMAssertEq(video.skip, 1)
+        SWPBMAssertEq(video.skip, 1)
     }
         
     func testIncludeFormatOnMultiformatAdUnit() {
@@ -912,8 +912,8 @@ class PrebidParameterBuilderTest: XCTestCase {
         
         let banner = try XCTUnwrap(bidRequest.imp.first?.banner)
         XCTAssertEqual(banner.format.count, 1)
-        PBMAssertEq(banner.format.first?.w, 320)
-        PBMAssertEq(banner.format.first?.h, 50)
+        SWPBMAssertEq(banner.format.first?.w, 320)
+        SWPBMAssertEq(banner.format.first?.h, 50)
     }
 
     func testBannerParamsSingleAdSize() throws {
@@ -1035,9 +1035,9 @@ class PrebidParameterBuilderTest: XCTestCase {
 
     // MARK: - Helpers
     
-    func buildBidRequest(with adUnitConfig: AdUnitConfig) -> PBMORTBBidRequest {
-        let bidRequest = PBMORTBBidRequest()
-        PBMBasicParameterBuilder(
+    func buildBidRequest(with adUnitConfig: AdUnitConfig) -> SWPBMORTBBidRequest {
+        let bidRequest = SWPBMORTBBidRequest()
+        SWPBMBasicParameterBuilder(
             adConfiguration: adUnitConfig.adConfiguration,
             sdkConfiguration: sdkConfiguration,
             sdkVersion: "MOCK_SDK_VERSION",
@@ -1050,7 +1050,7 @@ class PrebidParameterBuilderTest: XCTestCase {
         )
         .build(bidRequest)
         
-        PBMPrebidParameterBuilder(
+        SWPBMPrebidParameterBuilder(
             adConfiguration: adUnitConfig,
             sdkConfiguration: sdkConfiguration,
             targeting: targeting,

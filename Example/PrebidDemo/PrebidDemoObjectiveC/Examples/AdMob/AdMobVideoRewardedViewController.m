@@ -62,7 +62,7 @@ NSString * const adMobAdUnitVideoRewardedId = @"ca-app-pub-5922967660082475/5628
             if (!self) { return; }
             
             if (error != nil) {
-                PBMLogError(@"%@", error.localizedDescription);
+                SWPBMLogError(@"%@", error.localizedDescription);
                 return;
             }
             
@@ -83,7 +83,7 @@ NSString * const adMobAdUnitVideoRewardedId = @"ca-app-pub-5922967660082475/5628
 // MARK: - GADFullScreenContentDelegate
 
 - (void)ad:(id<GADFullScreenPresentingAd>)ad didFailToPresentFullScreenContentWithError:(NSError *)error {
-    PBMLogError(@"%@", error.localizedDescription);
+    SWPBMLogError(@"%@", error.localizedDescription);
 }
 
 @end

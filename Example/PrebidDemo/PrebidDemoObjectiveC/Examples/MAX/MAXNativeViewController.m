@@ -126,7 +126,7 @@ NSString * const maxRenderingNativeAdUnitId = @"240da3ba91611d72";
 }
 
 - (void)didFailToLoadNativeAdForAdUnitIdentifier:(NSString *)adUnitIdentifier withError:(MAError *)error {
-    PBMLogError(@"%@", error.message);
+    SWPBMLogError(@"%@", error.message);
 }
 
 - (void)didClickNativeAd:(MAAd *)ad {

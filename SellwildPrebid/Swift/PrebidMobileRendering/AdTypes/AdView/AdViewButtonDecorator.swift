@@ -15,7 +15,7 @@
 
 import UIKit
 
-@objc(PBMAdViewButtonDecorator) @objcMembers
+@objc(SWPBMAdViewButtonDecorator) @objcMembers
 public class AdViewButtonDecorator: NSObject {
     
     // MARK: - Public proprties

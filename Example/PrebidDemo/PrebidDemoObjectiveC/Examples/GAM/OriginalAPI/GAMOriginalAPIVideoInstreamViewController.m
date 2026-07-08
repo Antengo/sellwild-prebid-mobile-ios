@@ -104,7 +104,7 @@ NSString * const gamAdUnitVideo = @"/21808260008/prebid_demo_app_instream";
     
     // 4. Make a bid request
     @weakify(self);
-    [self.adUnit fetchDemandWithCompletionBidInfo:^(PBMBidInfo * _Nonnull bidInfo) {
+    [self.adUnit fetchDemandWithCompletionBidInfo:^(SWPBMBidInfo * _Nonnull bidInfo) {
         @strongify(self);
         if (!self) { return; }
         
@@ -149,7 +149,7 @@ NSString * const gamAdUnitVideo = @"/21808260008/prebid_demo_app_instream";
 }
 
 - (void)adsLoader:(IMAAdsLoader *)loader failedWithErrorData:(IMAAdLoadingErrorData *)adErrorData {
-    PBMLogError(@"%@", adErrorData.adError.message);
+    SWPBMLogError(@"%@", adErrorData.adError.message);
     [self.contentPlayer play];
 }
 
@@ -163,7 +163,7 @@ NSString * const gamAdUnitVideo = @"/21808260008/prebid_demo_app_instream";
 }
 
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdError:(IMAAdError *)error {
-    PBMLogError(@"%@", error.message);
+    SWPBMLogError(@"%@", error.message);
     [self.contentPlayer play];
 }
 

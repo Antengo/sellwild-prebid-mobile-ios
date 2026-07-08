@@ -29,7 +29,7 @@ class PrebidMRAIDResizeWithErrorsUITest: RepeatedUITestCase {
             
             openAndWaitAd()
             
-            let mraidView =  app.buttons["PBMAdView"]
+            let mraidView =  app.buttons["SWPBMAdView"]
             waitForExists(element: mraidView, waitSeconds: waitingTimeout)
             
             let propertiesTextLabel = mraidView.staticTexts["Test properties:"]
@@ -45,7 +45,7 @@ class PrebidMRAIDResizeWithErrorsUITest: RepeatedUITestCase {
         
             openAndWaitAd()
             
-            let mraidView =  app.buttons["PBMAdView"]
+            let mraidView =  app.buttons["SWPBMAdView"]
             waitForExists(element: mraidView, waitSeconds: waitingTimeout)
             
             var offScreenButton = mraidView.staticTexts["TRUE"]
@@ -63,7 +63,7 @@ class PrebidMRAIDResizeWithErrorsUITest: RepeatedUITestCase {
 
             Thread.sleep(forTimeInterval: 1)
 
-            let closeBtn = app.buttons["PBMCloseButton"]
+            let closeBtn = app.buttons["SWPBMCloseButton"]
             waitForHittable(element: closeBtn, waitSeconds: waitingTimeout)
             closeBtn.tap()
         }

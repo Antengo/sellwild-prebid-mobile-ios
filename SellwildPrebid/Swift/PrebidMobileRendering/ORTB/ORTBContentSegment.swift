@@ -15,8 +15,8 @@
 
 import Foundation
 
-@objc(PBMORTBContentSegment)
-public class ORTBContentSegment: NSObject, PBMJsonCodable {
+@objc(SWPBMORTBContentSegment)
+public class ORTBContentSegment: NSObject, SWPBMJsonCodable {
     
     /// ID of the data segment specific to the data provider.
     @objc public var id: String?

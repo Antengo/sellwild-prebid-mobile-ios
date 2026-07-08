@@ -52,7 +52,7 @@ let package = Package(
         ),
         .binaryTarget(
             name: "SellwildPrebidOMSDK",
-            path: "Frameworks/OMSDK_Prebidorg.xcframework"
+            path: "Frameworks/OMSDK_Sellwild.xcframework"
         ),
         .target(
             name: "SellwildPrebidAdMobAdapters",

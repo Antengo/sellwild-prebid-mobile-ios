@@ -18,7 +18,7 @@ import Foundation
 /// A class representing the configuration for video controls in an ad.
 /// This includes properties for video duration, mute status, and button positioning and visibility.
 /// Configuration values can be initialized from bid response or set directly by the user.
-@objc(PBMVideoControlsConfiguration) @objcMembers
+@objc(SWPBMVideoControlsConfiguration) @objcMembers
 public class VideoControlsConfiguration: NSObject {
     
     /// This property indicates maximum video duration.

@@ -18,7 +18,7 @@ import Foundation
 /// Enum representing various positions on the screen.
 ///
 /// This enum defines positions that can be used for placing elements within an ad. The positions are typically used to determine where controls or components should be located within the ad's user interface.
-@objc(PBMPosition)
+@objc(SWPBMPosition)
 public enum Position: Int {
     case undefined = -1
     case topLeft

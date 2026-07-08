@@ -60,7 +60,7 @@ NSString * const gamAdUnitDisplayBannerRendering = @"/21808260008/prebid_oxb_320
 }
 
 - (void)bannerView:(BannerView *)bannerView didFailToReceiveAdWith:(NSError *)error {
-    PBMLogError(@"%@", error.localizedDescription);
+    SWPBMLogError(@"%@", error.localizedDescription);
 }
 
 @end

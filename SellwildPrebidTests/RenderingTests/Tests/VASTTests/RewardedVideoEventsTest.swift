@@ -18,7 +18,7 @@ import Foundation
 import XCTest
 import CoreFoundation
 
-@testable @_spi(PBMInternal) import SellwildPrebid
+@testable @_spi(SWPBMInternal) import SellwildPrebid
 
 class RewardedVideoEventsTest : XCTestCase, CreativeViewDelegate {
     
@@ -26,7 +26,7 @@ class RewardedVideoEventsTest : XCTestCase, CreativeViewDelegate {
     
     var vastRequestSuccessfulExpectation:XCTestExpectation!
     
-    var vastServerResponse: PBMAdRequestResponseVAST?
+    var vastServerResponse: SWPBMAdRequestResponseVAST?
     
     var expectationCreativeWasClicked:XCTestExpectation!
     var expectationCreativeClickthroughDidClose:XCTestExpectation!
@@ -38,7 +38,7 @@ class RewardedVideoEventsTest : XCTestCase, CreativeViewDelegate {
     var expectationDownloadCompleted:XCTestExpectation!
     var expectationTrackingEventMidpoint:XCTestExpectation!
     
-    var pbmVideoCreative:PBMVideoCreative!
+    var swpbmVideoCreative:SWPBMVideoCreative!
     
     override func setUp() {
         super.setUp()
@@ -74,7 +74,7 @@ class RewardedVideoEventsTest : XCTestCase, CreativeViewDelegate {
         
         //Create CreativeModel
         
-        let adLoadManager = MockPBMAdLoadManagerVAST(bid: RawWinningBidFabricator.makeWinningBid(price: 0.1, bidder: "bidder", cacheID: "cache-id"), connection:connection, adConfiguration: self.initAdConfiguration())
+        let adLoadManager = MockSWPBMAdLoadManagerVAST(bid: RawWinningBidFabricator.makeWinningBid(price: 0.1, bidder: "bidder", cacheID: "cache-id"), connection:connection, adConfiguration: self.initAdConfiguration())
         
         adLoadManager.mock_requestCompletedSuccess = { response in
             self.vastServerResponse = response
@@ -85,7 +85,7 @@ class RewardedVideoEventsTest : XCTestCase, CreativeViewDelegate {
             XCTFail(error.localizedDescription)
         }
         
-        let requester = PBMAdRequesterVAST(serverConnection:connection, adConfiguration: adConfiguration)
+        let requester = SWPBMAdRequesterVAST(serverConnection:connection, adConfiguration: adConfiguration)
         requester.adLoadManager = adLoadManager
         
         if let data = UtilitiesForTesting.loadFileAsDataFromBundle("document_with_one_wrapper_ad.xml") {
@@ -99,9 +99,9 @@ class RewardedVideoEventsTest : XCTestCase, CreativeViewDelegate {
             return // to avoid crash on force unwrap
         }
         
-        let modelMaker = PBMCreativeModelCollectionMakerVAST(serverConnection:connection, adConfiguration: adConfiguration)
+        let modelMaker = SWPBMCreativeModelCollectionMakerVAST(serverConnection:connection, adConfiguration: adConfiguration)
         
-        var creativeFactory: PBMCreativeFactory?
+        var creativeFactory: SWPBMCreativeFactory?
         
         modelMaker.makeModels(self.vastServerResponse!, successCallback: { models in
             // count should include 1 video creative and 1 html creative (end card) for a total of 2.
@@ -116,7 +116,7 @@ class RewardedVideoEventsTest : XCTestCase, CreativeViewDelegate {
             transaction.creativeModels = [creativeModel]
             
             //Get a Creative
-            creativeFactory = PBMCreativeFactory(serverConnection: connection,
+            creativeFactory = SWPBMCreativeFactory(serverConnection: connection,
                                                  transaction: transaction, finishedCallback: { creatives, error in
                 if (error != nil) {
                     XCTFail("error: \(error?.localizedDescription ?? "")")
@@ -124,18 +124,18 @@ class RewardedVideoEventsTest : XCTestCase, CreativeViewDelegate {
                 
                 self.expectationDownloadCompleted.fulfill()
                 
-                guard let pbmVideoCreative = creatives?.first as? PBMVideoCreative else {
-                    XCTFail("Could not cast creative as PBMRewardedVideoCreative")
+                guard let swpbmVideoCreative = creatives?.first as? SWPBMVideoCreative else {
+                    XCTFail("Could not cast creative as SWPBMRewardedVideoCreative")
                     return
                 }
                 
                 
-                self.pbmVideoCreative = pbmVideoCreative
-                pbmVideoCreative.creativeViewDelegate = self
+                self.swpbmVideoCreative = swpbmVideoCreative
+                swpbmVideoCreative.creativeViewDelegate = self
                 
                 DispatchQueue.main.async {
-                    self.vc.view.addSubview(self.pbmVideoCreative.view!)
-                    self.pbmVideoCreative.display(rootViewController: self.vc)
+                    self.vc.view.addSubview(self.swpbmVideoCreative.view!)
+                    self.swpbmVideoCreative.display(rootViewController: self.vc)
                 }
             })
             
@@ -271,17 +271,17 @@ class RewardedVideoEventsTest : XCTestCase, CreativeViewDelegate {
     func creativeFactorySuccess(creative: AbstractCreative)->() {
         self.expectationDownloadCompleted.fulfill()
         
-        guard let pbmVideoCreative = creative as? PBMVideoCreative else {
-            XCTFail("Could not cast \(creative) as PBMVideoCreative")
+        guard let swpbmVideoCreative = creative as? SWPBMVideoCreative else {
+            XCTFail("Could not cast \(creative) as SWPBMVideoCreative")
             return
         }
         
-        self.pbmVideoCreative = pbmVideoCreative
-        pbmVideoCreative.creativeViewDelegate = self
+        self.swpbmVideoCreative = swpbmVideoCreative
+        swpbmVideoCreative.creativeViewDelegate = self
         
         DispatchQueue.main.async {
-            self.vc.view.addSubview(self.pbmVideoCreative.view!)
-            self.pbmVideoCreative.display(rootViewController: self.vc)
+            self.vc.view.addSubview(self.swpbmVideoCreative.view!)
+            self.swpbmVideoCreative.display(rootViewController: self.vc)
         }
     }
 }

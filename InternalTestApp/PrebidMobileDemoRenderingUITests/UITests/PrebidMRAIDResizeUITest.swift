@@ -95,7 +95,7 @@ class PrebidMRAIDResizeUITest: RepeatedUITestCase {
         
         showResizedView()
         
-        let mraidView = app.otherElements["PBMWebView"]
+        let mraidView = app.otherElements["SWPBMWebView"]
         waitForExists(element: mraidView, waitSeconds: 5)
         waitForHittable(element: mraidView, waitSeconds: 5)
         waitForEnabled(element: mraidView, waitSeconds: 5)
@@ -133,7 +133,7 @@ class PrebidMRAIDResizeUITest: RepeatedUITestCase {
     }
     
     private func closeResizedView() {
-        let closeBtn = app.buttons["PBMCloseButton"]
+        let closeBtn = app.buttons["SWPBMCloseButton"]
         waitForHittable(element: closeBtn, waitSeconds: 10)
         closeBtn.tap()
         waitForEnabled(element: app.buttons["adViewDidDismissScreen called"], waitSeconds: waitingTimeout)
@@ -157,7 +157,7 @@ class PrebidMRAIDResizeUITest: RepeatedUITestCase {
         waitForExists(element: done, waitSeconds: waitingTimeout)
         done.tapFrameCenter()
         
-        let bannerAdView = app.buttons["PBMAdView"]
+        let bannerAdView = app.buttons["SWPBMAdView"]
         waitForExists(element: bannerAdView, waitSeconds: 5)
     }
 

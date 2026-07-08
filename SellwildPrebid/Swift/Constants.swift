@@ -124,10 +124,10 @@ public class PrebidConstants: NSObject {
     public static let SDK_NAME                                                              = "prebid-mobile-sdk"
     
     public static let DOMAIN_KEY                                                            = "domain"
-    public static let PBM_TRANSACTION_STATE_KEY                                             = "ts"
-    public static let PBM_TRACKING_URL_TEMPLATE                                             = "record_tmpl"
-    public static let PBM_ORIGINAL_ADUNIT_KEY                                               = "OriginalAdUnitID"
-    public static let PBM_PRECACHE_CONFIGURATION_KEY                                        = "precache_configuration"
+    public static let SWPBM_TRANSACTION_STATE_KEY                                             = "ts"
+    public static let SWPBM_TRACKING_URL_TEMPLATE                                             = "record_tmpl"
+    public static let SWPBM_ORIGINAL_ADUNIT_KEY                                               = "OriginalAdUnitID"
+    public static let SWPBM_PRECACHE_CONFIGURATION_KEY                                        = "precache_configuration"
     public static let FETCH_DEMAND_RESULT_KEY                                               = "PrebidResultCodeKey"
     
     public static let AD_PREFETCH_TIME: TimeInterval = 3
@@ -159,12 +159,12 @@ public class PrebidConstants: NSObject {
 
     public static let SERVER_ENDPOINTS_STATUS                                               = "/status/"
 
-    public static let ACCESSIBILITY_CLOSE_BUTTON_IDENTIFIER                                 = "PBMCloseButton"
-    public static let ACCESSIBILITY_CLOSE_BUTTON_LABEL                                      = "PBMCloseButton"
-    public static let ACCESSIBILITY_CLOSE_BUTTON_CLICK_THROUGH_BROWSER_IDENTIFIER           = "PBMCloseButtonClickThroughBrowser"
-    public static let ACCESSIBILITY_CLOSE_BUTTON_CLICK_THROUGH_BROWSER_LABEL                = "PBMCloseButtonClickThroughBrowser"
-    public static let ACCESSIBILITY_WEB_VIEW_LABEL                                          = "PBMWebView"
-    public static let ACCESSIBILITY_VIDEO_AD_VIEW                                           = "PBMVideoAdView"
+    public static let ACCESSIBILITY_CLOSE_BUTTON_IDENTIFIER                                 = "SWPBMCloseButton"
+    public static let ACCESSIBILITY_CLOSE_BUTTON_LABEL                                      = "SWPBMCloseButton"
+    public static let ACCESSIBILITY_CLOSE_BUTTON_CLICK_THROUGH_BROWSER_IDENTIFIER           = "SWPBMCloseButtonClickThroughBrowser"
+    public static let ACCESSIBILITY_CLOSE_BUTTON_CLICK_THROUGH_BROWSER_LABEL                = "SWPBMCloseButtonClickThroughBrowser"
+    public static let ACCESSIBILITY_WEB_VIEW_LABEL                                          = "SWPBMWebView"
+    public static let ACCESSIBILITY_VIDEO_AD_VIEW                                           = "SWPBMVideoAdView"
     public static let ACCESSIBILITY_BANNER_VIEW                                             = "PrebidBannerView"
     
     public static let TRACKING_PATTERN_RI                                                   = "/ma/1.0/ri"

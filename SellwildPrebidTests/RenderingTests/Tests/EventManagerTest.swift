@@ -68,7 +68,7 @@ class EventManagerTest: XCTestCase {
         let exp = expectation(description:"expectation")
         exp.expectedFulfillmentCount = 4
         
-        let eventTracker = MockPBMAdModelEventTracker(creativeModel: MockPBMCreativeModel(adConfiguration: AdConfiguration()), serverConnection: PrebidServerConnection())
+        let eventTracker = MockSWPBMAdModelEventTracker(creativeModel: MockSWPBMCreativeModel(adConfiguration: AdConfiguration()), serverConnection: PrebidServerConnection())
         
         let testTrackEvent: TrackingEvent = .impression
         eventTracker.mock_trackEvent = { event in
@@ -111,12 +111,12 @@ class EventManagerTest: XCTestCase {
     
     // MARK: - Helper Methods
     
-    private func createTrackerWithExpectationCount(_ count: UInt) -> MockPBMAdModelEventTracker {
+    private func createTrackerWithExpectationCount(_ count: UInt) -> MockSWPBMAdModelEventTracker {
         let exp = expectation(description:"expectation\(trackersCount)")
         trackersCount += 1
         exp.expectedFulfillmentCount = Int(count)
         
-        let eventTracker = MockPBMAdModelEventTracker(creativeModel: MockPBMCreativeModel(adConfiguration: AdConfiguration()), serverConnection: PrebidServerConnection())
+        let eventTracker = MockSWPBMAdModelEventTracker(creativeModel: MockSWPBMCreativeModel(adConfiguration: AdConfiguration()), serverConnection: PrebidServerConnection())
         eventTracker.mock_trackEvent = { _ in
             exp.fulfill()
         }

@@ -61,7 +61,7 @@ NSString * const nativeStoredImpressionInApp = @"prebid-demo-banner-native-style
     
     // 3. Make a bid request to Prebid Server
     @weakify(self);
-    [self.nativeUnit fetchDemandWithCompletionBidInfo:^(PBMBidInfo * _Nonnull bidInfo) {
+    [self.nativeUnit fetchDemandWithCompletionBidInfo:^(SWPBMBidInfo * _Nonnull bidInfo) {
         @strongify(self);
         if (!self) { return; }
         

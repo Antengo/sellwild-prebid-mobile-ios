@@ -15,8 +15,8 @@
 
 import Foundation
 
-@objc(PBMORTBContentProducer)
-public class ORTBContentProducer: NSObject, PBMJsonCodable {
+@objc(SWPBMORTBContentProducer)
+public class ORTBContentProducer: NSObject, SWPBMJsonCodable {
     
     /// Content producer or originator ID.
     @objc public var id: String?

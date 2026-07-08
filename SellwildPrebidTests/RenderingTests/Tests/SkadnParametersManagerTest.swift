@@ -26,13 +26,13 @@ class SkadnParametersManagerTest: XCTestCase {
         let nonceForFidelity0 = skadn.fidelities!.filter({ $0.fidelity == 0 }).first!.nonce!
         let actual = SkadnParametersManager.getSkadnImpression(for: skadn)!
         let expected = SkadnUtilities.createSkadImpression(with: nonceForFidelity0)
-        PBMAssertEq(type: NSNumber.self, actual: actual.sourceAppStoreItemIdentifier, expected: expected.sourceAppStoreItemIdentifier)
-        PBMAssertEq(type: NSNumber.self, actual: actual.advertisedAppStoreItemIdentifier, expected: expected.advertisedAppStoreItemIdentifier)
-        PBMAssertEq(type: String.self, actual: actual.adNetworkIdentifier, expected: expected.adNetworkIdentifier)
-        PBMAssertEq(type: NSNumber.self, actual: actual.adCampaignIdentifier, expected: expected.adCampaignIdentifier)
-        PBMAssertEq(type: String.self, actual: actual.adImpressionIdentifier, expected: expected.adImpressionIdentifier)
-        PBMAssertEq(type: NSNumber.self, actual: actual.timestamp, expected: expected.timestamp)
-        PBMAssertEq(type: String.self, actual: actual.signature, expected: expected.signature)
+        SWPBMAssertEq(type: NSNumber.self, actual: actual.sourceAppStoreItemIdentifier, expected: expected.sourceAppStoreItemIdentifier)
+        SWPBMAssertEq(type: NSNumber.self, actual: actual.advertisedAppStoreItemIdentifier, expected: expected.advertisedAppStoreItemIdentifier)
+        SWPBMAssertEq(type: String.self, actual: actual.adNetworkIdentifier, expected: expected.adNetworkIdentifier)
+        SWPBMAssertEq(type: NSNumber.self, actual: actual.adCampaignIdentifier, expected: expected.adCampaignIdentifier)
+        SWPBMAssertEq(type: String.self, actual: actual.adImpressionIdentifier, expected: expected.adImpressionIdentifier)
+        SWPBMAssertEq(type: NSNumber.self, actual: actual.timestamp, expected: expected.timestamp)
+        SWPBMAssertEq(type: String.self, actual: actual.signature, expected: expected.signature)
     }
     
     @available(iOS 14.0, *)
@@ -40,13 +40,13 @@ class SkadnParametersManagerTest: XCTestCase {
         let skadn = SkadnUtilities.createSkadnExtWithFidelities()
         let actual = SkadnParametersManager.getSkadnProductParameters(for: skadn)!
         let expected: [String: Any] = SkadnUtilities.createSkadnProductParameters(from: skadn)
-        PBMAssertEq(type: Int.self, actual: actual[SKStoreProductParameterITunesItemIdentifier]!, expected: expected[SKStoreProductParameterITunesItemIdentifier]!)
-        PBMAssertEq(type: String.self, actual: actual[SKStoreProductParameterAdNetworkIdentifier]!, expected: expected[SKStoreProductParameterAdNetworkIdentifier]!)
-        PBMAssertEq(type: Int.self, actual: actual[SKStoreProductParameterAdNetworkCampaignIdentifier]!, expected: expected[SKStoreProductParameterAdNetworkCampaignIdentifier]!)
-        PBMAssertEq(type: String.self, actual: actual[SKStoreProductParameterAdNetworkVersion]!, expected: expected[SKStoreProductParameterAdNetworkVersion]!)
-        PBMAssertEq(type: Int.self, actual: actual[SKStoreProductParameterAdNetworkTimestamp]!, expected: expected[SKStoreProductParameterAdNetworkTimestamp]!)
-        PBMAssertEq(type: UUID.self, actual: actual[SKStoreProductParameterAdNetworkNonce]!, expected: expected[SKStoreProductParameterAdNetworkNonce]!)
-        PBMAssertEq(type: String.self, actual: actual[SKStoreProductParameterAdNetworkAttributionSignature]!, expected: expected[SKStoreProductParameterAdNetworkAttributionSignature]!)
+        SWPBMAssertEq(type: Int.self, actual: actual[SKStoreProductParameterITunesItemIdentifier]!, expected: expected[SKStoreProductParameterITunesItemIdentifier]!)
+        SWPBMAssertEq(type: String.self, actual: actual[SKStoreProductParameterAdNetworkIdentifier]!, expected: expected[SKStoreProductParameterAdNetworkIdentifier]!)
+        SWPBMAssertEq(type: Int.self, actual: actual[SKStoreProductParameterAdNetworkCampaignIdentifier]!, expected: expected[SKStoreProductParameterAdNetworkCampaignIdentifier]!)
+        SWPBMAssertEq(type: String.self, actual: actual[SKStoreProductParameterAdNetworkVersion]!, expected: expected[SKStoreProductParameterAdNetworkVersion]!)
+        SWPBMAssertEq(type: Int.self, actual: actual[SKStoreProductParameterAdNetworkTimestamp]!, expected: expected[SKStoreProductParameterAdNetworkTimestamp]!)
+        SWPBMAssertEq(type: UUID.self, actual: actual[SKStoreProductParameterAdNetworkNonce]!, expected: expected[SKStoreProductParameterAdNetworkNonce]!)
+        SWPBMAssertEq(type: String.self, actual: actual[SKStoreProductParameterAdNetworkAttributionSignature]!, expected: expected[SKStoreProductParameterAdNetworkAttributionSignature]!)
     }
     
     @available(iOS 16.1, *)
@@ -55,13 +55,13 @@ class SkadnParametersManagerTest: XCTestCase {
         let nonceForFidelity0 = skadn.fidelities!.filter({ $0.fidelity == 0 }).first!.nonce!
         let actual = SkadnParametersManager.getSkadnImpression(for: skadn)!
         let expected = SkadnUtilities.createSkadImpression_version_4_0(with: nonceForFidelity0)
-        PBMAssertEq(type: NSNumber.self, actual: actual.sourceAppStoreItemIdentifier, expected: expected.sourceAppStoreItemIdentifier)
-        PBMAssertEq(type: NSNumber.self, actual: actual.advertisedAppStoreItemIdentifier, expected: expected.advertisedAppStoreItemIdentifier)
-        PBMAssertEq(type: String.self, actual: actual.adNetworkIdentifier, expected: expected.adNetworkIdentifier)
-        PBMAssertEq(type: NSNumber.self, actual: actual.sourceIdentifier, expected: expected.sourceIdentifier)
-        PBMAssertEq(type: String.self, actual: actual.adImpressionIdentifier, expected: expected.adImpressionIdentifier)
-        PBMAssertEq(type: NSNumber.self, actual: actual.timestamp, expected: expected.timestamp)
-        PBMAssertEq(type: String.self, actual: actual.signature, expected: expected.signature)
+        SWPBMAssertEq(type: NSNumber.self, actual: actual.sourceAppStoreItemIdentifier, expected: expected.sourceAppStoreItemIdentifier)
+        SWPBMAssertEq(type: NSNumber.self, actual: actual.advertisedAppStoreItemIdentifier, expected: expected.advertisedAppStoreItemIdentifier)
+        SWPBMAssertEq(type: String.self, actual: actual.adNetworkIdentifier, expected: expected.adNetworkIdentifier)
+        SWPBMAssertEq(type: NSNumber.self, actual: actual.sourceIdentifier, expected: expected.sourceIdentifier)
+        SWPBMAssertEq(type: String.self, actual: actual.adImpressionIdentifier, expected: expected.adImpressionIdentifier)
+        SWPBMAssertEq(type: NSNumber.self, actual: actual.timestamp, expected: expected.timestamp)
+        SWPBMAssertEq(type: String.self, actual: actual.signature, expected: expected.signature)
     }
     
     @available(iOS 16.1, *)
@@ -69,13 +69,13 @@ class SkadnParametersManagerTest: XCTestCase {
         let skadn = SkadnUtilities.createSkadnExtWithFidelities_version_4_0()
         let actual = SkadnParametersManager.getSkadnProductParameters(for: skadn)!
         let expected: [String: Any] = SkadnUtilities.createSkadnProductParameters_version_4_0(from: skadn)
-        PBMAssertEq(type: Int.self, actual: actual[SKStoreProductParameterITunesItemIdentifier]!, expected: expected[SKStoreProductParameterITunesItemIdentifier]!)
-        PBMAssertEq(type: String.self, actual: actual[SKStoreProductParameterAdNetworkIdentifier]!, expected: expected[SKStoreProductParameterAdNetworkIdentifier]!)
-        PBMAssertEq(type: NSNumber.self, actual: actual[SKStoreProductParameterAdNetworkSourceIdentifier]!, expected: expected[SKStoreProductParameterAdNetworkSourceIdentifier]!)
-        PBMAssertEq(type: String.self, actual: actual[SKStoreProductParameterAdNetworkVersion]!, expected: expected[SKStoreProductParameterAdNetworkVersion]!)
-        PBMAssertEq(type: Int.self, actual: actual[SKStoreProductParameterAdNetworkTimestamp]!, expected: expected[SKStoreProductParameterAdNetworkTimestamp]!)
-        PBMAssertEq(type: UUID.self, actual: actual[SKStoreProductParameterAdNetworkNonce]!, expected: expected[SKStoreProductParameterAdNetworkNonce]!)
-        PBMAssertEq(type: String.self, actual: actual[SKStoreProductParameterAdNetworkAttributionSignature]!, expected: expected[SKStoreProductParameterAdNetworkAttributionSignature]!)
+        SWPBMAssertEq(type: Int.self, actual: actual[SKStoreProductParameterITunesItemIdentifier]!, expected: expected[SKStoreProductParameterITunesItemIdentifier]!)
+        SWPBMAssertEq(type: String.self, actual: actual[SKStoreProductParameterAdNetworkIdentifier]!, expected: expected[SKStoreProductParameterAdNetworkIdentifier]!)
+        SWPBMAssertEq(type: NSNumber.self, actual: actual[SKStoreProductParameterAdNetworkSourceIdentifier]!, expected: expected[SKStoreProductParameterAdNetworkSourceIdentifier]!)
+        SWPBMAssertEq(type: String.self, actual: actual[SKStoreProductParameterAdNetworkVersion]!, expected: expected[SKStoreProductParameterAdNetworkVersion]!)
+        SWPBMAssertEq(type: Int.self, actual: actual[SKStoreProductParameterAdNetworkTimestamp]!, expected: expected[SKStoreProductParameterAdNetworkTimestamp]!)
+        SWPBMAssertEq(type: UUID.self, actual: actual[SKStoreProductParameterAdNetworkNonce]!, expected: expected[SKStoreProductParameterAdNetworkNonce]!)
+        SWPBMAssertEq(type: String.self, actual: actual[SKStoreProductParameterAdNetworkAttributionSignature]!, expected: expected[SKStoreProductParameterAdNetworkAttributionSignature]!)
     }
 }
 

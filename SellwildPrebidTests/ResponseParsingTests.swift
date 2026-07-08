@@ -469,14 +469,14 @@ class ResponseParsingTests: XCTestCase {
         XCTAssertEqual(entity.jsonDictionary as NSDictionary, json as NSDictionary)
     }
     
-    func compare(_ entity: PBMJsonEncodable?, _ object: [String : Any]) -> Bool {
+    func compare(_ entity: SWPBMJsonEncodable?, _ object: [String : Any]) -> Bool {
         guard let entity else {
             return false
         }
         return entity.jsonDictionary as NSDictionary == object as NSDictionary
     }
     
-    func compare(_ entities: [PBMJsonEncodable]?, _ array: [[String : Any]]) -> Bool {
+    func compare(_ entities: [SWPBMJsonEncodable]?, _ array: [[String : Any]]) -> Bool {
         guard let entities else {
             return false
         }

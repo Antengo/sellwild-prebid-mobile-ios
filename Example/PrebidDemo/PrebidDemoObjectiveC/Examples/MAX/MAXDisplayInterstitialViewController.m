@@ -69,11 +69,11 @@ NSString * const maxAdUnitDisplayInterstitial = @"48e8d410f74dfc7b";
 }
 
 - (void)didFailToDisplayAd:(MAAd *)ad withError:(MAError *)error {
-    PBMLogError(@"%@", error.message);
+    SWPBMLogError(@"%@", error.message);
 }
 
 - (void)didFailToLoadAdForAdUnitIdentifier:(NSString *)adUnitIdentifier withError:(MAError *)error {
-    PBMLogError(@"%@", error.message);
+    SWPBMLogError(@"%@", error.message);
 }
 
 - (void)didDisplayAd:(MAAd *)ad {

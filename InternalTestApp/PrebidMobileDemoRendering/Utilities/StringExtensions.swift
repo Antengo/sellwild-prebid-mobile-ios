@@ -27,7 +27,7 @@ extension Optional where Wrapped == String {
      - parameters:
      - characterSet: The `CharacterSet` to trim from the string. Defaults to `.whitespacesAndNewlines`.
      */
-    func pbm_trimCharactersToNil(characterSet: CharacterSet = .whitespacesAndNewlines) -> String? {
+    func swpbm_trimCharactersToNil(characterSet: CharacterSet = .whitespacesAndNewlines) -> String? {
         guard let value = self?.trimmingCharacters(in: characterSet) else { return nil }
         return value.isEmpty ? nil : value
     }
@@ -45,7 +45,7 @@ extension Optional where Wrapped == String {
      - characterSet: The `CharacterSet` to trim from the string. Defaults to `.whitespacesAndNewlines`.
      - defaultValue: The value to return when conversion fails. Defaults to `0`.
      */
-    func pbm_toTimeInterval(characterSet: CharacterSet = .whitespacesAndNewlines, defaultValue: TimeInterval = 0) -> TimeInterval {
+    func swpbm_toTimeInterval(characterSet: CharacterSet = .whitespacesAndNewlines, defaultValue: TimeInterval = 0) -> TimeInterval {
         if let value = self?.trimmingCharacters(in: characterSet), let timeInterval = TimeInterval(value) {
             return timeInterval
         } else {
@@ -53,8 +53,8 @@ extension Optional where Wrapped == String {
         }
     }
     
-    func pbm_toDouble(characterSet: CharacterSet = .whitespacesAndNewlines, defaultValue: TimeInterval = 0) -> Double {
-       return self.pbm_toTimeInterval(characterSet: characterSet, defaultValue: defaultValue)
+    func swpbm_toDouble(characterSet: CharacterSet = .whitespacesAndNewlines, defaultValue: TimeInterval = 0) -> Double {
+       return self.swpbm_toTimeInterval(characterSet: characterSet, defaultValue: defaultValue)
     }
     
 }

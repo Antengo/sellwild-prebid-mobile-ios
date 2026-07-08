@@ -52,7 +52,7 @@ class PrebidInterstitialUITest: RepeatedUITestCase {
             showButton.tap()
             
             //Wait for the custom close button to appear, then tap it.
-            let interstitialCloseBtn = app.buttons["PBMCloseButton"]
+            let interstitialCloseBtn = app.buttons["SWPBMCloseButton"]
             waitForHittable(element: interstitialCloseBtn, waitSeconds: 4)
             interstitialCloseBtn.tap()
             

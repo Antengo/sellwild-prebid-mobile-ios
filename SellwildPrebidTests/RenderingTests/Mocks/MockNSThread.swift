@@ -33,7 +33,7 @@ final class MockNSThread : ThreadProtocol {
 }
 
 // Use this class when need to test switching the execution from the global thread to the main thread.
-final class PBMThread : ThreadProtocol {
+final class SWPBMThread : ThreadProtocol {
     
     var checkThreadCallback:((Bool) -> Void)
     

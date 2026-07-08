@@ -14,7 +14,7 @@ limitations under the License.
 */
 
 #import <XCTest/XCTest.h>
-#import "SwiftImport.h"
+#import "SWSwiftImport.h"
 #import "PrebidMobileTests-Swift.h"
 
 @interface AdUnitObjCTests : XCTestCase
@@ -65,7 +65,7 @@ AdUnit *adUnit;
     AdUnitSwizzleHelper.targetingKeywords = @{@"key1" : @"value1"};
     
     //when
-    [adUnit fetchDemandWithCompletionBidInfo:^(PBMBidInfo * _Nonnull bidInfo) {
+    [adUnit fetchDemandWithCompletionBidInfo:^(SWPBMBidInfo * _Nonnull bidInfo) {
         resultCode = bidInfo.resultCode;
         kvDictResult = bidInfo.targetingKeywords;
         [expectation fulfill];

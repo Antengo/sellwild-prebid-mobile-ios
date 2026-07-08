@@ -16,12 +16,12 @@
 import Foundation
 import XCTest
 
-@testable @_spi(PBMInternal) import SellwildPrebid
+@testable @_spi(SWPBMInternal) import SellwildPrebid
 
-class VideoFileTypeTest : XCTestCase, CreativeViewDelegate, PBMVideoViewDelegate {
+class VideoFileTypeTest : XCTestCase, CreativeViewDelegate, SWPBMVideoViewDelegate {
     
     let viewController = MockViewController()
-    var pbmVideoCreative:PBMVideoCreative!
+    var swpbmVideoCreative:SWPBMVideoCreative!
     var expectationVideoDidComplete:XCTestExpectation!
     var expectationDownloadCompleted:XCTestExpectation!
     var expectationCreativeDidDisplay:XCTestExpectation!
@@ -67,7 +67,7 @@ class VideoFileTypeTest : XCTestCase, CreativeViewDelegate, PBMVideoViewDelegate
             var inlineResponse = UtilitiesForTesting.loadFileAsStringFromBundle("document_with_one_inline_ad.xml")!
             let needle = MockServerMimeType.MP4.rawValue
             let replaceWith = mimeType.rawValue
-            inlineResponse = inlineResponse.PBMstringByReplacingRegex(needle, replaceWith:replaceWith)
+            inlineResponse = inlineResponse.SWPBMstringByReplacingRegex(needle, replaceWith:replaceWith)
             
             //Make an PrebidServerConnection and redirect its network requests to the Mock Server
             let connection = UtilitiesForTesting.createConnectionForMockedTest()
@@ -93,7 +93,7 @@ class VideoFileTypeTest : XCTestCase, CreativeViewDelegate, PBMVideoViewDelegate
             transaction.creativeModels = [creativeModel]
 
             //Get a Creative
-            let creativeFactory = PBMCreativeFactory(serverConnection:connection, transaction: transaction, finishedCallback: { creativesArray, error in
+            let creativeFactory = SWPBMCreativeFactory(serverConnection:connection, transaction: transaction, finishedCallback: { creativesArray, error in
                 
                     if (error != nil) {
                         XCTFail("error: \(error?.localizedDescription ?? "")")
@@ -101,17 +101,17 @@ class VideoFileTypeTest : XCTestCase, CreativeViewDelegate, PBMVideoViewDelegate
                     
                     self.expectationDownloadCompleted.fulfill()
                     
-                    guard let pbmVideoCreative = creativesArray?.first as? PBMVideoCreative else {
-                        XCTFail("Could not cast creative as PBMVideoCreative")
+                    guard let swpbmVideoCreative = creativesArray?.first as? SWPBMVideoCreative else {
+                        XCTFail("Could not cast creative as SWPBMVideoCreative")
                         return
                     }
                     
-                    pbmVideoCreative.creativeViewDelegate = self
-                    pbmVideoCreative.videoView.videoViewDelegate = self
-                    self.pbmVideoCreative = pbmVideoCreative
+                    swpbmVideoCreative.creativeViewDelegate = self
+                    swpbmVideoCreative.videoView.videoViewDelegate = self
+                    self.swpbmVideoCreative = swpbmVideoCreative
                     
                     DispatchQueue.main.async {
-                        self.pbmVideoCreative.display(rootViewController: self.viewController)
+                        self.swpbmVideoCreative.display(rootViewController: self.viewController)
                     }
                 }
             )
@@ -147,7 +147,7 @@ class VideoFileTypeTest : XCTestCase, CreativeViewDelegate, PBMVideoViewDelegate
     
     func creativeDidSendRewardedEvent(_ creative: AbstractCreative) {}
     
-    // MARK: - PBMVideoViewDelegate
+    // MARK: - SWPBMVideoViewDelegate
     
     func videoViewFailedWithError(_ error: Error) {}
     func videoViewReadyToDisplay() {}

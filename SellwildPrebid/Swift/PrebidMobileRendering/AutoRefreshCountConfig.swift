@@ -15,14 +15,14 @@
 
 import Foundation
 
-@objc(PBMAutoRefreshCountConfig) @objcMembers
+@objc(SWPBMAutoRefreshCountConfig) @objcMembers
 public class AutoRefreshCountConfig: NSObject {
     
     /**
      Delay (in seconds) for which to wait before performing an auto refresh.
 
-     Note that this value is clamped between @c PBMAutoRefresh.AUTO_REFRESH_DELAY_MIN
-     and @c PBMAutoRefresh.AUTO_REFRESH_DELAY_MAX.
+     Note that this value is clamped between @c SWPBMAutoRefresh.AUTO_REFRESH_DELAY_MIN
+     and @c SWPBMAutoRefresh.AUTO_REFRESH_DELAY_MAX.
 
      Also note that this will return @c nil if @c isInterstitial is set to @c YES.
      */

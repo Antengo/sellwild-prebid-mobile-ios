@@ -52,7 +52,7 @@ NSString * const storedImpVideoInterstitialLandscapeInApp = @"prebid-demo-video-
 }
 
 - (void)interstitial:(InterstitialRenderingAdUnit *)interstitial didFailToReceiveAdWithError:(NSError *)error {
-    PBMLogError(@"%@", error.localizedDescription);
+    SWPBMLogError(@"%@", error.localizedDescription);
 }
 
 @end

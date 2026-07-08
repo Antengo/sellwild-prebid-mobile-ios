@@ -15,8 +15,8 @@
 
 import Foundation
 
-@objc(PBMORTBAppContent)
-public class ORTBAppContent: NSObject, PBMJsonCodable {
+@objc(SWPBMORTBAppContent)
+public class ORTBAppContent: NSObject, SWPBMJsonCodable {
     
     /// ID uniquely identifying the content.
     @objc public var id: String?

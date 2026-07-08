@@ -16,7 +16,7 @@
 import Foundation
 import XCTest
 
-@testable @_spi(PBMInternal) import SellwildPrebid
+@testable @_spi(SWPBMInternal) import SellwildPrebid
 
 class AdViewManagerTest: XCTestCase, AdViewManagerDelegate {
     
@@ -41,8 +41,8 @@ class AdViewManagerTest: XCTestCase, AdViewManagerDelegate {
     weak var videoDidResumeExpectation: XCTestExpectation?
 
     var adViewManager:AdViewManager!
-    var adLoadManager:PBMAdLoadManagerBase!
-    var videoCreative: PBMVideoCreative?
+    var adLoadManager:SWPBMAdLoadManagerBase!
+    var videoCreative: SWPBMVideoCreative?
     var testDisplayView: UIView!
     var adLoadedHandler: (() -> Void)?
     
@@ -206,8 +206,8 @@ class AdViewManagerTest: XCTestCase, AdViewManagerDelegate {
         
         adDidCompleteExpectation = expectation(description: "adDidCompleteExpectation")
 
-        guard let testCreative = adViewManager.externalTransaction?.creatives.first as? PBMHTMLCreative else {
-            XCTFail("Could not get PBMHTMLCreative")
+        guard let testCreative = adViewManager.externalTransaction?.creatives.first as? SWPBMHTMLCreative else {
+            XCTFail("Could not get SWPBMHTMLCreative")
             return
         }
         testCreative.creativeViewDelegate?.creativeDidComplete(testCreative)
@@ -233,8 +233,8 @@ class AdViewManagerTest: XCTestCase, AdViewManagerDelegate {
         // setup expectations
         displayViewExpectation = expectation(description: "displayViewExpectation #2")
         
-        guard let testCreative = adViewManager.externalTransaction?.creatives.first as? PBMHTMLCreative else {
-            XCTFail("Could not get PBMHTMLCreative")
+        guard let testCreative = adViewManager.externalTransaction?.creatives.first as? SWPBMHTMLCreative else {
+            XCTFail("Could not get SWPBMHTMLCreative")
             return
         }
         adViewManager.creativeReadyToReimplant(_: testCreative)
@@ -342,7 +342,7 @@ class AdViewManagerTest: XCTestCase, AdViewManagerDelegate {
     func testSetupCreativeNotMainThread() {
         logToFile = .init()
         
-        let creative = PBMAbstractCreative_Objc(creativeModel:CreativeModel(), transaction:UtilitiesForTesting.createEmptyTransaction())
+        let creative = SWPBMAbstractCreative_Objc(creativeModel:CreativeModel(), transaction:UtilitiesForTesting.createEmptyTransaction())
         let thread = MockNSThread(mockIsMainThread: false)
         
         adViewManager.setupCreative(creative, withThread: thread)
@@ -356,7 +356,7 @@ class AdViewManagerTest: XCTestCase, AdViewManagerDelegate {
         videoDidResumeExpectation = expectation(description: "Expected a delegate function videoAdDidResume to fire")
 
         let model = CreativeModel(adConfiguration: AdConfiguration())
-        videoCreative = PBMVideoCreative(creativeModel: model,
+        videoCreative = SWPBMVideoCreative(creativeModel: model,
                                             transaction: UtilitiesForTesting.createEmptyTransaction(),
                                             videoData: Data())
         videoCreative?.videoView.avPlayer = AVPlayer()
@@ -393,7 +393,7 @@ class AdViewManagerTest: XCTestCase, AdViewManagerDelegate {
         return InterstitialDisplayProperties()
     }
     
-    func adLoaded(_ pbmAdDetails: AdDetails) {
+    func adLoaded(_ swpbmAdDetails: AdDetails) {
         adLoadedHandler?()
         fulfillOrFail(adLoadedExpectation, "adLoadedExpectation")
     }
@@ -457,12 +457,12 @@ class AdViewManagerTest: XCTestCase, AdViewManagerDelegate {
     }
     
     //MARK: Utility methods
-    @discardableResult private func setUpDelegateTests () -> PBMHTMLCreative {
+    @discardableResult private func setUpDelegateTests () -> SWPBMHTMLCreative {
         // create an ad with one creative
         let model = CreativeModel(adConfiguration:AdConfiguration())
         model.html = "<html>test html</html>"
-        let testCreative = PBMHTMLCreative(creativeModel:model, transaction:UtilitiesForTesting.createEmptyTransaction())
-        testCreative.view = PBMWebView()
+        let testCreative = SWPBMHTMLCreative(creativeModel:model, transaction:UtilitiesForTesting.createEmptyTransaction())
+        testCreative.view = SWPBMWebView()
         return testCreative
     }
 }

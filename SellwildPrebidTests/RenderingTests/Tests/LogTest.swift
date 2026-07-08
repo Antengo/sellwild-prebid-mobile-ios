@@ -18,7 +18,7 @@ import XCTest
 
 class LogTest: XCTestCase {
 
-    private let sdkVersion = PBMFunctions.sdkVersion()
+    private let sdkVersion = SWPBMFunctions.sdkVersion()
     private let message = "Test Log"
 
     private var logToFile: LogToFileLock?

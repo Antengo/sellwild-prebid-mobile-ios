@@ -17,7 +17,7 @@ import Foundation
 
 @testable import SellwildPrebid
 
-class MockMeasurementSession: PBMOpenMeasurementSession {
+class MockMeasurementSession: SWPBMOpenMeasurementSession {
     
     var setupWebViewClosure: ((UIView) -> Void)?
     var startClosure: (() -> Void)?
@@ -25,7 +25,7 @@ class MockMeasurementSession: PBMOpenMeasurementSession {
     var notifyImpressionOccurredClosure: (() -> Void)?
     
     override var eventTracker: EventTrackerProtocol {
-        return PBMOpenMeasurementEventTracker()
+        return SWPBMOpenMeasurementEventTracker()
     }
     
     func setupWebView(_ webView: UIView) {

@@ -16,9 +16,9 @@
 
 import Foundation
 import XCTest
-@testable @_spi(PBMInternal) import SellwildPrebid
+@testable @_spi(SWPBMInternal) import SellwildPrebid
 
-class PBMViewExposureCheckerSystemUITests: XCTestCase {
+class SWPBMViewExposureCheckerSystemUITests: XCTestCase {
     
     var window: UIWindow!
     var adView: UIView!
@@ -48,7 +48,7 @@ class PBMViewExposureCheckerSystemUITests: XCTestCase {
         
         viewController.view.layoutIfNeeded()
         
-        let exposure = PBMViewExposureChecker.exposure(of: adView)
+        let exposure = SWPBMViewExposureChecker.exposure(of: adView)
         
         XCTAssertGreaterThan(exposure.exposureFactor, 0.95)
     }
@@ -60,7 +60,7 @@ class PBMViewExposureCheckerSystemUITests: XCTestCase {
         
         viewController.view.layoutIfNeeded()
         
-        let checker = PBMViewExposureChecker(view: adView)
+        let checker = SWPBMViewExposureChecker(view: adView)
         let exposure = checker.exposure
         
         XCTAssertGreaterThan(exposure.exposureFactor, 0.95)
@@ -73,8 +73,8 @@ class PBMViewExposureCheckerSystemUITests: XCTestCase {
         
         viewController.view.layoutIfNeeded()
         
-        let classMethodExposure = PBMViewExposureChecker.exposure(of: adView)
-        let instanceChecker = PBMViewExposureChecker(view: adView)
+        let classMethodExposure = SWPBMViewExposureChecker.exposure(of: adView)
+        let instanceChecker = SWPBMViewExposureChecker(view: adView)
         let instanceExposure = instanceChecker.exposure
         
         XCTAssertEqual(classMethodExposure.exposureFactor, instanceExposure.exposureFactor, accuracy: 0.001)
@@ -346,12 +346,12 @@ class PBMViewExposureCheckerSystemUITests: XCTestCase {
     // MARK: - Helper Methods
     
     private func calculateExposure(for view: UIView) -> CGFloat {
-        let exposure = PBMViewExposureChecker.exposure(of: view)
+        let exposure = SWPBMViewExposureChecker.exposure(of: view)
         return CGFloat(exposure.exposureFactor)
     }
     
     private func calculateExposureWithChecker(for view: UIView) -> CGFloat {
-        let checker = PBMViewExposureChecker(view: view)
+        let checker = SWPBMViewExposureChecker(view: view)
         return CGFloat(checker.exposure.exposureFactor)
     }
 }

@@ -394,7 +394,7 @@ public class BannerView:
             
             if let delegate = self.delegate,
                delegate.responds(to: #selector(BannerViewDelegate.bannerView(_:didFailToReceiveAdWith:))) {
-                delegate.bannerView?(self, didFailToReceiveAdWith: error ?? PBMError.error(description: "Unknown Error"))
+                delegate.bannerView?(self, didFailToReceiveAdWith: error ?? SWPBMError.error(description: "Unknown Error"))
             }
         }
     }
@@ -429,7 +429,7 @@ public class BannerView:
     }
 }
 
-@_spi(PBMInternal)
+@_spi(SWPBMInternal)
 extension BannerView : AdLoadFlowControllerDelegate, BannerAdLoaderDelegate {
     // MARK: - AdLoadFlowControllerDelegate
     
@@ -456,7 +456,7 @@ extension BannerView : AdLoadFlowControllerDelegate, BannerAdLoaderDelegate {
     
     // MARK: - BannerAdLoaderDelegate
     
-    @_spi(PBMInternal)
+    @_spi(SWPBMInternal)
     public func bannerAdLoader(
         _ bannerAdLoader: BannerAdLoader,
         loadedAdView adView: UIView,
@@ -467,7 +467,7 @@ extension BannerView : AdLoadFlowControllerDelegate, BannerAdLoaderDelegate {
     }
 }
 
-@_spi(PBMInternal)
+@_spi(SWPBMInternal)
 extension BannerView: DisplayViewVideoPlaybackDelegate {
     public func videoPlaybackDidPause() {
         videoPlaybackDelegate?.videoPlaybackDidPause(self)

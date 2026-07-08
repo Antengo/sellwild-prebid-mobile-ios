@@ -32,7 +32,7 @@ protocol UserAgentPersistence {
  */
 class UserAgentDefaults: UserAgentPersistence {
     /// The key used to store the user agent dictionary in UserDefaults.
-    private let key: String = "PBMUserAgentService_UserAgentStore"
+    private let key: String = "SWPBMUserAgentService_UserAgentStore"
     
     /// Get the current OS version.
     private let osVersion: String

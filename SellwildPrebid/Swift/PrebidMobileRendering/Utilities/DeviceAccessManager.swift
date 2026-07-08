@@ -18,7 +18,7 @@ import UIKit
 import AdSupport
 import AppTrackingTransparency
 
-@objc(PBMDeviceAccessManager)
+@objc(SWPBMDeviceAccessManager)
 public class DeviceAccessManager: NSObject {
 
     // MARK: - Properties

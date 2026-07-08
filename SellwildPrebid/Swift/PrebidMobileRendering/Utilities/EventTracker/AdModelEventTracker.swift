@@ -16,7 +16,7 @@
 
 import Foundation
 
-@objc(PBMAdModelEventTracker) @_spi(PBMInternal) public
+@objc(SWPBMAdModelEventTracker) @_spi(SWPBMInternal) public
 class AdModelEventTracker: NSObject, EventTrackerProtocol {
     private(set) weak var creativeModel: CreativeModel?
     let serverConnection: PrebidServerConnectionProtocol

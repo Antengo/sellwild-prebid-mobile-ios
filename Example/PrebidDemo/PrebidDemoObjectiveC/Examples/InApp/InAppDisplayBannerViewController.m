@@ -56,7 +56,7 @@ NSString * const storedImpDisplayBannerInApp = @"prebid-demo-banner-320-50";
 }
 
 - (void)bannerView:(BannerView *)bannerView didFailToReceiveAdWith:(NSError *)error {
-    PBMLogError(@"%@", error.localizedDescription);
+    SWPBMLogError(@"%@", error.localizedDescription);
 }
 
 @end

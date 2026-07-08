@@ -64,11 +64,11 @@ class ParameterBuilderServiceTest : XCTestCase {
         UserConsentDataManager.shared.gdprConsentString = "consentstring"
         UserConsentDataManager.shared.subjectToGDPR = false
         
-        let paramsDict = PBMParameterBuilderService.buildParamsDict(
+        let paramsDict = SWPBMParameterBuilderService.buildParamsDict(
             with: adConfiguration,
             bundle:mockBundle,
-            pbmLocationManager: mockLocationManagerSuccessful,
-            pbmDeviceAccessManager: mockDeviceAccessManager,
+            swpbmLocationManager: mockLocationManagerSuccessful,
+            swpbmDeviceAccessManager: mockDeviceAccessManager,
             ctTelephonyNetworkInfo: mockCTTelephonyNetworkInfo,
             reachability: mockReachability,
             sdkConfiguration: sdkConfiguration,
@@ -77,42 +77,42 @@ class ParameterBuilderServiceTest : XCTestCase {
             extraParameterBuilders: nil
         )
         
-        //Create a new PBMORTBBidRequest based off of the json string in the params dict
+        //Create a new SWPBMORTBBidRequest based off of the json string in the params dict
         guard let strORTB = paramsDict[PrebidConstants.OPEN_RTB_SCHEME] else {
             XCTFail("No ORTB string in parameter keys")
             return
         }
         
-        let bidRequest: PBMORTBBidRequest
+        let bidRequest: SWPBMORTBBidRequest
         do {
-            bidRequest = try PBMORTBBidRequest.from(jsonString:strORTB)
+            bidRequest = try SWPBMORTBBidRequest.from(jsonString:strORTB)
         } catch {
             XCTFail("\(error)")
             return
         }
         
-        //Verify PBMBasicParameterBuilder
-        PBMAssertEq(bidRequest.imp.count, 1)
-        PBMAssertEq(bidRequest.imp.first?.displaymanager, "prebid-mobile")
-        PBMAssertEq(bidRequest.imp.first?.displaymanagerver, "MOCK_SDK_VERSION")
-        PBMAssertEq(bidRequest.imp.first?.secure, 1)
+        //Verify SWPBMBasicParameterBuilder
+        SWPBMAssertEq(bidRequest.imp.count, 1)
+        SWPBMAssertEq(bidRequest.imp.first?.displaymanager, "prebid-mobile")
+        SWPBMAssertEq(bidRequest.imp.first?.displaymanagerver, "MOCK_SDK_VERSION")
+        SWPBMAssertEq(bidRequest.imp.first?.secure, 1)
         
         //Verify GeoLocationParameterBuilder
-        PBMAssertEq(bidRequest.device.geo.type, 1)
-        PBMAssertEq(bidRequest.device.geo.lat!.doubleValue, mockLocationManagerSuccessful.coordinates.latitude)
-        PBMAssertEq(bidRequest.device.geo.lon!.doubleValue, mockLocationManagerSuccessful.coordinates.longitude)
+        SWPBMAssertEq(bidRequest.device.geo.type, 1)
+        SWPBMAssertEq(bidRequest.device.geo.lat!.doubleValue, mockLocationManagerSuccessful.coordinates.latitude)
+        SWPBMAssertEq(bidRequest.device.geo.lon!.doubleValue, mockLocationManagerSuccessful.coordinates.longitude)
         
-        //Verify PBMAppInfoParameterBuilder
-        PBMAssertEq(bidRequest.app.name, mockBundle.mockBundleDisplayName)
-        PBMAssertEq(bidRequest.app.bundle, mockBundle.mockBundleIdentifier)
-        PBMAssertEq(bidRequest.app.publisher?.name, publisherName)
+        //Verify SWPBMAppInfoParameterBuilder
+        SWPBMAssertEq(bidRequest.app.name, mockBundle.mockBundleDisplayName)
+        SWPBMAssertEq(bidRequest.app.bundle, mockBundle.mockBundleIdentifier)
+        SWPBMAssertEq(bidRequest.app.publisher?.name, publisherName)
         
         //Verify DeviceInfoParameterBuilder
-        PBMAssertEq(bidRequest.device.w!.intValue, Int(mockDeviceAccessManager.screenSize().width))
-        PBMAssertEq(bidRequest.device.h!.intValue, Int(mockDeviceAccessManager.screenSize().height))
-        PBMAssertEq(bidRequest.device.ifa, MockDeviceAccessManager.mockAdvertisingIdentifier)
-        PBMAssertEq(bidRequest.device.lmt, 0)
-        PBMAssertEq(bidRequest.device.hwv, mockDeviceAccessManager.platformString)
+        SWPBMAssertEq(bidRequest.device.w!.intValue, Int(mockDeviceAccessManager.screenSize().width))
+        SWPBMAssertEq(bidRequest.device.h!.intValue, Int(mockDeviceAccessManager.screenSize().height))
+        SWPBMAssertEq(bidRequest.device.ifa, MockDeviceAccessManager.mockAdvertisingIdentifier)
+        SWPBMAssertEq(bidRequest.device.lmt, 0)
+        SWPBMAssertEq(bidRequest.device.hwv, mockDeviceAccessManager.platformString)
         
         
         if #available(iOS 16, *) {
@@ -120,14 +120,14 @@ class ParameterBuilderServiceTest : XCTestCase {
         } else {
             //Verify NetworkParameterBuilder
             let expectedMccmnc = "\(mockCTTelephonyNetworkInfo.subscriberCellularProvider!.mobileCountryCode!)-\(mockCTTelephonyNetworkInfo.subscriberCellularProvider!.mobileNetworkCode!)"
-            PBMAssertEq(bidRequest.device.mccmnc, expectedMccmnc)
-            PBMAssertEq(bidRequest.device.mccmnc, expectedMccmnc)
-            PBMAssertEq(bidRequest.device.carrier, MockCTCarrier.mockCarrierName)
-            PBMAssertEq(bidRequest.device.mccmnc, expectedMccmnc)
+            SWPBMAssertEq(bidRequest.device.mccmnc, expectedMccmnc)
+            SWPBMAssertEq(bidRequest.device.mccmnc, expectedMccmnc)
+            SWPBMAssertEq(bidRequest.device.carrier, MockCTCarrier.mockCarrierName)
+            SWPBMAssertEq(bidRequest.device.mccmnc, expectedMccmnc)
             
             //Verify SupportedProtocolsParameterBuilder
-            PBMAssertEq(bidRequest.imp.count, 1)
-            PBMAssertEq(bidRequest.imp.first?.banner?.api, nil)
+            SWPBMAssertEq(bidRequest.imp.count, 1)
+            SWPBMAssertEq(bidRequest.imp.first?.banner?.api, nil)
         }
         
         //Verify ORTBParameterBuilder
@@ -155,7 +155,7 @@ class ParameterBuilderServiceTest : XCTestCase {
         let expectedOrtb = """
         {\"app\":{\"bundle\":\"Mock.Bundle.Identifier\",\"keywords\":\"appKeyword1,appKeyword2\",\"name\":\"MockBundleDisplayName\",\"publisher\":{\"name\":\"Publisher\"},\"storeurl\":\"https:\\/\\/openx.com\"},\"device\":{\(carrier)\"connectiontype\":2,\(deviceExt)\"geo\":{\"lat\":34.149335,\"lon\":-118.1328249,\"type\":1},\"h\":200,\"hwv\":\"iPhone1,1\",\"ifa\":\"abc123\",\"language\":\"ml\",\"lmt\":0,\"make\":\"MockMake\",\(mccmnc)\"model\":\"MockModel\",\"os\":\"MockOS\",\"osv\":\"1.2.3\",\"w\":100},\"imp\":[{\"clickbrowser\":1,\"displaymanager\":\"prebid-mobile\",\"displaymanagerver\":\"MOCK_SDK_VERSION\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":1}],\"regs\":{\"coppa\":1,\"ext\":{\"gdpr\":0}},\"user\":{\"ext\":{\"consent\":\"consentstring\"},\"keywords\":\"keyword1,keyword2\"}}
         """
-        PBMAssertEq(strORTB, expectedOrtb)
+        SWPBMAssertEq(strORTB, expectedOrtb)
     }
     
     func testDeviceLocationPrecisionInParamsDict() {
@@ -178,11 +178,11 @@ class ParameterBuilderServiceTest : XCTestCase {
         let mockCTTelephonyNetworkInfo = MockCTTelephonyNetworkInfo()
         let mockReachability = MockReachability.shared
         
-        let paramsDict = PBMParameterBuilderService.buildParamsDict(
+        let paramsDict = SWPBMParameterBuilderService.buildParamsDict(
             with: adConfiguration,
             bundle:mockBundle,
-            pbmLocationManager: mockLocationManagerSuccessful,
-            pbmDeviceAccessManager: mockDeviceAccessManager,
+            swpbmLocationManager: mockLocationManagerSuccessful,
+            swpbmDeviceAccessManager: mockDeviceAccessManager,
             ctTelephonyNetworkInfo: mockCTTelephonyNetworkInfo,
             reachability: mockReachability,
             sdkConfiguration: sdkConfiguration,
@@ -191,15 +191,15 @@ class ParameterBuilderServiceTest : XCTestCase {
             extraParameterBuilders: nil
         )
         
-        //Create a new PBMORTBBidRequest based off of the json string in the params dict
+        //Create a new SWPBMORTBBidRequest based off of the json string in the params dict
         guard let strORTB = paramsDict[PrebidConstants.OPEN_RTB_SCHEME] else {
             XCTFail("No ORTB string in parameter keys")
             return
         }
         
-        let bidRequest: PBMORTBBidRequest
+        let bidRequest: SWPBMORTBBidRequest
         do {
-            bidRequest = try PBMORTBBidRequest.from(jsonString:strORTB)
+            bidRequest = try SWPBMORTBBidRequest.from(jsonString:strORTB)
         } catch {
             XCTFail("\(error)")
             return
@@ -208,9 +208,9 @@ class ParameterBuilderServiceTest : XCTestCase {
         //Verify GeoLocationParameterBuilder
         let preciseLocation = Utils.shared.round(coordinates: mockLocationManagerSuccessful.coordinates, precision: targeting.locationPrecision)
         
-        PBMAssertEq(bidRequest.device.geo.type, 1)
-        PBMAssertEq(bidRequest.device.geo.lat!.doubleValue, preciseLocation.latitude)
-        PBMAssertEq(bidRequest.device.geo.lon!.doubleValue, preciseLocation.longitude)
+        SWPBMAssertEq(bidRequest.device.geo.type, 1)
+        SWPBMAssertEq(bidRequest.device.geo.lat!.doubleValue, preciseLocation.latitude)
+        SWPBMAssertEq(bidRequest.device.geo.lon!.doubleValue, preciseLocation.longitude)
         
         //Verify User Geo is not set
         XCTAssertNil(bidRequest.user.geo.lat)
@@ -231,7 +231,7 @@ class ParameterBuilderServiceTest : XCTestCase {
         {\"app\":{\"bundle\":\"Mock.Bundle.Identifier\",\"name\":\"MockBundleDisplayName\"},\"device\":{\"connectiontype\":2,\(deviceExt)\"geo\":{\"lat\":34.15,\"lon\":-118.13,\"type\":1},\"h\":200,\"hwv\":\"iPhone1,1\",\"ifa\":\"abc123\",\"language\":\"ml\",\"lmt\":0,\"make\":\"MockMake\",\"model\":\"MockModel\",\"os\":\"MockOS\",\"osv\":\"1.2.3\",\"w\":100},\"imp\":[{\"clickbrowser\":1,\"displaymanager\":\"prebid-mobile\",\"displaymanagerver\":\"MOCK_SDK_VERSION\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":1}],\"regs\":{\"coppa\":0}}
         """
         
-        PBMAssertEq(strORTB, expectedOrtb)
+        SWPBMAssertEq(strORTB, expectedOrtb)
     }
     
     func testUserLocationPrecisionInParamsDict() {
@@ -257,11 +257,11 @@ class ParameterBuilderServiceTest : XCTestCase {
         let mockCTTelephonyNetworkInfo = MockCTTelephonyNetworkInfo()
         let mockReachability = MockReachability.shared
         
-        let paramsDict = PBMParameterBuilderService.buildParamsDict(
+        let paramsDict = SWPBMParameterBuilderService.buildParamsDict(
             with: adConfiguration,
             bundle:mockBundle,
-            pbmLocationManager: mockLocationManagerSuccessful,
-            pbmDeviceAccessManager: mockDeviceAccessManager,
+            swpbmLocationManager: mockLocationManagerSuccessful,
+            swpbmDeviceAccessManager: mockDeviceAccessManager,
             ctTelephonyNetworkInfo: mockCTTelephonyNetworkInfo,
             reachability: mockReachability,
             sdkConfiguration: sdkConfiguration,
@@ -270,15 +270,15 @@ class ParameterBuilderServiceTest : XCTestCase {
             extraParameterBuilders: nil
         )
         
-        //Create a new PBMORTBBidRequest based off of the json string in the params dict
+        //Create a new SWPBMORTBBidRequest based off of the json string in the params dict
         guard let strORTB = paramsDict[PrebidConstants.OPEN_RTB_SCHEME] else {
             XCTFail("No ORTB string in parameter keys")
             return
         }
         
-        let bidRequest: PBMORTBBidRequest
+        let bidRequest: SWPBMORTBBidRequest
         do {
-            bidRequest = try PBMORTBBidRequest.from(jsonString:strORTB)
+            bidRequest = try SWPBMORTBBidRequest.from(jsonString:strORTB)
         } catch {
             XCTFail("\(error)")
             return
@@ -290,8 +290,8 @@ class ParameterBuilderServiceTest : XCTestCase {
 
         //Verify User Geo is not set
         let preciseLocation = Utils.shared.round(coordinates: mockLocationManagerSuccessful.coordinates, precision: targeting.locationPrecision)
-        PBMAssertEq(bidRequest.user.geo.lat!.doubleValue, preciseLocation.latitude)
-        PBMAssertEq(bidRequest.user.geo.lon!.doubleValue, preciseLocation.longitude)
+        SWPBMAssertEq(bidRequest.user.geo.lat!.doubleValue, preciseLocation.latitude)
+        SWPBMAssertEq(bidRequest.user.geo.lon!.doubleValue, preciseLocation.longitude)
         
         //Verify ORTBParameterBuilder
         guard #available(iOS 11.0, *) else {
@@ -308,7 +308,7 @@ class ParameterBuilderServiceTest : XCTestCase {
         {\"app\":{\"bundle\":\"Mock.Bundle.Identifier\",\"name\":\"MockBundleDisplayName\"},\"device\":{\"connectiontype\":2,\(deviceExt)\"h\":200,\"hwv\":\"iPhone1,1\",\"ifa\":\"abc123\",\"language\":\"ml\",\"lmt\":0,\"make\":\"MockMake\",\"model\":\"MockModel\",\"os\":\"MockOS\",\"osv\":\"1.2.3\",\"w\":100},\"imp\":[{\"clickbrowser\":1,\"displaymanager\":\"prebid-mobile\",\"displaymanagerver\":\"MOCK_SDK_VERSION\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":1}],\"regs\":{\"coppa\":0},\"user\":{\"geo\":{\"lat\":34.15,\"lon\":-118.13}}}
         """
         
-        PBMAssertEq(strORTB, expectedOrtb)
+        SWPBMAssertEq(strORTB, expectedOrtb)
     }
     
     func testSettingHighLocationPrecisionInParamsDict() {
@@ -334,11 +334,11 @@ class ParameterBuilderServiceTest : XCTestCase {
         let mockCTTelephonyNetworkInfo = MockCTTelephonyNetworkInfo()
         let mockReachability = MockReachability.shared
         
-        let paramsDict = PBMParameterBuilderService.buildParamsDict(
+        let paramsDict = SWPBMParameterBuilderService.buildParamsDict(
             with: adConfiguration,
             bundle:mockBundle,
-            pbmLocationManager: mockLocationManagerSuccessful,
-            pbmDeviceAccessManager: mockDeviceAccessManager,
+            swpbmLocationManager: mockLocationManagerSuccessful,
+            swpbmDeviceAccessManager: mockDeviceAccessManager,
             ctTelephonyNetworkInfo: mockCTTelephonyNetworkInfo,
             reachability: mockReachability,
             sdkConfiguration: sdkConfiguration,
@@ -347,15 +347,15 @@ class ParameterBuilderServiceTest : XCTestCase {
             extraParameterBuilders: nil
         )
         
-        //Create a new PBMORTBBidRequest based off of the json string in the params dict
+        //Create a new SWPBMORTBBidRequest based off of the json string in the params dict
         guard let strORTB = paramsDict[PrebidConstants.OPEN_RTB_SCHEME] else {
             XCTFail("No ORTB string in parameter keys")
             return
         }
         
-        let bidRequest: PBMORTBBidRequest
+        let bidRequest: SWPBMORTBBidRequest
         do {
-            bidRequest = try PBMORTBBidRequest.from(jsonString:strORTB)
+            bidRequest = try SWPBMORTBBidRequest.from(jsonString:strORTB)
         } catch {
             XCTFail("\(error)")
             return
@@ -367,8 +367,8 @@ class ParameterBuilderServiceTest : XCTestCase {
 
         //Verify User Geo is not set
         let preciseLocation = Utils.shared.round(coordinates: mockLocationManagerSuccessful.coordinates, precision: targeting.locationPrecision)
-        PBMAssertEq(bidRequest.user.geo.lat!.doubleValue, preciseLocation.latitude)
-        PBMAssertEq(bidRequest.user.geo.lon!.doubleValue, preciseLocation.longitude)
+        SWPBMAssertEq(bidRequest.user.geo.lat!.doubleValue, preciseLocation.latitude)
+        SWPBMAssertEq(bidRequest.user.geo.lon!.doubleValue, preciseLocation.longitude)
         
         //Verify ORTBParameterBuilder
         guard #available(iOS 11.0, *) else {
@@ -385,7 +385,7 @@ class ParameterBuilderServiceTest : XCTestCase {
         {\"app\":{\"bundle\":\"Mock.Bundle.Identifier\",\"name\":\"MockBundleDisplayName\"},\"device\":{\"connectiontype\":2,\(deviceExt)\"h\":200,\"hwv\":\"iPhone1,1\",\"ifa\":\"abc123\",\"language\":\"ml\",\"lmt\":0,\"make\":\"MockMake\",\"model\":\"MockModel\",\"os\":\"MockOS\",\"osv\":\"1.2.3\",\"w\":100},\"imp\":[{\"clickbrowser\":1,\"displaymanager\":\"prebid-mobile\",\"displaymanagerver\":\"MOCK_SDK_VERSION\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":1}],\"regs\":{\"coppa\":0},\"user\":{\"geo\":{\"lat\":34.149335,\"lon\":-118.1328249}}}
         """
         
-        PBMAssertEq(strORTB, expectedOrtb)
+        SWPBMAssertEq(strORTB, expectedOrtb)
     }
     
     func testSettingNegativeLocationPrecisionInParamsDict() {
@@ -411,11 +411,11 @@ class ParameterBuilderServiceTest : XCTestCase {
         let mockCTTelephonyNetworkInfo = MockCTTelephonyNetworkInfo()
         let mockReachability = MockReachability.shared
         
-        let paramsDict = PBMParameterBuilderService.buildParamsDict(
+        let paramsDict = SWPBMParameterBuilderService.buildParamsDict(
             with: adConfiguration,
             bundle:mockBundle,
-            pbmLocationManager: mockLocationManagerSuccessful,
-            pbmDeviceAccessManager: mockDeviceAccessManager,
+            swpbmLocationManager: mockLocationManagerSuccessful,
+            swpbmDeviceAccessManager: mockDeviceAccessManager,
             ctTelephonyNetworkInfo: mockCTTelephonyNetworkInfo,
             reachability: mockReachability,
             sdkConfiguration: sdkConfiguration,
@@ -424,15 +424,15 @@ class ParameterBuilderServiceTest : XCTestCase {
             extraParameterBuilders: nil
         )
         
-        //Create a new PBMORTBBidRequest based off of the json string in the params dict
+        //Create a new SWPBMORTBBidRequest based off of the json string in the params dict
         guard let strORTB = paramsDict[PrebidConstants.OPEN_RTB_SCHEME] else {
             XCTFail("No ORTB string in parameter keys")
             return
         }
         
-        let bidRequest: PBMORTBBidRequest
+        let bidRequest: SWPBMORTBBidRequest
         do {
-            bidRequest = try PBMORTBBidRequest.from(jsonString:strORTB)
+            bidRequest = try SWPBMORTBBidRequest.from(jsonString:strORTB)
         } catch {
             XCTFail("\(error)")
             return
@@ -444,8 +444,8 @@ class ParameterBuilderServiceTest : XCTestCase {
 
         //Verify User Geo is not set
         let preciseLocation = Utils.shared.round(coordinates: mockLocationManagerSuccessful.coordinates, precision: targeting.locationPrecision)
-        PBMAssertEq(bidRequest.user.geo.lat!.doubleValue, preciseLocation.latitude)
-        PBMAssertEq(bidRequest.user.geo.lon!.doubleValue, preciseLocation.longitude)
+        SWPBMAssertEq(bidRequest.user.geo.lat!.doubleValue, preciseLocation.latitude)
+        SWPBMAssertEq(bidRequest.user.geo.lon!.doubleValue, preciseLocation.longitude)
         
         //Verify ORTBParameterBuilder
         guard #available(iOS 11.0, *) else {
@@ -462,7 +462,7 @@ class ParameterBuilderServiceTest : XCTestCase {
         {\"app\":{\"bundle\":\"Mock.Bundle.Identifier\",\"name\":\"MockBundleDisplayName\"},\"device\":{\"connectiontype\":2,\(deviceExt)\"h\":200,\"hwv\":\"iPhone1,1\",\"ifa\":\"abc123\",\"language\":\"ml\",\"lmt\":0,\"make\":\"MockMake\",\"model\":\"MockModel\",\"os\":\"MockOS\",\"osv\":\"1.2.3\",\"w\":100},\"imp\":[{\"clickbrowser\":1,\"displaymanager\":\"prebid-mobile\",\"displaymanagerver\":\"MOCK_SDK_VERSION\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":1}],\"regs\":{\"coppa\":0},\"user\":{\"geo\":{\"lat\":34.149335,\"lon\":-118.1328249}}}
         """
         
-        PBMAssertEq(strORTB, expectedOrtb)
+        SWPBMAssertEq(strORTB, expectedOrtb)
     }
     
     func testSettingZeroLocationPrecisionInParamsDict() {
@@ -488,11 +488,11 @@ class ParameterBuilderServiceTest : XCTestCase {
         let mockCTTelephonyNetworkInfo = MockCTTelephonyNetworkInfo()
         let mockReachability = MockReachability.shared
         
-        let paramsDict = PBMParameterBuilderService.buildParamsDict(
+        let paramsDict = SWPBMParameterBuilderService.buildParamsDict(
             with: adConfiguration,
             bundle:mockBundle,
-            pbmLocationManager: mockLocationManagerSuccessful,
-            pbmDeviceAccessManager: mockDeviceAccessManager,
+            swpbmLocationManager: mockLocationManagerSuccessful,
+            swpbmDeviceAccessManager: mockDeviceAccessManager,
             ctTelephonyNetworkInfo: mockCTTelephonyNetworkInfo,
             reachability: mockReachability,
             sdkConfiguration: sdkConfiguration,
@@ -501,15 +501,15 @@ class ParameterBuilderServiceTest : XCTestCase {
             extraParameterBuilders: nil
         )
         
-        //Create a new PBMORTBBidRequest based off of the json string in the params dict
+        //Create a new SWPBMORTBBidRequest based off of the json string in the params dict
         guard let strORTB = paramsDict[PrebidConstants.OPEN_RTB_SCHEME] else {
             XCTFail("No ORTB string in parameter keys")
             return
         }
         
-        let bidRequest: PBMORTBBidRequest
+        let bidRequest: SWPBMORTBBidRequest
         do {
-            bidRequest = try PBMORTBBidRequest.from(jsonString:strORTB)
+            bidRequest = try SWPBMORTBBidRequest.from(jsonString:strORTB)
         } catch {
             XCTFail("\(error)")
             return
@@ -521,8 +521,8 @@ class ParameterBuilderServiceTest : XCTestCase {
 
         //Verify User Geo is not set
         let preciseLocation = Utils.shared.round(coordinates: mockLocationManagerSuccessful.coordinates, precision: targeting.locationPrecision)
-        PBMAssertEq(bidRequest.user.geo.lat!.doubleValue, preciseLocation.latitude)
-        PBMAssertEq(bidRequest.user.geo.lon!.doubleValue, preciseLocation.longitude)
+        SWPBMAssertEq(bidRequest.user.geo.lat!.doubleValue, preciseLocation.latitude)
+        SWPBMAssertEq(bidRequest.user.geo.lon!.doubleValue, preciseLocation.longitude)
         
         //Verify ORTBParameterBuilder
         guard #available(iOS 11.0, *) else {
@@ -539,7 +539,7 @@ class ParameterBuilderServiceTest : XCTestCase {
         {\"app\":{\"bundle\":\"Mock.Bundle.Identifier\",\"name\":\"MockBundleDisplayName\"},\"device\":{\"connectiontype\":2,\(deviceExt)\"h\":200,\"hwv\":\"iPhone1,1\",\"ifa\":\"abc123\",\"language\":\"ml\",\"lmt\":0,\"make\":\"MockMake\",\"model\":\"MockModel\",\"os\":\"MockOS\",\"osv\":\"1.2.3\",\"w\":100},\"imp\":[{\"clickbrowser\":1,\"displaymanager\":\"prebid-mobile\",\"displaymanagerver\":\"MOCK_SDK_VERSION\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":1}],\"regs\":{\"coppa\":0},\"user\":{\"geo\":{\"lat\":34,\"lon\":-118}}}
         """
         
-        PBMAssertEq(strORTB, expectedOrtb)
+        SWPBMAssertEq(strORTB, expectedOrtb)
     }
     
     func testDeviceLocationNoUsedIfDenied() {
@@ -565,11 +565,11 @@ class ParameterBuilderServiceTest : XCTestCase {
         let mockCTTelephonyNetworkInfo = MockCTTelephonyNetworkInfo()
         let mockReachability = MockReachability.shared
         
-        let paramsDict = PBMParameterBuilderService.buildParamsDict(
+        let paramsDict = SWPBMParameterBuilderService.buildParamsDict(
             with: adConfiguration,
             bundle:mockBundle,
-            pbmLocationManager: mockLocationManagerUnSuccessful,
-            pbmDeviceAccessManager: mockDeviceAccessManager,
+            swpbmLocationManager: mockLocationManagerUnSuccessful,
+            swpbmDeviceAccessManager: mockDeviceAccessManager,
             ctTelephonyNetworkInfo: mockCTTelephonyNetworkInfo,
             reachability: mockReachability,
             sdkConfiguration: sdkConfiguration,
@@ -578,15 +578,15 @@ class ParameterBuilderServiceTest : XCTestCase {
             extraParameterBuilders: nil
         )
         
-        //Create a new PBMORTBBidRequest based off of the json string in the params dict
+        //Create a new SWPBMORTBBidRequest based off of the json string in the params dict
         guard let strORTB = paramsDict[PrebidConstants.OPEN_RTB_SCHEME] else {
             XCTFail("No ORTB string in parameter keys")
             return
         }
         
-        let bidRequest: PBMORTBBidRequest
+        let bidRequest: SWPBMORTBBidRequest
         do {
-            bidRequest = try PBMORTBBidRequest.from(jsonString:strORTB)
+            bidRequest = try SWPBMORTBBidRequest.from(jsonString:strORTB)
         } catch {
             XCTFail("\(error)")
             return
@@ -615,7 +615,7 @@ class ParameterBuilderServiceTest : XCTestCase {
         {\"app\":{\"bundle\":\"Mock.Bundle.Identifier\",\"name\":\"MockBundleDisplayName\"},\"device\":{\"connectiontype\":2,\(deviceExt)\"h\":200,\"hwv\":\"iPhone1,1\",\"ifa\":\"abc123\",\"language\":\"ml\",\"lmt\":0,\"make\":\"MockMake\",\"model\":\"MockModel\",\"os\":\"MockOS\",\"osv\":\"1.2.3\",\"w\":100},\"imp\":[{\"clickbrowser\":1,\"displaymanager\":\"prebid-mobile\",\"displaymanagerver\":\"MOCK_SDK_VERSION\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":1}],\"regs\":{\"coppa\":0}}
         """
         
-        PBMAssertEq(strORTB, expectedOrtb)
+        SWPBMAssertEq(strORTB, expectedOrtb)
     }
     
     func testDeviceLocationNotUsedIfUndetermined() {
@@ -641,11 +641,11 @@ class ParameterBuilderServiceTest : XCTestCase {
         let mockCTTelephonyNetworkInfo = MockCTTelephonyNetworkInfo()
         let mockReachability = MockReachability.shared
         
-        let paramsDict = PBMParameterBuilderService.buildParamsDict(
+        let paramsDict = SWPBMParameterBuilderService.buildParamsDict(
             with: adConfiguration,
             bundle:mockBundle,
-            pbmLocationManager: mockLocationManagerUnSuccessful,
-            pbmDeviceAccessManager: mockDeviceAccessManager,
+            swpbmLocationManager: mockLocationManagerUnSuccessful,
+            swpbmDeviceAccessManager: mockDeviceAccessManager,
             ctTelephonyNetworkInfo: mockCTTelephonyNetworkInfo,
             reachability: mockReachability,
             sdkConfiguration: sdkConfiguration,
@@ -654,15 +654,15 @@ class ParameterBuilderServiceTest : XCTestCase {
             extraParameterBuilders: nil
         )
         
-        //Create a new PBMORTBBidRequest based off of the json string in the params dict
+        //Create a new SWPBMORTBBidRequest based off of the json string in the params dict
         guard let strORTB = paramsDict[PrebidConstants.OPEN_RTB_SCHEME] else {
             XCTFail("No ORTB string in parameter keys")
             return
         }
         
-        let bidRequest: PBMORTBBidRequest
+        let bidRequest: SWPBMORTBBidRequest
         do {
-            bidRequest = try PBMORTBBidRequest.from(jsonString:strORTB)
+            bidRequest = try SWPBMORTBBidRequest.from(jsonString:strORTB)
         } catch {
             XCTFail("\(error)")
             return
@@ -691,6 +691,6 @@ class ParameterBuilderServiceTest : XCTestCase {
         {\"app\":{\"bundle\":\"Mock.Bundle.Identifier\",\"name\":\"MockBundleDisplayName\"},\"device\":{\"connectiontype\":2,\(deviceExt)\"h\":200,\"hwv\":\"iPhone1,1\",\"ifa\":\"abc123\",\"language\":\"ml\",\"lmt\":0,\"make\":\"MockMake\",\"model\":\"MockModel\",\"os\":\"MockOS\",\"osv\":\"1.2.3\",\"w\":100},\"imp\":[{\"clickbrowser\":1,\"displaymanager\":\"prebid-mobile\",\"displaymanagerver\":\"MOCK_SDK_VERSION\",\"ext\":{\"dlp\":1},\"instl\":0,\"secure\":1}],\"regs\":{\"coppa\":0}}
         """
         
-        PBMAssertEq(strORTB, expectedOrtb)
+        SWPBMAssertEq(strORTB, expectedOrtb)
     }
 }

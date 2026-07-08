@@ -23,85 +23,85 @@ class TestStringExtension: XCTestCase {
     func testNumberOfMatches() {
         
         //Simple tests
-        var result = animalString.PBMnumberOfMatches("cat")
+        var result = animalString.SWPBMnumberOfMatches("cat")
         XCTAssert(result == 2, "Expected 2 match, got \(result)")
         
-        result = animalString.PBMnumberOfMatches("dog")
+        result = animalString.SWPBMnumberOfMatches("dog")
         XCTAssert(result == 1, "Expected 1 match, got \(result)")
         
-        result = animalString.PBMnumberOfMatches("mouse")
+        result = animalString.SWPBMnumberOfMatches("mouse")
         XCTAssert(result == 1, "Expected 1 match, got \(result)")
         
-        result = animalString.PBMnumberOfMatches("zebra")
+        result = animalString.SWPBMnumberOfMatches("zebra")
         XCTAssert(result == 0, "Expected 0 matches, got \(result)")
         
-        result = animalString.PBMnumberOfMatches("catcatdog")
+        result = animalString.SWPBMnumberOfMatches("catcatdog")
         XCTAssert(result == 1, "Expected 1 match, got \(result)")
         
-        result = animalString.PBMnumberOfMatches("catcatdogmouse")
+        result = animalString.SWPBMnumberOfMatches("catcatdogmouse")
         XCTAssert(result == 1, "Expected 1 match, got \(result)")
         
         //Regex Tests
-        result = animalString.PBMnumberOfMatches("cat.+dog")
+        result = animalString.SWPBMnumberOfMatches("cat.+dog")
         XCTAssert(result == 1, "Expected 1 match, got \(result)")
         
-        result = animalString.PBMnumberOfMatches("mouse.+cat")
+        result = animalString.SWPBMnumberOfMatches("mouse.+cat")
         XCTAssert(result == 0, "Expected 0 match, got \(result)")
         
-        result = animalString.PBMnumberOfMatches("^cat")
+        result = animalString.SWPBMnumberOfMatches("^cat")
         XCTAssert(result == 1, "Expected 1 match, got \(result)")
         
-        result = animalString.PBMnumberOfMatches("mouse$")
+        result = animalString.SWPBMnumberOfMatches("mouse$")
         XCTAssert(result == 1, "Expected 1 match, got \(result)")
         
-        result = animalString.PBMnumberOfMatches("[0-9]")
+        result = animalString.SWPBMnumberOfMatches("[0-9]")
         XCTAssert(result == 0, "Expected 0 match, got \(result)")
         
-        result = animalString.PBMnumberOfMatches("[a-z]")
+        result = animalString.SWPBMnumberOfMatches("[a-z]")
         XCTAssert(result == animalString.count, "Expected \(animalString.count), got \(result)")
         
-        result = animalString.PBMnumberOfMatches("c.tc.td.gm.us.")
+        result = animalString.SWPBMnumberOfMatches("c.tc.td.gm.us.")
         XCTAssert(result == 1, "Expected 1, got \(result)")
         
-        result = animalString.PBMnumberOfMatches("cat\\.")
+        result = animalString.SWPBMnumberOfMatches("cat\\.")
         XCTAssert(result == 0, "Expected 0, got \(result)")
     }
     
     func testDoesMatch() {
-        XCTAssert(animalString.PBMdoesMatch("cat"), "Unexpected doesMatch Result")
-        XCTAssert(!animalString.PBMdoesMatch("zebra"), "Unexpected doesMatch Result")
-        XCTAssert(animalString.PBMdoesMatch("[a-z]"), "Unexpected doesMatch Result")
-        XCTAssert(animalString.PBMdoesMatch("c.tc.td.gm.us."), "Unexpected doesMatch Result")
-        XCTAssert(!animalString.PBMdoesMatch("cat\\."), "Unexpected doesMatch Result")
+        XCTAssert(animalString.SWPBMdoesMatch("cat"), "Unexpected doesMatch Result")
+        XCTAssert(!animalString.SWPBMdoesMatch("zebra"), "Unexpected doesMatch Result")
+        XCTAssert(animalString.SWPBMdoesMatch("[a-z]"), "Unexpected doesMatch Result")
+        XCTAssert(animalString.SWPBMdoesMatch("c.tc.td.gm.us."), "Unexpected doesMatch Result")
+        XCTAssert(!animalString.SWPBMdoesMatch("cat\\."), "Unexpected doesMatch Result")
         
         //Negative lookahead
-        XCTAssert(animalString.PBMdoesMatch("^((?!dog).)*dog.+"), "Unexpected doesMatch Result")
+        XCTAssert(animalString.SWPBMdoesMatch("^((?!dog).)*dog.+"), "Unexpected doesMatch Result")
     }
     
     func testSubstringFromString() {
         
         //Standard
-        var actual:String? = "foobarbaz".PBMsubstringFromString("foo")
+        var actual:String? = "foobarbaz".SWPBMsubstringFromString("foo")
         var expected:String? = "barbaz"
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
         //End
-        actual = "foobarbaz".PBMsubstringFromString("baz")
+        actual = "foobarbaz".SWPBMsubstringFromString("baz")
         expected = ""
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
         //same
-        actual = "foobarbaz".PBMsubstringFromString("foobarbaz")
+        actual = "foobarbaz".SWPBMsubstringFromString("foobarbaz")
         expected = "";
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
         //EmptyString
-        actual = "foobarbaz".PBMsubstringFromString("")
+        actual = "foobarbaz".SWPBMsubstringFromString("")
         expected = nil
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
         //not found
-        actual = "foobarbaz".PBMsubstringFromString("NotFound")
+        actual = "foobarbaz".SWPBMsubstringFromString("NotFound")
         expected = nil;
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
     }
@@ -109,22 +109,22 @@ class TestStringExtension: XCTestCase {
     func testSubstringToString() {
         
         //Standard
-        var actual:String? = "foobarbaz".PBMsubstringToString("bar")
+        var actual:String? = "foobarbaz".SWPBMsubstringToString("bar")
         var expected:String? = "foo"
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
         //Start of String
-        actual = "foobarbaz".PBMsubstringToString("foo")
+        actual = "foobarbaz".SWPBMsubstringToString("foo")
         expected = ""
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
         //EmptyString
-        actual = "foobarbaz".PBMsubstringToString("")
+        actual = "foobarbaz".SWPBMsubstringToString("")
         expected = nil
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
         //not found
-        actual = "foobarbaz".PBMsubstringToString("NotFound")
+        actual = "foobarbaz".SWPBMsubstringToString("NotFound")
         expected = nil
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
     }
@@ -133,114 +133,114 @@ class TestStringExtension: XCTestCase {
     func testSubstringFromStringToString() {
         
         //Standard
-        var actual:String? = "foobarbaz".PBMsubstringFromString("foo", toString:"baz")
+        var actual:String? = "foobarbaz".SWPBMsubstringFromString("foo", toString:"baz")
         var expected:String? = "bar"
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
         //End before beginning
-        actual = "foobarbaz".PBMsubstringFromString("baz", toString:"foo")
+        actual = "foobarbaz".SWPBMsubstringFromString("baz", toString:"foo")
         expected = nil
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
         //Empty String inputs
-        actual = "foobarbaz".PBMsubstringFromString("", toString:"baz")
+        actual = "foobarbaz".SWPBMsubstringFromString("", toString:"baz")
         expected = nil
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
-        actual = "foobarbaz".PBMsubstringFromString("foo", toString:"")
+        actual = "foobarbaz".SWPBMsubstringFromString("foo", toString:"")
         expected = nil
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
-        actual = "foobarbaz".PBMsubstringFromString("", toString:"")
+        actual = "foobarbaz".SWPBMsubstringFromString("", toString:"")
         expected = nil
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
         
-        actual = "<NSThread: 0x7f806ffce890>{number = 4, name = (null)}".PBMsubstringFromString("number = ", toString:",")
+        actual = "<NSThread: 0x7f806ffce890>{number = 4, name = (null)}".SWPBMsubstringFromString("number = ", toString:",")
         expected = "4"
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
     }
     
     
-    func testPBMstringByReplacingRegex() {
+    func testSWPBMstringByReplacingRegex() {
         
         //Simple example (doesn't really use regex)
-        var actual = "foobarbaz".PBMstringByReplacingRegex("bar", replaceWith:"baz")
+        var actual = "foobarbaz".SWPBMstringByReplacingRegex("bar", replaceWith:"baz")
         var expected = "foobazbaz"
         XCTAssert(expected == actual, "expected \(expected), got \(actual)")
         
         //Simple .+ examples
-        actual = "foobarbaz".PBMstringByReplacingRegex("f.+", replaceWith:"baz")
+        actual = "foobarbaz".SWPBMstringByReplacingRegex("f.+", replaceWith:"baz")
         expected = "baz"
         XCTAssert(expected == actual, "expected \(expected), got \(actual)")
         
-        actual = "foo\"bar\"baz".PBMstringByReplacingRegex("\".+\"", replaceWith:"\"baz\"")
+        actual = "foo\"bar\"baz".SWPBMstringByReplacingRegex("\".+\"", replaceWith:"\"baz\"")
         expected = "foo\"baz\"baz"
         XCTAssert(expected == actual, "expected \(expected), got \(actual)")
         
         //Group, trivial example (replace with self)
-        actual = "a href=\"foo.com?key1=val1&key2=val2\"".PBMstringByReplacingRegex("\"(.+)\"", replaceWith:"\"$1\"")
+        actual = "a href=\"foo.com?key1=val1&key2=val2\"".SWPBMstringByReplacingRegex("\"(.+)\"", replaceWith:"\"$1\"")
         expected = "a href=\"foo.com?key1=val1&key2=val2\""
         XCTAssert(expected == actual, "expected \(expected), got \(actual)")
         
         //Group, append stuff
-        actual = "a href=\"foo.com?key1=val1&key2=val2\"".PBMstringByReplacingRegex("\"(.+)\"", replaceWith:"\"$1&key3=val3\"")
+        actual = "a href=\"foo.com?key1=val1&key2=val2\"".SWPBMstringByReplacingRegex("\"(.+)\"", replaceWith:"\"$1&key3=val3\"")
         expected = "a href=\"foo.com?key1=val1&key2=val2&key3=val3\""
         XCTAssert(expected == actual, "expected \(expected), got \(actual)")
         
         //Regex "Not"
-        actual = "a href=\"foo.com?key1=val1&key2=val2\"".PBMstringByReplacingRegex("foo.com\\?[^'\"]+", replaceWith:"foo.com?bar=baz")
+        actual = "a href=\"foo.com?key1=val1&key2=val2\"".SWPBMstringByReplacingRegex("foo.com\\?[^'\"]+", replaceWith:"foo.com?bar=baz")
         expected = "a href=\"foo.com?bar=baz\""
         XCTAssert(expected == actual, "expected \(expected), got \(actual)")
         
         //Regex "Not" With Group & Append
-        actual = "a href=\"foo.com\(PrebidConstants.TRACKING_PATTERN_RI)?key1=val1&key2=val2\"".PBMstringByReplacingRegex("\(PrebidConstants.TRACKING_PATTERN_RI)\\?([^'\"]+)", replaceWith:"\(PrebidConstants.TRACKING_PATTERN_RI)?$1&bar=baz")
+        actual = "a href=\"foo.com\(PrebidConstants.TRACKING_PATTERN_RI)?key1=val1&key2=val2\"".SWPBMstringByReplacingRegex("\(PrebidConstants.TRACKING_PATTERN_RI)\\?([^'\"]+)", replaceWith:"\(PrebidConstants.TRACKING_PATTERN_RI)?$1&bar=baz")
         expected = "a href=\"foo.com\(PrebidConstants.TRACKING_PATTERN_RI)?key1=val1&key2=val2&bar=baz\""
         XCTAssert(expected == actual, "expected \(expected), got \(actual)")
     }
     
-    func testPBMsubstringFromIndex() {
+    func testSWPBMsubstringFromIndex() {
         
         //Basic test
-        var actual:String? = "foobarbaz".PBMsubstringFromIndex(0, toIndex:3)
+        var actual:String? = "foobarbaz".SWPBMsubstringFromIndex(0, toIndex:3)
         var expected:String? = "foo"
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
         //Error handling
-        actual = "foobarbaz".PBMsubstringFromIndex(0, toIndex:-1)
+        actual = "foobarbaz".SWPBMsubstringFromIndex(0, toIndex:-1)
         expected = nil
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
-        actual = "foobarbaz".PBMsubstringFromIndex(-1, toIndex:0)
+        actual = "foobarbaz".SWPBMsubstringFromIndex(-1, toIndex:0)
         expected = nil
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
-        actual = "foobarbaz".PBMsubstringFromIndex(3, toIndex:0)
+        actual = "foobarbaz".SWPBMsubstringFromIndex(3, toIndex:0)
         expected = nil
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
         //More complicated regular tests
-        actual = "foobarbaz".PBMsubstringFromIndex(0, toIndex:0)
+        actual = "foobarbaz".SWPBMsubstringFromIndex(0, toIndex:0)
         expected = ""
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
-        actual = "foobarbaz".PBMsubstringFromIndex(3, toIndex:6)
+        actual = "foobarbaz".SWPBMsubstringFromIndex(3, toIndex:6)
         expected = "bar"
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
-        actual = "foobarbaz".PBMsubstringFromIndex(0, toIndex:1)
+        actual = "foobarbaz".SWPBMsubstringFromIndex(0, toIndex:1)
         expected = "f"
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
-        actual = "foobarbaz".PBMsubstringFromIndex(0, toIndex:9)
+        actual = "foobarbaz".SWPBMsubstringFromIndex(0, toIndex:9)
         expected = "foobarbaz"
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
-        actual = "foobarbaz".PBMsubstringFromIndex(8, toIndex:9)
+        actual = "foobarbaz".SWPBMsubstringFromIndex(8, toIndex:9)
         expected = "z"
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
         
-        actual = "foobarbaz".PBMsubstringFromIndex(1, toIndex:10)
+        actual = "foobarbaz".SWPBMsubstringFromIndex(1, toIndex:10)
         expected = nil
         XCTAssert(expected == actual, "expected \(String(describing: expected)), got \(String(describing: actual))")
     }

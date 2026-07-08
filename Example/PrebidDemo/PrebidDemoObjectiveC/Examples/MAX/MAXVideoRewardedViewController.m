@@ -69,11 +69,11 @@ NSString * const maxAdUnitRewardedId = @"75edc39e22574a9d";
 }
 
 - (void)didFailToDisplayAd:(MAAd *)ad withError:(MAError *)error {
-    PBMLogError(@"%@", error.message);
+    SWPBMLogError(@"%@", error.message);
 }
 
 - (void)didFailToLoadAdForAdUnitIdentifier:(NSString *)adUnitIdentifier withError:(MAError *)error {
-    PBMLogError(@"%@", error.message);
+    SWPBMLogError(@"%@", error.message);
 }
 
 - (void)didDisplayAd:(MAAd *)ad {

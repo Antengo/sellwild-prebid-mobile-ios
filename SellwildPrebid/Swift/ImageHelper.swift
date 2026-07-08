@@ -18,23 +18,23 @@ import UIKit
 public class ImageHelper {
     public static func downloadImageSync(_ urlString: String) -> Result<UIImage, Error> {
         guard let url = URL(string: urlString) else {
-            return .failure(PBMError.init(message: "Image URL is invalid"))
+            return .failure(SWPBMError.init(message: "Image URL is invalid"))
         }
         
         if let data = try? Data(contentsOf: url) {
             if let image = UIImage(data: data) {
                 return .success(image)
             } else {
-                return .failure(PBMError.init(message: "Error while creating UIImage from received data"))
+                return .failure(SWPBMError.init(message: "Error while creating UIImage from received data"))
             }
         } else {
-            return .failure(PBMError.init(message: "Error while receiving data by url"))
+            return .failure(SWPBMError.init(message: "Error while receiving data by url"))
         }
     }
     
     public static func downloadImageAsync(_ urlString: String, completion: @escaping(Result<UIImage, Error>) -> Void) {
         guard let url = URL(string: urlString) else {
-            completion(.failure(PBMError.init(message: "Image URL is invalid")))
+            completion(.failure(SWPBMError.init(message: "Image URL is invalid")))
             return
         }
         DispatchQueue.global().async {
@@ -43,11 +43,11 @@ public class ImageHelper {
                     if let image = UIImage(data:data) {
                         completion(.success(image))
                     } else {
-                        return completion(.failure(PBMError.init(message: "Error while creating UIImage from received data")))
+                        return completion(.failure(SWPBMError.init(message: "Error while creating UIImage from received data")))
                     }
                 }
             } else {
-                return completion(.failure(PBMError.init(message: "Error while receiving data by url")))
+                return completion(.failure(SWPBMError.init(message: "Error while receiving data by url")))
             }
         }
     }

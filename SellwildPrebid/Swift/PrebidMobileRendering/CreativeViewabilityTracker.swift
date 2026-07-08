@@ -17,11 +17,11 @@
 import Foundation
 import UIKit
 
-@_spi(PBMInternal) public
+@_spi(SWPBMInternal) public
 typealias ViewExposureChangeHandler = (_ tracker: CreativeViewabilityTracker, _ viewExposure: ViewExposure) -> Void
 
-@objc(PBMCreativeViewabilityTracker)
-@_spi(PBMInternal) public
+@objc(SWPBMCreativeViewabilityTracker)
+@_spi(SWPBMInternal) public
 protocol CreativeViewabilityTracker: NSObjectProtocol {
     
     init(view: UIView, pollingTimeInterval: TimeInterval, onExposureChange: @escaping ViewExposureChangeHandler)

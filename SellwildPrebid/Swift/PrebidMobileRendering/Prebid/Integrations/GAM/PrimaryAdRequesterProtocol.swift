@@ -15,12 +15,12 @@
 
 import Foundation
 
-@objc(PBMPrimaryAdRequesterProtocol)
+@objc(SWPBMPrimaryAdRequesterProtocol)
 public protocol PrimaryAdRequesterProtocol: NSObjectProtocol {
     
     /**
-     @abstract PBM SDK calls this method when it has valid bid/s to pass to the ad server.
-     @discussion Note that, if the PBM SDK does not have valid bids, `requestAdWithBidResponse:` will be called with a `nil` bid value.
+     @abstract SWPBM SDK calls this method when it has valid bid/s to pass to the ad server.
+     @discussion Note that, if the SWPBM SDK does not have valid bids, `requestAdWithBidResponse:` will be called with a `nil` bid value.
      @param bidResponse bid response object having useful information that can be passed to the ad server SDK
      */
     @objc(requestAdWithBidResponse:)

@@ -28,7 +28,7 @@ extension PrebidMAXMediationAdapter: MANativeAdAdapter, NativeAdEventDelegate {
             return
         }
                 
-        guard let targetingInfo = parameters.localExtraParameters[PBMMediationTargetingInfoKey] as? [String: String] else {
+        guard let targetingInfo = parameters.localExtraParameters[SWPBMMediationTargetingInfoKey] as? [String: String] else {
             let error = MAAdapterError(nsError: MAXAdaptersError.noTargetingInfoInBid)
             nativeDelegate?.didFailToLoadNativeAdWithError(error)
             return

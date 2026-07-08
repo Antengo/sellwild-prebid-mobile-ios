@@ -16,7 +16,7 @@
 
 import Foundation
 
-@objc(PBMInterstitialAdLoader)
+@objc(SWPBMInterstitialAdLoader)
 @objcMembers
 final class InterstitialAdLoader: NSObject, AdLoaderProtocol, InterstitialControllerLoadingDelegate, InterstitialEventLoadingDelegate {
     

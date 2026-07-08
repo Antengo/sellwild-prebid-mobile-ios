@@ -16,7 +16,7 @@
 import Foundation
 
 /// Represents the configuration for a native ad, including markup and version information.
-@objc(PBMNativeAdConfiguration) @objcMembers
+@objc(SWPBMNativeAdConfiguration) @objcMembers
 public class NativeAdConfiguration: NSObject {
     
     /// Version of the Native Markup version in use.

@@ -100,7 +100,7 @@ NSString * const admobRenderingNativeAdUnitId = @"ca-app-pub-5922967660082475/86
 }
 
 - (void)adLoader:(GADAdLoader *)adLoader didFailToReceiveAdWithError:(NSError *)error {
-    PBMLogError(@"%@", error.localizedDescription);
+    SWPBMLogError(@"%@", error.localizedDescription);
 }
 
 @end

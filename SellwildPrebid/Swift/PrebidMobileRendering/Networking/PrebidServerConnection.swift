@@ -45,13 +45,13 @@ public class PrebidServerConnection: NSObject, PrebidServerConnectionProtocol, U
     // The key for request's header where Connection places the ConnectionID
     // Must be used only in tests.
     public static var internalIDKey: String {
-        "PBMConnectionID"
+        "SWPBMConnectionID"
     }
     
-    // The key for request's header of PBM PrebidServerConnection requests
+    // The key for request's header of SWPBM PrebidServerConnection requests
     // Must be used only in tests.
-    public static var isPBMRequestKey: String {
-        "PBMIsPBMRequest"
+    public static var isSWPBMRequestKey: String {
+        "SWPBMIsSWPBMRequest"
     }
     
     // MARK: - Private properties
@@ -167,8 +167,8 @@ public class PrebidServerConnection: NSObject, PrebidServerConnectionProtocol, U
         
         // Get HTTPURLResponse-specific fields
         guard let httpURLResponse = urlResponse as? HTTPURLResponse else {
-            serverResponse.error = PBMError.error(message: "Response is not an HTTPURLResponse",
-                                                  type: PBMErrorType.serverError)
+            serverResponse.error = SWPBMError.error(message: "Response is not an HTTPURLResponse",
+                                                  type: SWPBMErrorType.serverError)
             fullServerCallback(serverResponse)
             return
         }
@@ -186,7 +186,7 @@ public class PrebidServerConnection: NSObject, PrebidServerConnectionProtocol, U
         // Body should be ignored if HEAD method was used
         if request.httpMethod != HTTPMethodHEAD {
             guard let responseData = responseData else {
-                serverResponse.error = PBMError.error(message: "No data from server", type: PBMErrorType.serverError)
+                serverResponse.error = SWPBMError.error(message: "No data from server", type: SWPBMErrorType.serverError)
                 fullServerCallback(serverResponse)
                 return
             }
@@ -200,8 +200,8 @@ public class PrebidServerConnection: NSObject, PrebidServerConnectionProtocol, U
                     let json = try Functions.dictionary(from: responseData)
                     serverResponse.jsonDict = json
                 } catch let parsingError {
-                    let error = PBMError.error(message: "JSON Parsing Error: \(parsingError.localizedDescription)",
-                                               type: PBMErrorType.internalError)
+                    let error = SWPBMError.error(message: "JSON Parsing Error: \(parsingError.localizedDescription)",
+                                               type: SWPBMErrorType.internalError)
                     serverResponse.error = error
                 }
             }
@@ -239,7 +239,7 @@ public class PrebidServerConnection: NSObject, PrebidServerConnectionProtocol, U
         
         var request = URLRequest(url: url)
         request.setValue(userAgentService.userAgent, forHTTPHeaderField: PrebidServerConnection.userAgentHeaderKey)
-        request.setValue("True", forHTTPHeaderField: PrebidServerConnection.isPBMRequestKey)
+        request.setValue("True", forHTTPHeaderField: PrebidServerConnection.isSWPBMRequestKey)
         
         // Add this header only in test mode for MOCKED protocols
         if protocolClasses.count > 0 {

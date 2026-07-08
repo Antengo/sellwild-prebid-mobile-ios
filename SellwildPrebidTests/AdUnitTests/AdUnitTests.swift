@@ -129,7 +129,7 @@ class AdUnitTests: XCTestCase {
         //We need to disabled to not look for cache id for winning bid
         SellwildPrebid.shared.useCacheForReportingWithRenderingAPI = false
         let adObject = NSMutableDictionary()
-        let rawWinningBid = PBMBidResponseTransformer.makeValidResponse(bidPrice: 0.75)
+        let rawWinningBid = SWPBMBidResponseTransformer.makeValidResponse(bidPrice: 0.75)
         let jsonDict = rawWinningBid.jsonDict
         let bidResponse = BidResponse(jsonDictionary: jsonDict ?? [:])
         
@@ -151,7 +151,7 @@ class AdUnitTests: XCTestCase {
         //We need to disabled to not look for cache id for winning bid
         SellwildPrebid.shared.useCacheForReportingWithRenderingAPI = false
         let adObject = NSMutableDictionary()
-        let rawWinningBid = PBMBidResponseTransformer.makeValidResponseWithNonWinningTargetingInfo()
+        let rawWinningBid = SWPBMBidResponseTransformer.makeValidResponseWithNonWinningTargetingInfo()
         let jsonDict = rawWinningBid.jsonDict
         let bidResponse = BidResponse(jsonDictionary: jsonDict ?? [:])
         
@@ -173,7 +173,7 @@ class AdUnitTests: XCTestCase {
         //We need to disabled to not look for cache id for winning bid
         SellwildPrebid.shared.useCacheForReportingWithRenderingAPI = false
         let adObject = NSMutableDictionary()
-        let rawWinningBid = PBMBidResponseTransformer.makeValidResponse(bidPrice: 0.75)
+        let rawWinningBid = SWPBMBidResponseTransformer.makeValidResponse(bidPrice: 0.75)
         let jsonDict = rawWinningBid.jsonDict
         let bidResponse = BidResponse(jsonDictionary: jsonDict ?? [:])
         
@@ -196,7 +196,7 @@ class AdUnitTests: XCTestCase {
         //We need to disabled to not look for cache id for winning bid
         SellwildPrebid.shared.useCacheForReportingWithRenderingAPI = false
         let adObject = NSMutableDictionary()
-        let rawWinningBid = PBMBidResponseTransformer.makeValidResponseWithNonWinningTargetingInfo()
+        let rawWinningBid = SWPBMBidResponseTransformer.makeValidResponseWithNonWinningTargetingInfo()
         let jsonDict = rawWinningBid.jsonDict
         let bidResponse = BidResponse(jsonDictionary: jsonDict ?? [:])
         
@@ -221,7 +221,7 @@ class AdUnitTests: XCTestCase {
         //We need to disabled to not look for cache id for winning bid
         SellwildPrebid.shared.useCacheForReportingWithRenderingAPI = false
         let adObject = NSMutableDictionary()
-        let rawWinningBid = PBMBidResponseTransformer.makeNativeValidResponse(bidPrice: 0.75)
+        let rawWinningBid = SWPBMBidResponseTransformer.makeNativeValidResponse(bidPrice: 0.75)
         let jsonDict = rawWinningBid.jsonDict
         let bidResponse = BidResponse(jsonDictionary: jsonDict ?? [:])
         
@@ -247,7 +247,7 @@ class AdUnitTests: XCTestCase {
         //We need to disabled to not look for cache id for winning bid
         SellwildPrebid.shared.useCacheForReportingWithRenderingAPI = false
         let adObject = NSMutableDictionary()
-        let rawWinningBid = PBMBidResponseTransformer.makeNativeValidResponse(bidPrice: 0.75)
+        let rawWinningBid = SWPBMBidResponseTransformer.makeNativeValidResponse(bidPrice: 0.75)
         let jsonDict = rawWinningBid.jsonDict
         let bidResponse = BidResponse(jsonDictionary: jsonDict ?? [:])
         
@@ -273,7 +273,7 @@ class AdUnitTests: XCTestCase {
             return
         }
         
-        let bidRequester = MockPBMBidRequester(jsonDictionary: json)
+        let bidRequester = MockSWPBMBidRequester(jsonDictionary: json)
         let adUnit = AdUnit(bidRequester: bidRequester, configId: "test-config-id", size: CGSize.zero, adFormats: [])
         
         let expectation = expectation(description: "Fetch demand completed.")
@@ -396,7 +396,7 @@ class AdUnitTests: XCTestCase {
         SellwildPrebid.shared.timeoutMillis = 800
         SellwildPrebid.shared.prebidServerAccountId = "1001"
         
-        let bidRequester = MockPBMBidRequester(jsonDictionary: json)
+        let bidRequester = MockSWPBMBidRequester(jsonDictionary: json)
         let adUnit = AdUnit(bidRequester: bidRequester, configId: "1001-1", size: .zero, adFormats: [])
         adUnit.setAutoRefreshMillis(time: 800)
         

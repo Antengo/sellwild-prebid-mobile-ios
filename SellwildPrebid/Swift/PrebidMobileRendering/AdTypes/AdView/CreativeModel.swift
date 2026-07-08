@@ -16,7 +16,7 @@
 
 import Foundation
 
-// PBMCreativeModel is visible to the publisher, and defines:
+// SWPBMCreativeModel is visible to the publisher, and defines:
 // --- duration indicates the time the creative will display for
 // -------- A negative value indicates that this field has not been set
 // -------- A value of 0 indicates an indefinite time
@@ -26,10 +26,10 @@ import Foundation
 // --- creativeData is a String:String dictionary that contains all of the data needed to display the creative in a capable view
 // -------- Example: An HTML creative would include key "html" with the html code for that creative as the value. A video creative would have a key "videourl" that would point to the asset to be played
 // --- trackEvent functions take an enum or string, and cause the tracking URLs associated with those events to be fired
-// --- baseURL is an optional base URL to use when loading in an PBMWebView
+// --- baseURL is an optional base URL to use when loading in an SWPBMWebView
 // @objc and public because it will be used by publishers to display an ad in their own view
 
-@objc(PBMCreativeModel) @_spi(PBMInternal) public
+@objc(SWPBMCreativeModel) @_spi(SWPBMInternal) public
 class CreativeModel: NSObject {
     @objc public var adConfiguration: AdConfiguration?
     @objc public var eventTracker: AdModelEventTracker?

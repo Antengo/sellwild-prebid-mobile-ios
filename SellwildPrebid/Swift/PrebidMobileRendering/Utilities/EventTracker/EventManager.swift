@@ -23,7 +23,7 @@ import UIKit
     EventManager implements EventTrackerProtocol.
     It broadcasts protocol calls to the all registered trackers.
  */
-@objc(PBMEventManager) @objcMembers
+@objc(SWPBMEventManager) @objcMembers
 public class EventManager: NSObject, EventTrackerProtocol {
     
     // MARK: - Internal properties

@@ -17,7 +17,7 @@
 import Foundation
 import UIKit
 
-@objc(PBMAdViewManagerDelegate)
+@objc(SWPBMAdViewManagerDelegate)
 public
 protocol AdViewManagerDelegate: NSObjectProtocol {
     func viewControllerForModalPresentation() -> UIViewController?
@@ -40,11 +40,11 @@ protocol AdViewManagerDelegate: NSObjectProtocol {
     
     func adDidClose()
     
-    //Only used by BannerView & PBMVideoAdView
+    //Only used by BannerView & SWPBMVideoAdView
     // The actual top layer view that displays the ad
     @objc optional var displayView: UIView { get}
     
-    //Only used by PBMVideoAdView, PBMDisplayView, PBMInterstitialController
+    //Only used by SWPBMVideoAdView, SWPBMDisplayView, SWPBMInterstitialController
     //Note: all of them seem to simply return a new object.
     //TODO: Verify whether the instantiation of an object should be inside the delegate.
     @objc optional var interstitialDisplayProperties: InterstitialDisplayProperties { get }

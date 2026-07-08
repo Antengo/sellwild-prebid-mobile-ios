@@ -83,7 +83,7 @@ public class PrebidAdMobNativeAdapter:
             return
         }
         
-        guard let targetingInfo = eventExtrasDictionary[PBMMediationTargetingInfoKey] as? [String: String] else {
+        guard let targetingInfo = eventExtrasDictionary[SWPBMMediationTargetingInfoKey] as? [String: String] else {
             let error = AdMobAdaptersError.noTargetingInfoInEventExtras
             delegate = completionHandler(nil, error)
             return

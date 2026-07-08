@@ -107,11 +107,11 @@ final class SharedIdTests: XCTestCase {
         let mockReachability = MockReachability.shared
         
         func constructRequestEids() -> [String : Any]? {
-            let paramsDict = PBMParameterBuilderService.buildParamsDict(
+            let paramsDict = SWPBMParameterBuilderService.buildParamsDict(
                 with: AdConfiguration(),
                 bundle:mockBundle,
-                pbmLocationManager: mockLocationManagerSuccessful,
-                pbmDeviceAccessManager: mockDeviceAccessManager,
+                swpbmLocationManager: mockLocationManagerSuccessful,
+                swpbmDeviceAccessManager: mockDeviceAccessManager,
                 ctTelephonyNetworkInfo: mockCTTelephonyNetworkInfo,
                 reachability: mockReachability,
                 sdkConfiguration: sdkConfiguration,
@@ -121,7 +121,7 @@ final class SharedIdTests: XCTestCase {
             )
             
             let strORTB = paramsDict[PrebidConstants.OPEN_RTB_SCHEME]!
-            let bidRequest = try! PBMORTBBidRequest.from(jsonString:strORTB)
+            let bidRequest = try! SWPBMORTBBidRequest.from(jsonString:strORTB)
             
             let eids = bidRequest.user.ext?["eids"] as? [[String : Any]]
             let sharedId = eids?.first { $0["source"] as? String == "pubcid.org" }

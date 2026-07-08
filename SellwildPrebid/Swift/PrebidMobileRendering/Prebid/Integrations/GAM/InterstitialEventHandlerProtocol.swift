@@ -15,12 +15,12 @@
 
 import Foundation
 
-@objc(PBMInterstitialEventHandlerProtocol)
+@objc(SWPBMInterstitialEventHandlerProtocol)
 public protocol InterstitialEventHandlerProtocol : InterstitialAd {
 
-    /// Delegate for custom event handler to inform the PBM SDK about the events related to the ad server communication.
+    /// Delegate for custom event handler to inform the SWPBM SDK about the events related to the ad server communication.
     weak var loadingDelegate: InterstitialEventLoadingDelegate? { get set }
 
-    /// Delegate for custom event handler to inform the PBM SDK about the events related to the user's interaction with the ad.
+    /// Delegate for custom event handler to inform the SWPBM SDK about the events related to the user's interaction with the ad.
     weak var interactionDelegate: InterstitialEventInteractionDelegate? { get set }
 }

@@ -15,7 +15,7 @@
 import Foundation
 import XCTest
 
-@testable @_spi(PBMInternal) import SellwildPrebid
+@testable @_spi(SWPBMInternal) import SellwildPrebid
 
 class AdLoadFlowControllerTest_CompositeMock {
     enum ExpectedCall {
@@ -44,7 +44,7 @@ class AdLoadFlowControllerTest_CompositeMock {
     
     init(expectedCalls: [ExpectedCall], file: StaticString = #file, line: UInt = #line) {
         let nextCallIndexBox = NSMutableArray(object: NSNumber(0))
-        let syncQueue = DispatchQueue(label: "PBMAdLoadFlowControllerTest.CompositeMock")
+        let syncQueue = DispatchQueue(label: "SWPBMAdLoadFlowControllerTest.CompositeMock")
         
         getProgress = {
             syncQueue.sync {
@@ -61,7 +61,7 @@ class AdLoadFlowControllerTest_CompositeMock {
             let nextCallIndex = (nextCallIndexBox[0] as? NSNumber)?.intValue ?? 0
             nextCallIndexBox[0] = NSNumber(value: nextCallIndex + 1)
             if nextCallIndex == callIndex {
-                print("[PBMAdLoadFlowControllerTest_CompositeMock] Step \(nextCallIndex) passed!")
+                print("[SWPBMAdLoadFlowControllerTest_CompositeMock] Step \(nextCallIndex) passed!")
             } else {
                 XCTFail("[CompositeMock] Method \(method) called out of order: #\(callIndex), while waiting for #\(nextCallIndex)",
                         file: file, line: line)

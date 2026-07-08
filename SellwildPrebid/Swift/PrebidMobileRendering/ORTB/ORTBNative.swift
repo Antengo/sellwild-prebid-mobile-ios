@@ -15,8 +15,8 @@
 
 import Foundation
 
-@objc(PBMORTBNative)
-public class ORTBNative: NSObject, PBMJsonCodable {
+@objc(SWPBMORTBNative)
+public class ORTBNative: NSObject, SWPBMJsonCodable {
     
     /// [Required]
     /// Request payload complying with the Native Ad Specification.

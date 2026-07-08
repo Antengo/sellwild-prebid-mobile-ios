@@ -16,7 +16,7 @@
 import UIKit
 
 /// A protocol for handling events related to banner video playback events.
-@objc(PBMBannerViewVideoPlaybackDelegate)
+@objc(SWPBMBannerViewVideoPlaybackDelegate)
 public protocol BannerViewVideoPlaybackDelegate: NSObjectProtocol {
     /// Notifies the delegate that banner video ad has been paused.
     @objc func videoPlaybackDidPause(_ banner: BannerView)

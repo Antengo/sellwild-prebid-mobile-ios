@@ -92,7 +92,7 @@ NSString * const gamMultiformatAdUnitId = @"/21808260008/prebid-demo-multiformat
     
     // 4. Make a bid request
     GAMRequest * gamRequest = [GAMRequest new];
-    [self.adUnit fetchDemandWithAdObject:gamRequest request:prebidRequest completion:^(PBMBidInfo * _Nonnull bidInfo) {
+    [self.adUnit fetchDemandWithAdObject:gamRequest request:prebidRequest completion:^(SWPBMBidInfo * _Nonnull bidInfo) {
         
         // 5. Configure and make a GAM ad request
         self.adLoader = [[GADAdLoader alloc] initWithAdUnitID:gamMultiformatAdUnitId
@@ -111,7 +111,7 @@ NSString * const gamMultiformatAdUnitId = @"/21808260008/prebid-demo-multiformat
 }
 
 - (void)adLoader:(GADAdLoader *)adLoader didFailToReceiveAdWithError:(NSError *)error {
-    PBMLogError(@"%@", error.localizedDescription);
+    SWPBMLogError(@"%@", error.localizedDescription);
 }
 
 - (void)adLoader:(GADAdLoader *)adLoader didReceiveGAMBannerView:(GAMBannerView *)bannerView {
@@ -131,7 +131,7 @@ NSString * const gamMultiformatAdUnitId = @"/21808260008/prebid-demo-multiformat
             return evaluatedObject.firstAttribute == NSLayoutAttributeHeight;
         }]].firstObject.constant = size.height;
     } failure:^(NSError * _Nonnull error) {
-        PBMLogError(@"%@", error.localizedDescription)
+        SWPBMLogError(@"%@", error.localizedDescription)
     }];
 }
 
@@ -172,11 +172,11 @@ NSString * const gamMultiformatAdUnitId = @"/21808260008/prebid-demo-multiformat
 }
 
 - (void)nativeAdNotFound {
-    PBMLogError(@"Native ad not found.");
+    SWPBMLogError(@"Native ad not found.");
 }
 
 - (void)nativeAdNotValid {
-    PBMLogError(@"Native ad not valid.");
+    SWPBMLogError(@"Native ad not valid.");
 }
 
 @end

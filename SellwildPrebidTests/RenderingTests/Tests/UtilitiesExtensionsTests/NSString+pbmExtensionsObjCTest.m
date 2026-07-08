@@ -14,39 +14,39 @@
  */
 
 #import <XCTest/XCTest.h>
-#import "NSString+PBMExtensions.h"
+#import "NSString+SWPBMExtensions.h"
 
-@interface NSString_PBMExtensionsObjCTest : XCTestCase
+@interface NSString_SWPBMExtensionsObjCTest : XCTestCase
 
 @end
 
-@implementation NSString_PBMExtensionsObjCTest
+@implementation NSString_SWPBMExtensionsObjCTest
 
 - (void)testNilInput {
     NSString * const testString = @"abcd1234";
     NSString * nilString = nil;
     
-    // PBMdoesMatch
-    XCTAssertFalse([testString PBMdoesMatch:nilString]);
+    // SWPBMdoesMatch
+    XCTAssertFalse([testString SWPBMdoesMatch:nilString]);
     
-    // PBMnumberOfMatches
-    XCTAssertEqual([testString PBMnumberOfMatches:nilString], 0);
+    // SWPBMnumberOfMatches
+    XCTAssertEqual([testString SWPBMnumberOfMatches:nilString], 0);
  
-    // PBMsubstringToString
-    XCTAssertNil([testString PBMsubstringToString:nilString]);
+    // SWPBMsubstringToString
+    XCTAssertNil([testString SWPBMsubstringToString:nilString]);
     
-    // PBMsubstringFromString
-    XCTAssertNil([testString PBMsubstringFromString:nilString]);
+    // SWPBMsubstringFromString
+    XCTAssertNil([testString SWPBMsubstringFromString:nilString]);
     
-    // PBMsubstringFromString:toString:
-    XCTAssertNil([testString PBMsubstringFromString:@"abc" toString:nilString]);
-    XCTAssertNil([testString PBMsubstringFromString:nilString toString:@"1234"]);
-    XCTAssertNil([testString PBMsubstringFromString:nilString toString:nilString]);
+    // SWPBMsubstringFromString:toString:
+    XCTAssertNil([testString SWPBMsubstringFromString:@"abc" toString:nilString]);
+    XCTAssertNil([testString SWPBMsubstringFromString:nilString toString:@"1234"]);
+    XCTAssertNil([testString SWPBMsubstringFromString:nilString toString:nilString]);
     
-    // PBMstringByReplacingRegex
-    XCTAssertEqual([testString PBMstringByReplacingRegex:@"abc" replaceWith:nilString], testString);
-    XCTAssertEqual([testString PBMstringByReplacingRegex:nilString replaceWith:@"xyz"], testString);
-    XCTAssertEqual([testString PBMstringByReplacingRegex:nilString replaceWith:nilString], testString);
+    // SWPBMstringByReplacingRegex
+    XCTAssertEqual([testString SWPBMstringByReplacingRegex:@"abc" replaceWith:nilString], testString);
+    XCTAssertEqual([testString SWPBMstringByReplacingRegex:nilString replaceWith:@"xyz"], testString);
+    XCTAssertEqual([testString SWPBMstringByReplacingRegex:nilString replaceWith:nilString], testString);
 }
 
 @end

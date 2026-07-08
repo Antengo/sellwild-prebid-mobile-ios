@@ -35,7 +35,7 @@ public class Signals: NSObject {
      /// | 6     | MRAID-3     |
      /// | 7     | OMID-1      |
      /// ```
-    @objc(PBApi)
+    @objc(SWPBApi)
     public class Api: SingleContainerInt {
         
         /// VPAID 1.0
@@ -79,7 +79,7 @@ public class Signals: NSObject {
     /// | 5     | Initiates on Entering Viewport with Sound On             |
     /// | 6     | Initiates on Entering Viewport with Sound Off by Default |
     /// ```
-    @objc(PBPlaybackMethod)
+    @objc(SWPBPlaybackMethod)
     public class PlaybackMethod: SingleContainerInt {
 
         /// Initiates on Page Load with Sound On
@@ -123,7 +123,7 @@ public class Signals: NSObject {
     /// | 9     | DAAST 1.0         |
     /// | 10    | DAAST 1.0 Wrapper |
     /// ```
-    @objc(PBProtocols)
+    @objc(SWPBProtocols)
     public class Protocols: SingleContainerInt {
         
         /// VAST 1.0
@@ -177,7 +177,7 @@ public class Signals: NSObject {
     /// | -1    | Generic Mid-Roll                                 |
     /// | -2    | Generic Post-Roll                                |
     /// ```
-    @objc(PBStartDelay)
+    @objc(SWPBStartDelay)
     public class StartDelay: SingleContainerInt {
         
         /// Pre-Roll
@@ -204,7 +204,7 @@ public class Signals: NSObject {
     /// | 4     | In-Feed                      |
     /// | 5     | Interstitial/Slider/Floating |
     /// ```
-    @objc(PBPlacement)
+    @objc(SWPBPlacement)
     public class Placement: SingleContainerInt {
         
         /// In-Stream
@@ -264,7 +264,7 @@ public class Signals: NSObject {
     /// | 3     | Interstitial                 |
     /// | 4     | No Content/Standalone        |
     /// ```
-    @objc(PBPlcmnt)
+    @objc(SWPBPlcmnt)
     public class Plcmnt: SingleContainerInt {
         
         /// Instream
@@ -327,7 +327,7 @@ public class Signals: NSObject {
     /// | 16    | Ad Provides Skip Button (e.g. VPAID-rendered skip button on pre-roll video)|
     /// | 17    | Adobe Flash                                                                |
     /// ```
-    @objc(PBCreativeAttribute)
+    @objc(SWPBCreativeAttribute)
     public class CreativeAttribute: SingleContainerInt {
         
         /// Audio Ad (Autoplay)

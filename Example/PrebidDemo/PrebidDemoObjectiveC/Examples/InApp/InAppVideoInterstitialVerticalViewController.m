@@ -52,7 +52,7 @@ NSString * const storedImpVideoInterstitialVerticalInApp = @"prebid-demo-video-i
 }
 
 - (void)interstitial:(InterstitialRenderingAdUnit *)interstitial didFailToReceiveAdWithError:(NSError *)error {
-    PBMLogError(@"%@", error.localizedDescription);
+    SWPBMLogError(@"%@", error.localizedDescription);
 }
 
 @end

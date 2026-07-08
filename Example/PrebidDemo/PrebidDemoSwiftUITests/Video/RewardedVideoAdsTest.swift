@@ -37,9 +37,9 @@ import XCTest
 //            XCTAssert(app.buttons["Close Advertisement"].waitForExistence(timeout: 15),assertFailedMessage(testCase: testCase, reason: "Close Button is not displayed"))
 //            XCTAssert(app.images.element.waitForExistence(timeout: 20),assertFailedMessage(testCase: testCase, reason: "End card is not displayed"))
 //        } else {
-//            XCTAssert(app.otherElements["PBMVideoView"].waitForExistence(timeout: 20),assertFailedMessage(testCase: testCase, reason: "Video is not displayed"))
-//            XCTAssert(app.webViews["PBMInternalWebViewAccessibilityIdentifier"].waitForExistence(timeout: 30),assertFailedMessage(testCase: testCase, reason: "End card is not displayed"))
-//            XCTAssert(app.buttons["PBMCloseButton"].waitForExistence(timeout: 20),assertFailedMessage(testCase: testCase, reason: "Video close button is not displayed"))
+//            XCTAssert(app.otherElements["SWPBMVideoView"].waitForExistence(timeout: 20),assertFailedMessage(testCase: testCase, reason: "Video is not displayed"))
+//            XCTAssert(app.webViews["SWPBMInternalWebViewAccessibilityIdentifier"].waitForExistence(timeout: 30),assertFailedMessage(testCase: testCase, reason: "End card is not displayed"))
+//            XCTAssert(app.buttons["SWPBMCloseButton"].waitForExistence(timeout: 20),assertFailedMessage(testCase: testCase, reason: "Video close button is not displayed"))
 //        }
 //    }
 //}

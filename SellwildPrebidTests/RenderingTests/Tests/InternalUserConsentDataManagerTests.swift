@@ -24,21 +24,21 @@ class InternalUserConsentDataManagerTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
         
-        UserDefaults.standard.removeObject(forKey: InternalUserConsentDataManager.IABUSPrivacy_StringKey)
-        UserDefaults.standard.removeObject(forKey: InternalUserConsentDataManager.IABGPP_HDR_GppString)
-        UserDefaults.standard.removeObject(forKey: InternalUserConsentDataManager.IABGPP_GppSID)
+        UserDefaults.standard.removeObject(forKey: SWInternalUserConsentDataManager.IABUSPrivacy_StringKey)
+        UserDefaults.standard.removeObject(forKey: SWInternalUserConsentDataManager.IABGPP_HDR_GppString)
+        UserDefaults.standard.removeObject(forKey: SWInternalUserConsentDataManager.IABGPP_GppSID)
     }
     
     func testIABUSPrivacy_StringKey() {
-        XCTAssertEqual("IABUSPrivacy_String", InternalUserConsentDataManager.IABUSPrivacy_StringKey)
+        XCTAssertEqual("IABUSPrivacy_String", SWInternalUserConsentDataManager.IABUSPrivacy_StringKey)
     }
     
     func testIABGPP_GppStringKey() {
-        XCTAssertEqual("IABGPP_HDR_GppString", InternalUserConsentDataManager.IABGPP_HDR_GppString)
+        XCTAssertEqual("IABGPP_HDR_GppString", SWInternalUserConsentDataManager.IABGPP_HDR_GppString)
     }
     
     func testIABGPP_GppSIDKey() {
-        XCTAssertEqual("IABGPP_GppSID", InternalUserConsentDataManager.IABGPP_GppSID)
+        XCTAssertEqual("IABGPP_GppSID", SWInternalUserConsentDataManager.IABGPP_GppSID)
     }
     
     // MARK: IABConsent_ConsentString values
@@ -95,26 +95,26 @@ class InternalUserConsentDataManagerTests: XCTestCase {
     }
     
     func setUSPrivacyString(val: String?) {
-        UserDefaults.standard.set(val, forKey: InternalUserConsentDataManager.IABUSPrivacy_StringKey)
+        UserDefaults.standard.set(val, forKey: SWInternalUserConsentDataManager.IABUSPrivacy_StringKey)
     }
     
     func assertUSPrivacyString(_ usPrivacyString: String?, file: StaticString = #file, line: UInt = #line) {
-        XCTAssertEqual(InternalUserConsentDataManager.usPrivacyString, usPrivacyString)
+        XCTAssertEqual(SWInternalUserConsentDataManager.usPrivacyString, usPrivacyString)
     }
     
     func setIABGPPString(val: String?) {
-        UserDefaults.standard.set(val, forKey: InternalUserConsentDataManager.IABGPP_HDR_GppString)
+        UserDefaults.standard.set(val, forKey: SWInternalUserConsentDataManager.IABGPP_HDR_GppString)
     }
     
     func setIABGPPSIDString(val: String?) {
-        UserDefaults.standard.set(val, forKey: InternalUserConsentDataManager.IABGPP_GppSID)
+        UserDefaults.standard.set(val, forKey: SWInternalUserConsentDataManager.IABGPP_GppSID)
     }
     
     func assertIABGPPString(_ gppString: String?) {
-        XCTAssertEqual(InternalUserConsentDataManager.gppHDRString, gppString)
+        XCTAssertEqual(SWInternalUserConsentDataManager.gppHDRString, gppString)
     }
     
     func assertIABGPPSID(_ gppSID: NSMutableArray?) {
-        XCTAssertEqual(InternalUserConsentDataManager.gppSID, gppSID)
+        XCTAssertEqual(SWInternalUserConsentDataManager.gppSID, gppSID)
     }
 }

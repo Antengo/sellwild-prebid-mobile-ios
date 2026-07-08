@@ -15,7 +15,7 @@
 
 import XCTest
 
-class PBMOpenMeasurementEventTrackerTest: XCTestCase {
+class SWPBMOpenMeasurementEventTrackerTest: XCTestCase {
     
     private var logToFile: LogToFileLock?
     
@@ -25,7 +25,7 @@ class PBMOpenMeasurementEventTrackerTest: XCTestCase {
     }
     
     func testEventsForWebViewSession() {
-        let measurement = PBMOpenMeasurementWrapper()
+        let measurement = SWPBMOpenMeasurementWrapper()
         
         let mockLibraryManager = MockPrebidJSLibraryManager()
         mockLibraryManager.omsdkScript = "{}"
@@ -36,15 +36,15 @@ class PBMOpenMeasurementEventTrackerTest: XCTestCase {
         XCTAssertNotNil(webViewSession)
         XCTAssertNotNil(webViewSession?.eventTracker)
         
-        let pbmTracker = webViewSession?.eventTracker as? PBMOpenMeasurementEventTracker
-        XCTAssertNotNil(pbmTracker)
-        XCTAssertNotNil(pbmTracker?.adEvents)
+        let swpbmTracker = webViewSession?.eventTracker as? SWPBMOpenMeasurementEventTracker
+        XCTAssertNotNil(swpbmTracker)
+        XCTAssertNotNil(swpbmTracker?.adEvents)
         
-        XCTAssertNil(pbmTracker?.mediaEvents)
+        XCTAssertNil(swpbmTracker?.mediaEvents)
     }
     
     func testEventsForNativeVideoSession() {
-        let measurement = PBMOpenMeasurementWrapper()
+        let measurement = SWPBMOpenMeasurementWrapper()
         
         let mockLibraryManager = MockPrebidJSLibraryManager()
         mockLibraryManager.omsdkScript = "{}"
@@ -62,28 +62,28 @@ class PBMOpenMeasurementEventTrackerTest: XCTestCase {
         XCTAssertNotNil(nativeVideoSession)
         XCTAssertNotNil(nativeVideoSession?.eventTracker)
         
-        let pbmTracker = nativeVideoSession?.eventTracker as? PBMOpenMeasurementEventTracker
-        XCTAssertNotNil(pbmTracker)
-        XCTAssertNotNil(pbmTracker?.adEvents)
-        XCTAssertNotNil(pbmTracker?.mediaEvents)
+        let swpbmTracker = nativeVideoSession?.eventTracker as? SWPBMOpenMeasurementEventTracker
+        XCTAssertNotNil(swpbmTracker)
+        XCTAssertNotNil(swpbmTracker?.adEvents)
+        XCTAssertNotNil(swpbmTracker?.mediaEvents)
     }
     
     func testInvalidSession() {
         logToFile = .init()
         
-        var pbmTracker = PBMOpenMeasurementEventTracker(session: OMIDPrebidorgAdSession())
-        XCTAssertNotNil(pbmTracker)
-        XCTAssertNotNil(pbmTracker.session)
+        var swpbmTracker = SWPBMOpenMeasurementEventTracker(session: OMIDPrebidorgAdSession())
+        XCTAssertNotNil(swpbmTracker)
+        XCTAssertNotNil(swpbmTracker.session)
         UtilitiesForTesting.checkLogContains("Open Measurement can't create ad events with error")
         
-        pbmTracker = PBMOpenMeasurementEventTracker()
-        XCTAssertNotNil(pbmTracker)
-        XCTAssertNil(pbmTracker.session)
+        swpbmTracker = SWPBMOpenMeasurementEventTracker()
+        XCTAssertNotNil(swpbmTracker)
+        XCTAssertNil(swpbmTracker.session)
         
         logToFile = nil
         logToFile = .init()
         
-        pbmTracker.trackEvent(.request)
+        swpbmTracker.trackEvent(.request)
         UtilitiesForTesting.checkLogContains("Measurement Session is missed")
     }
 }

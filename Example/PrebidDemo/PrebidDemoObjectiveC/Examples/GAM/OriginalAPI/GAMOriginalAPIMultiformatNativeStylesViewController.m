@@ -98,7 +98,7 @@ NSString * const gamMultiformatNativeStylesAdUnitId = @"/21808260008/prebid-demo
     
     // 4. Make a bid request
     GAMRequest * gamRequest = [GAMRequest new];
-    [self.adUnit fetchDemandWithAdObject:gamRequest request:prebidRequest completion:^(PBMBidInfo * _Nonnull bidInfo) {
+    [self.adUnit fetchDemandWithAdObject:gamRequest request:prebidRequest completion:^(SWPBMBidInfo * _Nonnull bidInfo) {
         
         // 5. Load the native ad
         [self.gamBannerView loadRequest:gamRequest];
@@ -113,7 +113,7 @@ NSString * const gamMultiformatNativeStylesAdUnitId = @"/21808260008/prebid-demo
     [AdViewUtils findPrebidCreativeSize:bannerView success:^(CGSize size) {
         [self.gamBannerView resize:GADAdSizeFromCGSize(size)];
     } failure:^(NSError * _Nonnull error) {
-        PBMLogError(@"%@", error.localizedDescription)
+        SWPBMLogError(@"%@", error.localizedDescription)
     }];
     
     NSLayoutConstraint * centerConstraint = [NSLayoutConstraint constraintWithItem:self.gamBannerView attribute:NSLayoutAttributeCenterX
@@ -123,7 +123,7 @@ NSString * const gamMultiformatNativeStylesAdUnitId = @"/21808260008/prebid-demo
 }
 
 - (void)bannerView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(NSError *)error {
-    PBMLogError(@"%@", error.localizedDescription)
+    SWPBMLogError(@"%@", error.localizedDescription)
 }
 
 @end

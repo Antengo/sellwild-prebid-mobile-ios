@@ -15,7 +15,7 @@
     
 import UIKit
 
-@objc(PBMInterstitialAd)
+@objc(SWPBMInterstitialAd)
 public protocol InterstitialAd: PrimaryAdRequesterProtocol {
     /**
      @abstract Return whether an interstitial is ready for display
@@ -23,14 +23,14 @@ public protocol InterstitialAd: PrimaryAdRequesterProtocol {
     var isReady: Bool { get }
     
     /**
-     @abstract PBM SDK calls this method to show the interstitial ad from the ad server SDK
+     @abstract SWPBM SDK calls this method to show the interstitial ad from the ad server SDK
      @param controller view controller to be used for presenting the interstitial ad
      */
     @objc(showFromViewController:)
     func show(from viewController: UIViewController?)
     
     /**
-     @abstract Called by PBM SDK to notify primary ad server.
+     @abstract Called by SWPBM SDK to notify primary ad server.
      */
     @objc optional func trackImpression()
 }

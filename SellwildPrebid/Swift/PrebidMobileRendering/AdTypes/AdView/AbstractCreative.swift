@@ -18,14 +18,14 @@ import Foundation
 import UIKit
 
 /**
- *  `PBMAbstractCreative`'s purpose is a bundling of a model and a view. It acts as an adapter between
+ *  `SWPBMAbstractCreative`'s purpose is a bundling of a model and a view. It acts as an adapter between
  *  the view and the SDK, it's essentially the C in MVC.
  *
  *  All `Creatives` must conform to this protocol. Each creative has-a model which contains the
  *  creative info, and must implement a few methods for handling display of the creative.
  */
-@objc(PBMAbstractCreative)
-@_spi(PBMInternal) public
+@objc(SWPBMAbstractCreative)
+@_spi(SWPBMInternal) public
 protocol AbstractCreative: NSObjectProtocol {
     
     weak var transaction: Transaction? { get }

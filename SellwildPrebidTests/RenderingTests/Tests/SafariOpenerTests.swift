@@ -7,11 +7,11 @@
 //
 
 import XCTest
-@testable @_spi(PBMInternal) import SellwildPrebid
+@testable @_spi(SWPBMInternal) import SellwildPrebid
 
 final class SafariOpenerTests: XCTestCase {
 
-    var creative: MockPBMAbstractCreative?
+    var creative: MockSWPBMAbstractCreative?
     
     var vc = UIViewController()
     let clickthroughURL = URL(string: "https://prebid.org/")!
@@ -25,7 +25,7 @@ final class SafariOpenerTests: XCTestCase {
                                                     adConfiguration: adConfig,
                                                     models: [creativeModel])
         
-        creative = MockPBMAbstractCreative(creativeModel: creativeModel, transaction: transaction)
+        creative = MockSWPBMAbstractCreative(creativeModel: creativeModel, transaction: transaction)
         creative?.modalManager = ModalManager()
         creative?.viewControllerForPresentingModals = vc
     }

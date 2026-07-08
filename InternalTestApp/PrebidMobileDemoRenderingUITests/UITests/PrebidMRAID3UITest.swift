@@ -41,7 +41,7 @@ class PrebidMRAID3UITest: RepeatedUITestCase {
             var isExposureErrorFound = false
             var isMRAIDEnvErrorFound = false
             
-            let testWebView = app.webViews["PBMInternalWebViewAccessibilityIdentifier"]
+            let testWebView = app.webViews["SWPBMInternalWebViewAccessibilityIdentifier"]
             let allStaticTexts = testWebView.staticTexts.allElementsBoundByIndex
             
             // There are two possible errors
@@ -70,7 +70,7 @@ class PrebidMRAID3UITest: RepeatedUITestCase {
             
             waitForExists(element: app.staticTexts["Tap SDK Close Button"], waitSeconds: timeout)
             
-            let browserCloseButton = app.buttons["PBMCloseButton"]
+            let browserCloseButton = app.buttons["SWPBMCloseButton"]
             waitForHittable(element: browserCloseButton, waitSeconds: timeout)
             browserCloseButton.tap()
             
@@ -95,7 +95,7 @@ class PrebidMRAID3UITest: RepeatedUITestCase {
             openAndWaitAd(title: resizeNegativeTestTitle)
             
             Thread.sleep(forTimeInterval: 8)
-            let testWebView = app.webViews["PBMInternalWebViewAccessibilityIdentifier"]
+            let testWebView = app.webViews["SWPBMInternalWebViewAccessibilityIdentifier"]
             
             var passedTestsCount = 0;
             

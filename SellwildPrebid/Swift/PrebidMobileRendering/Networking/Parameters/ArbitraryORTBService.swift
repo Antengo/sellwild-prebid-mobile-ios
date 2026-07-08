@@ -17,7 +17,7 @@ import UIKit
 
 fileprivate typealias StringAnyDict = [String: Any]
 
-@objc(PBMArbitraryORTBService) @objcMembers
+@objc(SWPBMArbitraryORTBService) @objcMembers
 public class ArbitraryORTBService: NSObject {
     
     private override init() {

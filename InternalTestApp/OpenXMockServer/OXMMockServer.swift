@@ -20,7 +20,7 @@ public enum ResponseType: String {
     case video
 }
 
-public final class PBMMockServer {
+public final class SWPBMMockServer {
     private let requestManager = MockServerManager()
     private let disposeBag = DisposeBag()
     

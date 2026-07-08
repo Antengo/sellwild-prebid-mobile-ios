@@ -73,14 +73,14 @@ NSString * const maxAdUnitBannerRendering = @"78869c25f5c54bab";
 }
 
 - (void)didFailToDisplayAd:(MAAd *)ad withError:(MAError *)error {
-    PBMLogError(@"%@", error.message);
+    SWPBMLogError(@"%@", error.message);
     
     NSError * maxError = [[NSError alloc] initWithDomain:@"MAX" code:error.code userInfo:@{NSLocalizedDescriptionKey: error.message}];
     [self.maxAdUnit adObjectDidFailToLoadAdWithAdObject:self.maxAdBannerView with:maxError];
 }
 
 - (void)didFailToLoadAdForAdUnitIdentifier:(NSString *)adUnitIdentifier withError:(MAError *)error {
-    PBMLogError(@"%@", error.message);
+    SWPBMLogError(@"%@", error.message);
     
     NSError * maxError = [[NSError alloc] initWithDomain:@"MAX" code:error.code userInfo:@{NSLocalizedDescriptionKey: error.message}];
     [self.maxAdUnit adObjectDidFailToLoadAdWithAdObject:self.maxAdBannerView with:maxError];

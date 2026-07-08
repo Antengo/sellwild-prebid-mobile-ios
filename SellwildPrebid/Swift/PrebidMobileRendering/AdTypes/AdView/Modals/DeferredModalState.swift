@@ -17,16 +17,16 @@
 import Foundation
 import UIKit
 
-@_spi(PBMInternal) public typealias
+@_spi(SWPBMInternal) public typealias
 DeferredModalStateResolutionHandler = (_ success: Bool) -> Void
 
-@_spi(PBMInternal) public typealias
+@_spi(SWPBMInternal) public typealias
 DeferredModalStatePreparationBlock = (_ completionBlock: @escaping DeferredModalStateResolutionHandler) -> Void
 
-@_spi(PBMInternal) public typealias
+@_spi(SWPBMInternal) public typealias
 DeferredModalStatePushStartHandler = (_ stateRemovalBlock: @escaping VoidBlock) -> Void
 
-@objc(PBMDeferredModalState) @_spi(PBMInternal) public
+@objc(SWPBMDeferredModalState) @_spi(SWPBMInternal) public
 protocol DeferredModalState {
     
     var modalState: ModalState { get }

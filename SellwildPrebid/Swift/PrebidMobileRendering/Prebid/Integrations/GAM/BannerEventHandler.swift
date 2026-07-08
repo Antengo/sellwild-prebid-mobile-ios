@@ -16,15 +16,15 @@
 import Foundation
 import UIKit
 
-/// A protocol for handling events related to banner ads in the PBM SDK.
+/// A protocol for handling events related to banner ads in the SWPBM SDK.
 ///
-/// This protocol defines methods and properties for managing events associated with banner ads, including loading events, user interactions, and ad sizes. Implementing this protocol allows for custom handling of these events within the PBM SDK.
+/// This protocol defines methods and properties for managing events associated with banner ads, including loading events, user interactions, and ad sizes. Implementing this protocol allows for custom handling of these events within the SWPBM SDK.
 @objc public protocol BannerEventHandler : PrimaryAdRequesterProtocol {
 
-    /// Delegate for custom event handler to inform the PBM SDK about the events related to the ad server communication.
+    /// Delegate for custom event handler to inform the SWPBM SDK about the events related to the ad server communication.
     weak var loadingDelegate: BannerEventLoadingDelegate? { get set }
 
-    /// Delegate for custom event handler to inform the PBM SDK about the events related to the user's interaction with the ad.
+    /// Delegate for custom event handler to inform the SWPBM SDK about the events related to the user's interaction with the ad.
     weak var interactionDelegate: BannerEventInteractionDelegate? { get set }
 
     /// The array of the CGRect entries for each valid ad sizes.

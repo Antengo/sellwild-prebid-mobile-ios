@@ -54,7 +54,7 @@ NSString * const gamAdUnitDisplayInterstitialRendering = @"/21808260008/prebid_o
 }
 
 - (void)interstitial:(InterstitialRenderingAdUnit *)interstitial didFailToReceiveAdWithError:(NSError *)error {
-    PBMLogError(@"%@", error.localizedDescription);
+    SWPBMLogError(@"%@", error.localizedDescription);
 }
 
 @end

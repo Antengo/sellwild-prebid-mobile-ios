@@ -65,7 +65,7 @@ NSString * const storedImpDisplayInterstitialPluginRendererInApp = @"prebid-demo
 }
 
 - (void)interstitial:(InterstitialRenderingAdUnit *)interstitial didFailToReceiveAdWithError:(NSError *)error {
-    PBMLogError(@"%@", error.localizedDescription);
+    SWPBMLogError(@"%@", error.localizedDescription);
 }
 
 @end

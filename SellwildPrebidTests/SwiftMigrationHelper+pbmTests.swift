@@ -15,9 +15,9 @@
     
 
 import XCTest
-@testable @_spi(PBMInternal) import SellwildPrebid
+@testable @_spi(SWPBMInternal) import SellwildPrebid
 
-func XCTAssertEqual<T: PBMSwiftMigrationHelper>(_ expression1: @autoclosure () -> T,
+func XCTAssertEqual<T: SWPBMSwiftMigrationHelper>(_ expression1: @autoclosure () -> T,
                                                 _ expression2: @autoclosure () -> T) {
     XCTAssertEqual(expression1() as! NSObject, expression2() as! NSObject)
 }

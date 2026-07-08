@@ -53,7 +53,7 @@ public class PrebidAdMobVideoInterstitialAdapter:
             return
         }
         
-        guard let targetingInfo = eventExtrasDictionary[PBMMediationTargetingInfoKey] as? [String: String] else {
+        guard let targetingInfo = eventExtrasDictionary[SWPBMMediationTargetingInfoKey] as? [String: String] else {
             let error = AdMobAdaptersError.noTargetingInfoInEventExtras
             delegate = completionHandler(nil, error)
             return
@@ -65,20 +65,20 @@ public class PrebidAdMobVideoInterstitialAdapter:
             return
         }
         
-        guard let bid = eventExtrasDictionary[PBMMediationAdUnitBidKey] as? Bid else {
+        guard let bid = eventExtrasDictionary[SWPBMMediationAdUnitBidKey] as? Bid else {
             let error = AdMobAdaptersError.noBidInEventExtras
             delegate = completionHandler(nil, error)
             return
         }
         
-        guard let configId = eventExtrasDictionary[PBMMediationConfigIdKey] as? String else {
+        guard let configId = eventExtrasDictionary[SWPBMMediationConfigIdKey] as? String else {
             let error = AdMobAdaptersError.noConfigIDInEventExtras
             delegate = completionHandler(nil, error)
             return
         }
         
-        let videoControlsConfig = eventExtrasDictionary[PBMMediationVideoAdConfiguration] as? VideoControlsConfiguration
-        let videoParameters = eventExtrasDictionary[PBMMediationVideoParameters] as? VideoParameters
+        let videoControlsConfig = eventExtrasDictionary[SWPBMMediationVideoAdConfiguration] as? VideoControlsConfiguration
+        let videoParameters = eventExtrasDictionary[SWPBMMediationVideoParameters] as? VideoParameters
         let renderingConfig = AdUnitConfig(configId: configId)
         renderingConfig.adConfiguration.isInterstitialAd = true
         renderingConfig.adConfiguration.isRewarded = false

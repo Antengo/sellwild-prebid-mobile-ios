@@ -37,7 +37,7 @@ class PrebidVideoInterstitialUITest: RepeatedUITestCase {
             waitForExists(element: LearnMoreBtn, waitSeconds: 5 )
             
             // Wait for Close
-            let interstitialCloseBtn = app.buttons["PBMCloseButton"]
+            let interstitialCloseBtn = app.buttons["SWPBMCloseButton"]
             waitForHittable(element: interstitialCloseBtn, waitSeconds: 15)
             interstitialCloseBtn.tap()
             
@@ -60,7 +60,7 @@ class PrebidVideoInterstitialUITest: RepeatedUITestCase {
             waitForExists(element: done, waitSeconds: waitingTimeout)
             done.tapFrameCenter()
             
-            let videoCloseBtn = app.buttons["PBMCloseButton"]
+            let videoCloseBtn = app.buttons["SWPBMCloseButton"]
             waitForHittable(element: videoCloseBtn, waitSeconds: 15)
             videoCloseBtn.tap()
             
@@ -72,7 +72,7 @@ class PrebidVideoInterstitialUITest: RepeatedUITestCase {
         repeatTesting(times: 7) {
             openVideo(title: videoInterstitialTitle)
             
-            let videoCloseBtn = app.buttons["PBMCloseButton"]
+            let videoCloseBtn = app.buttons["SWPBMCloseButton"]
             waitForHittable(element: videoCloseBtn, waitSeconds: 15)
             
             // The close button should disappear

@@ -15,7 +15,7 @@
 
 import XCTest
 
-@testable @_spi(PBMInternal) import SellwildPrebid
+@testable @_spi(SWPBMInternal) import SellwildPrebid
 
 typealias JsonDictionary = [String:Any]
 
@@ -92,7 +92,7 @@ typealias JsonDictionary = [String:Any]
     }
     
     class func createHTMLCreative(with model: CreativeModel) -> AbstractCreative {
-        return PBMHTMLCreative(creativeModel: model,
+        return SWPBMHTMLCreative(creativeModel: model,
                                transaction:UtilitiesForTesting.createEmptyTransaction())
     }
     
@@ -105,18 +105,18 @@ typealias JsonDictionary = [String:Any]
         creative.modalManager = modalManager
         
         if withView {
-            let webView = PBMWebView()
+            let webView = SWPBMWebView()
             creative.view = webView
         }
         
         return creative
     }
     
-    class func createHTMLCreative(withModel model: CreativeModel, withView:Bool = true) -> PBMHTMLCreative {
-        let creative = PBMHTMLCreative(creativeModel: model, transaction:UtilitiesForTesting.createEmptyTransaction())
+    class func createHTMLCreative(withModel model: CreativeModel, withView:Bool = true) -> SWPBMHTMLCreative {
+        let creative = SWPBMHTMLCreative(creativeModel: model, transaction:UtilitiesForTesting.createEmptyTransaction())
         
         if withView {
-            let webView = PBMWebView()
+            let webView = SWPBMWebView()
             creative.view = webView
         }
         
@@ -151,7 +151,7 @@ typealias JsonDictionary = [String:Any]
             model.html = "<html>test html</html>"
             model.revenue = "1234"
             
-            let creative = PBMHTMLCreative(creativeModel: model, transaction:UtilitiesForTesting.createEmptyTransaction())
+            let creative = SWPBMHTMLCreative(creativeModel: model, transaction:UtilitiesForTesting.createEmptyTransaction())
             
             let transaction = Factory.createTransaction(serverConnection:connection,
                                                         adConfiguration:configuration,
@@ -170,7 +170,7 @@ typealias JsonDictionary = [String:Any]
                                                     adConfiguration:adConfiguration,
                                                     models:[model])
         
-        let creative = PBMHTMLCreative(creativeModel: model, transaction: transaction)
+        let creative = SWPBMHTMLCreative(creativeModel: model, transaction: transaction)
         
         transaction.creatives.append(creative)
         
@@ -189,10 +189,10 @@ typealias JsonDictionary = [String:Any]
     class func compareJSON(expected:String, actual:String, file:StaticString = #file, line:UInt = #line) {
         
         do {
-            let dictExpected = try PBMFunctions.dictionaryFromJSONString(expected)
+            let dictExpected = try SWPBMFunctions.dictionaryFromJSONString(expected)
             let nsDictExpected = NSDictionary(dictionary: dictExpected)
             
-            let dictActual = try PBMFunctions.dictionaryFromJSONString(actual)
+            let dictActual = try SWPBMFunctions.dictionaryFromJSONString(actual)
             let nsDictActual = NSDictionary(dictionary: dictActual)
             
             XCTAssertEqual(nsDictExpected, nsDictActual, file:file, line:line)
@@ -306,9 +306,9 @@ typealias JsonDictionary = [String:Any]
         UserDefaults.standard.removeObject(forKey: UserConsentDataManager.shared.IABTCF_ConsentString)
         UserDefaults.standard.removeObject(forKey: UserConsentDataManager.shared.IABTCF_SubjectToGDPR)
         UserDefaults.standard.removeObject(forKey: UserConsentDataManager.shared.IABTCF_PurposeConsents)
-        UserDefaults.standard.removeObject(forKey: InternalUserConsentDataManager.IABUSPrivacy_StringKey)
-        UserDefaults.standard.removeObject(forKey: InternalUserConsentDataManager.IABGPP_GppSID)
-        UserDefaults.standard.removeObject(forKey: InternalUserConsentDataManager.IABGPP_HDR_GppString)
+        UserDefaults.standard.removeObject(forKey: SWInternalUserConsentDataManager.IABUSPrivacy_StringKey)
+        UserDefaults.standard.removeObject(forKey: SWInternalUserConsentDataManager.IABGPP_GppSID)
+        UserDefaults.standard.removeObject(forKey: SWInternalUserConsentDataManager.IABGPP_HDR_GppString)
         
         checkInitialValues(targeting)
     }
@@ -334,7 +334,7 @@ typealias JsonDictionary = [String:Any]
         XCTAssertNil(UserDefaults.standard.object(forKey: UserConsentDataManager.shared.IABTCF_ConsentString))
         XCTAssertNil(UserDefaults.standard.object(forKey: UserConsentDataManager.shared.IABTCF_SubjectToGDPR))
         XCTAssertNil(UserDefaults.standard.object(forKey: UserConsentDataManager.shared.IABTCF_PurposeConsents))
-        XCTAssertNil(UserDefaults.standard.object(forKey: InternalUserConsentDataManager.IABUSPrivacy_StringKey))
+        XCTAssertNil(UserDefaults.standard.object(forKey: SWInternalUserConsentDataManager.IABUSPrivacy_StringKey))
     }
     
     // Prepends "mraid:" and converts to a URL.

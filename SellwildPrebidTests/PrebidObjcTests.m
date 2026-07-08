@@ -14,7 +14,7 @@ limitations under the License.
 */
 
 #import <XCTest/XCTest.h>
-#import "SwiftImport.h"
+#import "SWSwiftImport.h"
 
 @interface PrebidObjcTests : XCTestCase
 
@@ -82,7 +82,7 @@ limitations under the License.
 }
 
 - (void)testLogLevel {
-    [SellwildPrebid.shared setLogLevel:PBMLogLevel.debug];
+    [SellwildPrebid.shared setLogLevel:SWPBMLogLevel.debug];
 }
 
 - (void)testPbsDebug {

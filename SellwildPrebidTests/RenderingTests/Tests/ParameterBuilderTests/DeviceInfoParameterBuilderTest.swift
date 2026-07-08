@@ -23,12 +23,12 @@ class DeviceInfoParameterBuilderTest: XCTestCase {
     let initialDict = [String:String]()
     var userDefaults: UserDefaults!
     var deviceInfoParameterBuilder: DeviceInfoParameterBuilder!
-    var bidRequest: PBMORTBBidRequest!
+    var bidRequest: SWPBMORTBBidRequest!
 
     override func setUp() {
         self.userDefaults = UserDefaults()
         self.deviceInfoParameterBuilder = DeviceInfoParameterBuilder(deviceAccessManager: MockDeviceAccessManager(rootViewController: nil))
-        self.bidRequest = PBMORTBBidRequest()
+        self.bidRequest = SWPBMORTBBidRequest()
     }
 
     override func tearDown() {
@@ -39,8 +39,8 @@ class DeviceInfoParameterBuilderTest: XCTestCase {
     func testDeviceSize() {
         self.deviceInfoParameterBuilder.build(self.bidRequest)
         
-        PBMAssertEq(self.bidRequest.device.w, 100)
-        PBMAssertEq(self.bidRequest.device.h, 200)
+        SWPBMAssertEq(self.bidRequest.device.w, 100)
+        SWPBMAssertEq(self.bidRequest.device.h, 200)
     }
 
     func testAdTrackingEnabled() {
@@ -50,12 +50,12 @@ class DeviceInfoParameterBuilderTest: XCTestCase {
         }
         
         self.deviceInfoParameterBuilder.build(self.bidRequest)
-        PBMAssertEq(self.bidRequest.device.lmt, 0)
-        PBMAssertEq(self.bidRequest.device.ifa, MockDeviceAccessManager.mockAdvertisingIdentifier)
+        SWPBMAssertEq(self.bidRequest.device.lmt, 0)
+        SWPBMAssertEq(self.bidRequest.device.ifa, MockDeviceAccessManager.mockAdvertisingIdentifier)
         XCTAssertNil(self.bidRequest.device.extAtts.ifv)
         
         if #available(iOS 14, *) {
-            PBMAssertEq(self.bidRequest.device.extAtts.atts as? UInt, ATTrackingManager.AuthorizationStatus.authorized.rawValue)
+            SWPBMAssertEq(self.bidRequest.device.extAtts.atts as? UInt, ATTrackingManager.AuthorizationStatus.authorized.rawValue)
         }
     }
 
@@ -68,12 +68,12 @@ class DeviceInfoParameterBuilderTest: XCTestCase {
         
         self.deviceInfoParameterBuilder.build(self.bidRequest)
 
-        PBMAssertEq(self.bidRequest.device.lmt, 1)
-        PBMAssertEq(self.bidRequest.device.ifa, MockDeviceAccessManager.nullUUID)
-        PBMAssertEq(self.bidRequest.device.extAtts.ifv, MockDeviceAccessManager.mockIdentifierForVendor)
+        SWPBMAssertEq(self.bidRequest.device.lmt, 1)
+        SWPBMAssertEq(self.bidRequest.device.ifa, MockDeviceAccessManager.nullUUID)
+        SWPBMAssertEq(self.bidRequest.device.extAtts.ifv, MockDeviceAccessManager.mockIdentifierForVendor)
         
         if #available(iOS 14, *) {
-            PBMAssertEq(self.bidRequest.device.extAtts.atts as? UInt, ATTrackingManager.AuthorizationStatus.notDetermined.rawValue)
+            SWPBMAssertEq(self.bidRequest.device.extAtts.atts as? UInt, ATTrackingManager.AuthorizationStatus.notDetermined.rawValue)
         }
     }
     
@@ -87,17 +87,17 @@ class DeviceInfoParameterBuilderTest: XCTestCase {
         self.deviceInfoParameterBuilder.build(self.bidRequest)
         
         XCTAssertNil(self.bidRequest.device.ifa)
-        PBMAssertEq(self.bidRequest.device.extAtts.ifv, MockDeviceAccessManager.mockIdentifierForVendor)
+        SWPBMAssertEq(self.bidRequest.device.extAtts.ifv, MockDeviceAccessManager.mockIdentifierForVendor)
     }
 
     func testDeviceDetails() {
         self.deviceInfoParameterBuilder.build(self.bidRequest)
 
-        PBMAssertEq(self.bidRequest.device.make, "MockMake")
-        PBMAssertEq(self.bidRequest.device.model, "MockModel")
-        PBMAssertEq(self.bidRequest.device.os, "MockOS")
-        PBMAssertEq(self.bidRequest.device.osv, "1.2.3")
-        PBMAssertEq(self.bidRequest.device.language, "ml")
+        SWPBMAssertEq(self.bidRequest.device.make, "MockMake")
+        SWPBMAssertEq(self.bidRequest.device.model, "MockModel")
+        SWPBMAssertEq(self.bidRequest.device.os, "MockOS")
+        SWPBMAssertEq(self.bidRequest.device.osv, "1.2.3")
+        SWPBMAssertEq(self.bidRequest.device.language, "ml")
     }
 
     func testNilDeviceLanguage() {

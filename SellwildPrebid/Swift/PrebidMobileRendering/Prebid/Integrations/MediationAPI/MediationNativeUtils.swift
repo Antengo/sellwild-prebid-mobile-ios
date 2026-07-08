@@ -15,21 +15,21 @@
 
 import Foundation
 
-@objc(PBMMediationNativeUtils) @objcMembers
+@objc(SWPBMMediationNativeUtils) @objcMembers
 public class MediationNativeUtils: NSObject {
     public static func findNative(in extras: [AnyHashable: Any]) -> Result<NativeAd, Error> {
-        guard let response = extras[PBMMediationAdNativeResponseKey] as? [String: AnyObject] else {
-            let error = PBMError.error(description: "The bid response dictionary is absent in the extras")
+        guard let response = extras[SWPBMMediationAdNativeResponseKey] as? [String: AnyObject] else {
+            let error = SWPBMError.error(description: "The bid response dictionary is absent in the extras")
             return .failure(error)
         }
         
         guard let cacheId = response[PrebidLocalCacheIdKey] as? String else {
-            let error = PBMError.error(description: "No cache id in bid response dictionary")
+            let error = SWPBMError.error(description: "No cache id in bid response dictionary")
             return .failure(error)
         }
         
         guard let nativeAd = NativeAd.create(cacheId: cacheId) else {
-            let error = PBMError.error(description: "No cached native ad")
+            let error = SWPBMError.error(description: "No cached native ad")
             return .failure(error)
         }
         

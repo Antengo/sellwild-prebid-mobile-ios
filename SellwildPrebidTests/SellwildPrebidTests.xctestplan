@@ -20,9 +20,9 @@
         "AdViewUtilsTests\/testFailureFindASizeInNilHtmlCode()",
         "AdViewUtilsTests\/testFindPrebidCacheIDFailureNoCacheID()",
         "AutoRefreshManagerTest\/testPostponeWithSetupRefresh()",
-        "PBMAutoRefreshManagerTest\/testAllowRefreshOnSecondAtempt()",
-        "PBMCreativeFactoryTest\/testCreativeFactorySuccess()",
-        "PBMWebViewTest\/testDecidePolicyForNavigationActionUnprocessingCases()",
+        "SWPBMAutoRefreshManagerTest\/testAllowRefreshOnSecondAtempt()",
+        "SWPBMCreativeFactoryTest\/testCreativeFactorySuccess()",
+        "SWPBMWebViewTest\/testDecidePolicyForNavigationActionUnprocessingCases()",
         "RequestBuilderTests\/testPostDataWithShareLocationOff()",
         "RequestBuilderTests\/testPostDataWithShareLocationOn()"
       ],

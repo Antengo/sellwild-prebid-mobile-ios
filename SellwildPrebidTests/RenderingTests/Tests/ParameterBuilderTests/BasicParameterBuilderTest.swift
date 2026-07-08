@@ -17,7 +17,7 @@ import UIKit
 import XCTest
 @testable import SellwildPrebid
 
-class PBMBasicParameterBuilderTest: XCTestCase {
+class SWPBMBasicParameterBuilderTest: XCTestCase {
     
     private var logToFile: LogToFileLock?
     
@@ -34,8 +34,8 @@ class PBMBasicParameterBuilderTest: XCTestCase {
         logToFile = nil
         targeting.coppa = nil
         
-        UserDefaults.standard.removeObject(forKey: InternalUserConsentDataManager.IABGPP_HDR_GppString)
-        UserDefaults.standard.removeObject(forKey: InternalUserConsentDataManager.IABGPP_GppSID)
+        UserDefaults.standard.removeObject(forKey: SWInternalUserConsentDataManager.IABGPP_HDR_GppString)
+        UserDefaults.standard.removeObject(forKey: SWInternalUserConsentDataManager.IABGPP_GppSID)
                 
         UserConsentDataManager.shared.subjectToCOPPA = nil
         super.tearDown()
@@ -47,26 +47,26 @@ class PBMBasicParameterBuilderTest: XCTestCase {
         adConfiguration.isInterstitialAd = false
         
         let sdkConfiguration = SellwildPrebid.mock
-        let builder = PBMBasicParameterBuilder(adConfiguration:adConfiguration,
+        let builder = SWPBMBasicParameterBuilder(adConfiguration:adConfiguration,
                                                sdkConfiguration:sdkConfiguration,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
         
         
         //Run Builder
-        let bidRequest = PBMORTBBidRequest()
+        let bidRequest = SWPBMORTBBidRequest()
         builder.build(bidRequest)
         
         //Check Impression
-        PBMAssertEq(bidRequest.imp.count, 1)
+        SWPBMAssertEq(bidRequest.imp.count, 1)
         guard let imp = bidRequest.imp.first else {
             XCTFail("No imp object")
             return
         }
         
-        PBMAssertEq(imp.instl, 0)
-        PBMAssertEq(imp.secure, 1)
-        PBMAssertEq(imp.clickbrowser, 1)
+        SWPBMAssertEq(imp.instl, 0)
+        SWPBMAssertEq(imp.secure, 1)
+        SWPBMAssertEq(imp.clickbrowser, 1)
         
         //Check banner
         guard let banner = imp.banner else {
@@ -74,7 +74,7 @@ class PBMBasicParameterBuilderTest: XCTestCase {
             return
         }
         
-        PBMAssertEq(banner.api, nil)
+        SWPBMAssertEq(banner.api, nil)
         
         //Check Regs
         XCTAssertNil(bidRequest.regs.coppa)
@@ -85,12 +85,12 @@ class PBMBasicParameterBuilderTest: XCTestCase {
         adConfiguration.isOriginalAPI = true
         let sdkConfiguration = SellwildPrebid.mock
         
-        let builder = PBMBasicParameterBuilder(adConfiguration:adConfiguration,
+        let builder = SWPBMBasicParameterBuilder(adConfiguration:adConfiguration,
                                                sdkConfiguration:sdkConfiguration,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
         
-        let bidRequest = PBMORTBBidRequest()
+        let bidRequest = SWPBMORTBBidRequest()
         builder.build(bidRequest)
         
         guard let imp = bidRequest.imp.first else {
@@ -98,8 +98,8 @@ class PBMBasicParameterBuilderTest: XCTestCase {
             return
         }
         
-        PBMAssertEq(imp.displaymanager, nil)
-        PBMAssertEq(imp.displaymanagerver, nil)
+        SWPBMAssertEq(imp.displaymanager, nil)
+        SWPBMAssertEq(imp.displaymanagerver, nil)
     }
     
     func testDisplayManager_RenderingAPI() {
@@ -107,12 +107,12 @@ class PBMBasicParameterBuilderTest: XCTestCase {
         adConfiguration.isOriginalAPI = false
         let sdkConfiguration = SellwildPrebid.mock
         
-        let builder = PBMBasicParameterBuilder(adConfiguration:adConfiguration,
+        let builder = SWPBMBasicParameterBuilder(adConfiguration:adConfiguration,
                                                sdkConfiguration:sdkConfiguration,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
         
-        let bidRequest = PBMORTBBidRequest()
+        let bidRequest = SWPBMORTBBidRequest()
         builder.build(bidRequest)
         
         guard let imp = bidRequest.imp.first else {
@@ -120,8 +120,8 @@ class PBMBasicParameterBuilderTest: XCTestCase {
             return
         }
         
-        PBMAssertEq(imp.displaymanager, "prebid-mobile")
-        PBMAssertEq(imp.displaymanagerver, "MOCK_SDK_VERSION")
+        SWPBMAssertEq(imp.displaymanager, "prebid-mobile")
+        SWPBMAssertEq(imp.displaymanagerver, "MOCK_SDK_VERSION")
     }
     
     func testParameterBuilderDefaultInterstitialConfig() {
@@ -149,14 +149,14 @@ class PBMBasicParameterBuilderTest: XCTestCase {
         adConfiguration.isInterstitialAd = false
         
         let sdkConfiguration = SellwildPrebid.mock
-        let builder = PBMBasicParameterBuilder(adConfiguration:adConfiguration,
+        let builder = SWPBMBasicParameterBuilder(adConfiguration:adConfiguration,
                                                sdkConfiguration:sdkConfiguration,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
         
         
         //Run Builder
-        let bidRequest = PBMORTBBidRequest()
+        let bidRequest = SWPBMORTBBidRequest()
         builder.build(bidRequest)
         
         XCTAssertNil(bidRequest.regs.coppa)
@@ -178,26 +178,26 @@ class PBMBasicParameterBuilderTest: XCTestCase {
         }
         
         let sdkConfiguration = SellwildPrebid.mock
-        let builder = PBMBasicParameterBuilder(adConfiguration:adConfiguration,
+        let builder = SWPBMBasicParameterBuilder(adConfiguration:adConfiguration,
                                                sdkConfiguration:sdkConfiguration,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
         
         
         //Run Builder
-        let bidRequest = PBMORTBBidRequest()
+        let bidRequest = SWPBMORTBBidRequest()
         builder.build(bidRequest)
         
-        PBMAssertEq(bidRequest.regs.coppa, expectedRegValue)
+        SWPBMAssertEq(bidRequest.regs.coppa, expectedRegValue)
     }
     
     func testInvalidProperties() {
         let adConfiguration = AdConfiguration()
         
         let sdkConfiguration = SellwildPrebid.mock
-        let bidRequest = PBMORTBBidRequest()
+        let bidRequest = SWPBMORTBBidRequest()
         
-        let builder = PBMBasicParameterBuilder(adConfiguration:adConfiguration,
+        let builder = SWPBMBasicParameterBuilder(adConfiguration:adConfiguration,
                                                sdkConfiguration:sdkConfiguration,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
@@ -263,11 +263,11 @@ class PBMBasicParameterBuilderTest: XCTestCase {
         }
         
         let sdkConfiguration = SellwildPrebid.mock
-        let builder = PBMBasicParameterBuilder(adConfiguration:adConfiguration,
+        let builder = SWPBMBasicParameterBuilder(adConfiguration:adConfiguration,
                                                sdkConfiguration:sdkConfiguration,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
-        let bidRequest = PBMORTBBidRequest()
+        let bidRequest = SWPBMORTBBidRequest()
         builder.build(bidRequest)
         
         guard let video = bidRequest.imp.first?.video else {
@@ -278,7 +278,7 @@ class PBMBasicParameterBuilderTest: XCTestCase {
         if (expectedPlacement == 0) {
             XCTAssertNil(video.placement)
         } else {
-            PBMAssertEq(video.placement?.intValue, expectedPlacement)
+            SWPBMAssertEq(video.placement?.intValue, expectedPlacement)
         }
     }
     
@@ -286,20 +286,20 @@ class PBMBasicParameterBuilderTest: XCTestCase {
         // Set Regs
         let gppString = "gppString"
         let gppSID = "2_3_4_5"
-        UserDefaults.standard.set(gppString, forKey: InternalUserConsentDataManager.IABGPP_HDR_GppString)
-        UserDefaults.standard.set(gppSID, forKey: InternalUserConsentDataManager.IABGPP_GppSID)
+        UserDefaults.standard.set(gppString, forKey: SWInternalUserConsentDataManager.IABGPP_HDR_GppString)
+        UserDefaults.standard.set(gppSID, forKey: SWInternalUserConsentDataManager.IABGPP_GppSID)
         UserConsentDataManager.shared.subjectToCOPPA = true
         
         // Create Builder
         let adConfiguration = AdConfiguration()
         let sdkConfiguration = SellwildPrebid.mock
-        let builder = PBMBasicParameterBuilder(adConfiguration:adConfiguration,
+        let builder = SWPBMBasicParameterBuilder(adConfiguration:adConfiguration,
                                                sdkConfiguration:sdkConfiguration,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
         
         // Run Builder
-        let bidRequest = PBMORTBBidRequest()
+        let bidRequest = SWPBMORTBBidRequest()
         builder.build(bidRequest)
         
         // Check Regs
@@ -313,22 +313,22 @@ class PBMBasicParameterBuilderTest: XCTestCase {
     func checkDefaultParametersForAdUnit(adConfiguration: AdConfiguration) {
         let sdkConfiguration = SellwildPrebid.mock
         
-        let builder = PBMBasicParameterBuilder(adConfiguration:adConfiguration,
+        let builder = SWPBMBasicParameterBuilder(adConfiguration:adConfiguration,
                                                sdkConfiguration:sdkConfiguration,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
         
-        let bidRequest = PBMORTBBidRequest()
+        let bidRequest = SWPBMORTBBidRequest()
         builder.build(bidRequest)
         
         //Check that this is counted as an interstitial
-        PBMAssertEq(bidRequest.imp.count, 1)
+        SWPBMAssertEq(bidRequest.imp.count, 1)
         guard let imp = bidRequest.imp.first else {
             XCTFail("No Imp object!")
             return
         }
         
-        PBMAssertEq(imp.instl, 1)
+        SWPBMAssertEq(imp.instl, 1)
         
         // Multiformat is default for interstitial ad unit
         guard let banner = imp.banner else {

@@ -146,7 +146,7 @@ class LocationManagerTest: XCTestCase {
         locationManager.locationUpdatesEnabled = true
 
         self.waitForExpectations(timeout: self.expectationTimeout, handler: nil)
-        PBMAssertEq(startUpdatingCallCount, 1)
+        SWPBMAssertEq(startUpdatingCallCount, 1)
     }
 
     func testUnregisterStopsUpdatingLocation() {
@@ -176,8 +176,8 @@ class LocationManagerTest: XCTestCase {
         locationManager.locationUpdatesEnabled = true
 
         XCTAssertFalse(locationManager.coordinatesAreValid)
-        PBMAssertEq(locationManager.coordinates.latitude, kCLLocationCoordinate2DInvalid.latitude)
-        PBMAssertEq(locationManager.coordinates.longitude, kCLLocationCoordinate2DInvalid.longitude)
+        SWPBMAssertEq(locationManager.coordinates.latitude, kCLLocationCoordinate2DInvalid.latitude)
+        SWPBMAssertEq(locationManager.coordinates.longitude, kCLLocationCoordinate2DInvalid.longitude)
     }
 
     func testCoordinatesAreValid() {
@@ -193,10 +193,10 @@ class LocationManagerTest: XCTestCase {
         mockCLLocationManager.delegate?.locationManager?(CLLocationManager(), didUpdateLocations: [self.location])
 
         XCTAssert(locationManager.coordinatesAreValid)
-        PBMAssertEq(locationManager.coordinates.latitude, self.location.coordinate.latitude)
-        PBMAssertEq(locationManager.coordinates.longitude, self.location.coordinate.longitude)
-        PBMAssertEq(locationManager.horizontalAccuracy, self.location.horizontalAccuracy)
-        PBMAssertEq(locationManager.timestamp, self.location.timestamp)
+        SWPBMAssertEq(locationManager.coordinates.latitude, self.location.coordinate.latitude)
+        SWPBMAssertEq(locationManager.coordinates.longitude, self.location.coordinate.longitude)
+        SWPBMAssertEq(locationManager.horizontalAccuracy, self.location.horizontalAccuracy)
+        SWPBMAssertEq(locationManager.timestamp, self.location.timestamp)
     }
 
     func testInternalLocationManagerFailure() {
@@ -216,8 +216,8 @@ class LocationManagerTest: XCTestCase {
 
         self.waitForExpectations(timeout: self.expectationTimeout, handler: nil)
         XCTAssertFalse(locationManager.coordinatesAreValid)
-        PBMAssertEq(locationManager.coordinates.latitude, kCLLocationCoordinate2DInvalid.latitude)
-        PBMAssertEq(locationManager.coordinates.longitude, kCLLocationCoordinate2DInvalid.longitude)
+        SWPBMAssertEq(locationManager.coordinates.latitude, kCLLocationCoordinate2DInvalid.latitude)
+        SWPBMAssertEq(locationManager.coordinates.longitude, kCLLocationCoordinate2DInvalid.longitude)
     }
 
     func testInternalLocationManagerFailureRetainsPreviousLocationData() {
@@ -228,15 +228,15 @@ class LocationManagerTest: XCTestCase {
         mockCLLocationManager.delegate?.locationManager?(CLLocationManager(), didUpdateLocations: [self.location])
 
         XCTAssert(locationManager.coordinatesAreValid)
-        PBMAssertEq(locationManager.coordinates.latitude, self.location.coordinate.latitude)
-        PBMAssertEq(locationManager.coordinates.longitude, self.location.coordinate.longitude)
+        SWPBMAssertEq(locationManager.coordinates.latitude, self.location.coordinate.latitude)
+        SWPBMAssertEq(locationManager.coordinates.longitude, self.location.coordinate.longitude)
 
         enum ErrorError: Error { case Error }
         mockCLLocationManager.delegate?.locationManager?(CLLocationManager(), didFailWithError: ErrorError.Error)
 
         XCTAssert(locationManager.coordinatesAreValid)
-        PBMAssertEq(locationManager.coordinates.latitude, self.location.coordinate.latitude)
-        PBMAssertEq(locationManager.coordinates.longitude, self.location.coordinate.longitude)
+        SWPBMAssertEq(locationManager.coordinates.latitude, self.location.coordinate.latitude)
+        SWPBMAssertEq(locationManager.coordinates.longitude, self.location.coordinate.longitude)
     }
     
     func testValidLocation() {

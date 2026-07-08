@@ -15,7 +15,7 @@
 
 import XCTest
 
-@testable @_spi(PBMInternal) import SellwildPrebid
+@testable @_spi(SWPBMInternal) import SellwildPrebid
 
 class ModalViewControllerTest: XCTestCase, ModalViewControllerDelegate {
     
@@ -197,7 +197,7 @@ class ModalViewControllerTest: XCTestCase, ModalViewControllerDelegate {
     }
     
     func testRotationDisabled() {
-        let webView = PBMWebView()
+        let webView = SWPBMWebView()
         webView.isRotationEnabled = false
         let view = UIView()
         view.addSubview(webView)
@@ -306,7 +306,7 @@ class ModalViewControllerTest: XCTestCase, ModalViewControllerDelegate {
         waitForExpectations(timeout: 3, handler: nil)
     }
     
-    //MARK - PBMModalViewControllerDelegate
+    //MARK - SWPBMModalViewControllerDelegate
     func modalViewControllerCloseButtonTapped(_ modalViewController: ModalViewController) {
         expectation?.fulfill()
     }

@@ -61,7 +61,7 @@ class PrebidBannerConfigurationController: BaseConfigurationController {
     }
     .onChange { row in
         // Clearing the text field resets auto refresh delay to it's the configured default.
-        if let autoRefreshDelayText = row.value.pbm_trimCharactersToNil() {
+        if let autoRefreshDelayText = row.value.swpbm_trimCharactersToNil() {
             self.refreshInterval = TimeInterval(autoRefreshDelayText) ?? 0
         } else {
             self.refreshInterval = 0

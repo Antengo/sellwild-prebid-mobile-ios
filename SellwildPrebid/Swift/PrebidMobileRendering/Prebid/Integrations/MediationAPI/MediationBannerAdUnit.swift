@@ -240,9 +240,9 @@ public class MediationBannerAdUnit : NSObject {
         if self.adView != nil, let winningBid = response.winningBid, let targetingInfo = response.targetingInfo {
             
             let adObjectSetupDictionary: [String: Any] = [
-                PBMMediationConfigIdKey: configID,
-                PBMMediationTargetingInfoKey: targetingInfo,
-                PBMMediationAdUnitBidKey: winningBid
+                SWPBMMediationConfigIdKey: configID,
+                SWPBMMediationTargetingInfoKey: targetingInfo,
+                SWPBMMediationAdUnitBidKey: winningBid
             ]
             
             if mediationDelegate.setUpAdObject(with: adObjectSetupDictionary) {
@@ -258,7 +258,7 @@ public class MediationBannerAdUnit : NSObject {
     }
     
     private func handlePrebidError(error: Error?) {
-        completeWithResult(PBMError.demandResult(from: error))
+        completeWithResult(SWPBMError.demandResult(from: error))
     }
     
     private func completeWithResult(_ fetchDemandResult: ResultCode) {

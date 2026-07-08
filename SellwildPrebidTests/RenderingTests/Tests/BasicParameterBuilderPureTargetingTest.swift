@@ -26,12 +26,12 @@ class BasicParameterBuilderPureTargetingTest: XCTestCase {
     
     func testParameterBuilderNoUserAgeNoCoppa() {
         let targeting = Targeting.shared
-        let builder = PBMBasicParameterBuilder(adConfiguration:AdConfiguration(),
+        let builder = SWPBMBasicParameterBuilder(adConfiguration:AdConfiguration(),
                                                sdkConfiguration:SellwildPrebid.mock,
                                                sdkVersion:"MOCK_SDK_VERSION",
                                                targeting: targeting)
         
-        let bidRequest = PBMORTBBidRequest()
+        let bidRequest = SWPBMORTBBidRequest()
         builder.build(bidRequest)
         
         //Check Regs

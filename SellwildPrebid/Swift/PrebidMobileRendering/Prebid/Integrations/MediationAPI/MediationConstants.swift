@@ -15,9 +15,9 @@
 
 import Foundation
 
-public let PBMMediationAdUnitBidKey                 = "PBM_BID"
-public let PBMMediationConfigIdKey                  = "PBM_CONFIG_ID"
-public let PBMMediationTargetingInfoKey             = "PBM_TARGETING_INFO"
-public let PBMMediationAdNativeResponseKey          = "PBM_NATIVE_RESPONSE"
-public let PBMMediationVideoAdConfiguration         = "PBM_VIDEO_CONFIGURATION"
-public let PBMMediationVideoParameters              = "PBM_VIDEO_PARAMETERS"
+public let SWPBMMediationAdUnitBidKey                 = "SWPBM_BID"
+public let SWPBMMediationConfigIdKey                  = "SWPBM_CONFIG_ID"
+public let SWPBMMediationTargetingInfoKey             = "SWPBM_TARGETING_INFO"
+public let SWPBMMediationAdNativeResponseKey          = "SWPBM_NATIVE_RESPONSE"
+public let SWPBMMediationVideoAdConfiguration         = "SWPBM_VIDEO_CONFIGURATION"
+public let SWPBMMediationVideoParameters              = "SWPBM_VIDEO_PARAMETERS"
