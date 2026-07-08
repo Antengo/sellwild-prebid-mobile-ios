@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name             = 'SellwildPrebid'
-  s.version      = "3.3.1"
+  s.version      = "1.4.1"
   s.summary      = "SellwildPrebid is a lightweight framework that integrates directly with Prebid Server."
 
   s.description  = <<-DESC
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
   s.author                 = { "Prebid.org, Inc." => "info@prebid.org" }
   s.platform     	   = :ios, "13.0"
   s.swift_version 	   = '5.0'
-  s.source      	   = { :git => "https://github.com/prebid/prebid-mobile-ios.git", :tag => "#{s.version}" }
+  s.source      	   = { :git => "https://github.com/Antengo/sellwild-prebid-mobile-ios.git", :tag => "#{s.version}" }
   s.xcconfig 		   = { :LIBRARY_SEARCH_PATHS => '$(inherited)',
 			       :OTHER_CFLAGS => '$(inherited)',
 			       :OTHER_LDFLAGS => '$(inherited)',
