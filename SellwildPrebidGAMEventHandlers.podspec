@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SellwildPrebidGAMEventHandlers"
-  s.version      = "1.4.1"
+  s.version      = "1.4.2"
   s.summary      = "The bridge between SellwildPrebid SDK and GMA SDK."
 
   s.description  = "GAM Event Handlers manages rendering of Prebid or GAM ads respectively to the winning bid."
@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
   s.source_files = 'EventHandlers/SellwildPrebidGAMEventHandlers/**/*.{h,m,swift}'
   s.static_framework = true
 
-  s.dependency 'SellwildPrebid', '1.4.1'
+  s.dependency 'SellwildPrebid', '1.4.2'
   s.dependency 'Google-Mobile-Ads-SDK', '>= 13.0.0'
 
   s.pod_target_xcconfig = {
