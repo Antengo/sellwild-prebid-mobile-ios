@@ -15,7 +15,10 @@
 
 import Foundation
 import GoogleMobileAds
-import SellwildPrebid
+@_exported import SellwildPrebid
+
+// Typealias to disambiguate from GoogleMobileAds types
+public typealias PrebidNativeAd = NativeAd
 
 @objc(PrebidAdMobNativeAdapter)
 public class PrebidAdMobNativeAdapter:
@@ -55,7 +58,7 @@ public class PrebidAdMobNativeAdapter:
     
     public var extraAssets: [String: Any]?
     
-    var prebidNativeAd: SellwildPrebid.NativeAd?
+    var prebidNativeAd: PrebidNativeAd?
     
     public weak var delegate: GoogleMobileAds.MediationNativeAdEventDelegate?
     var completionHandler: GADMediationNativeLoadCompletionHandler?
@@ -126,18 +129,18 @@ public class PrebidAdMobNativeAdapter:
     
     // MARK: - NativeAdEventDelegate
     
-    public func adDidExpire(ad: SellwildPrebid.NativeAd) {
+    public func adDidExpire(ad: PrebidNativeAd) {
         let error = AdMobAdaptersError.adExpired
         if let handler = completionHandler {
            delegate = handler(nil, error)
         }
     }
     
-    public func adWasClicked(ad: SellwildPrebid.NativeAd) {
+    public func adWasClicked(ad: PrebidNativeAd) {
         delegate?.reportClick()
     }
     
-    public func adDidLogImpression(ad: SellwildPrebid.NativeAd) {
+    public func adDidLogImpression(ad: PrebidNativeAd) {
         delegate?.reportImpression()
     }
     

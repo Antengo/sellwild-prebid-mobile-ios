@@ -15,7 +15,10 @@
 
 import Foundation
 import GoogleMobileAds
-import SellwildPrebid
+@_exported import SellwildPrebid
+
+// Typealias to disambiguate from GoogleMobileAds.NativeAd
+public typealias PrebidNativeAd = NativeAd
 
 fileprivate let prebidKeywordPrefix = "hb_"
 
@@ -131,7 +134,7 @@ extension GAMUtils {
     
     public func findNativeAd(
         for nativeAd: GoogleMobileAds.NativeAd
-    ) -> Result<SellwildPrebid.NativeAd, GAMEventHandlerError> {
+    ) -> Result<PrebidNativeAd, GAMEventHandlerError> {
         guard let wrappedAd = GADNativeAdWrapper(nativeAd: nativeAd) else {
             return .failure(GAMEventHandlerError.gamClassesNotFound)
         }
@@ -149,7 +152,7 @@ extension GAMUtils {
     
     public func findNativeAdObjc(
         for nativeAd: GoogleMobileAds.NativeAd,
-        completion: @escaping (SellwildPrebid.NativeAd?, NSError?) -> Void
+        completion: @escaping (PrebidNativeAd?, NSError?) -> Void
     ) {
         switch findNativeAd(for: nativeAd) {
         case .success(let nativeAd):
@@ -168,7 +171,7 @@ extension GAMUtils {
     
     public func findCustomNativeAd(
         for nativeAd: GoogleMobileAds.CustomNativeAd
-    ) -> Result<SellwildPrebid.NativeAd, GAMEventHandlerError> {
+    ) -> Result<PrebidNativeAd, GAMEventHandlerError> {
         guard let wrappedAd = GADCustomNativeAdWrapper(customNativeAd: nativeAd) else {
             return .failure(GAMEventHandlerError.gamClassesNotFound)
         }
@@ -186,7 +189,7 @@ extension GAMUtils {
     
     public func findCustomNativeAdObjc(
         for nativeAd: GoogleMobileAds.CustomNativeAd,
-        completion: @escaping (SellwildPrebid.NativeAd?, NSError?) -> Void
+        completion: @escaping (PrebidNativeAd?, NSError?) -> Void
     ) {
         switch findCustomNativeAd(for: nativeAd) {
         case .success(let nativeAd):
@@ -199,7 +202,7 @@ extension GAMUtils {
     
     private func createNativeAd(
         from cacheId: String
-    ) -> Result<SellwildPrebid.NativeAd, GAMEventHandlerError> {
+    ) -> Result<PrebidNativeAd, GAMEventHandlerError> {
         guard CacheManager.shared.isValid(cacheId: cacheId) else {
             return .failure(GAMEventHandlerError.invalidLocalCacheID)
         }
