@@ -16,8 +16,8 @@
 
 #if PrebidMobile_SPM
 @import SellwildPrebidSDK;
-#elif __has_include("PrebidMobile-Swift.h")
-#import "PrebidMobile-Swift.h"
+#elif __has_include("SellwildPrebid-Swift.h")
+#import "SellwildPrebid-Swift.h"
 #else
-#import <SellwildPrebidSDK/SellwildPrebidSDK-Swift.h>
+#import <SellwildPrebid/SellwildPrebid-Swift.h>
 #endif
