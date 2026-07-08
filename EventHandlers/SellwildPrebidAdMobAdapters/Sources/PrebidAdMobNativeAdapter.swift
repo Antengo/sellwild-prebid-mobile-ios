@@ -18,7 +18,7 @@ import GoogleMobileAds
 @_exported import SellwildPrebidSDK
 
 // Typealias to disambiguate from GoogleMobileAds types
-public typealias PrebidNativeAd = NativeAd
+public typealias PrebidNativeAd = SellwildPrebidSDK.NativeAd
 
 @objc(PrebidAdMobNativeAdapter)
 public class PrebidAdMobNativeAdapter:

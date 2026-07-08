@@ -18,7 +18,7 @@ import GoogleMobileAds
 @_exported import SellwildPrebidSDK
 
 // Typealias to disambiguate from GoogleMobileAds.NativeAd
-public typealias PrebidNativeAd = NativeAd
+public typealias PrebidNativeAd = SellwildPrebidSDK.NativeAd
 
 fileprivate let prebidKeywordPrefix = "hb_"
 
