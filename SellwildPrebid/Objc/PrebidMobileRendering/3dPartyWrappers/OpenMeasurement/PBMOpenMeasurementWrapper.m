@@ -21,10 +21,10 @@
 
 #import "SwiftImport.h"
 
-#import <OMSDK_Prebidorg/OMIDAdSession.h>
-#import <OMSDK_Prebidorg/OMIDScriptInjector.h>
-#import <OMSDK_Prebidorg/OMIDPartner.h>
-#import <OMSDK_Prebidorg/OMIDSDK.h>
+#import <OMSDK_Sellwild/OMIDAdSession.h>
+#import <OMSDK_Sellwild/OMIDScriptInjector.h>
+#import <OMSDK_Sellwild/OMIDPartner.h>
+#import <OMSDK_Sellwild/OMIDSDK.h>
 
 #pragma mark - Constants
 

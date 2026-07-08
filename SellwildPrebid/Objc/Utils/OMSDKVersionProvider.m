@@ -13,7 +13,7 @@
  limitations under the License.
  */
 
-#import <OMSDK_Prebidorg/OMIDSDK.h>
+#import <OMSDK_Sellwild/OMIDSDK.h>
 
 #import "SwiftImport.h"
 

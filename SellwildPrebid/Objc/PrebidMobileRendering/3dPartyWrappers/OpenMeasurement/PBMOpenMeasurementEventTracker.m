@@ -18,9 +18,9 @@
 
 #import "SwiftImport.h"
 
-#import <OMSDK_Prebidorg/OMIDAdSession.h>
-#import <OMSDK_Prebidorg/OMIDAdEvents.h>
-#import <OMSDK_Prebidorg/OMIDMediaEvents.h>
+#import <OMSDK_Sellwild/OMIDAdSession.h>
+#import <OMSDK_Sellwild/OMIDAdEvents.h>
+#import <OMSDK_Sellwild/OMIDMediaEvents.h>
 
 @interface PBMOpenMeasurementEventTracker()
 

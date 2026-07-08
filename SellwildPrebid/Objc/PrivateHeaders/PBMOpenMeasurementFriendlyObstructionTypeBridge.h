@@ -14,7 +14,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <OMSDK_Prebidorg/OMIDFriendlyObstructionType.h>
+#import <OMSDK_Sellwild/OMIDFriendlyObstructionType.h>
 
 #import "SwiftImport.h"
 
