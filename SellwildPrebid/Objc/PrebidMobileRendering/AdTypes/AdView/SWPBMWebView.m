@@ -620,7 +620,14 @@ static SWPBMError *extracted(NSString *errorMessage) {
 - (void)setupVolumeObserver {
     if (!self.isVolumeObserverSetup) {
         self.isVolumeObserverSetup = YES;
-        [[AVAudioSession sharedInstance] setActive:YES error:nil];
+        // Do NOT activate the app's AVAudioSession here. `outputVolume` is
+        // KVO-observable and readable without an active session, so activation
+        // is unnecessary for the MRAID volume observer — and it is actively
+        // harmful: `-setActive:YES` is a synchronous IPC to mediaserverd that
+        // blocks the main thread (multi-second app hangs, observed on every
+        // creative render), and activating the app's (solo-ambient) session
+        // deactivates/ducks other apps' background audio (music/podcasts).
+        // Observing volume without activating fixes both.
         [[AVAudioSession sharedInstance] addObserver:self
                                           forKeyPath:KeyPathOutputVolume
                                              options:NSKeyValueObservingOptionNew

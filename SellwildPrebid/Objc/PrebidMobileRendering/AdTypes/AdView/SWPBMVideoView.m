@@ -256,7 +256,12 @@ static CGSize const MUTE_BUTTON_SIZE = { 24, 24 };
                                                name:AVPlayerItemDidPlayToEndTimeNotification
                                              object:playerItem];
     
-    [AVAudioSession.sharedInstance setActive:YES error:nil];
+    // Do NOT activate the app's AVAudioSession here (same rationale as
+    // SWPBMWebView.setupVolumeObserver): `outputVolume` is KVO-observable without
+    // an active session, so activation is unnecessary — the AVPlayer manages its
+    // own audio. `-setActive:YES` is a synchronous IPC to mediaserverd that
+    // blocks the main thread (app hangs) and activating the app's solo-ambient
+    // session deactivates/ducks other apps' background audio.
     [AVAudioSession.sharedInstance addObserver:self forKeyPath:SWPBMAudioSessionObserverKeyVoulume options:NSKeyValueObservingOptionNew context:nil];
 }
 
